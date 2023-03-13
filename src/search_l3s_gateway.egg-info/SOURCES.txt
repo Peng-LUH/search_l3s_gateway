@@ -1,0 +1,16 @@
+README.md
+pyproject.toml
+setup.py
+src/search_l3s_gateway/__init__.py
+src/search_l3s_gateway/config.py
+src/search_l3s_gateway.egg-info/PKG-INFO
+src/search_l3s_gateway.egg-info/SOURCES.txt
+src/search_l3s_gateway.egg-info/dependency_links.txt
+src/search_l3s_gateway.egg-info/requires.txt
+src/search_l3s_gateway.egg-info/top_level.txt
+src/search_l3s_gateway/api/__init__.py
+src/search_l3s_gateway/api/qgen_srv/__init__.py
+src/search_l3s_gateway/api/recsys_srv/__init__.py
+src/search_l3s_gateway/api/search_srv/__init__.py
+src/search_l3s_gateway/api/search_srv/dto.py
+src/search_l3s_gateway/api/search_srv/endpoints.py

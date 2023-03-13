@@ -1,4 +1,4 @@
-"""Installation script for flask-api-tutorial application."""
+"""Installation script for api: search l3s gateway."""
 from pathlib import Path
 from setuptools import setup, find_packages
 
@@ -10,11 +10,10 @@ APP_ROOT = Path(__file__).parent
 README = (APP_ROOT / "README.md").read_text()
 AUTHOR = "Shengrui Peng"
 AUTHOR_EMAIL = "peng@l3s.de"
-# PROJECT_URLS = {
-#     "Documentation": "https://aaronluna.dev/series/flask-api-tutorial/",
-#     "Bug Tracker": "https://github.com/a-luna/flask-api-tutorial/issues",
-#     "Source Code": "https://github.com/a-luna/flask-api-tutorial",
-# }
+PROJECT_URLS = {
+    "Bug Tracker": "https://github.com/Peng-LUH/search_l3s_gateway/issues",
+    "Source Code": "https://github.com/Peng-LUH/search_l3s_gateway",
+}
 INSTALL_REQUIRES = [
     "Flask==2.2.2",
     "Flask-Bcrypt",
@@ -51,7 +50,7 @@ EXTRAS_REQUIRE = {
 }
 
 setup(
-    name="l3s_gateway",
+    name="search_l3s_gateway",
     description=DESCRIPTION,
     long_description=README,
     long_description_content_type="text/markdown",
