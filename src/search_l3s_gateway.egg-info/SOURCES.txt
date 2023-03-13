@@ -9,8 +9,11 @@ src/search_l3s_gateway.egg-info/dependency_links.txt
 src/search_l3s_gateway.egg-info/requires.txt
 src/search_l3s_gateway.egg-info/top_level.txt
 src/search_l3s_gateway/api/__init__.py
-src/search_l3s_gateway/api/qgen_srv/__init__.py
-src/search_l3s_gateway/api/recsys_srv/__init__.py
-src/search_l3s_gateway/api/search_srv/__init__.py
-src/search_l3s_gateway/api/search_srv/dto.py
-src/search_l3s_gateway/api/search_srv/endpoints.py
+src/search_l3s_gateway/api/downstream/__init__.py
+src/search_l3s_gateway/api/downstream/dto.py
+src/search_l3s_gateway/api/downstream/endpoints.py
+src/search_l3s_gateway/api/downstream/logic.py
+src/search_l3s_gateway/api/upstream/__init__.py
+src/search_l3s_gateway/api/upstream/dto.py
+src/search_l3s_gateway/api/upstream/endpoints.py
+src/search_l3s_gateway/api/upstream/logic.py

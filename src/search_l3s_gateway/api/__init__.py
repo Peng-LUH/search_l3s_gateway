@@ -2,7 +2,9 @@
 from flask import Blueprint
 from flask_restx import Api
 
-from search_l3s_gateway.api.search_srv import ns_search
+from search_l3s_gateway.api.upstream.endpoints import ns_upstream
+from search_l3s_gateway.api.downstream.endpoints import ns_downstream
+# from search_l3s_gateway.api.search_srv import ns_search
 
 api_bp = Blueprint("api", __name__, url_prefix="/api/v1")
 authorizations = {"Bearer": {"type": "apiKey", "in": "header", "name": "Authorization"}}
@@ -16,5 +18,5 @@ api = Api(api_bp,
           authorizations=authorizations,
           )
 
-api.add_namespace(ns_search, path="/search_gateway")
-
+api.add_namespace(ns_upstream, path="/upstream")
+api.add_namespace(ns_downstream, path="/downstream")
