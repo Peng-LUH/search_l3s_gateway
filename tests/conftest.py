@@ -2,9 +2,9 @@
 
 import pytest
 
-from flask_api_tutorial import create_app
-from flask_api_tutorial import db as database
-from flask_api_tutorial.models.user import User
+from search_l3s_gateway import create_app
+from search_l3s_gateway import db as database
+from search_l3s_gateway.models.user import User
 from tests.util import EMAIL, PASSWORD
 
 

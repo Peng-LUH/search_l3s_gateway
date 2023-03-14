@@ -14,6 +14,7 @@ PROJECT_URLS = {
     "Bug Tracker": "https://github.com/Peng-LUH/search_l3s_gateway/issues",
     "Source Code": "https://github.com/Peng-LUH/search_l3s_gateway",
 }
+
 INSTALL_REQUIRES = [
     "Flask==2.2.2",
     "Flask-Bcrypt",
@@ -33,6 +34,7 @@ INSTALL_REQUIRES = [
     "flake8==3.9.2",
     "black",
 ]
+
 EXTRAS_REQUIRE = {
     "dev": [
         "black",

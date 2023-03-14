@@ -46,7 +46,9 @@ class ProductionConfig(Config):
 
 
 ENV_CONFIG_DICT = dict(
-    development=DevelopmentConfig, testing=TestingConfig, production=ProductionConfig
+    development=DevelopmentConfig,
+    testing=TestingConfig,
+    production=ProductionConfig
 )
 
 

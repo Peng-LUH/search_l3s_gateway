@@ -20,7 +20,7 @@ def create_app(config_name):
 
     # to avoid a circular import
     from search_l3s_gateway.api import api_bp
-    
+
     app.register_blueprint(api_bp)
     cors.init_app(app)
     db.init_app(app)

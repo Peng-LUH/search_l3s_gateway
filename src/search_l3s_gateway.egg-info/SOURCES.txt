@@ -17,3 +17,8 @@ src/search_l3s_gateway/api/upstream/__init__.py
 src/search_l3s_gateway/api/upstream/dto.py
 src/search_l3s_gateway/api/upstream/endpoints.py
 src/search_l3s_gateway/api/upstream/logic.py
+src/search_l3s_gateway/models/__init__.py
+src/search_l3s_gateway/models/user.py
+src/search_l3s_gateway/util/__init__.py
+src/search_l3s_gateway/util/datetime_util.py
+src/search_l3s_gateway/util/result.py

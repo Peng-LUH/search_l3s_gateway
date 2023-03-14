@@ -1,4 +1,4 @@
-from flask import request
+# from flask import request
 from flask_restx import Namespace, Resource, fields
 from http import HTTPStatus
 
@@ -11,6 +11,7 @@ todo = ns_downstream.model('Todo', {
     'task': fields.String(required=True, description='The task details')
 })
 
+
 @ns_downstream.route("/test_downstream", endpoint="test_downstream")
 class TestUpstream(Resource):
     @ns_downstream.response(int(HTTPStatus.CREATED), "successfully get.")
@@ -19,8 +20,7 @@ class TestUpstream(Resource):
     @ns_downstream.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
     def get(self):
         return {"message": "get method from test downstream endpoint."}, HTTPStatus.OK
-    
-    
+
     @ns_downstream.response(int(HTTPStatus.CREATED), "successfully created.")
     @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
     @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
@@ -29,8 +29,7 @@ class TestUpstream(Resource):
     def post(self):
         data = ns_downstream.payload
         return data, HTTPStatus.CREATED
-    
-    
+
     @ns_downstream.response(int(HTTPStatus.CREATED), "successfully changed.")
     @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
     @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
@@ -39,8 +38,7 @@ class TestUpstream(Resource):
     def put(self):
         data = ns_downstream.payload
         return data, HTTPStatus.ACCEPTED
-    
-    
+
     @ns_downstream.response(int(HTTPStatus.CREATED), "successfully deleted.")
     @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
     @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")

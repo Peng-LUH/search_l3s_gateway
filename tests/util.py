@@ -11,4 +11,5 @@ def register_user(test_client, email=EMAIL, password=PASSWORD):
         url_for("api.auth_register"),
         data=f"email={email}&password={password}",
         content_type="application/x-www-form-urlencoded",
+        # content_type="application/json"
     )
