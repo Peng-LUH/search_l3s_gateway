@@ -14,3 +14,8 @@ service_reqparser.add_argument(
 service_reqparser.add_argument(
     name="content", type=str, location="form",
 )
+
+retrieve_parser = RequestParser(bundle_errors=True)
+retrieve_parser.add_argument(
+    name="data", type="str", 
+)

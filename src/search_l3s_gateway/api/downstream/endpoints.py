@@ -45,3 +45,53 @@ class TestUpstream(Resource):
     @ns_downstream.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
     def delete(self):
         return {"message": "delete method downstream"}, HTTPStatus.OK
+
+
+### Connection: search services
+@ns_downstream.route('/search-service', endpoint="search_service")
+class SearchService(Resource):
+    @ns_downstream.response(int(HTTPStatus.CREATED), "successfully changed.")
+    @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
+    @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
+    @ns_downstream.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    @ns_downstream.expect(todo)
+    def post(self):
+        pass
+    
+
+### Connection: recommendation service
+@ns_downstream.route('/recommendation-service', endpoint="rec_service")
+class RecommendationService(Resource):
+    @ns_downstream.response(int(HTTPStatus.CREATED), "successfully changed.")
+    @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
+    @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
+    @ns_downstream.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    @ns_downstream.expect(todo)
+    def post(self):
+        pass
+    
+
+### Connection: question generation service
+@ns_downstream.route('/question-generation-service', endpoint="qgen_service")
+class QGenService(Resource):
+    @ns_downstream.response(int(HTTPStatus.CREATED), "successfully changed.")
+    @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
+    @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
+    @ns_downstream.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    @ns_downstream.expect(todo)
+    def post(self):
+        pass
+    
+
+### Connection: summary service
+@ns_downstream.route('/summary-service', endpoint="summary_service")
+class SummaryService(Resource):
+    @ns_downstream.response(int(HTTPStatus.CREATED), "successfully changed.")
+    @ns_downstream.response(int(HTTPStatus.CONFLICT), "exits conflict.")
+    @ns_downstream.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
+    @ns_downstream.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    @ns_downstream.expect(todo)
+    def post(self):
+        pass
+    
+
