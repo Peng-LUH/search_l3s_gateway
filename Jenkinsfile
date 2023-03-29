@@ -44,12 +44,12 @@ pipeline {
         }
 				
         // Based on: https://medium.com/@mosheezderman/c51581cc783c
-        //stage('Deploy') {
-        //    steps {
-        //        sshagent(['STM-SSH-DEMO']) {
-        //            sh "ssh -o StrictHostKeyChecking=no -l ${DEMO_SERVER_USER} ${env.DEMO_SERVER} bash ${REMOTE_UPDATE_SCRIPT}"
-        //        }
-        //    }
-        //}
+        stage('Deploy') {
+            steps {
+                sshagent(['STM-SSH-DEMO']) {
+                    sh "ssh -o StrictHostKeyChecking=no -l ${DEMO_SERVER_USER} ${env.DEMO_SERVER} bash ${REMOTE_UPDATE_SCRIPT}"
+                }
+            }
+        }
     }
 }
