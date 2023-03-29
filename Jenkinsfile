@@ -7,7 +7,7 @@ pipeline {
         DEMO_SERVER_USER = "elscha"
         
         dockerImage = ''
-        REMOTE_UPDATE_SCRIPT = '/staging/update-compose-project.sh search-l3s'
+        REMOTE_UPDATE_SCRIPT = '/staging/update-compose-project.sh search-l3s-stack'
     }
 
     stages {
