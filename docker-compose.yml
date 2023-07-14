@@ -1,0 +1,25 @@
+services:
+
+  dev-db-l3s:
+
+    image: postgres:13
+
+    ports:
+
+      - 5435:5432
+
+    environment:
+
+      POSTGRES_USER: postgres
+
+      POSTGRES_PASSWORD: admin
+
+      POSTGRES_DB: l3s-db
+
+    networks:
+
+      - search
+
+networks:
+
+  search:
