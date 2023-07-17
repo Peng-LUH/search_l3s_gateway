@@ -3,10 +3,13 @@ from pathlib import Path
 
 HERE = Path(__file__).parent
 
-SQLITE_DEV = "sqlite:///" + str(HERE / "dev.db")
-SQLITE_TEST = "sqlite:///" + str(HERE / "test.db")
-SQLITE_PROD = "sqlite:///" + str(HERE / "prod.db")
+# SQLITE_DEV = "sqlite:///" + str(HERE / "dev.db")
+# SQLITE_TEST = "sqlite:///" + str(HERE / "test.db")
+# SQLITE_PROD = "sqlite:///" + str(HERE / "prod.db")
 
+SQLITE_DEV = os.getenv("DB_URL")
+SQLITE_TEST = os.getenv("DB_URL")
+SQLITE_PROD = os.getenv("DB_URL")
 
 class Config:
     """Base Configuration."""

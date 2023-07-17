@@ -1,7 +1,7 @@
 from http import HTTPStatus
 
 # import flask
-from flask import request, url_for
+from flask import request, url_for, make_response, jsonify
 
 # import flask-restx
 from flask_restx import Namespace, Resource, fields
@@ -57,3 +57,13 @@ class RetrieveInfo(Resource):
     @ns_upstream.expect(retrieve_model)
     def post(self):
         pass
+    
+    
+@ns_upstream.route("/get-users", endpoint="get_users")
+class GetUsers(Resource):
+    def get(self):
+        try:
+            users = User.query.all()
+            return make_response(jsonify([user.json() for user in users]), 200)
+        except:
+            return make_response(jsonify({'message': 'error getting users'}), 500)

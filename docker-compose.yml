@@ -1,16 +1,16 @@
 services:
-  search_l3s_gateway:
-    container_name: search_l3s_gateway
-    image: search_l3s_gateway:1.0.0
-    build: .
-    ports:
-      - "4000:4000"
-    environment:
-      - DB_URL=postgresql://postgres:postgres@l3s-db:5435/postgres
-    depends_on:
-      - l3s-db
-    networks:
-      - search
+  # search_l3s_gateway:
+  #   container_name: search_l3s_gateway
+  #   image: search_l3s_gateway:1.0.0
+  #   build: .
+  #   ports:
+  #     - "4000:9040"
+  #   environment:
+  #     - DB_URL=postgresql://postgres:admin@dev-db-l3s:5435/l3s-db
+  #   depends_on:
+  #     - l3s-db
+  #   networks:
+  #     - search
   dev-db-l3s:
     image: postgres:13
     # ports:
