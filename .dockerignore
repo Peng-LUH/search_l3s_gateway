@@ -6,7 +6,6 @@ dist
 **/.Python
 **/.venv
 **/.env
-**/.env_env
 **/pip-log.txt
 **/pip-delete-this-directory.txt
 **/.tox
@@ -23,3 +22,4 @@ dist
 **/.hypothesis
 **/test_ipynb/*
 src/search_l3s_gateway.egg-info/*
+.dockercmd

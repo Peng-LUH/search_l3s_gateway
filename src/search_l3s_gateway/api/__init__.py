@@ -14,8 +14,8 @@ api = Api(api_bp,
           version="0.0.1",
           title="L3S Gateway for SEARCH",
           description="Welcome to the Swagger UI documentation site!",
-          doc="/ui",
-        #   authorizations=authorizations,
+          # doc="/l3s-gateway",
+          # authorizations=authorizations,
           )
 
 api.add_namespace(ns_upstream, path="/upstream")
