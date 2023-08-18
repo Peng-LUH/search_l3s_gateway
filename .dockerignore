@@ -4,7 +4,7 @@ dist
 **/*.pyo
 **/*.pyd
 **/.Python
-**/env
+**/.venv
 **/.env
 **/.env_env
 **/pip-log.txt
@@ -21,3 +21,5 @@ dist
 **/.mypy_cache
 **/.pytest_cache
 **/.hypothesis
+**/test_ipynb/*
+src/search_l3s_gateway.egg-info/*
