@@ -5,6 +5,8 @@ dist
 **/*.pyd
 **/.Python
 **/env
+**/.env
+**/.env_env
 **/pip-log.txt
 **/pip-delete-this-directory.txt
 **/.tox
