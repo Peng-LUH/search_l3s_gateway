@@ -11,14 +11,12 @@ services:
   #     - l3s-db
   #   networks:
   #     - search
-  dev-db-l3s:
-    image: postgres:13
-    # ports:
-    #   - 5435:5432
+  db:
+    image: postgres:14
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin
-      POSTGRES_DB: l3s-db
+      POSTGRES_DB: SearchDB
     networks:
       - search
 networks:

@@ -5,6 +5,7 @@ import requests, json
 
 # from search_l3s_gateway.api import api
 from .dto import (
+    todo,
     search_srv_request_model,
     recsys_srv_request_model
     )
@@ -14,7 +15,7 @@ ns_downstream = Namespace("downstream", validate=True)
 # register dto models
 ns_downstream.models[search_srv_request_model.name] = search_srv_request_model
 ns_downstream.models[recsys_srv_request_model.name] = recsys_srv_request_model
-
+ns_downstream.models[todo.name] = todo
 
 # @ns_downstream.route("/test_downstream", endpoint="test_downstream")
 # class TestUpstream(Resource):

@@ -6,8 +6,8 @@ from search_l3s_gateway.models.user import User
 
 app = create_app(os.getenv("FLASK_ENV", "development"))
 
-with app.app_context():
-    db.create_all()
+# with app.app_context():
+#     db.create_all()
 
 @app.shell_context_processor
 def shell():

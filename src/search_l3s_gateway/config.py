@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+from dotenv import load_dotenv
+load_dotenv(".env")
+load_dotenv(".env_env")
 
 HERE = Path(__file__).parent
 
