@@ -1,4 +1,5 @@
 .env
 .venv
 .dockercmd
+**/__pycache__
 
