@@ -3,3 +3,5 @@
 .dockercmd
 **/__pycache__
 **/test_ipynb
+**/test_gitignore
+**/test_gitignore/*
