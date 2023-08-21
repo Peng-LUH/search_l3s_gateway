@@ -2,4 +2,5 @@
 .venv
 .dockercmd
 **/__pycache__
-
+./tests
+./test_ipynb
