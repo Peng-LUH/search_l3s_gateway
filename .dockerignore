@@ -20,6 +20,6 @@ dist
 **/.mypy_cache
 **/.pytest_cache
 **/.hypothesis
-**/test_ipynb/*
-src/search_l3s_gateway.egg-info/*
+**/test_ipynb
+**/*.egg-info/*
 .dockercmd
