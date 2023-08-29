@@ -9,7 +9,6 @@ from search_l3s_gateway.api.ds_recsys.endpoints import ns_ds_recsys
 from search_l3s_gateway.api.ds_aimeta.endpoints import ns_ds_aimeta
 # from search_l3s_gateway.api.search_srv import ns_search
 
-
 api_bp = Blueprint("api", __name__, url_prefix="/l3s-gateway")
 # authorizations = {"Bearer": {"type": "apiKey", "in": "header", "name": "Authorization"}}
 
