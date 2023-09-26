@@ -2,9 +2,9 @@
 
 import pytest
 
-from search_l3s_gateway import create_app
-from search_l3s_gateway import db as database
-from search_l3s_gateway.models.user import User
+from l3s_gateway_api import create_app
+from l3s_gateway_api import db as database
+from l3s_gateway_api.models.user import User
 from tests.util import EMAIL, PASSWORD
 
 

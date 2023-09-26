@@ -1,4 +1,4 @@
-.env
+**/.env/*
 .venv
 .dockercmd
 **/__pycache__
@@ -6,3 +6,6 @@
 **/test_gitignore
 **/test_gitignore/*
 **/*.egg-info
+**/archiv
+.tox
+*.sh

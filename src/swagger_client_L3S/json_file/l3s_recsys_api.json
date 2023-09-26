@@ -1,0 +1,164 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "L3S Recommendation Service for SEARCH",
+    "description": "Welcome to the Swagger UI documentation site!",
+    "version": "0.0.2"
+  },
+  "servers": [
+    {
+      "url": "/l3s-recsys"
+    }
+  ],
+  "tags": [
+    {
+      "name": "test"
+    },
+    {
+      "name": "random"
+    }
+  ],
+  "paths": {
+    "/random/get-random-recommendation": {
+      "post": {
+        "tags": [
+          "random"
+        ],
+        "operationId": "post_random_recommendation",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RandomRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RandomResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Success",
+            "content": {}
+          },
+          "400": {
+            "description": "Number of recommendation is either negative or exceed the number of existing contents",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/recsys-test/recsys-test-get": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "operationId": "get_recsys_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/test"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/recsys-test/recsys-test-post": {
+      "post": {
+        "tags": [
+          "test"
+        ],
+        "operationId": "post_recsys_test",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/test"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/test"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "test": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "default": "success"
+          }
+        }
+      },
+      "RandomRequest": {
+        "required": [
+          "num_of_rec"
+        ],
+        "type": "object",
+        "properties": {
+          "num_of_rec": {
+            "type": "integer"
+          }
+        }
+      },
+      "RandomResponse": {
+        "required": [
+          "results"
+        ],
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
+      },
+      "ParseError": {
+        "description": "When a mask can't be parsed",
+        "content": {}
+      }
+    }
+  }
+}

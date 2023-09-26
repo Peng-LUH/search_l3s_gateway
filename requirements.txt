@@ -1,0 +1,8 @@
+flask==2.2.3
+redis
+psycopg2-binary
+flask-restx
+marshmallow
+connexion[swagger-ui]
+flask_marshmallow
+six 

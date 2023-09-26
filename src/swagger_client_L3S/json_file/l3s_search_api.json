@@ -1,0 +1,800 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "L3S Search Service for SEARCH",
+    "description": "Welcome to the Swagger UI documentation site test!",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "/l3s-search"
+    }
+  ],
+  "tags": [
+    {
+      "name": "test"
+    },
+    {
+      "name": "metadata",
+      "description": "Get functions for Meta-information for using search services"
+    },
+    {
+      "name": "dataset-generator"
+    },
+    {
+      "name": "encoder"
+    },
+    {
+      "name": "indexer"
+    },
+    {
+      "name": "searcher"
+    },
+    {
+      "name": "reranker"
+    }
+  ],
+  "paths": {
+    "/dataset-generator/json-to-jsonl-converter": {
+      "post": {
+        "tags": [
+          "dataset-generator"
+        ],
+        "operationId": "post_json_to_jsonl",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dataset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/dataset-generator/mls-content-type": {
+      "get": {
+        "tags": [
+          "dataset-generator"
+        ],
+        "summary": "Retrieve valid mls content type for generating corpus",
+        "operationId": "get_mls_content_type",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/dataset-generator/mls-corpus": {
+      "post": {
+        "tags": [
+          "dataset-generator"
+        ],
+        "summary": "retrieval mls dataset and save as json file",
+        "operationId": "post_generate_mls_dataset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mls_Dataset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successfully created json file",
+            "content": {}
+          },
+          "400": {
+            "description": "Request error, e.g., wrong corpus name",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/dataset-generator/mls-response-dataset": {
+      "post": {
+        "tags": [
+          "dataset-generator"
+        ],
+        "operationId": "post_mls_response_dataset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mls_Dataset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/dataset-generator/mls-response-object": {
+      "post": {
+        "tags": [
+          "dataset-generator"
+        ],
+        "operationId": "post_mls_response_object",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mls_Object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/encoder/dense/dataset": {
+      "post": {
+        "tags": [
+          "encoder"
+        ],
+        "operationId": "post_dense_encode_dataset",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Dataset_Encode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "404": {
+            "description": "Dataset not found",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/encoder/dense/query": {
+      "post": {
+        "tags": [
+          "encoder"
+        ],
+        "operationId": "post_dense_encode_query",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Query_Encode"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/encoder/sparse-encoder": {
+      "post": {
+        "tags": [
+          "encoder"
+        ],
+        "operationId": "post_sparse_encode_generator",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/encoder/test": {
+      "get": {
+        "tags": [
+          "encoder"
+        ],
+        "operationId": "get_encoder_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/indexer/dense/flat": {
+      "post": {
+        "tags": [
+          "indexer"
+        ],
+        "summary": "service for flat indexing",
+        "operationId": "post_flat_l2_indexer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IndexerInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/indexer/dense/hnsw": {
+      "post": {
+        "tags": [
+          "indexer"
+        ],
+        "operationId": "post_hnsw_indexer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IndexerInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/indexer/dense/pq": {
+      "post": {
+        "tags": [
+          "indexer"
+        ],
+        "operationId": "post_pq_indexer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/IndexerInput"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/indexer/index-mls-update": {
+      "post": {
+        "tags": [
+          "indexer"
+        ],
+        "operationId": "post_mls_index_update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MlsIndexUpdate"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/indexer/traditional-indexer/bm25": {
+      "post": {
+        "tags": [
+          "indexer"
+        ],
+        "operationId": "post_pyserini_indexer",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BM25Indexer"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "New user was successfully created.",
+            "content": {}
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "Email address is already registered.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/reranker/test": {
+      "get": {
+        "tags": [
+          "reranker"
+        ],
+        "operationId": "get_reranker_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/search-metadata/get-datasets": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "summary": "Get the list of available datasets",
+        "operationId": "get_get_datasets",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/search-metadata/get-encoding-types": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "summary": "Get the list of available encoding types",
+        "operationId": "get_get_encoding_type",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/search-metadata/get-index-methods": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "summary": "Get the list of available index methods",
+        "operationId": "get_get_index_method",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/search-metadata/get-language-models": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "summary": "Get the list of available language models",
+        "operationId": "get_get_language_models",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/search-metadata/host-name-ip": {
+      "get": {
+        "tags": [
+          "metadata"
+        ],
+        "operationId": "get_host",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/search-test/search-test": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "operationId": "get_search_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/searcher/dense-retrieval": {
+      "post": {
+        "tags": [
+          "searcher"
+        ],
+        "summary": "Semantic Search using dense retrieval",
+        "operationId": "post_dense_retrieval",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DenseSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DenseSearchResponseList"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "New user was successfully created.",
+            "content": {}
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "Email address is already registered.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/searcher/traditional-retrieval": {
+      "post": {
+        "tags": [
+          "searcher"
+        ],
+        "operationId": "post_simple_search",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimpleSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "New user was successfully created.",
+            "content": {}
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "Email address is already registered.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Mls_Dataset": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "description: dataset name, e.g., tasks, documents"
+          },
+          "parameters": {
+            "type": "array",
+            "description": "List of mls-api parameters",
+            "items": {
+              "$ref": "#/components/schemas/Parameter"
+            }
+          }
+        }
+      },
+      "Parameter": {
+        "type": "object",
+        "properties": {
+          "parameter_name": {
+            "type": "string",
+            "description": "mls-api parameter"
+          }
+        }
+      },
+      "Mls_Object": {
+        "type": "object",
+        "properties": {
+          "object_id": {
+            "type": "string"
+          }
+        }
+      },
+      "Dataset": {
+        "required": [
+          "dataset_name"
+        ],
+        "type": "object",
+        "properties": {
+          "dataset_name": {
+            "type": "string"
+          }
+        }
+      },
+      "Query_Encode": {
+        "required": [
+          "model_name",
+          "text"
+        ],
+        "type": "object",
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "default": "bert-base-german-cased"
+          },
+          "text": {
+            "type": "string"
+          }
+        }
+      },
+      "Dataset_Encode": {
+        "required": [
+          "dataset_name",
+          "model_name"
+        ],
+        "type": "object",
+        "properties": {
+          "model_name": {
+            "type": "string",
+            "default": "bert-base-german-cased"
+          },
+          "dataset_name": {
+            "type": "string",
+            "default": "mls-tasks"
+          }
+        }
+      },
+      "MlsIndexUpdate": {
+        "type": "object",
+        "properties": {
+          "datasets": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "BM25Indexer": {
+        "type": "object",
+        "properties": {
+          "dataset_name": {
+            "type": "string"
+          },
+          "json_collection": {
+            "type": "string",
+            "default": "JsonCollection"
+          },
+          "generator": {
+            "type": "string",
+            "default": "DefaultLuceneDocumentGenerator"
+          },
+          "threads": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      },
+      "IndexerInput": {
+        "type": "object",
+        "properties": {
+          "encode_type": {
+            "type": "string",
+            "default": "e.g., dense, traditional"
+          },
+          "model_name": {
+            "type": "string",
+            "default": "bert-base-german-cased"
+          },
+          "index_method": {
+            "type": "string",
+            "default": "e.g. flat-l2, flat-ip"
+          },
+          "dataset_name": {
+            "type": "string",
+            "default": "e.g. mls-tasks"
+          }
+        }
+      },
+      "SimpleSearchRequest": {
+        "required": [
+          "query"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "user ID"
+          },
+          "cid": {
+            "type": "string",
+            "description": "company ID"
+          },
+          "dataset": {
+            "type": "string"
+          },
+          "index": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "nr_result": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      },
+      "DenseSearchRequest": {
+        "required": [
+          "query"
+        ],
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "user ID"
+          },
+          "cid": {
+            "type": "string",
+            "description": "company ID"
+          },
+          "query": {
+            "type": "string",
+            "default": "Elektrotechnik 1 Versuch 8: Wirkleistung von Wechselspannungen; Wirkleistung der Sinuswechselspannung in der praktischen Übung"
+          },
+          "language_model": {
+            "type": "string",
+            "default": "bert-base-german-cased"
+          },
+          "index_method": {
+            "type": "string",
+            "default": "flat-l2"
+          },
+          "dataset_name": {
+            "type": "string",
+            "default": "mls-tasks"
+          },
+          "nr_result": {
+            "minimum": 1,
+            "type": "integer"
+          }
+        }
+      },
+      "DenseSearchResponseList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DenseSearchResponse"
+            }
+          }
+        }
+      },
+      "DenseSearchResponse": {
+        "type": "object",
+        "properties": {
+          "uid": {
+            "type": "string",
+            "description": "user ID"
+          },
+          "cid": {
+            "type": "string",
+            "description": "company ID"
+          },
+          "id": {
+            "type": "string"
+          },
+          "similarity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "responses": {
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
+      },
+      "ParseError": {
+        "description": "When a mask can't be parsed",
+        "content": {}
+      }
+    }
+  }
+}
