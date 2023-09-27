@@ -13,9 +13,6 @@ from .dto import (
 
 
 
-
-
-
 ns_ds_search = Namespace("ds-search", validate=True, description="downstream endpoints for search services")
 
 ns_ds_search.models[search_srv_request_model.name] = search_srv_request_model
@@ -91,12 +88,6 @@ class SearchServiceMetaDatasets(Resource):
 
 
 
-
-
-
-
-
-
 from flask import jsonify, request
 from swagger_client_L3S import l3s_search_client
 # from swagger_client_L3S import l3s_recsys_client as l3SSearchClient
@@ -113,8 +104,8 @@ from swagger_client_L3S.l3s_search_client.models.dense_search_response_list impo
 
 ## Configuration L3S Recsys
 l3s_search_config = l3s_search_client.Configuration()
-# l3s_search_config.host = "http://localhost:9043/l3s-search"
-l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
+l3s_search_config.host = "http://localhost:9043/l3s-search"
+# l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
 print(l3s_search_config.host)
 
 
@@ -184,8 +175,6 @@ class SearchService(Resource):
         
         # return request_data
     
-
-
 
 # @ns_ds_search.route('/search_service/add-new-nugget', endpoint="add_new_nugget")
 # class 

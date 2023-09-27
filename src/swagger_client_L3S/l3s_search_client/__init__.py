@@ -38,4 +38,3 @@ from l3s_search_client.models.mls_index_update import MlsIndexUpdate
 from l3s_search_client.models.mls_object import MlsObject
 from l3s_search_client.models.parameter import Parameter
 from l3s_search_client.models.query_encode import QueryEncode
-from l3s_search_client.models.simple_search_request import SimpleSearchRequest

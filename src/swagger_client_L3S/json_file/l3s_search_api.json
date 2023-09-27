@@ -259,56 +259,6 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/indexer/dense/hnsw": {
-      "post": {
-        "tags": [
-          "indexer"
-        ],
-        "operationId": "post_hnsw_indexer",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IndexerInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "payload"
-      }
-    },
-    "/indexer/dense/pq": {
-      "post": {
-        "tags": [
-          "indexer"
-        ],
-        "operationId": "post_pq_indexer",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/IndexerInput"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "payload"
-      }
-    },
     "/indexer/index-mls-update": {
       "post": {
         "tags": [
@@ -520,43 +470,6 @@
         },
         "x-codegen-request-body-name": "payload"
       }
-    },
-    "/searcher/traditional-retrieval": {
-      "post": {
-        "tags": [
-          "searcher"
-        ],
-        "operationId": "post_simple_search",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/SimpleSearchRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "201": {
-            "description": "New user was successfully created.",
-            "content": {}
-          },
-          "400": {
-            "description": "Validation error.",
-            "content": {}
-          },
-          "409": {
-            "description": "Email address is already registered.",
-            "content": {}
-          },
-          "500": {
-            "description": "Internal server error.",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "payload"
-      }
     }
   },
   "components": {
@@ -687,35 +600,6 @@
           "dataset_name": {
             "type": "string",
             "default": "e.g. mls-tasks"
-          }
-        }
-      },
-      "SimpleSearchRequest": {
-        "required": [
-          "query"
-        ],
-        "type": "object",
-        "properties": {
-          "uid": {
-            "type": "string",
-            "description": "user ID"
-          },
-          "cid": {
-            "type": "string",
-            "description": "company ID"
-          },
-          "dataset": {
-            "type": "string"
-          },
-          "index": {
-            "type": "string"
-          },
-          "query": {
-            "type": "string"
-          },
-          "nr_result": {
-            "minimum": 1,
-            "type": "integer"
           }
         }
       },
