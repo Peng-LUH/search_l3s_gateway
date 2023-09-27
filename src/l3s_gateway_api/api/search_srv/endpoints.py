@@ -1,8 +1,39 @@
-from flask import request
+from flask import request, jsonify
 from flask_restx import Namespace, Resource, fields
 from http import HTTPStatus
-import requests, json
+import requests, json, dataclasses
 import os, socket
+from pprint import pprint
+
+
+from swagger_client_L3S import l3s_search_client
+from swagger_client_L3S.l3s_search_client.rest import ApiException
+from swagger_client_L3S.l3s_search_client.models.dense_search_response import DenseSearchResponse
+from swagger_client_L3S.l3s_search_client.models.dense_search_request import DenseSearchRequest
+from swagger_client_L3S.l3s_search_client.models.dense_search_response_list import DenseSearchResponseList
+# from swagger_client_L3S.l3s_search_client.models.random_response import RandomResponse
+# from swagger_client_L3S.l3s_search_client.models.random_request import RandomRequest
+
+## Configuration L3S Recsys
+l3s_search_config = l3s_search_client.Configuration()
+# l3s_search_config.host = "http://localhost:9043/l3s-search"
+l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
+print(l3s_search_config.host)
+
+
+client_l3s_search = l3s_search_client.ApiClient(configuration=l3s_search_config)
+# l3s recsys api registration
+search_searcher_api = l3s_search_client.SearcherApi(api_client=client_l3s_search)
+# recsys_random_api = l3s_search_client.RandomApi(api_client=client_l3s_search)
+search_metadata_api = l3s_search_client.MetadataApi(api_client=client_l3s_search)
+
+
+
+
+
+
+ns_ds_search = Namespace("ds-search", validate=True, description="downstream endpoints for search services")
+
 
 
 # from search_l3s_gateway.api import api
@@ -11,14 +42,12 @@ from .dto import (
     recsys_srv_request_model
     )
 
-
-
-ns_ds_search = Namespace("ds-search", validate=True, description="downstream endpoints for search services")
-
 ns_ds_search.models[search_srv_request_model.name] = search_srv_request_model
 ns_ds_search.models[recsys_srv_request_model.name] = recsys_srv_request_model
 
+
 SEARCH_BASE_URL = f'http://{os.getenv("HOST_IP")}:{os.getenv("L3S_SEARCH_PORT")}'
+
 
 @ns_ds_search.route('/search-service/ok', endpoint="search_service_ok")
 class SearchServiceOK(Resource):
@@ -28,7 +57,9 @@ class SearchServiceOK(Resource):
     @ns_ds_search.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
     def get(self):
         # url = f'http://{os.getenv("HOST_IP")}:{os.getenv("L3S_SEARCH_PORT")}'
-        url = SEARCH_BASE_URL
+        # url = SEARCH_BASE_URL
+        url = os.getenv('L3S_SEARCH_HOST')+'/'
+        print(url)
         
         result = {}
         try:
@@ -47,7 +78,7 @@ class SearchServiceOK(Resource):
     
 
 
-@ns_ds_search.route('/search-service/datasets', endpoint="search_service_datasets")
+@ns_ds_search.route('/get-datasets', endpoint="search_service_datasets")
 class SearchServiceDatasets(Resource):
     @ns_ds_search.response(int(HTTPStatus.CREATED), "successfully changed.")
     @ns_ds_search.response(int(HTTPStatus.CONFLICT), "exits conflict.")
@@ -55,12 +86,13 @@ class SearchServiceDatasets(Resource):
     @ns_ds_search.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
     def get(self):
         """get the name of datasets as list"""
-        url = f'http://{os.getenv("HOST_IP")}:{os.getenv("L3S_SEARCH_PORT")}/l3s-search/search-metadata/get-datasets'
-        # headers = {
-        #     'accept': 'application/json',
-        #     'Content-Type': 'application/json'
-        # }
+        url = f'{os.getenv("L3S_SEARCH_HOST")}/search-metadata/get-datasets'
+        
         response = requests.get(url)
+        api_response = search_metadata_api.
+        print(type(api_response))
+        pprint(api_response)
+        
         return response.json()
      
 @ns_ds_search.route('search-service/meta-datasets')
@@ -87,32 +119,6 @@ class SearchServiceMetaDatasets(Resource):
 
 
 
-
-from flask import jsonify, request
-from swagger_client_L3S import l3s_search_client
-# from swagger_client_L3S import l3s_recsys_client as l3SSearchClient
-import dataclasses, json
-from pprint import pprint
-from swagger_client_L3S.l3s_search_client.rest import ApiException
-import os
-
-from swagger_client_L3S.l3s_search_client.models.dense_search_response import DenseSearchResponse
-from swagger_client_L3S.l3s_search_client.models.dense_search_request import DenseSearchRequest
-from swagger_client_L3S.l3s_search_client.models.dense_search_response_list import DenseSearchResponseList
-# from swagger_client_L3S.l3s_search_client.models.random_response import RandomResponse
-# from swagger_client_L3S.l3s_search_client.models.random_request import RandomRequest
-
-## Configuration L3S Recsys
-l3s_search_config = l3s_search_client.Configuration()
-# l3s_search_config.host = "http://localhost:9043/l3s-search"
-l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
-print(l3s_search_config.host)
-
-
-client_l3s_search = l3s_search_client.ApiClient(configuration=l3s_search_config)
-# l3s recsys api registration
-search_searcher_api = l3s_search_client.SearcherApi(api_client=client_l3s_search)
-# recsys_random_api = l3s_search_client.RandomApi(api_client=client_l3s_search)
 
 
 from flask_restx import reqparse

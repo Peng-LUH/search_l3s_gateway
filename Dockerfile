@@ -13,7 +13,7 @@ ENV FLASK_DEBUG=1
 ENV FLASK_RUN_PORT=9040
 
 # ENV HOST_URL="localhost"
-ENV HOST_URL="https://staging.sse.uni-hildesheim.de"
+ENV SSE_HOST_URL="https://staging.sse.uni-hildesheim.de"
 ENV L3S_GATEWAY_PORT=9040
 ENV L3S_AIMETA_PORT=9041
 ENV L3S_RECSYS_PORT=9042

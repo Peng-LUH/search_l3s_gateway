@@ -21,3 +21,4 @@ recsys_srv_request_model = Model('Recsys_Srv_Request', {
     "cid": fields.String(description="company ID", default=None),
     "catetory": fields.String(description="recsys category", default=None)
 })
+
