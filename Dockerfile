@@ -12,11 +12,12 @@ ENV FLASK_APP=run.py
 ENV FLASK_DEBUG=1
 ENV FLASK_RUN_PORT=9040
 
-# ENV HOST_IP="localhost"
-# ENV L3S_GATEWAY_PORT=9040
-# ENV L3S_AIMETA_PORT=9041
-# ENV L3S_RECSYS_PORT=9042
-# ENV L3S_SEARCH_PORT=9043
+# ENV HOST_URL="localhost"
+ENV HOST_URL="https://staging.sse.uni-hildesheim.de"
+ENV L3S_GATEWAY_PORT=9040
+ENV L3S_AIMETA_PORT=9041
+ENV L3S_RECSYS_PORT=9042
+ENV L3S_SEARCH_PORT=9043
 
 ENV L3S_AIMETA_HOST="https://staging.sse.uni-hildesheim.de:9041/l3s-aimeta/"
 ENV L3S_RECSYS_HOST="https://staging.sse.uni-hildesheim.de:9042/l3s-recsys/"
