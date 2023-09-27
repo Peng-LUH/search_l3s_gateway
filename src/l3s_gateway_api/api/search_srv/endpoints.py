@@ -119,7 +119,7 @@ from flask_restx import reqparse
 parser = reqparse.RequestParser()
 parser.add_argument('uid', type=str, location='args', default='None')
 parser.add_argument('cid', type=str, location='args', default='None')
-parser.add_argument('query', type=str, required=True, location='args')
+parser.add_argument('query', type=str, required=True, location='args', default='Elektrotechnik 1 Versuch 8: Wirkleistung von Wechselspannungen; Wirkleistung der Sinuswechselspannung in der praktischen Übung')
 parser.add_argument('nresults', type=int, location='args', default=10)
 
 ### Connection: search services
