@@ -104,8 +104,8 @@ from swagger_client_L3S.l3s_search_client.models.dense_search_response_list impo
 
 ## Configuration L3S Recsys
 l3s_search_config = l3s_search_client.Configuration()
-l3s_search_config.host = "http://localhost:9043/l3s-search"
-# l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
+# l3s_search_config.host = "http://localhost:9043/l3s-search"
+l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
 print(l3s_search_config.host)
 
 
