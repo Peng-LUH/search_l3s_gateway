@@ -8,3 +8,8 @@ dto_recommendation_object = Model("DtoRecommendationObj", {
 dto_get_recommendation_reponse = Model("DtoGetRecommendationReponse", {
     "results": fields.List(fields.Nested(dto_recommendation_object))
 })
+
+dto_recsys_connection_response = Model("DtoRecsysConnectionResponse", {
+    "host_url": fields.String(),
+    "status": fields.String()
+})

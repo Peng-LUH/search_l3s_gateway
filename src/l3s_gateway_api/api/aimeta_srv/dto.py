@@ -32,3 +32,8 @@ dto_completion_unit_response = Model("DtoCompletionUnitResponse", {
 #     "unit_id": fields.String(),
 #     "context_tags": fields.List(fields.String())
 # })
+
+dto_aimeta_connection_response = Model("DtoAimetaConnectionResponse", {
+    "host_url": fields.String(),
+    "status": fields.String()
+})

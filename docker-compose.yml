@@ -1,5 +1,6 @@
 services:
-  web:
+  search-l3s-gateway:
+    # image: ghcr.io/e-learning-by-sse/search-l3s_gateway-service:latest
     build: .
     ports:
       - "9040:9040"

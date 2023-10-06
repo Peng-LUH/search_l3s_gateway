@@ -34,19 +34,36 @@ recsys_random_api = l3s_recsys_client.RandomApi(api_client=client_l3s_recsys)
 ns_recsys_srv = Namespace("Recsys Service", validate=True, description="downstream endpoints for recsys services")
 
 
-from .dto import dto_recommendation_object
+from .dto import dto_recommendation_object, dto_recsys_connection_response
 ns_recsys_srv.models[dto_recommendation_object.name] = dto_recommendation_object
+ns_recsys_srv.models[dto_recsys_connection_response.name] = dto_recsys_connection_response
 
 
-
-@ns_recsys_srv.route('/test/ok', endpoint="recsys_service_ok")
+@ns_recsys_srv.route('/connection', endpoint="recsys_service_connection")
 class RecommendationService(Resource):
     @ns_recsys_srv.response(int(HTTPStatus.CREATED), "successfully changed.")
     @ns_recsys_srv.response(int(HTTPStatus.CONFLICT), "exits conflict.")
     @ns_recsys_srv.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
     @ns_recsys_srv.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    @ns_recsys_srv.marshal_with(dto_recsys_connection_response)
     def get(self):
-        return {"message": "success"}, HTTPStatus.OK
+        # url = os.getenv('L3S_SEARCH_HOST')+'/'
+        url = l3s_recsys_config.host
+        print(url)
+        
+        result = {}
+        try:
+            response = requests.head(url)
+            if response.status_code == 200:
+                result.update({"host_url": url, "status": 'success'})
+                return result, HTTPStatus.OK
+            else:
+                result.update({"host_url": url, "status": 'failed'})
+                return result, HTTPStatus.INTERNAL_SERVER_ERROR
+        except requests.ConnectionError as e:
+            result = {"host_url": url}
+            result.update({"connection": e.strerror})
+            return result, HTTPStatus.NOT_FOUND
 
 
 get_n_random_rec_parser = reqparse.RequestParser()

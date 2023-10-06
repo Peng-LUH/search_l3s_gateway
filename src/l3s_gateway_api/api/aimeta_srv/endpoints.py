@@ -10,7 +10,7 @@ import os, socket
 from swagger_client_L3S import l3s_aimeta_client
 l3s_aimeta_config = l3s_aimeta_client.Configuration()
 # l3s_aimeta_config.host = "http://localhost:9043/l3s-search"
-l3s_aimeta_config.host = os.getenv('L3S_SEARCH_HOST')
+l3s_aimeta_config.host = os.getenv('L3S_AIMETA_HOST')
 print("*"*80)
 print("l3s-aimeta-service-host: ", l3s_aimeta_config.host)
 print("*"*80)
@@ -33,18 +33,21 @@ class AiMetaCourseSummary(Resource):
         return {"msg": "ok"}, HTTPStatus.OK
 
 ## ------------------- check connection -------------------- ##
-@ns_aimeta_srv.route('/aimeta-service/ok', endpoint="aimeta_service_ok")
+from .dto import dto_aimeta_connection_response
+ns_aimeta_srv.models[dto_aimeta_connection_response.name] = dto_aimeta_connection_response
+
+@ns_aimeta_srv.route('/connection', endpoint="aimeta_service_connection")
 class AiMetaOk(Resource):
     @ns_aimeta_srv.response(int(HTTPStatus.CREATED), "successfully changed.")
     @ns_aimeta_srv.response(int(HTTPStatus.CONFLICT), "exits conflict.")
     @ns_aimeta_srv.response(int(HTTPStatus.BAD_REQUEST), "validation error.")
     @ns_aimeta_srv.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    @ns_aimeta_srv.marshal_with(dto_aimeta_connection_response)
     def get(self):
-        # url = os.getenv('L3S_SEARCH_HOST')+'/'
-        url = l3s_aimeta_config.host+'/'
+        url = l3s_aimeta_config.host
         print(url)
-        # print(url_for(search_service_ok))
         result = {}
+        
         try:
             response = requests.head(url)
             if response.status_code == 200:

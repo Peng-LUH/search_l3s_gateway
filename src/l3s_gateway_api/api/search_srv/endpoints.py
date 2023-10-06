@@ -10,8 +10,8 @@ from flask_restx import Namespace, Resource, fields
 ## ------------ config: l3s_search_client --------------- ##
 from swagger_client_L3S import l3s_search_client
 l3s_search_config = l3s_search_client.Configuration()
-l3s_search_config.host = "http://localhost:9043/l3s-search"
-# l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
+# l3s_search_config.host = "http://localhost:9043/l3s-search/"
+l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
 print("*"*80)
 print("l3s-search-service-host: ", l3s_search_config.host)
 print("*"*80)
@@ -65,7 +65,7 @@ class SearchServiceOK(Resource):
     @ns_search_srv.marshal_with(model_search_srv_connection_response)
     def get(self):
         # url = os.getenv('L3S_SEARCH_HOST')+'/'
-        url = l3s_search_config.host+'/'
+        url = l3s_search_config.host
         print(url)
         # print(url_for(search_service_ok))
         result = {}
@@ -211,18 +211,21 @@ class SearchService(Resource):
         try:
             print(search_searcher_api.api_client.configuration.host)
             api_response = search_searcher_api.post_dense_retrieval(body=request_data)
-        
-            # print(api_response)
+            print(type(api_response))
             # pprint(api_response)
             
             # for r in api_response:
             #     d = DtoDenseSearchResponse(cid=r.cid, uid=r.uid, id = r.id, similarity=r.similarity)
             #     print(d)
             
-            d = DtoDenseSearchResponseList(results=api_response.results).to_dict()
-            response = jsonify(d)
-            
-            return response, HTTPStatus.OK
+            d = DtoDenseSearchResponseList(results=api_response.results)
+            # print("d")
+
+            # print(type(jsonify(d.to_dict())))
+            response = jsonify(d.to_dict())
+            # print(response)
+            response.status_code = HTTPStatus.OK
+            return response
         except ApiException as e:
        
             return ("Exception when calling Api-> %s\n" % e)

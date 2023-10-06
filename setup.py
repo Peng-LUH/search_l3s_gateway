@@ -27,7 +27,7 @@ INSTALL_REQUIRES = [
     "python-dotenv",
     "requests",
     "urllib3",
-    "werkzeug",
+    "werkzeug==2.2.2",
     "markupsafe",
     "SQLAlchemy==1.4.0",
     "pytest-flake8==1.1.0",
