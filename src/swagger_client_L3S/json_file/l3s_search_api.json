@@ -15,14 +15,14 @@
       "name": "test"
     },
     {
-      "name": "metadata",
+      "name": "Metadata",
       "description": "Get functions for Meta-information for using search services"
     },
     {
-      "name": "dataset-generator"
+      "name": "Dataset Processor"
     },
     {
-      "name": "encoder"
+      "name": "Encoder"
     },
     {
       "name": "indexer"
@@ -35,17 +35,17 @@
     }
   ],
   "paths": {
-    "/dataset-generator/json-to-jsonl-converter": {
+    "/dataset-processor/json-to-jsonl-converter": {
       "post": {
         "tags": [
-          "dataset-generator"
+          "Dataset Processor"
         ],
         "operationId": "post_json_to_jsonl",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Dataset"
+                "$ref": "#/components/schemas/DtoDatasetRequest"
               }
             }
           },
@@ -60,10 +60,10 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/dataset-generator/mls-content-type": {
+    "/dataset-processor/mls-content-type": {
       "get": {
         "tags": [
-          "dataset-generator"
+          "Dataset Processor"
         ],
         "summary": "Retrieve valid mls content type for generating corpus",
         "operationId": "get_mls_content_type",
@@ -75,10 +75,10 @@
         }
       }
     },
-    "/dataset-generator/mls-corpus": {
+    "/dataset-processor/mls-corpus": {
       "post": {
         "tags": [
-          "dataset-generator"
+          "Dataset Processor"
         ],
         "summary": "retrieval mls dataset and save as json file",
         "operationId": "post_generate_mls_dataset",
@@ -86,7 +86,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Mls_Dataset"
+                "$ref": "#/components/schemas/DtoMlsDataset"
               }
             }
           },
@@ -105,17 +105,17 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/dataset-generator/mls-response-dataset": {
+    "/dataset-processor/mls-response-dataset": {
       "post": {
         "tags": [
-          "dataset-generator"
+          "Dataset Processor"
         ],
         "operationId": "post_mls_response_dataset",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Mls_Dataset"
+                "$ref": "#/components/schemas/DtoMlsDataset"
               }
             }
           },
@@ -130,17 +130,17 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/dataset-generator/mls-response-object": {
+    "/dataset-processor/mls-response-object": {
       "post": {
         "tags": [
-          "dataset-generator"
+          "Dataset Processor"
         ],
         "operationId": "post_mls_response_object",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Mls_Object"
+                "$ref": "#/components/schemas/DtoMlsObject"
               }
             }
           },
@@ -155,23 +155,33 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/encoder/dense/dataset": {
+    "/encoder/dense-dataset": {
       "post": {
         "tags": [
-          "encoder"
+          "Encoder"
         ],
         "operationId": "post_dense_encode_dataset",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Dataset_Encode"
+                "$ref": "#/components/schemas/DtoDenseEncodeDatasetInput"
               }
             }
           },
           "required": true
         },
         "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoDenseEncodeDatasetOutput"
+                }
+              }
+            }
+          },
           "404": {
             "description": "Dataset not found",
             "content": {}
@@ -180,17 +190,17 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/encoder/dense/query": {
+    "/encoder/dense-query": {
       "post": {
         "tags": [
-          "encoder"
+          "Encoder"
         ],
         "operationId": "post_dense_encode_query",
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Query_Encode"
+                "$ref": "#/components/schemas/DtoDenseEncodeQueryInput"
               }
             }
           },
@@ -199,30 +209,30 @@
         "responses": {
           "200": {
             "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoDenseEncodeQueryOutput"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Dense encode for the input was successfully created.",
+            "content": {}
+          },
+          "500": {
+            "description": "Error in Input Value",
             "content": {}
           }
         },
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/encoder/sparse-encoder": {
-      "post": {
-        "tags": [
-          "encoder"
-        ],
-        "operationId": "post_sparse_encode_generator",
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
     "/encoder/test": {
       "get": {
         "tags": [
-          "encoder"
+          "Encoder"
         ],
         "operationId": "get_encoder_test",
         "responses": {
@@ -244,7 +254,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/IndexerInput"
+                "$ref": "#/components/schemas/DtoIndexerRequest"
               }
             }
           },
@@ -253,6 +263,20 @@
         "responses": {
           "200": {
             "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoIndexerResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "Index file was successfully created.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
             "content": {}
           }
         },
@@ -269,7 +293,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/MlsIndexUpdate"
+                "$ref": "#/components/schemas/DtoMLSIndexUpdateRequest"
               }
             }
           },
@@ -284,7 +308,7 @@
         "x-codegen-request-body-name": "payload"
       }
     },
-    "/indexer/traditional-indexer/bm25": {
+    "/indexer/traditional/bm25": {
       "post": {
         "tags": [
           "indexer"
@@ -294,7 +318,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/BM25Indexer"
+                "$ref": "#/components/schemas/DtoBM25IndexerRequest"
               }
             }
           },
@@ -302,7 +326,7 @@
         },
         "responses": {
           "201": {
-            "description": "New user was successfully created.",
+            "description": "index file was successfully created.",
             "content": {}
           },
           "400": {
@@ -335,72 +359,110 @@
         }
       }
     },
-    "/search-metadata/get-datasets": {
+    "/search-metadata/datasets": {
       "get": {
         "tags": [
-          "metadata"
+          "Metadata"
         ],
         "summary": "Get the list of available datasets",
         "operationId": "get_get_datasets",
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoDatasetList"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/search-metadata/get-encoding-types": {
+    "/search-metadata/encoding-types": {
       "get": {
         "tags": [
-          "metadata"
+          "Metadata"
         ],
         "summary": "Get the list of available encoding types",
         "operationId": "get_get_encoding_type",
         "responses": {
           "200": {
             "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoEncodeTypeList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search-metadata/host": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "operationId": "get_host",
+        "responses": {
+          "200": {
+            "description": "Success",
             "content": {}
           }
         }
       }
     },
-    "/search-metadata/get-index-methods": {
+    "/search-metadata/index-methods": {
       "get": {
         "tags": [
-          "metadata"
+          "Metadata"
         ],
         "summary": "Get the list of available index methods",
         "operationId": "get_get_index_method",
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoIndexMethodList"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/search-metadata/get-language-models": {
+    "/search-metadata/language-models": {
       "get": {
         "tags": [
-          "metadata"
+          "Metadata"
         ],
         "summary": "Get the list of available language models",
         "operationId": "get_get_language_models",
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoLanguageModelList"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/search-metadata/host-name-ip": {
+    "/search-metadata/test": {
       "get": {
         "tags": [
-          "metadata"
+          "Metadata"
         ],
-        "operationId": "get_host",
+        "operationId": "get_dataset_test",
         "responses": {
           "200": {
             "description": "Success",
@@ -434,7 +496,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/DenseSearchRequest"
+                "$ref": "#/components/schemas/DtoDenseSearchRequest"
               }
             }
           },
@@ -446,7 +508,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/DenseSearchResponseList"
+                  "$ref": "#/components/schemas/DtoDenseSearchResponseList"
                 }
               }
             }
@@ -474,7 +536,87 @@
   },
   "components": {
     "schemas": {
-      "Mls_Dataset": {
+      "DtoDatasetList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoDataset"
+            }
+          }
+        }
+      },
+      "DtoDataset": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name of dataset"
+          }
+        }
+      },
+      "DtoEncodeTypeList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoEncodeType"
+            }
+          }
+        }
+      },
+      "DtoEncodeType": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name of encode type"
+          }
+        }
+      },
+      "DtoLanguageModelList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoLanguageModel"
+            }
+          }
+        }
+      },
+      "DtoLanguageModel": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name of language model"
+          }
+        }
+      },
+      "DtoIndexMethodList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoIndexMethod"
+            }
+          }
+        }
+      },
+      "DtoIndexMethod": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name of index method"
+          }
+        }
+      },
+      "DtoMlsDataset": {
         "type": "object",
         "properties": {
           "name": {
@@ -485,12 +627,12 @@
             "type": "array",
             "description": "List of mls-api parameters",
             "items": {
-              "$ref": "#/components/schemas/Parameter"
+              "$ref": "#/components/schemas/DtoParameter"
             }
           }
         }
       },
-      "Parameter": {
+      "DtoParameter": {
         "type": "object",
         "properties": {
           "parameter_name": {
@@ -499,7 +641,7 @@
           }
         }
       },
-      "Mls_Object": {
+      "DtoMlsObject": {
         "type": "object",
         "properties": {
           "object_id": {
@@ -507,7 +649,7 @@
           }
         }
       },
-      "Dataset": {
+      "DtoDatasetRequest": {
         "required": [
           "dataset_name"
         ],
@@ -518,7 +660,7 @@
           }
         }
       },
-      "Query_Encode": {
+      "DtoDenseEncodeQueryInput": {
         "required": [
           "model_name",
           "text"
@@ -530,11 +672,23 @@
             "default": "bert-base-german-cased"
           },
           "text": {
-            "type": "string"
+            "type": "string",
+            "default": "Elektrotechnik 1 Versuch 8: Wirkleistung von Wechselspannungen; Wirkleistung der Sinuswechselspannung in der praktischen Übung"
           }
         }
       },
-      "Dataset_Encode": {
+      "DtoDenseEncodeQueryOutput": {
+        "type": "object",
+        "properties": {
+          "dense_encode": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "DtoDenseEncodeDatasetInput": {
         "required": [
           "dataset_name",
           "model_name"
@@ -551,7 +705,15 @@
           }
         }
       },
-      "MlsIndexUpdate": {
+      "DtoDenseEncodeDatasetOutput": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoMLSIndexUpdateRequest": {
         "type": "object",
         "properties": {
           "datasets": {
@@ -562,7 +724,7 @@
           }
         }
       },
-      "BM25Indexer": {
+      "DtoBM25IndexerRequest": {
         "type": "object",
         "properties": {
           "dataset_name": {
@@ -582,7 +744,7 @@
           }
         }
       },
-      "IndexerInput": {
+      "DtoIndexerRequest": {
         "type": "object",
         "properties": {
           "encode_type": {
@@ -603,17 +765,25 @@
           }
         }
       },
-      "DenseSearchRequest": {
+      "DtoIndexerResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoDenseSearchRequest": {
         "required": [
           "query"
         ],
         "type": "object",
         "properties": {
-          "uid": {
+          "user_id": {
             "type": "string",
             "description": "user ID"
           },
-          "cid": {
+          "owner": {
             "type": "string",
             "description": "company ID"
           },
@@ -639,25 +809,25 @@
           }
         }
       },
-      "DenseSearchResponseList": {
+      "DtoDenseSearchResponseList": {
         "type": "object",
         "properties": {
           "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DenseSearchResponse"
+              "$ref": "#/components/schemas/DtoDenseSearchResponse"
             }
           }
         }
       },
-      "DenseSearchResponse": {
+      "DtoDenseSearchResponse": {
         "type": "object",
         "properties": {
-          "uid": {
+          "user_id": {
             "type": "string",
             "description": "user ID"
           },
-          "cid": {
+          "owner": {
             "type": "string",
             "description": "company ID"
           },

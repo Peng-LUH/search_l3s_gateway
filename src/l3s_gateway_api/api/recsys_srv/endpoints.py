@@ -21,18 +21,22 @@ from swagger_client_L3S.l3s_recsys_client.models.random_request import RandomReq
 l3s_recsys_config = l3s_recsys_client.Configuration()
 # l3s_recsys_config.host = "https://staging.sse.uni-hildesheim.de:9042/l3s-recsys/"
 
-print(os.getenv('L3S_RECSYS_HOST'))
 l3s_recsys_config.host = os.getenv('L3S_RECSYS_HOST')
-# print("")
-print('l3s_recsys_config.host:', l3s_recsys_config.host)
+print("*"*80)
+print('l3s-recsys-service-host:', l3s_recsys_config.host)
+print("*"*80)
 
 client_l3s_recsys = l3s_recsys_client.ApiClient(configuration=l3s_recsys_config)
-# l3s recsys api registration
 recsys_test_api = l3s_recsys_client.TestApi(api_client=client_l3s_recsys)
 recsys_random_api = l3s_recsys_client.RandomApi(api_client=client_l3s_recsys)
 
 
 ns_recsys_srv = Namespace("Recsys Service", validate=True, description="downstream endpoints for recsys services")
+
+
+from .dto import dto_recommendation_object
+ns_recsys_srv.models[dto_recommendation_object.name] = dto_recommendation_object
+
 
 
 @ns_recsys_srv.route('/test/ok', endpoint="recsys_service_ok")
@@ -72,3 +76,90 @@ class GetNRandomRecommendation(Resource):
         except ApiException as e:
         
             return ("Exception when calling Api-> %s\n" % e)
+
+
+##
+from .dto import dto_get_recommendation_reponse
+ns_recsys_srv.models[dto_get_recommendation_reponse.name] = dto_get_recommendation_reponse
+
+parser_owners = reqparse.RequestParser()
+parser_owners.add_argument("owners", action='split', type=str, location='args')
+
+@ns_recsys_srv.route("/<string:user_id>/trends", endpoint="get_user_trends")
+class RecUserTrends(Resource):
+    @ns_recsys_srv.expect(parser_owners)
+    @ns_recsys_srv.marshal_with(dto_get_recommendation_reponse)
+    @ns_recsys_srv.response(int(HTTPStatus.OK), "request for getting trends processed successfully")
+    @ns_recsys_srv.response(int(HTTPStatus.BAD_REQUEST), "invalid user id")
+    @ns_recsys_srv.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
+    def get(self, user_id):
+        """in progress"""
+        args=parser_owners.parse_args()
+        request_data = dict(args)
+        owners = request_data.get("owners")
+        #logic: send request to aimeta-service
+        print(owners)
+        results = {}
+        response = {"results": results}
+        return response, HTTPStatus.OK
+    
+
+##
+
+
+
+
+@ns_recsys_srv.route("/<string:user_id>/interests", endpoint="get_rec_interests")
+class RecUserInterests(Resource):
+    @ns_recsys_srv.expect(parser_owners)
+    @ns_recsys_srv.marshal_with(dto_get_recommendation_reponse)
+    def get(self, user_id):
+        """in progress"""
+        args=parser_owners.parse_args()
+        request_data = dict(args)
+        owners = request_data.get("owners")
+        print(owners)
+        
+        return {"results": []}
+    
+
+@ns_recsys_srv.route("/<string:user_id>/learning-goal")
+class RecUserLearningGoal(Resource):
+    @ns_recsys_srv.expect(parser_owners)
+    @ns_recsys_srv.marshal_with(dto_get_recommendation_reponse)
+    def get(self, user_id):
+        """in progress"""
+        args=parser_owners.parse_args()
+        request_data = dict(args)
+        owners = request_data.get("owners")
+        print(owners)
+        
+        return {"results": []}
+    
+
+@ns_recsys_srv.route("/<string:user_id>/company")
+class RecUserComany(Resource):
+    @ns_recsys_srv.expect(parser_owners)
+    @ns_recsys_srv.marshal_with(dto_get_recommendation_reponse)
+    def get(self, user_id):
+        """in progress"""
+        args=parser_owners.parse_args()
+        request_data = dict(args)
+        owners = request_data.get("owners")
+        print(owners)
+        
+        return {"results": []}
+    
+
+@ns_recsys_srv.route("/<string:user_id>/sibblings")
+class RecUserSibblings(Resource):
+    @ns_recsys_srv.expect(parser_owners)
+    @ns_recsys_srv.marshal_with(dto_get_recommendation_reponse)
+    def get(self, user_id):
+        """in progress"""
+        args=parser_owners.parse_args()
+        request_data = dict(args)
+        owners = request_data.get("owners")
+        print(owners)
+        
+        return {"results": []}

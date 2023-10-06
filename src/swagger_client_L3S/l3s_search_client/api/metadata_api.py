@@ -32,6 +32,87 @@ class MetadataApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
+    def get_dataset_test(self, **kwargs):  # noqa: E501
+        """get_dataset_test  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_dataset_test(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+        kwargs['_return_http_data_only'] = True
+        if kwargs.get('async_req'):
+            return self.get_dataset_test_with_http_info(**kwargs)  # noqa: E501
+        else:
+            (data) = self.get_dataset_test_with_http_info(**kwargs)  # noqa: E501
+            return data
+
+    def get_dataset_test_with_http_info(self, **kwargs):  # noqa: E501
+        """get_dataset_test  # noqa: E501
+
+        This method makes a synchronous HTTP request by default. To make an
+        asynchronous HTTP request, please pass async_req=True
+        >>> thread = api.get_dataset_test_with_http_info(async_req=True)
+        >>> result = thread.get()
+
+        :param async_req bool
+        :return: None
+                 If the method is called asynchronously,
+                 returns the request thread.
+        """
+
+        all_params = []  # noqa: E501
+        all_params.append('async_req')
+        all_params.append('_return_http_data_only')
+        all_params.append('_preload_content')
+        all_params.append('_request_timeout')
+
+        params = locals()
+        for key, val in six.iteritems(params['kwargs']):
+            if key not in all_params:
+                raise TypeError(
+                    "Got an unexpected keyword argument '%s'"
+                    " to method get_dataset_test" % key
+                )
+            params[key] = val
+        del params['kwargs']
+
+        collection_formats = {}
+
+        path_params = {}
+
+        query_params = []
+
+        header_params = {}
+
+        form_params = []
+        local_var_files = {}
+
+        body_params = None
+        # Authentication setting
+        auth_settings = []  # noqa: E501
+
+        return self.api_client.call_api(
+            '/search-metadata/test', 'GET',
+            path_params,
+            query_params,
+            header_params,
+            body=body_params,
+            post_params=form_params,
+            files=local_var_files,
+            response_type=None,  # noqa: E501
+            auth_settings=auth_settings,
+            async_req=params.get('async_req'),
+            _return_http_data_only=params.get('_return_http_data_only'),
+            _preload_content=params.get('_preload_content', True),
+            _request_timeout=params.get('_request_timeout'),
+            collection_formats=collection_formats)
+
     def get_get_datasets(self, **kwargs):  # noqa: E501
         """Get the list of available datasets  # noqa: E501
 
@@ -41,7 +122,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoDatasetList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -61,7 +142,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoDatasetList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -94,18 +175,22 @@ class MetadataApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/search-metadata/get-datasets', 'GET',
+            '/search-metadata/datasets', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='DtoDatasetList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -122,7 +207,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoEncodeTypeList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -142,7 +227,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoEncodeTypeList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -175,18 +260,22 @@ class MetadataApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/search-metadata/get-encoding-types', 'GET',
+            '/search-metadata/encoding-types', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='DtoEncodeTypeList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -203,7 +292,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoIndexMethodList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -223,7 +312,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoIndexMethodList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -256,18 +345,22 @@ class MetadataApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/search-metadata/get-index-methods', 'GET',
+            '/search-metadata/index-methods', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='DtoIndexMethodList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -284,7 +377,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoLanguageModelList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -304,7 +397,7 @@ class MetadataApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :return: None
+        :return: DtoLanguageModelList
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -337,18 +430,22 @@ class MetadataApi(object):
         local_var_files = {}
 
         body_params = None
+        # HTTP header `Accept`
+        header_params['Accept'] = self.api_client.select_header_accept(
+            ['application/json'])  # noqa: E501
+
         # Authentication setting
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/search-metadata/get-language-models', 'GET',
+            '/search-metadata/language-models', 'GET',
             path_params,
             query_params,
             header_params,
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type=None,  # noqa: E501
+            response_type='DtoLanguageModelList',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),
@@ -422,7 +519,7 @@ class MetadataApi(object):
         auth_settings = []  # noqa: E501
 
         return self.api_client.call_api(
-            '/search-metadata/host-name-ip', 'GET',
+            '/search-metadata/host', 'GET',
             path_params,
             query_params,
             header_params,

@@ -1,0 +1,927 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "L3S AI-Meta Service(AIMS) for SEARCH",
+    "description": "Welcome to the Swagger UI documentation site!",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "/l3s-aimeta"
+    }
+  ],
+  "tags": [
+    {
+      "name": "test"
+    },
+    {
+      "name": "MLS Tasks"
+    },
+    {
+      "name": "Dataset Pre-process"
+    },
+    {
+      "name": "Course Summary"
+    },
+    {
+      "name": "Content Keywords"
+    },
+    {
+      "name": "Context Keywords"
+    },
+    {
+      "name": "Learning Goal"
+    },
+    {
+      "name": "Quiz"
+    },
+    {
+      "name": "Course Title"
+    },
+    {
+      "name": "Trends"
+    }
+  ],
+  "paths": {
+    "/aims/aimeta-test": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "operationId": "get_aimeta_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/content-keywords/{id}": {
+      "get": {
+        "tags": [
+          "Content Keywords"
+        ],
+        "summary": "Retrieve Content Keywords of the Task",
+        "operationId": "get_get_content_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Content Keywords"
+        ],
+        "operationId": "put_get_content_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Content Keywords"
+        ],
+        "operationId": "post_get_content_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Content Keywords"
+        ],
+        "operationId": "delete_get_content_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/context-keywords/{id}": {
+      "get": {
+        "tags": [
+          "Context Keywords"
+        ],
+        "summary": "Retrieve Context Keywords of the Task",
+        "operationId": "get_get_context_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Context Keywords"
+        ],
+        "operationId": "put_get_context_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Context Keywords"
+        ],
+        "operationId": "post_get_context_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Context Keywords"
+        ],
+        "operationId": "delete_get_context_keywords",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/course-title/{id}": {
+      "get": {
+        "tags": [
+          "Course Title"
+        ],
+        "summary": "Generate Titles for the Task",
+        "operationId": "get_get_title",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Course Title"
+        ],
+        "operationId": "put_get_title",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Course Title"
+        ],
+        "operationId": "post_get_title",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Course Title"
+        ],
+        "operationId": "delete_get_title",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/get-tasks/{id}": {
+      "get": {
+        "tags": [
+          "MLS Tasks"
+        ],
+        "summary": "Retrieve a Task resource",
+        "operationId": "get_get_task_steps",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/get-tasksteps/{id}": {
+      "get": {
+        "tags": [
+          "MLS Tasks"
+        ],
+        "summary": "Retrieve a TaskStep Resource",
+        "operationId": "get_get_task_steps",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/learning-goal/{id}": {
+      "get": {
+        "tags": [
+          "Learning Goal"
+        ],
+        "summary": "Retrieve Learnng Goals of the Task",
+        "operationId": "get_get_learning_goal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Learning Goal"
+        ],
+        "operationId": "put_get_learning_goal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Learning Goal"
+        ],
+        "operationId": "post_get_learning_goal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Learning Goal"
+        ],
+        "operationId": "delete_get_learning_goal",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/mls-response-dataset": {
+      "post": {
+        "tags": [
+          "MLS Tasks"
+        ],
+        "operationId": "post_mls_response",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mls_Dataset"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/aims/mls-response-object": {
+      "post": {
+        "tags": [
+          "MLS Tasks"
+        ],
+        "operationId": "post_mls_response",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mls_Object"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/aims/preprocess-tasks/{id}": {
+      "get": {
+        "tags": [
+          "Dataset Pre-process"
+        ],
+        "summary": "Retrieve a Preprocessed TaskStep Resource",
+        "operationId": "get_get_task_steps",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/preprocess-tasksteps/{id}": {
+      "get": {
+        "tags": [
+          "Dataset Pre-process"
+        ],
+        "summary": "Retrieve a Preprocessed TaskStep Resource",
+        "operationId": "get_get_task_steps",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/quiz/{id}": {
+      "get": {
+        "tags": [
+          "Quiz"
+        ],
+        "summary": "Generate a quiz of the Task",
+        "operationId": "get_get_quiz",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Quiz"
+        ],
+        "operationId": "put_get_quiz",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Quiz"
+        ],
+        "operationId": "post_get_quiz",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Quiz"
+        ],
+        "operationId": "delete_get_quiz",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/search-jobs/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "Search for job offers",
+        "operationId": "get_search_jobs",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "description": "location",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_name",
+            "in": "query",
+            "description": "name of the job",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "radius to search for jobs",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/skills/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "get skills",
+        "operationId": "get_get_skills",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "description": "location",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_name",
+            "in": "query",
+            "description": "name of the job",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "radius to search for jobs",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/task-summary/{id}": {
+      "get": {
+        "tags": [
+          "Course Summary"
+        ],
+        "summary": "Retrieve a summary of the Task",
+        "operationId": "get_get_summary",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Course Summary"
+        ],
+        "operationId": "put_get_summary",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Course Summary"
+        ],
+        "operationId": "post_get_summary",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Course Summary"
+        ],
+        "operationId": "delete_get_summary",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/aims/trending-skills/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "trending skills",
+        "operationId": "get_get_trends",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "description": "location",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_name",
+            "in": "query",
+            "description": "name of the job",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "radius to search for jobs",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Mls_Dataset": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "description: dataset name, e.g., tasks, documents"
+          },
+          "parameters": {
+            "type": "array",
+            "description": "List of mls-api parameters",
+            "items": {
+              "$ref": "#/components/schemas/Parameter"
+            }
+          }
+        }
+      },
+      "Parameter": {
+        "type": "object",
+        "properties": {
+          "parameter_name": {
+            "type": "string",
+            "description": "mls-api parameter"
+          }
+        }
+      },
+      "Mls_Object": {
+        "type": "object",
+        "properties": {
+          "object_id": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "responses": {
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
+      },
+      "ParseError": {
+        "description": "When a mask can't be parsed",
+        "content": {}
+      }
+    }
+  }
+}
