@@ -71,54 +71,94 @@ ns_aimeta_srv.models[dto_completion_task_response.name] = dto_completion_task_re
 class CompletionTask(Resource):
     @ns_aimeta_srv.marshal_with(dto_completion_task_response)
     def get(self, task_id):
+        """in progress"""
         print(task_id)
         return
 
 
 
 ## ------------------ completion unit ---------------- ##
-from .dto import dto_completion_unit_response
-ns_aimeta_srv.models[dto_completion_unit_response.name] = dto_completion_unit_response
+# from .dto import dto_completion_unit_response
+# ns_aimeta_srv.models[dto_completion_unit_response.name] = dto_completion_unit_response
 
-@ns_aimeta_srv.route('/completions/<string:task_id>/unit', endpoint="completion_unit")
+# @ns_aimeta_srv.route('/completions/<string:task_id>/unit', endpoint="completion_unit")
+# class CompletionTaskTitle(Resource):
+#     @ns_aimeta_srv.param("request_type", description="type of request")
+#     @ns_aimeta_srv.marshal_with(dto_completion_unit_response)
+#     def get(self, task_id):
+#         print(task_id)
+#         return
+
+from .dto import dto_completion_task_title_response
+ns_aimeta_srv.models[dto_completion_task_title_response.name] = dto_completion_task_title_response
+
+@ns_aimeta_srv.route('/completions/<string:task_id>/title')
 class CompletionTaskTitle(Resource):
-    @ns_aimeta_srv.param("request_type", description="type of request")
-    @ns_aimeta_srv.marshal_with(dto_completion_unit_response)
+    @ns_aimeta_srv.marshal_with(dto_completion_task_title_response)
     def get(self, task_id):
+        """in progress"""
+        print(task_id)
+        return
+    
+
+
+from .dto import dto_completion_task_summary_response
+ns_aimeta_srv.models[dto_completion_task_summary_response.name] = dto_completion_task_summary_response
+
+@ns_aimeta_srv.route('/completions/<string:task_id>/summary')
+class CompletionTaskSummary(Resource):
+    @ns_aimeta_srv.marshal_with(dto_completion_task_summary_response)
+    def get(self, task_id):
+        """in progress"""
+        print(task_id)
+        return
+    
+
+
+from .dto import dto_completion_task_content_tags_response
+ns_aimeta_srv.models[dto_completion_task_content_tags_response.name] = dto_completion_task_content_tags_response
+
+@ns_aimeta_srv.route('/completions/<string:task_id>/content-tags')
+class CompletionTaskContentTags(Resource):
+    @ns_aimeta_srv.marshal_with(dto_completion_task_content_tags_response)
+    def get(self, task_id):
+        """in progress"""
         print(task_id)
         return
 
 
+from .dto import dto_completion_task_context_tags_response
+ns_aimeta_srv.models[dto_completion_task_context_tags_response.name] = dto_completion_task_context_tags_response
 
-# from .dto import dto_completion_task_summary_response
-# ns_aimeta_srv.models[dto_completion_task_summary_response.name] = dto_completion_task_summary_response
-
-# @ns_aimeta_srv.route('/completions/<string:task_id>/summary')
-# class CompletionTaskSummary(Resource):
-#     @ns_aimeta_srv.marshal_with(dto_completion_task_summary_response)
-#     def get(self, task_id):
-#         print(task_id)
-#         return
+@ns_aimeta_srv.route('/completions/<string:task_id>/context-tags')
+class CompletionTaskContextTags(Resource):
+    @ns_aimeta_srv.marshal_with(dto_completion_task_content_tags_response)
+    def get(self, task_id):
+        """in progress"""
+        print(task_id)
+        return
     
+## ----------------- quiz questions --------------- ##
+from .dto import dto_completion_task_quiz_questions_response
+ns_aimeta_srv.models[dto_completion_task_quiz_questions_response.name] = dto_completion_task_quiz_questions_response
 
+@ns_aimeta_srv.route('/completions/<string:task_id>/quiz-questions')
+class CompletionTaskQuizQuestions(Resource):
+    @ns_aimeta_srv.marshal_with(dto_completion_task_quiz_questions_response)
+    def get(self, task_id):
+        """in progress"""
+        print(task_id)
+        return
+    
+    
+## ------------- taught skills ---------------- ##
+from .dto import dto_completion_task_taught_skills_response
+ns_aimeta_srv.models[dto_completion_task_taught_skills_response.name] = dto_completion_task_taught_skills_response
 
-# from .dto import dto_completion_task_content_tags_response
-# ns_aimeta_srv.models[dto_completion_task_content_tags_response.name] = dto_completion_task_content_tags_response
-
-# @ns_aimeta_srv.route('/completions/<string:task_id>/content-tags')
-# class CompletionTaskContentTags(Resource):
-#     @ns_aimeta_srv.marshal_with(dto_completion_task_content_tags_response)
-#     def get(self, task_id):
-#         print(task_id)
-#         return
-
-
-# from .dto import dto_completion_task_context_tags_response
-# ns_aimeta_srv.models[dto_completion_task_context_tags_response.name] = dto_completion_task_context_tags_response
-
-# @ns_aimeta_srv.route('/completions/<string:task_id>/context-tags')
-# class CompletionTaskContentTags(Resource):
-#     @ns_aimeta_srv.marshal_with(dto_completion_task_content_tags_response)
-#     def get(self, task_id):
-#         print(task_id)
-#         return
+@ns_aimeta_srv.route('/completions/<string:task_id>/taught-skills')
+class CompletionTaskTaughtSkills(Resource):
+    @ns_aimeta_srv.marshal_with(dto_completion_task_taught_skills_response)
+    def get(self, task_id):
+        """in progress"""
+        print(task_id)
+        return
