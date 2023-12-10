@@ -1,18 +1,29 @@
 import os
 from pathlib import Path
 from dotenv import load_dotenv
+from pprint import pprint
 load_dotenv(".env")
-load_dotenv(".env_env")
 
 HERE = Path(__file__).parent
+SQLITE_TEST = "sqlite:///" + str(HERE / "test.db")
 
-# SQLITE_DEV = "sqlite:///" + str(HERE / "dev.db")
-# SQLITE_TEST = "sqlite:///" + str(HERE / "test.db")
-# SQLITE_PROD = "sqlite:///" + str(HERE / "prod.db")
+# load db env variables
+POSTGRES_USER = os.getenv("POSTGRES_USER")
+POSTGRES_PASSWORD = os.getenv("POSTGRES_PASSWORD")
+POSTGRES_DB = os.getenv("POSTGRES_DB")
+POSTGRES_PORT = os.getenv("POSTGRES_PORT")
+POSTGRES_HOST = os.getenv("POSTGRES_HOST")
 
-SQLITE_DEV = os.getenv("DB_URL")
-SQLITE_TEST = os.getenv("DB_URL")
-SQLITE_PROD = os.getenv("DB_URL")
+
+POSTGRES_DATABASE_DEV = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@{POSTGRES_HOST}:{POSTGRES_PORT}/{POSTGRES_DB}"
+
+# POSTGRES_DATABASE_DEV = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@pgsql:{POSTGRES_PORT}/{POSTGRES_DB}"
+# POSTGRES_DATABASE_PROD = f"postgresql://{POSTGRES_USER}:{POSTGRES_PASSWORD}@production-db:{POSTGRES_PORT}/{POSTGRES_DB}"
+# POSTGRES_PROD = "sqlite:///" + str(HERE / "prod.db")
+
+# SQLITE_DEV = os.getenv("DB_URL")
+# SQLITE_TEST = os.getenv("DB_URL")
+# SQLITE_PROD = os.getenv("DB_URL")
 
 class Config:
     """Base Configuration."""
@@ -39,7 +50,7 @@ class DevelopmentConfig(Config):
     """Development configuration."""
 
     TOKEN_EXPIRE_MINUTES = 15
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL", SQLITE_DEV)
+    SQLALCHEMY_DATABASE_URI = POSTGRES_DATABASE_DEV
 
 
 class ProductionConfig(Config):
@@ -47,7 +58,7 @@ class ProductionConfig(Config):
 
     TOKEN_EXPIRE_HOURS = 1
     BCRYPT_LOG_ROUNDS = 13
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URI", SQLITE_PROD)
+    SQLALCHEMY_DATABASE_URI = POSTGRES_DATABASE_DEV
     PRESERVE_CONTEXT_ON_EXCEPTION = True
 
 
@@ -60,4 +71,7 @@ ENV_CONFIG_DICT = dict(
 
 def get_config(config_name):
     """Retrieve environment configuration settings."""
+    pprint(config_name)
+    pprint(ENV_CONFIG_DICT)
+    print(list(ENV_CONFIG_DICT.keys()))
     return ENV_CONFIG_DICT.get(config_name, ProductionConfig)

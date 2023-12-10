@@ -2,9 +2,51 @@ services:
   search-l3s-gateway:
     # image: ghcr.io/e-learning-by-sse/search-l3s_gateway-service:latest
     build: .
+    restart: always
     ports:
       - "9040:9040"
     volumes:
       - .:/code
+    # entrypoint:
+    #   - /code/entrypoint.sh
     environment:
-      - PYTHONUNBUFFERED=1
+      # POSTGRES_HOST: l3s-search-db
+      PYTHONUNBUFFERED: 1
+    depends_on:
+      - l3s-search-db
+      # - production-db
+    networks:
+      - search
+    
+  l3s-search-db:
+    image: postgres:14
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: SearchDB
+      POSTGRES_PORT: "5432"
+    ports:
+      - 5432:5432
+    volumes:
+      - l3s-db-vol:/var/lib/postgresql/data/
+    networks:
+      - search
+
+  # production-db:
+  #   image: postgres:14
+  #   environment:
+  #     POSTGRES_USER: postgres
+  #     POSTGRES_PASSWORD: admin
+  #     POSTGRES_DB: SearchDB
+  #     POSTGRES_PORT: 5432
+  #   networks:
+  #     - search
+  #   ports:
+  #     - 5432:5432
+networks:
+  search:
+
+volumes:
+  l3s-db-vol:
+  # app:

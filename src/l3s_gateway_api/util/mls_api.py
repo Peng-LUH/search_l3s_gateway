@@ -3,7 +3,7 @@ import json, requests
 
 MLS_LOGIN_PAYLOAD = {
   "client_id": os.getenv("MLS_CLIENT_ID"),
-  "client_secret": os.getenv("MLS_CLIENT_SECRET"),
+  "client_secret": os.getenv("CLIENT_SECRET"),
   "username": os.getenv("MLS_USERNAME"),
   "password": os.getenv("MLS_PASSWORD"),
   "grant_type": os.getenv("MLS_GRANT_TYPE"),

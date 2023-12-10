@@ -10,11 +10,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-from swagger_client_L3S import l3s_recsys_client
-from swagger_client_L3S.l3s_recsys_client.rest import ApiException
-from swagger_client_L3S.l3s_recsys_client.models.test import Test as TestDto
-from swagger_client_L3S.l3s_recsys_client.models.random_response import RandomResponse
-from swagger_client_L3S.l3s_recsys_client.models.random_request import RandomRequest
+from swagger_client import l3s_recsys_client
+from swagger_client.l3s_recsys_client.rest import ApiException
+from swagger_client.l3s_recsys_client.models.test import Test as TestDto
+from swagger_client.l3s_recsys_client.models.random_response import RandomResponse
+from swagger_client.l3s_recsys_client.models.random_request import RandomRequest
 
 
 ## Configuration L3S Recsys

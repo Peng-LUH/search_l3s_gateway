@@ -1,0 +1,1306 @@
+[
+    {
+        "id": "/mls-api/tasks/418",
+        "contents": "Kick-off Grundlagen der Sensorik - Schwingungssensor; Cover; Sicherheitshinweise; Einf\u00fchrung; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/417",
+        "contents": "Grundlagen der Sensorik: Schwingungssensor - Betrieblicher Auftrag; Erl\u00e4uterung; Aufgabenstellung; Vereinfachungen/Simulationen; Aufbau und Messanordnung; Nachweis der Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/416",
+        "contents": "Grundlagen der Sensorik: Schwingungssensor - Arbeitsplanung; Arbeitsvorbereitung; Eingesetzter Sensor; Datenblatt; Tastenprogrammierung und Grenzwerte festlegen"
+    },
+    {
+        "id": "/mls-api/tasks/415",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 2.2: Operationsverst\u00e4rker als Impedanzwandler und summierender Verst\u00e4rker; Impedanzwandler; Impedanzwandler (Spannungsfolger); Summierender Verst\u00e4rker; Summierer in der praktischen \u00dcbung; Summierer mit Gleich- und Wechselspannung"
+    },
+    {
+        "id": "/mls-api/tasks/414",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 2.1: Operationsverst\u00e4rker als Verst\u00e4rker; Operationsverst\u00e4rker; Operationsverst\u00e4rker als invertierender Verst\u00e4rker; Invertierender Verst\u00e4rker in der praktischen \u00dcbung; Dreieckspannung am Eingang; Operationsverst\u00e4rker als nicht invertierender Verst\u00e4rker; Nicht invertierender Verst\u00e4rker in der praktischen \u00dcbung; Wechselspannung am Eingang"
+    },
+    {
+        "id": "/mls-api/tasks/413",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.7: Mitkopplung; Mitkopplung; Zweistufiger Verst\u00e4rker mit Mitkopplung"
+    },
+    {
+        "id": "/mls-api/tasks/412",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.6: R\u00fcckkopplung; R\u00fcckkopplung; Wechselstromgegenkopplung; Spannungsgegenkopplung; Zwei Verst\u00e4rkerstufen"
+    },
+    {
+        "id": "/mls-api/tasks/411",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.5: Gleichspannungsverst\u00e4rker und Gegentaktverst\u00e4rker; Gleichspannungsverstr\u00e4rker; Zweistufiger Gleichspannungsverst\u00e4rker; Gegentaktverst\u00e4rker; Gegentaktendstufe"
+    },
+    {
+        "id": "/mls-api/tasks/410",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.4: Differenzverst\u00e4rker; Differenzverst\u00e4rker; Differenzverst\u00e4rker f\u00fcr Gleichspannungen; Differenzverst\u00e4rker f\u00fcr Wechselspannungen"
+    },
+    {
+        "id": "/mls-api/tasks/409",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.3: Emittergekoppelte Verst\u00e4rker und Phasenumkehrstufen; Emittergekoppelte Verst\u00e4rker; Zwischenbasisschaltung; Emittergekoppelte Phasenumkehrstufe"
+    },
+    {
+        "id": "/mls-api/tasks/408",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.2: Darlington-Verst\u00e4rker; Darlington-Verst\u00e4rker; Emitterschaltung; Kollektorschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/407",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.1: Mehrstufige Verst\u00e4rker; Mehrstufige Verst\u00e4rker; Zweistufiger Wechselspannungsverst\u00e4rker"
+    },
+    {
+        "id": "/mls-api/tasks/406",
+        "contents": "Kick-off Schaltungen der Elektronik; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/405",
+        "contents": "Grundlagen S7-1500 Versuch 1 - Transfersystem mit 2 Positionen; Aufbau; Ablaufbeschreibung; Variablentabelle; Ablaufgraph; SPS-Programm; Bausteinschnittstellen fcEndposition; Programm fcEndposition; Bausteinschnittstelle fbTransfersystem; Ablaufgraph fbTransfersystem; Programm fbTransfersystem"
+    },
+    {
+        "id": "/mls-api/tasks/404",
+        "contents": "Kick-off Grundlagen S7-1500; Cover; Sicherheitshinweise; Allgemeines; S7-1500 Familie"
+    },
+    {
+        "id": "/mls-api/tasks/403",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 5.3: Zweirichtungsthyristor (Triac); Aufbau und Wirkungsweise; Untersuchung eines Triacs; Anschnittsteuerung mit Triac"
+    },
+    {
+        "id": "/mls-api/tasks/402",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 5.2: Die Thyristortriode; Aufbau und Wirkungsweise; Untersuchung einer Thyristortriode; Verfahren zur L\u00f6schung einer Thyristortriode; Anschnittsteuerung mit Thyristortriode"
+    },
+    {
+        "id": "/mls-api/tasks/401",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 5.1: Thyristoren (Diac); Aufbau und Wirkungsweise; Schaltvorgang eines Diacs; Diac als S\u00e4gezahngenerator und Impulsgenerator"
+    },
+    {
+        "id": "/mls-api/tasks/400",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 4: Unijunktion-Transistor (UJT); Aufbau und Wirkungsweise; Schaltpunkte des Unijunktion-Transistors; Nichtlinearer S\u00e4gezahn; Linearer S\u00e4gezahn"
+    },
+    {
+        "id": "/mls-api/tasks/399",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 3.2: Verst\u00e4rkerstufen mit unipolaren Transistoren; Verst\u00e4rkerstufen mit unipolaren Transistoren; Verst\u00e4rkerstufe mit Sperrschicht-FET; Verst\u00e4rkerstufe mit Isolierschicht-FET; Verst\u00e4rkergrundschaltungen mit FET; Source-Schaltung; Gate-Schaltung; Drain-Schaltung; Zusammenfassung"
+    },
+    {
+        "id": "/mls-api/tasks/398",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 3.1: Grundlagen zu unipolaren Transistoren; Aufbau, Wirkungsweise und Schaltzeichen; Sperrschicht FET; Kennlinien von Sperrschicht-FET; Isolierschicht-FET"
+    },
+    {
+        "id": "/mls-api/tasks/397",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 2.3: Verst\u00e4rkerstufen mit bipolaren Transistoren; Verst\u00e4rkerstufen mit bipolaren Transistoren; Untersuchung einer Verst\u00e4rkerstufe; Verst\u00e4rkergrundschaltungen; Emitterschaltung; Basisschaltung; Kollektorschaltung; Zusammenfassung"
+    },
+    {
+        "id": "/mls-api/tasks/396",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 2.2: Kennlinien bipolarer Transistoren; Kennlinien bipolarer Transistoren; Steuerkennlinie; Eingangs- und Ausgangskennlinien; R\u00fcckwirkungskennlinie"
+    },
+    {
+        "id": "/mls-api/tasks/395",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 2.1: Grundlagen zu bipolaren Transistoren; Aufbau und Funktionsweise; Der Transistor als Diode; Wirkungen des Basisstroms auf den Kollektorstrom"
+    },
+    {
+        "id": "/mls-api/tasks/394",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.4: Dioden mit besonderen Eigenschaften; Dioden mit besonderen Eigenschaften; Leuchtdioden"
+    },
+    {
+        "id": "/mls-api/tasks/393",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.3: Zener-Dioden; Kennlinie der Zener-Diode; Gleichspannungsbegrenzung; Schaltung mehrerer Z-Dioden; \u00dcberspannungsschutz und Wechselspannungsbegrenzung; Spannungsstabilisierung"
+    },
+    {
+        "id": "/mls-api/tasks/392",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.2: Gleichrichterschaltungen; Gleichrichterschaltungen; Einpuls-Mittelpunkt-Schaltung (M1); Zweipuls-Br\u00fcckenschaltung (B2)"
+    },
+    {
+        "id": "/mls-api/tasks/391",
+        "contents": "Halbleiterbauelemente der Elektronik Versuch 1.1: Dioden; Strom in Halbleiterwerkstoffen; PN-\u00dcbergang; PN-\u00dcbergang; Dioden aus verschiedenen Halbleitermaterialien"
+    },
+    {
+        "id": "/mls-api/tasks/390",
+        "contents": "Kick-off Halbleiterbauelemente der Elektronik; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Sichereres Experimentieren mit Strom und Spannung"
+    },
+    {
+        "id": "/mls-api/tasks/389",
+        "contents": "Regelungstechnik - Projekt 1: Einf\u00fchrung in die Regelungstechnik; Temperatursteuerung; Temperaturregelung; Regelkreise analysieren; Regelstreckenarten und Auswahl des Reglers; Die Einheitssprungfunktion"
+    },
+    {
+        "id": "/mls-api/tasks/388",
+        "contents": "Kick-off Regelungstechnik - Projekte; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Versuchsaufbau; Messtechnik f\u00fcr die Projekte"
+    },
+    {
+        "id": "/mls-api/tasks/387",
+        "contents": "Wechselstromtechnik Versuch 10: Elektromotor; Funktionsprinzip; Gleichstrom-Kommutatormotor; Untersuchung Gleichstrommotor; Grundlagen zum Drehstrommotor; Der Synchronmotor; Untersuchung Synchronmotor"
+    },
+    {
+        "id": "/mls-api/tasks/386",
+        "contents": "Wechselstromtechnik Versuch 9: Transformatoren; Aufgaben und Funktionsweise; Realer vs. idealer Transformator; Spannungs-, Strom-, Widerstandstransformation (\u00dcbersetzungsverh\u00e4ltnis); Nachweis der Transformatorwirkung"
+    },
+    {
+        "id": "/mls-api/tasks/385",
+        "contents": "Wechselstromtechnik Versuch 8: RLC-Siebschaltungen (Filter); Filter und \u00dcbertragungsverhalten; Hochpass mit RC-Glied; Tiefpass mit RL-Glied"
+    },
+    {
+        "id": "/mls-api/tasks/384",
+        "contents": "Wechselstromtechnik Versuch 7: Schwingkreise; Entstehung und Resonanz; Reihen- und Parallelschwingkreis; Reihenschwingkreis; Parallelschwingkreis"
+    },
+    {
+        "id": "/mls-api/tasks/383",
+        "contents": "Wechselstromtechnik Versuch 6: Zusammenschaltung von Blind- und Wirkwiderst\u00e4nden; Arbeiten mit dem Zeigerdiagramm; RL-Reihenschaltung; RC-Reihenschaltung; RLC-Reihenschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/382",
+        "contents": "Wechselstromtechnik Versuch 5.3: Schaltung mehrerer Spulen; Reihenschaltung von Spulen; Parallelschaltung von Spulen"
+    },
+    {
+        "id": "/mls-api/tasks/381",
+        "contents": "Wechselstromtechnik Versuch 5.2: Induktivit\u00e4t an sinusf\u00f6rmiger Wechselspannung; Phasenverschiebung; Induktiver Blindwiderstand; Wirk- und Blindleistung an der Spule"
+    },
+    {
+        "id": "/mls-api/tasks/380",
+        "contents": "Wechselstromtechnik Versuch 5.1: Elektromagnetismus und Spulen; Elektromagnetismus und Spulen; Versuch Spule und Elektromagnetismus; Kenngr\u00f6\u00dfen von Spulen; Ein- und Ausschaltvorgang; Reaktion der Spule auf Rechteckspannungen"
+    },
+    {
+        "id": "/mls-api/tasks/379",
+        "contents": "Wechselstromtechnik Versuch 4.3: Schaltung mehrerer Kondensatoren; Reihenschaltung von Kondensatoren; Parallelschaltung von Kondensatoren"
+    },
+    {
+        "id": "/mls-api/tasks/378",
+        "contents": "Wechselstromtechnik Versuch 4.2: Der Kondensator an sinusf\u00f6rmiger Wechselspannung; Phasenverschiebung; Der kapazitive Blindwiderstand XC; Wirk- und Blindleistung am Kondensator"
+    },
+    {
+        "id": "/mls-api/tasks/377",
+        "contents": "Wechselstromtechnik Versuch 4.1: Der Kondensator; Aufbau und Kenngr\u00f6\u00dfen; Arten und Aufgaben; Lade- und Entladevorg\u00e4nge; Auf- und Entladung; Reaktion des Kondensators auf Rechteckspannungen"
+    },
+    {
+        "id": "/mls-api/tasks/376",
+        "contents": "Wechselstromtechnik Versuch 3.2: Fehler an Drehstromschaltungen; Messungen an einer defekten Sternschaltung; Messungen an einer defekten Dreieckschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/375",
+        "contents": "Wechselstromtechnik Versuch 3.1: Dreiphasenwechselstrom (Drehstrom); Entstehung und Wirkungsweise; Messungen an Drehstromsystemen; Sternschaltung; Messungen an der Sternschaltung; Dreieckschaltung; Messungen an der Dreieckschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/374",
+        "contents": "Wechselstromtechnik Versuch 2: Wirkleistung von Wechselspannungen; Herleitung der Wechselstromleistung; Wirkleistung der Sinuswechselspannung"
+    },
+    {
+        "id": "/mls-api/tasks/373",
+        "contents": "Wechselstromtechnik Versuch 1: Stromarten und ihre Kenngr\u00f6\u00dfen; Stromarten; Kenngr\u00f6\u00dfen von Sinusspannungen; Kenngr\u00f6\u00dfen der Sinusspannung; Kenngr\u00f6\u00dfen von Rechteckwechselspannungen; Kenngr\u00f6\u00dfen von Dreieckwechselspannungen"
+    },
+    {
+        "id": "/mls-api/tasks/372",
+        "contents": "Kick-off Wechselstromtechnik; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Sichereres Experimentieren mit Strom und Spannung"
+    },
+    {
+        "id": "/mls-api/tasks/371",
+        "contents": "Gleichstromtechnik Versuch 9: Leistungs-, Spannungs- und Stromanpassung; Herleitung und Bedeutung der Belastungsf\u00e4lle; Praktische \u00dcbung zu den Belastungsf\u00e4llen"
+    },
+    {
+        "id": "/mls-api/tasks/370",
+        "contents": "Gleichstromtechnik Versuch 8: Wirkungsgrad der elektrischen Leistung; Definition und Bedeutung des Wirkungsgrades; Praktische \u00dcbung zum Wirkungsgrad"
+    },
+    {
+        "id": "/mls-api/tasks/369",
+        "contents": "Gleichstromtechnik Versuch 7: Elektrische Leistung und Arbeit; Arbeit und Leistung im Stromkreis; Arbeit und Leistung im Stromkreis; Leistungshyperbel"
+    },
+    {
+        "id": "/mls-api/tasks/368",
+        "contents": "Gleichstromtechnik Versuch 6: Zusammenschaltung von Spannungsquellen; Darstellung von Spannungsquellen; Reihenschaltung von Spannungsquellen; Parallelschaltung von Spannungsquellen"
+    },
+    {
+        "id": "/mls-api/tasks/367",
+        "contents": "Gleichstromtechnik Versuch 5: Ersatzspannungsquelle; Ersatzspannungsquelle; Ersatzspannungsquellen"
+    },
+    {
+        "id": "/mls-api/tasks/366",
+        "contents": "Gleichstromtechnik Versuch 4: Spannungs- und Stromfehlerschaltung; Spannungs- und Stromfehlerschaltung; Anwendung von Spannungs- und Stromfehlerschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/365",
+        "contents": "Gleichstromtechnik Versuch 3.6: Der Spannungsteiler; Der unbelastete Spannungsteiler; Unbelastete Spannungsteiler; Der belastete Spannungsteiler; Belastete Spannungsteiler"
+    },
+    {
+        "id": "/mls-api/tasks/364",
+        "contents": "Gleichstromtechnik Versuch 3.5: Kombinationen von Reihen- und Parallelschaltung; Kombinationen von Reihen und Parallelschaltung; Widerstandsnetzwek 1; Widerstandsnetzwerk 2"
+    },
+    {
+        "id": "/mls-api/tasks/363",
+        "contents": "Gleichstromtechnik Versuch 3.4: Parallelschaltung von Widerst\u00e4nden; Parallelschaltung von Widerst\u00e4nden; Untersuchung einer Parallelschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/362",
+        "contents": "Gleichstromtechnik Versuch 3.3: Reihenschaltung von Widerst\u00e4nden; Reihenschaltung von Widerst\u00e4nden; Untersuchung einer Reihenschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/361",
+        "contents": "Gleichstromtechnik Versuch 3.2: Elektrische Widerst\u00e4nde Teil 2; Der PTC-Widerstand (Kaltleiter); Spannungsabh\u00e4ngige Widerst\u00e4nde (VDR); Fotowiderst\u00e4nde (LDR)"
+    },
+    {
+        "id": "/mls-api/tasks/360",
+        "contents": "Gleichstromtechnik Versuch 3.1: Elektrische Widerst\u00e4nde Teil 1; Arten und Eigenschaften elektrischer Widerst\u00e4nde; Lineare Widerst\u00e4nde; Der NTC-Widerstand (Hei\u00dfleiter)"
+    },
+    {
+        "id": "/mls-api/tasks/359",
+        "contents": "Gleichstromtechnik Versuch 2: Das Ohm'sche Gesetz; Das Ohm'sche Gesetz; Abh\u00e4ngigkeit des Stroms von der Spannung; Abh\u00e4ngigkeit des Stroms vom Widerstand"
+    },
+    {
+        "id": "/mls-api/tasks/358",
+        "contents": "Gleichstromtechnik Versuch 1: Der elektrische Stromkreis; Bestandteile und Funktion; Elektrische Grundgr\u00f6\u00dfen; Der Stromkreis im praktischen Versuch; Messungen im Grundstromkreis"
+    },
+    {
+        "id": "/mls-api/tasks/357",
+        "contents": "Kick-off Gleichstromtechnik; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Sichereres Experimentieren mit Strom und Spannung"
+    },
+    {
+        "id": "/mls-api/tasks/356",
+        "contents": "Ihr Feedback an uns; Willkommen; Feedbackbogen"
+    },
+    {
+        "id": "/mls-api/tasks/355",
+        "contents": "Halbleitertechnik Versuch 4: Operationsverst\u00e4rker; Aufbau und Wirkungsweise ; Invertierender Verst\u00e4rker; Nichtinvertierender Verst\u00e4rker"
+    },
+    {
+        "id": "/mls-api/tasks/354",
+        "contents": "Halbleitertechnik Versuch 3: Die Thyristortriode; Aufbau und Wirkungsweise; Z\u00fcnd- und L\u00f6schvorgang; Verfahren zum L\u00f6schen"
+    },
+    {
+        "id": "/mls-api/tasks/353",
+        "contents": "Halbleitertechnik Versuch 2.2.: Verst\u00e4rkerstufen; Verst\u00e4rkerstufen; Arbeitspunkt einer Verst\u00e4rkerstufe; Arbeitspunkt einer Verst\u00e4rkerstufe"
+    },
+    {
+        "id": "/mls-api/tasks/352",
+        "contents": "Halbleitertechnik Versuch 2.1: Bipolare Transistoren; Aufbau und Funktionsweise; Diodenwirkung NPN-Transistor (1); Diodenwirkung NPN-Transistor (2); Wirkung von I_B auf I_C"
+    },
+    {
+        "id": "/mls-api/tasks/351",
+        "contents": "Halbleitertechnik Versuch 1.4: Leuchtdioden; Leuchtdioden; Lichtausbeute"
+    },
+    {
+        "id": "/mls-api/tasks/350",
+        "contents": "Halbleitertechnik Versuch 1.3: Die Zener-Diode; Kennlinie der Zener-Diode; Kennlinie im Sperrbetrieb; Gleichspannungsbegrenzungen mit der Z-Diode"
+    },
+    {
+        "id": "/mls-api/tasks/349",
+        "contents": "Halbleitertechnik Versuch 1.2: Gleichrichterschaltungen; Gleichrichterschaltung; Einpuls-Mittelpunkt-Schaltung (M1); Einpuls-Mittelpunkt-Schaltung M1 ohne und mit Gl\u00e4ttungskondensator"
+    },
+    {
+        "id": "/mls-api/tasks/348",
+        "contents": "Halbleitertechnik Versuch 1.1: PN-\u00dcbergang als Diode; Wirkungsweise eines PN-\u00dcbergangs; PN-\u00dcbergang als Diode; PN-\u00dcbergang als Diode"
+    },
+    {
+        "id": "/mls-api/tasks/347",
+        "contents": "Montage- und Demontageautomat Versuch 5: Vollfunktion Montieren/Demontieren; Beschreibung; Erweiterungen des Aufbaus; Ablaufbeschreibung; Ablaufgraph; Programmerstellung in FUP"
+    },
+    {
+        "id": "/mls-api/tasks/346",
+        "contents": "Montage- und Demontageautomat Versuch 4: Einfahrt beidseitige Montage; Beschreibung; Erweiterungen des Aufbaus; Ablaufbeschreibung; Ablaufgraph; Programmerstellung in FUP"
+    },
+    {
+        "id": "/mls-api/tasks/345",
+        "contents": "Montage- und Demontageautomat Versuch 3: Demontagefunktion; Beschreibung; Einrichten; Aufbau; Ablaufbeschreibung; Ablaufgraph; Festlegung der Steuerung; Programmerstellung in FUP"
+    },
+    {
+        "id": "/mls-api/tasks/344",
+        "contents": "Montage- und Demontageautomat Versuch 2: Montagefunktion; Beschreibung; Einrichten; Aufbau; Ablaufbeschreibung; Ablaufgraph; Festlegung der Steuerung; Programmerstellung in FUP"
+    },
+    {
+        "id": "/mls-api/tasks/343",
+        "contents": "Kick-off Montage- und Demontageautomat; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/342",
+        "contents": "LOGO! 8 PLC Board Versuch 4.2: Aufgabe Geschwindigkeitssteuerung; Versuchsablauf; Geschwindigkeitssteuerung; Stromlaufplan und Programm; Versuchsaufbau"
+    },
+    {
+        "id": "/mls-api/tasks/341",
+        "contents": "LOGO! 8 PLC Board Versuch 4.1: Aufgabe Bandsteuerung; Versuchsablauf; Aufgabe Bandsteuerung Tippbetrieb; Stromlaufplan und Programm; Versuchsaufbau; Aufgabe Erweiterung Tippbetrieb; Stromlaufplan und Programm; Versuchsaufbau"
+    },
+    {
+        "id": "/mls-api/tasks/340",
+        "contents": "LOGO! 8 PLC Board Versuch 3: Aufgabe Biegemaschine; Versuchsablauf; Aufgabe Biegemaschine; Stromlaufplan und Programm; Versuchsaufbau"
+    },
+    {
+        "id": "/mls-api/tasks/339",
+        "contents": "LOGO! 8 PLC Board Versuch 2: Aufgabe Kugellagerpresse; Versuchsablauf; Betriebsmittelkennzeichnung; Aufgabe Kugellagerpresse; Stromlaufplan und Programm; Versuchsaufbau; Aufgabe Kugellagerpresse Erweiterung; Stromlaufplan und Programm; Versuchsaufbau; Ermittlung der Endlage des Zylinders; Stromlaufplan und Programm"
+    },
+    {
+        "id": "/mls-api/tasks/338",
+        "contents": "LOGO! 8 PLC Board Versuch 1: Erste Programme; Versuchsablauf; Men\u00fcsprache einstellen; UND-Schaltung; Programmierung der UND-Verkn\u00fcpfung am Display; ODER-Schaltung; Netzwerkeinstellungen; Schaltprogramm laden; Schaltprogramm anpassen und simulieren; Schaltprogramm in die LOGO! laden und testen"
+    },
+    {
+        "id": "/mls-api/tasks/337",
+        "contents": "Grundlagen der Steuerungstechnik: Arbeitsvorbereitung; Steuern vs. Regeln; EVA-Prinzip; Steuerungsarten; Einsatzgebiete VPS und SPS; Arbeitsweise einer SPS; Not-Halt- und Not-Aus- Funktionen; \u00d6ffner und Schlie\u00dfer; Logische Operationen; \u00dcbersicht Logikgatter"
+    },
+    {
+        "id": "/mls-api/tasks/336",
+        "contents": "Kick-off LOGO! 8 PLC (Professional) Board 24V; Cover; Sicherheitshinweise; Einf\u00fchrung; Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/335",
+        "contents": "Regelungstechnik Versuch 4: F\u00fcllstandregelung mit stetigem Regler; F\u00fcllstandregelung; Funktionsweise der F\u00fcllstandstrecke; Regelkreis mit P-Regler; Reglereinstellugen f\u00fcr den PI-Regler; F\u00fcllstandregelung mit PI-Regler"
+    },
+    {
+        "id": "/mls-api/tasks/334",
+        "contents": "Regelungstechnik Versuch 3: Regelkreis mit unstetigem Regler; Zweipunktregler; Dreipunktregler; Hysterese des Zweipunktreglers; Temperaturregelung mit Zweipunktregler"
+    },
+    {
+        "id": "/mls-api/tasks/333",
+        "contents": "Regelungstechnik Versuch 2: Regelkreis mit stetigem Regler; Einteilung von Regelungen; Regelkreis analysieren; Regelstreckenarten und Auswahl des Reglers; Der P-Regler; Einstellregeln nach Ziegler / Nichols; Der PI-Regler; Der PID-Regler"
+    },
+    {
+        "id": "/mls-api/tasks/332",
+        "contents": "Regelungstechnik Versuch 1: Beispiel einer Drehzahlstrecke; Einf\u00fchrung in die Regelungstechnik; Begriffserl\u00e4uterungen: Steuerstrecke; Drehzahlsteuerung; Begriffserl\u00e4uterungen: Regelstrecke; Drehzahlregelung"
+    },
+    {
+        "id": "/mls-api/tasks/331",
+        "contents": "Kick-off Regelungstechnik - Grundlagen; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Versuchsaufbau"
+    },
+    {
+        "id": "/mls-api/tasks/330",
+        "contents": "Elektrotechnik 1 Versuch 13: Elektromotor; Funktionsprinzip; Gleichstrom-Kommutatormotor; Untersuchung Gleichstrommotor; Grundlagen zum Drehstrommotor; Der Synchronmotor; Untersuchung Synchronmotor"
+    },
+    {
+        "id": "/mls-api/tasks/329",
+        "contents": "Elektrotechnik 1 Versuch 12: Transformatoren; Aufgaben und Funktionsweise; Realer vs. idealer Transformator; Spannungs-, Strom-, Widerstandstransformation (\u00dcbersetzungsverh\u00e4ltnis); Nachweis der Transformatorwirkung"
+    },
+    {
+        "id": "/mls-api/tasks/328",
+        "contents": "Elektrotechnik 1 Versuch 11: Elektromagnetismus und Spulen; Elektromagnetismus und Spulen; Kenngr\u00f6\u00dfen von Spulen; Grunds\u00e4tzliches zum Ein- und Ausschaltvorgang an der Spule; Versuch Spule und Elektromagnetismus; Phasenverschiebung; Induktiver Blindwiderstand"
+    },
+    {
+        "id": "/mls-api/tasks/327",
+        "contents": "Elektrotechnik 1 Versuch 10: Der Kondensator; Aufbau und Kenngr\u00f6\u00dfen; Arten und Aufgaben; Lade- und Entladevorg\u00e4nge; Auf- und Entladung; Phasenverschiebung"
+    },
+    {
+        "id": "/mls-api/tasks/326",
+        "contents": "Elektrotechnik 1 Versuch 9: Dreiphasenwechselstrom (Drehstrom); Entstehung und Wirkungsweise; Sternschaltung; Dreieckschaltung; Messungen an Drehstromsystemen; Messungen an der Sternschaltung; Messungen an der Dreieckschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/325",
+        "contents": "Elektrotechnik 1 Versuch 8: Wirkleistung von Wechselspannungen; Herleitung der Wechselstromleistung; Wirkleistung der Sinuswechselspannung"
+    },
+    {
+        "id": "/mls-api/tasks/324",
+        "contents": "Elektrotechnik 1 Versuch 7: Stromarten und ihre Kenngr\u00f6\u00dfen; Stromarten; Herleitung der Kenngr\u00f6\u00dfen; Kenngr\u00f6\u00dfen der Sinusspannung"
+    },
+    {
+        "id": "/mls-api/tasks/323",
+        "contents": "Elektrotechnik 1 Versuch 6: Wirkungsgrad; Definition und Bedeutung des Wirkungsgrades; Versuch"
+    },
+    {
+        "id": "/mls-api/tasks/322",
+        "contents": "Elektrotechnik 1 Versuch 5: Elektrische Leistung und Arbeit; Arbeit und Leistung im Stromkreis; Versuch"
+    },
+    {
+        "id": "/mls-api/tasks/321",
+        "contents": "Elektrotechnik 1 Versuch 4: Zusammenschaltung von Spannungsquellen; Symbolische Darstellung; Reihenschaltung; Versuch"
+    },
+    {
+        "id": "/mls-api/tasks/320",
+        "contents": "Elektrotechnik 1 Versuch 3.2: Verschaltung elektrischer Widerst\u00e4nde; Die Reihenschaltung von Widerst\u00e4nden; Nachweis der Eigenschaften einer Reihenschaltung von Widerst\u00e4nden; Die Parallelschaltung von Widerst\u00e4nden; Nachweis der Eigenschaften parallel geschalteter Widerst\u00e4nde; Unbelasteter Spannungsteiler; Belasteter Spannungsteiler; Festes Widerstandsverh\u00e4ltnis"
+    },
+    {
+        "id": "/mls-api/tasks/319",
+        "contents": "Elektrotechnik 1 Versuch 3.1: Eigenschaften elektrischer Widerst\u00e4nde; Arten und Eigenschaften elektrischer Widerst\u00e4nde; Lineare Kennlinie I=f(U); NTC-Kennlinien I = f (U) und R = f (U); Abh\u00e4ngigkeit des LDR von der Beleuchtungsst\u00e4rke"
+    },
+    {
+        "id": "/mls-api/tasks/318",
+        "contents": "Elektrotechnik 1 Versuch 2: Ohm'sches Gesetz; Aussage und Bedeutung des Ohm\u2019schen Gesetzes; Das ohmsche Gesetz im Praxisversuch; Untersuchung der Abh\u00e4ngigkeit des Stroms von der Spannung; Messung der Stromst\u00e4rke \u00fcber dem Widerstand"
+    },
+    {
+        "id": "/mls-api/tasks/317",
+        "contents": "Elektrotechnik 1 Versuch 1: Der elektrische Stromkreis; Bestandteile und Funktion eines elektrischen Stromkreises; Beschreibung der elektrischen Grundgr\u00f6\u00dfen; Der Stromkreis im praktischen Versuch; Messung von Spannung und Stromst\u00e4rke"
+    },
+    {
+        "id": "/mls-api/tasks/316",
+        "contents": "Kick-off Grundlagen der Elektrotechnik Teil 1; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Sicheres Experimentieren mit Strom und Spannung"
+    },
+    {
+        "id": "/mls-api/tasks/315",
+        "contents": "Grundlagen der Elektropneumatik: Aufgaben 6-10; Aufgabe 6: Spannvorrichtung (zeitabh\u00e4ngige Ablaufsteuerung); Aufgabe 7: Pneumatischer Vorschub (zeitabh\u00e4ngige Ablaufsteuerung); Aufgabe 8: Tauchbecken (Sicherheitsschaltung); Versuch 9: Positionierung / Erfassung; Aufgabe 10: Druckautomat"
+    },
+    {
+        "id": "/mls-api/tasks/314",
+        "contents": "Grundlagen der Elektropneumatik: Aufgaben 1-5; Versuchsaufbau; Aufgabe 1: Sicherheitst\u00fcr; Aufgabe 2: Palettenlift; Aufgabe 3: Demontage; Aufgabe 4: Montage; Aufgabe 5: Werkst\u00fccklift (Parallelschaltung)"
+    },
+    {
+        "id": "/mls-api/tasks/313",
+        "contents": "Kick-off Grundlagen Elektropneumatik; Cover; Sicherheitshinweise; Projektvorstellung; Was ist Pneumatik?; Herstellen von Druckluft"
+    },
+    {
+        "id": "/mls-api/tasks/312",
+        "contents": "Grundlagen der Sensorik: RFID - Versuch 3: Beschreiben und Lesen des Transponders; Codierung (1); Codierung (2); Beschreiben des Transponders in der Anlage; Lesen des Transponders"
+    },
+    {
+        "id": "/mls-api/tasks/311",
+        "contents": "Grundlagen der Sensorik: RFID - Versuch 2: Materialeinfl\u00fcsse; Luftschnittstellenmaterial; Applikationsmaterial"
+    },
+    {
+        "id": "/mls-api/tasks/310",
+        "contents": "Grundlagen der Sensorik: RFID - Versuch 1: Lesebereich; Verwendete Materialien; Versuchsaufbau; Verbindung mit dem Reader (1); Verbindung mit dem Reader (2); Lesebereich ermitteln - 0\u00b0-Orientierung; Lesebereich ermitteln - 90\u00b0-Orientierung"
+    },
+    {
+        "id": "/mls-api/tasks/309",
+        "contents": "Grundlagen der Sensorik: RFID - Arbeitsvorbereitung Betrieblicher Auftrag; Vor\u00fcberlegungen (1); Vor\u00fcberlegungen (2); Vereinfachung in der Modellanlage"
+    },
+    {
+        "id": "/mls-api/tasks/308",
+        "contents": "Kick-off Grundlagen der Sensorik - RFID Identifikationsverfahren; Cover; Sicherheitshinweise; Einf\u00fchrung; Projektbeschreibung"
+    },
+    {
+        "id": "/mls-api/tasks/307",
+        "contents": "Grundlagen der Pneumatik: Aufgaben 6-10; Aufgabe 6 - Doppelschiebet\u00fcr (zeitabh\u00e4ngige Ablaufsteuerung); Aufgabe 7 - Hubtisch (Ablaufsteuerung); Aufgabe 8 - Pr\u00e4gemaschine (Kaskadensteuerung); Aufgabe 9 - Montageautomat (Kaskadensteuerung); Aufgabe 10 - Umformmaschine (Ablaufsteuerung)"
+    },
+    {
+        "id": "/mls-api/tasks/306",
+        "contents": "Grundlagen der Pneumatik: Aufgaben 1-5; Versuchsaufbau; Aufgabe 1 - Dachfenster (Direktansteuerung); Aufgabe 2 - Presse 01 (Direktansteuerung); Aufgabe 3 - Presse 02 (UND-Verkn\u00fcpfung); Aufgabe 4 - Falllager (Ablaufsteuerung); Aufgabe 5 - Schiebet\u00fcr (zeitabh\u00e4ngige Ablaufsteuerung)"
+    },
+    {
+        "id": "/mls-api/tasks/305",
+        "contents": "Grundlagen der Pneumatik: Arbeitsvorbereitung; Pneumatische Bauteile; Referenzkennzeichung; Steuerungstechnik; Komponenten von Steuerungen und Schaltplan; Ablaufsteuerung mit GRAFCET"
+    },
+    {
+        "id": "/mls-api/tasks/304",
+        "contents": "Kick-off Grundlagen der Pneumatik; Cover; Sicherheitshinweise; Projektvorstellung; Was ist Pneumatik?; Herstellen von Druckluft"
+    },
+    {
+        "id": "/mls-api/tasks/303",
+        "contents": "Grundlagen der Elektropneumatik mit tec2SKILL\u00ae connect: Aufgaben 6-9; Aufgabe 6: Spannvorrichtung (zeitabh\u00e4ngige Ablaufsteuerung); Aufgabe 7: Pneumatischer Vorschub (zeitabh\u00e4ngige Ablaufsteuerung); Aufgabe 8: Tauchbecken (Sicherheitsschaltung); Aufgabe 9: Druckautomat"
+    },
+    {
+        "id": "/mls-api/tasks/302",
+        "contents": "Grundlagen der Elektropneumatik mit tec2SKILL\u00ae connect: Aufgaben 1-5; Aufgabe 1: Sicherheitst\u00fcr; Aufgabe 2: Palettenlift; Aufgabe 3: Demontage; Aufgabe 4: Montage; Aufgabe 5: Werkst\u00fccklift (Parallelschaltung)"
+    },
+    {
+        "id": "/mls-api/tasks/301",
+        "contents": "Grundlagen der Elektropneumatik: Arbeitsvorbereitung; Pneumatische Bauteile; Elektropneumatische Bauteile; Referenzkennzeichung; Steuerungstechnik; Komponenten von Steuerungen und Schaltplan; Ablaufsteuerung mit GRAFCET"
+    },
+    {
+        "id": "/mls-api/tasks/300",
+        "contents": "Kick-off Elektropneumatik mit tec2SKILL\u00ae connect; Cover; Sicherheitshinweise; Projektvorstellung; Was ist Pneumatik?; Herstellen von Druckluft"
+    },
+    {
+        "id": "/mls-api/tasks/299",
+        "contents": "43213SIOL Versuch 4: Sensoranordnung f\u00fcr vorbeifahrende Kunststoffe; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Messaufbau und Funktionstest; Nachweis der Funktion; Nachweis des Reduktionsfaktors"
+    },
+    {
+        "id": "/mls-api/tasks/298",
+        "contents": "43213SIOL Versuch 3: F\u00fcllstanderfassung eines Tanks planen und ausf\u00fchren; Auftrag; Simulation der Aufgabenstellung; Arbeitsplanung; Informationsbeschaffung und Sensorauswahl; Messaufbau und Funktionstest; Sensor programmieren; Analogausgang programmieren; Schaltausgang programmieren; Sensor \u00fcber IO-Link programmieren (1); Sensor \u00fcber IO-Link programmieren (2)"
+    },
+    {
+        "id": "/mls-api/tasks/297",
+        "contents": "43213SIOL Versuch 2:  F\u00fcllstandserfassung eines Palettenlagers; Auftrag; Simulation der Aufgabenstellung; Arbeitsplanung; Informationsbeschaffung und Sensorauswahl; Messaufbau und Funktionstest; Sensor einstellen (Teach); Nachweis der Funktion; Nachweis der Hysterese; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/296",
+        "contents": "43213SIOL Versuch 1: Sensoranordnung f\u00fcr vorbeifahrende Metalle; Auftrag; Simulation der Aufgabenstellung; Arbeitsplanung; Informationsbeschaffung und Sensorauswahl; Messaufbau und Funktionstest; Nachweis der Funktion; Nachweis des Schaltabstands ; Nachweis des Reduktionsfaktors; Nachweis der Hyterese"
+    },
+    {
+        "id": "/mls-api/tasks/295",
+        "contents": "Analoge Sensorik Versuch 3:  Pr\u00fcfung des Beh\u00e4lterdeckels; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Messger\u00e4t einstellen; Nachweis der Funktion; Nachweis des Schaltabstandes; Nachweis des Reduktionsfaktors"
+    },
+    {
+        "id": "/mls-api/tasks/294",
+        "contents": "Analoge Sensorik Versuch 2:  F\u00fcllstandserfassung eines Lagers f\u00fcr Beh\u00e4lter; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor einstellen (Teach); Nachweis der Funktion; Nachweis der Hysterese; Ermittlung der Schallkeule; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/293",
+        "contents": "Analoge Sensorik Versuch 1:  F\u00fcllstandserfassung eines Palettenlagers; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor einstellen (Teach); Nachweis der Funktion; Nachweis der Hysterese; Nachweis der Reflektivit\u00e4t; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/292",
+        "contents": "Arbeitsplanung Analoge Sensorik; Verf\u00fcgbare Sensoren; Schritte der Arbeitsplanung"
+    },
+    {
+        "id": "/mls-api/tasks/291",
+        "contents": "ETS WebTECH\u00ae4U ; Begr\u00fc\u00dfung; Digitale Lerninhalte; Highlights im \u00dcberblick"
+    },
+    {
+        "id": "/mls-api/tasks/290",
+        "contents": "Grundlagen der Sensorik: Drehgeber - Versuch 3: Hochregallager CPS i40; Einf\u00fchrung; Versuchsaufbau L\u00e4ngsachse; Versuchsdurchf\u00fchrung L\u00e4ngsachse; Versuchsaufbau Palettenaufnehmer; Versuchsdurchf\u00fchrung Palettenaufnehmer"
+    },
+    {
+        "id": "/mls-api/tasks/289",
+        "contents": "Grundlagen der Sensorik: Drehgeber - Versuch 2: Seilzug-Encoder am Gabelstapler; Einf\u00fchrung; Versuchsbeschreibung und verwendete Materialien; Versuchsdurchf\u00fchrung"
+    },
+    {
+        "id": "/mls-api/tasks/288",
+        "contents": "Grundlagen der Sensorik: Drehgeber - Versuch 1: Messradsystem an einer Furniersch\u00e4lmaschine; Einf\u00fchrung; Versuchsbeschreibung und verwendete Materialien; Versuchsdurchf\u00fchrung"
+    },
+    {
+        "id": "/mls-api/tasks/287",
+        "contents": "Grundlagen der Sensorik: Drehgeber - Erstinbetriebnahme des Messradaufbaus; Verkabelung; Sensor auslesen (1); Sensor auslesen (2); Messradaufsatz positionieren"
+    },
+    {
+        "id": "/mls-api/tasks/286",
+        "contents": "Grundlagen der Sensorik: Drehgeber - Arbeitsvorbereitung; Grundlagen und Verst\u00e4ndnisfragen; Datenblatt"
+    },
+    {
+        "id": "/mls-api/tasks/285",
+        "contents": "Kick-off Grundlagen der Sensorik - Drehgeber; Cover; Sicherheitshinweise; Einf\u00fchrung; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/284",
+        "contents": "Grundlagen der Sensorik: Schwingungssensor - Betrieblicher Auftrag; Erl\u00e4uterung; Aufgabenstellung; Vereinfachungen/Simulationen; Aufbau und Messanordnung; Nachweis der Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/283",
+        "contents": "Grundlagen der Sensorik: Schwingungssensor - Arbeitsplanung; Arbeitsvorbereitung; Eingesetzter Sensor; Datenblatt; Tastenprogrammierung und Grenzwerte festlegen"
+    },
+    {
+        "id": "/mls-api/tasks/282",
+        "contents": "Kick-off Grundlagen der Sensorik - Schwingungssensor; Cover; Sicherheitshinweise; Einf\u00fchrung; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/281",
+        "contents": "Grundlagen der Sensorik: RFID - Versuch 2: Materialeinfl\u00fcsse und Beschreiben des Transponders; Luftschnittstellenmaterial; Applikationsmaterial; Beschreiben des Transponders in der Anlage"
+    },
+    {
+        "id": "/mls-api/tasks/280",
+        "contents": "Grundlagen der Sensorik: RFID - Versuch 1: Lesebereich; Verwendete Materialien; Versuchsaufbau; Verbindung mit dem Reader; Lesebereich ermitteln - 0\u00b0-Orientierung; Lesebereich ermitteln - 90\u00b0-Orientierung"
+    },
+    {
+        "id": "/mls-api/tasks/279",
+        "contents": "Grundlagen der Sensorik: RFID - Arbeitsvorbereitung Betrieblicher Auftrag; Vor\u00fcberlegungen (1); Vor\u00fcberlegungen (2); Vereinfachung in der Modellanlage; Codierung"
+    },
+    {
+        "id": "/mls-api/tasks/278",
+        "contents": "Kick-off Grundlagen der Sensorik - RFID Identifikationsverfahren; Cover; Sicherheitshinweise; Einf\u00fchrung; Projektbeschreibung"
+    },
+    {
+        "id": "/mls-api/tasks/277",
+        "contents": "Grundlagen der Sensorik: Pt100 - Versuch 2 Ermittlung der Widerstandskennlinie; Erl\u00e4uterung; Widerstandsmessung; Widerstandskennlinie"
+    },
+    {
+        "id": "/mls-api/tasks/276",
+        "contents": "Grundlagen der Sensorik : Pt100 - Versuch 1 Temperaturmessung eines K\u00fchlkreislaufes; Erl\u00e4uterung; Simulation der Aufgabenstellung; Arbeitsplanung; Aufbau der Messanordnung; Messger\u00e4t einstellen; Nachweis der Funktion; Auswertung des Versuchs"
+    },
+    {
+        "id": "/mls-api/tasks/275",
+        "contents": "Grundlagen der Sensorik: Pt100 - Vorbereitung; Was ist Temperatur?; Temperatursensor Pt100; Temperatur-Stabsensor TT0281"
+    },
+    {
+        "id": "/mls-api/tasks/274",
+        "contents": "Kick-off Grundlagen der Sensorik - Platin Messwiderstand Pt100; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/273",
+        "contents": "Grundlagen der Sensorik: Zylindersensoren - Versuch 2: Bohrtiefenmessung; Versuchsbeschreibung; Versuchsaufbau; Manuelle Parametrierung; Messung der Bohrtiefen; Parametrierung und Messung \u00fcber IO-Link"
+    },
+    {
+        "id": "/mls-api/tasks/272",
+        "contents": "Grundlagen der Sensorik: Zylindersensoren - Versuch 1: Pneumatische Deckelmontage; Versuchsbeschreibung; Versuchsaufbau; Anschlie\u00dfen und Justieren des Sensors D-M9BL (SMC); Anschlie\u00dfen und Justieren des Sensors MZC1 (Sick)"
+    },
+    {
+        "id": "/mls-api/tasks/271",
+        "contents": "Grundlagen der Sensorik: Zylindersensoren - Arbeitsvorbereitung; Magnetische Zylindersensoren; Allgemeiner Aufbau; Montage; Verwendete Sensoren"
+    },
+    {
+        "id": "/mls-api/tasks/270",
+        "contents": "Kick-off: Grundlagen der Sensorik - Zylindersensoren; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/269",
+        "contents": "Pr\u00fcfung elektrischer Anlagen Versuch 3.3: Erstpr\u00fcfung im IT-Netz; Arbeitsauftrag; Arbeitsplanung; Versuchsaufbau; Erg\u00e4nzung des IT-Systems mit RCD-Schutzschaltern"
+    },
+    {
+        "id": "/mls-api/tasks/268",
+        "contents": "Pr\u00fcfung elektrischer Anlagen Versuch 3.2: Erstpr\u00fcfung im TT-Netz; Arbeitsauftrag; Versuchsaufbau; Pr\u00fcfung der Erd- und Potentialausgleichsverbindung; Durchf\u00fchrung der Erstpr\u00fcfung; Messung der Fehlerspannung bzw. des Erdungswiderstands"
+    },
+    {
+        "id": "/mls-api/tasks/267",
+        "contents": "Pr\u00fcfung elektrischer Anlagen Versuch 3.1: Erstpr\u00fcfung im TN-Netz; Arbeitsauftrag; Versuchsaufbau; Messen des Erdungswiderstands"
+    },
+    {
+        "id": "/mls-api/tasks/266",
+        "contents": "Elektroenergieversorgung und Sicherheit von Betriebsmitteln Versuch 2.4: Pr\u00fcfungen und Messungen an RCD-Schutzeinrichtungen / Drehfeldrichtung; Pr\u00fcfungen und Messungen an RCD-Schutzeinrichtungen; Versuchsdurchf\u00fchrung; Drehfeldrichtung"
+    },
+    {
+        "id": "/mls-api/tasks/265",
+        "contents": "Elektroenergieversorgung und Sicherheit von Betriebsmitteln Versuch 2.3: Isolationswiderstand und Schleifenwiderstand; Isolationswiderstand; Messung Isolationswiderstand; Schleifenwiderstand; Messung Schleifenwiderstand im TN-S-Netz; Messung Schleifenwiderstand im TT-Netz"
+    },
+    {
+        "id": "/mls-api/tasks/264",
+        "contents": "Elektroenergieversorgung und Sicherheit von Betriebsmitteln Versuch 2.2: Hauptpotenzialausgleich; Hauptpotenzialausgleich; Messung"
+    },
+    {
+        "id": "/mls-api/tasks/263",
+        "contents": "Elektroenergieversorgung und Sicherheit von Betriebsmitteln Versuch 2.1: Hausanschluss, Leitungen, Z\u00e4hlerplatz; Der Hausanschluss; Leitungen; Z\u00e4hlerplatz"
+    },
+    {
+        "id": "/mls-api/tasks/262",
+        "contents": "Netzsysteme und Schutzma\u00dfnahmen Versuch 1.5: Das IT-System; Das IT-System; Aufgabe"
+    },
+    {
+        "id": "/mls-api/tasks/261",
+        "contents": "Netzsysteme und Schutzma\u00dfnahmen Versuch 1.4: Erdungswiderstand; Erdungswiderstand; Messung des Erdungswiderstands; Messung des Erdungswiderstands nach der Dreileitermethode; Messung des Erdungswiderstands mittels Fehlerschleifenimpedanz; Selektive Erdungswiderstandsmessung"
+    },
+    {
+        "id": "/mls-api/tasks/260",
+        "contents": "Netzsysteme und Schutzma\u00dfnahmen Versuch 1.3: Automatische Abschaltung durch RCD-Schutzschalter; RCD-Schutzschalter; Typen und Ausl\u00f6severhalten von Fehlerstromschutzschaltern; Pr\u00fcfung von RCD-Schutzschaltern; Messung im TN-S-Netz; Messung im TT-Netz"
+    },
+    {
+        "id": "/mls-api/tasks/259",
+        "contents": "Netzsysteme und Schutzma\u00dfnahmen Versuch 1.2: Schutz gegen elektrischen Schlag; Schutz gegen elektrischen Schlag; Fehlerarten; Geforderte Abschaltzeit; Ermitteln des ben\u00f6tigten Abschaltstroms; Mess\u00fcbung zum TN-S-Netz; Mess\u00fcbung zum TT-Netz"
+    },
+    {
+        "id": "/mls-api/tasks/258",
+        "contents": "Netzsysteme und Schutzma\u00dfnahmen Versuch 1.1: Netzsysteme; Kennzeichnung von Netzsystemen; Prinzipschaltbild eines Netzsystems; Mess\u00fcbung TN-C-Netz; Mess\u00fcbung TN-S-Netz; Mess\u00fcbung TT-Netz; Mess\u00fcbung IT-Netz"
+    },
+    {
+        "id": "/mls-api/tasks/257",
+        "contents": "Kick-off Netzsysteme und Schutzma\u00dfnahmen; Cover; Sicherheitshinweise; Inhaltsverzeichnis; Ben\u00f6tigte Hardware"
+    },
+    {
+        "id": "/mls-api/tasks/256",
+        "contents": "Elektromotoren 1 - Versuch 3: Gleichstrom-Doppelschlussmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/255",
+        "contents": "Elektromotoren 1 - Versuch 2: Gleichstrom-Reihenschlussmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/254",
+        "contents": "Elektromotoren 1 - Versuch 1: Gleichstrom-Nebenschlussmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Auswertung der Ergebnisse; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/253",
+        "contents": "Kick-off  Elektromotoren Teil 1: Gleichstrommotoren; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/252",
+        "contents": "Digitaltechnik Versuch 13: Digital-Analog-Umsetzer; Digital-Analog-Umsetzer; Untersuchung eines Digital-Analog-Umsetzers"
+    },
+    {
+        "id": "/mls-api/tasks/251",
+        "contents": "Digitaltechnik Versuch 12: Analog-Digital-Umsetzer; Analog-Digital-Umsetzer; Untersuchung eines Analog-Digital-Umsetzers"
+    },
+    {
+        "id": "/mls-api/tasks/250",
+        "contents": "Digitaltechnik Versuch 11: Multiplexer / Demultiplexer; Multiplexer / Demultiplexer; Multiplexer-Demultiplexer-Strecke"
+    },
+    {
+        "id": "/mls-api/tasks/249",
+        "contents": "Digitaltechnik Versuch 10: Schieberegister; Schieberegister; Untersuchung eines Schieberegisters"
+    },
+    {
+        "id": "/mls-api/tasks/248",
+        "contents": "Digitaltechnik Versuch 9: Z\u00e4hlerschaltungen; Asynchrone Z\u00e4hler; Asynchroner Modulo-n-Z\u00e4hler; Synchrone Z\u00e4hler"
+    },
+    {
+        "id": "/mls-api/tasks/247",
+        "contents": "Digitaltechnik Versuch 8.2: Kippstufen Teil 2; Zweiflankengesteuerte Flifplops; Monostabile Kippstufen; Untersuchung eines Monoflops; Verz\u00f6gerungsschaltungen; Astabile Kippschaltungen"
+    },
+    {
+        "id": "/mls-api/tasks/246",
+        "contents": "Digitaltechnik Versuch 8.1: Kippstufen Teil 1; Kippstufen; Bistabile Kippschaltungen; Untersuchung eines RS-Flipflops; Synchrone Flipflops; Untersuchung synchroner Flipflops"
+    },
+    {
+        "id": "/mls-api/tasks/245",
+        "contents": "Digitaltechnik Versuch 7.2: Rechenschaltungen Teil 2; Subtrahierer f\u00fcr Dualzahlen; Subtraktionschaltung; Komparatoren"
+    },
+    {
+        "id": "/mls-api/tasks/244",
+        "contents": "Digitaltechnik Versuch 7.1: Rechenschaltungen Teil 1; Addierschaltungen; Aufbau der Addierschaltungen"
+    },
+    {
+        "id": "/mls-api/tasks/243",
+        "contents": "Digitaltechnik Versuch 6: Codes und Codeumsetzer; Was ist ein Code? ; Zahlencodes; Alphanumerische Codes; 7-Segment-Codeumsetzer; Wasserstandsanzeige"
+    },
+    {
+        "id": "/mls-api/tasks/242",
+        "contents": "Digitaltechnik Versuch 5.2: Schaltungssynthese Teil 2; Steuerung einer Treppenhausbeleuchtung; Auswahlverfahren f\u00fcr eine Arbeitsstelle; Kontrolle eines Stromnetzes; \"Zwei-aus-drei\"-Schaltung"
+    },
+    {
+        "id": "/mls-api/tasks/241",
+        "contents": "Digitaltechnik Versuch 5.1: Schaltungssynthese Teil 1; Schaltungssynthese, DNF und KNF; Das KV-Diagramm; Schaltungsentwurf Normalformen; Beispiel: Discofahrt"
+    },
+    {
+        "id": "/mls-api/tasks/240",
+        "contents": "Digitaltechnik Versuch 4.2: Boolesche Schaltalgebra Teil 2; De Morgansche Gesetze; Untersuchung der De Morganschen Gesetze Teil 1/2; Untersuchung der De Morganschen Gesetze Teil 2/2"
+    },
+    {
+        "id": "/mls-api/tasks/239",
+        "contents": "Digitaltechnik Versuch 4.1: Boolesche Schaltalgebra Teil 1; Boolesche Schaltalgebra; Untersuchung der Gesetze der booleschen Schaltalgebra Teil 1/2; Untersuchung der Gesetzte der booleschen Algebra Teil 2/2"
+    },
+    {
+        "id": "/mls-api/tasks/238",
+        "contents": "Digitaltechnik Versuch 3: Logische Schaltkreise in der Praxis; Grundlagen; Elektrische Daten der TTL-Familie; Nicht benutzte EIng\u00e4nge; Fan-Out und Fan-In; Ausgangsbeschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/237",
+        "contents": "Digitaltechnik Versuch 2.2: Zusammengesetzte Grundbausteine Teil 2; Die Antivalenz-Funktion (XOR); Untersuchung der Antivalenz-Funktion; Alternative Schaltung f\u00fcr die \u00c4quivalenz-Funktion; Die \u00c4quivalenz-Funktion (XNOR); Untersuchung der \u00c4quivalenz-Funktion; Alternative Schaltung f\u00fcr die \u00c4quivalenz-Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/236",
+        "contents": "Digitaltechnik Versuch 2.1: Zusammengesetzte Grundbausteine Teil 1; Die NAND-Funktion; Untersuchung der NAND-Funktion; Logische Funktionen \u00fcberpr\u00fcfen; Die NOR-Funktion; Untersuchung der NOR-Funktion; Zusammengesetzte Funktion aus NOR-Gattern"
+    },
+    {
+        "id": "/mls-api/tasks/235",
+        "contents": "Digitaltechnik Versuch 1: Logische Grundschaltungen; Logische Aussagen, Schaltungen und Zust\u00e4nde; Logik des Digital Trainer Boards; Die NICHT-Funktion; Untersuchung der NICHT-Funktion; Die UND-Funktion; Untersuchung der UND-Funktion; Die ODER-Funktion; Untersuchung der ODER-Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/234",
+        "contents": "Kick-off Grundlagen der Digitaltechnik; Cover; Sicherheitshinweise; Einf\u00fchrung; Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/233",
+        "contents": "S7-1500 mit tec2SKILL\u00ae connect Versuch 4: Montagestation; Aufbau; Ablaufbeschreibung; Variablentabelle; Aufbauplan; Ablaufgraph; SPS-Programm; Bausteinschnittstelle fbMontage; Ablaufgraph fbMontage; Programm fbMontage"
+    },
+    {
+        "id": "/mls-api/tasks/232",
+        "contents": "Testprogramm mit Programmvariablen; Programmiervariablen festlegen (1); Programmiervariablen festlegen (2)"
+    },
+    {
+        "id": "/mls-api/tasks/231",
+        "contents": "Erstellen eines Testprogramms; Erstellen eines einfachen Testprogramms; PLC-Variablentabelle; Programmbausteine einf\u00fcgen; Programmablauf"
+    },
+    {
+        "id": "/mls-api/tasks/230",
+        "contents": "Kick-off Grundlagen S7-1500 mit tec2SKILL\u00ae connect; Cover; Sicherheitshinweise; Allgemeines; Hardware, Software und Voraussetzungen"
+    },
+    {
+        "id": "/mls-api/tasks/229",
+        "contents": "IO-Link Versuch 3: Vermessung eines Werkst\u00fcckes; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor programmieren; Schaltausgang programmieren; Sensor \u00fcber IO-Link programmieren; Werkst\u00fcckvermessung; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/228",
+        "contents": "IO-Link Versuch 2: Analoge \u00dcberwachung einer Werkzeugl\u00f6seeinheit; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Aufbau der Messanordnung; Sensor einstellen (Teach); Sensor \u00fcber IO-Link programmieren; Messger\u00e4t einstellen; Nachweis der Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/227",
+        "contents": "IO-Link Versuch 1: F\u00fcllstanderfassung eines Tanks planen und ausf\u00fchren; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan ; Messaufbau und Funktionstest; Sensor programmieren; Analogausgang programmieren; Schaltausgang programmieren; Sensor \u00fcber IO-Link programmieren (1); Sensor \u00fcber IO-Link programmieren (2)"
+    },
+    {
+        "id": "/mls-api/tasks/226",
+        "contents": "Kick-off IO-Link; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/225",
+        "contents": "Stirnradgetriebe ETS6 Versuch 3: Ausgleich Axialspiel (optional); Arbeitsschritt 1-4; Arbeitsschritt 5-7"
+    },
+    {
+        "id": "/mls-api/tasks/224",
+        "contents": "Stirnradgetriebe ETS6 Versuch 2: Montageanleitung 3-stufig ; Einbau Lager; Baugruppe Ritzelwelle 5; Baugruppe Ritzelwelle 3; Baugruppe Antriebswelle (1); Baugruppe Antriebswelle (2); Montage Verschlusskappe; Baugruppe antriebsseitiger Deckel (1); Baugruppe antriebsseitiger Deckel (2); Montage Baugruppe antriebseitiger Deckel; Montage Verschluss- und Entl\u00fcftungsschraube"
+    },
+    {
+        "id": "/mls-api/tasks/223",
+        "contents": "Stirnradgetriebe ETS6 Versuch 1: Montageanleitung 2-stufig ; Einbau Lager & Baugruppe Ritzelwelle; Baugruppe Ritzelwelle; Baugruppe Antriebswelle (1); Baugruppe Antriebswelle (2); Montage Verschlusskappe; Baugruppe antriebsseitiger Deckel (1); Baugruppe antriebsseitiger Deckel (2); Montage Baugruppe Antriebsdeckel; Montage Verschluss- und Entl\u00fcftungsschraube; Montage der Abdeckung"
+    },
+    {
+        "id": "/mls-api/tasks/222",
+        "contents": "Kick-off Montageanleitung Stirnradgetriebe 2/3-stufig ETS6; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/221",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 Aufgabe 6: Wartung und Instandhaltung; Wartung und Instandhaltung"
+    },
+    {
+        "id": "/mls-api/tasks/220",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 Aufgabe 5: Montage und Demontage; Montagetechnik; Montagestruktur; Montageplanung"
+    },
+    {
+        "id": "/mls-api/tasks/219",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 Aufgabe 4: Antriebstechnik; Elektrische Drehstromantriebe mit festen Drehzahlen; Energiefluss; Kupplungen; Physik der Antriebstechnik; Antriebsauslegung"
+    },
+    {
+        "id": "/mls-api/tasks/218",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 Aufgabe 3: Zahnradgetriebekonstruktion; Zahnradgetriebekonstruktion ; Lagerungen; Lagerlebensdauerbestimmung; Schmierung und Dichtung; Radialwellendichtringe"
+    },
+    {
+        "id": "/mls-api/tasks/217",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 Aufgabe 2: Zahnradgeometrie; Der Modul; Schr\u00e4gverzahnungen; Profil\u00fcberdeckung; Stirnradgetriebemotor; Zahnradbauformen; Verzahnungen"
+    },
+    {
+        "id": "/mls-api/tasks/216",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 Aufgabe 1: Zahnr\u00e4der und Zahnradgetriebe; Getriebemotor und Getriebearten; Physikalische Grundlagen von Stirnradgetrieben; Drehmoment und Leistung; \u00dcbersetzung des Drehmomentes; Wirkungsgrad"
+    },
+    {
+        "id": "/mls-api/tasks/215",
+        "contents": "Kick-off: Stirnradgetriebe 2/3-stufig ETS6; Cover; Sicherheitshinweise; Einf\u00fchrung; Demo-Getriebekoffer ETS6"
+    },
+    {
+        "id": "/mls-api/tasks/214",
+        "contents": "Additive Fertigung 3D-Druck - Aufgabe Zahnradkonfigurator; Getriebe ETS6; Zahnradkonfigurator/-generator (1); Zahnradkonfigurator/-generator (2); Ultimaker Cura (1); Ultimaker Cura (2); Montage"
+    },
+    {
+        "id": "/mls-api/tasks/213",
+        "contents": "Additive Fertigung 3D-Druck - Grundlagen; Additive Fertigungsverfahren; Vor- und Nachteile der Additiven Fertigung; Was ist Rapid Prototyping?; Was ist Rapid Tooling?; Was ist Rapid Manufacturing?"
+    },
+    {
+        "id": "/mls-api/tasks/212",
+        "contents": "Kick-off Additive Fertigung 3D-Druck ETS6; Cover; Sicherheitshinweise; Was ist Additive Fertigung?; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/211",
+        "contents": "Versuch 4.2.: DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO! - Programm Ablauf Werkst\u00fccktransport; Ablaufbeschreibung ; Zuordnungsliste; Ablaufgraph; SPS-Programm (1); SPS-Programm (2); Test"
+    },
+    {
+        "id": "/mls-api/tasks/210",
+        "contents": "Versuch 4.1.: DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO! - Werkst\u00fccktransport; Aufgabe; Technologieschema; Aufbauplan; Stromlaufplan; Einf\u00fchrungsprogramm - Ablaufbeschreibung; Zuordnungsliste; Ablaufgraph; SPS-Programm; Test"
+    },
+    {
+        "id": "/mls-api/tasks/209",
+        "contents": "Versuch 3: DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO! - Geschwindigkeitssteuerung; Aufgabe; Technologieschema; Aufbauplan; Stromlaufplan; Zuordnungsliste; Ablaufgraph; SPS-Programm (1); SPS-Programm (2); Reset-Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/208",
+        "contents": "Versuch 2: DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO! - Erweiterung Tippbetrieb; Aufgabe; Zuordnungsliste; SPS-Programm; Ablaufgraph; SPS-Programm mit Ablaufsteuerung; Test"
+    },
+    {
+        "id": "/mls-api/tasks/207",
+        "contents": "Versuch 1: DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO! - Tippbetrieb; Aufgabe; Technologieschema; Aufbauplan PLC Board 24 V; Aufbauplan PLC Professional Board; Stromlaufplan; Zuordnungsliste; SPS-Programm"
+    },
+    {
+        "id": "/mls-api/tasks/206",
+        "contents": "Arbeitsplanung DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO!; Inbetriebnahme; Betriebsmittelkennzeichnung; E/A-Belegung"
+    },
+    {
+        "id": "/mls-api/tasks/205",
+        "contents": "Kick-off: DC-Transfersystem mit tec2SKILL\u00ae connect - LOGO!; Cover; Sicherheitshinweise; Projektvorstellung; Digitales Modell mit tec2SKILL\u00ae connect"
+    },
+    {
+        "id": "/mls-api/tasks/204",
+        "contents": "IO-Link Versuch 3: Vermessung eines Werkst\u00fcckes; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor programmieren; Schaltausgang programmieren; Sensor \u00fcber IO-Link programmieren (1); Sensor \u00fcber IO-Link programmieren (2); Werkst\u00fcckvermessung"
+    },
+    {
+        "id": "/mls-api/tasks/203",
+        "contents": "IO-Link Versuch 2: Analoge \u00dcberwachung einer Werkzeugl\u00f6seeinheit; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Aufbau der Messanordnung; Sensor einstellen (Teach); Sensor \u00fcber IO-Link programmieren (1); Sensor \u00fcber IO-Link programmieren (2); Messger\u00e4t einstellen; Nachweis der Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/202",
+        "contents": "IO-Link Versuch 1: F\u00fcllstanderfassung eines Tanks planen und ausf\u00fchren; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan ; Messaufbau und Funktionstest; Sensor programmieren; Analogausgang programmieren; Schaltausgang programmieren; Sensor \u00fcber IO-Link programmieren (1); Sensor \u00fcber IO-Link programmieren (2)"
+    },
+    {
+        "id": "/mls-api/tasks/201",
+        "contents": "Arbeitsplanung IO-Link; Verf\u00fcgbare Sensoren; Schritte der Arbeitsplanung"
+    },
+    {
+        "id": "/mls-api/tasks/200",
+        "contents": "Kick-off IO-Link; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/199",
+        "contents": "alt-Grundlagen der Halbleitertechnik Versuch 4: Operationsverst\u00e4rker ; Versuch 4.0.: Invertierender Verst\u00e4rker (1); Versuch 4.0.: Invertierender Verst\u00e4rker (2); Versuch 4.1.: Operationsverst\u00e4rker als nichtinvertierender Verst\u00e4rker (1); Versuch 4.1.: Operationsverst\u00e4rker als nichtinvertierender Verst\u00e4rker (2)"
+    },
+    {
+        "id": "/mls-api/tasks/198",
+        "contents": "alt-Grundlagen der Halbleitertechnik Versuch 3: Die Thyristortriode ; Versuch 3.0.: Z\u00fcnd- und L\u00f6schvorgang an einer Thyristortriode TIC106; Versuch 3.1.: Verfahren zum L\u00f6schen einer Thyristortriode; Versuch 3.1.: Verfahren zum L\u00f6schen einer Thyristortriode (2)"
+    },
+    {
+        "id": "/mls-api/tasks/197",
+        "contents": "alt-Grundlagen der Halbleitertechnik Versuch 2: Bipolare Transistoren; Versuch 2.0.: Aufbau und Funktionsweise von bipolaren Transistoren (1);    Versuch 2.0.: Aufbau und Funktionsweise von bipolaren Transistoren (2); Versuch 2.1.: Wirkungen des Basisstroms auf den Kollektorstrom; Versuch 2.2.: Der Arbeitspunkt einer Verst\u00e4rkerstufe"
+    },
+    {
+        "id": "/mls-api/tasks/196",
+        "contents": "alt-Grundlagen der Halbleitertechnik Versuch 1: Dioden und Gleichrichterschaltungen; Versuch 1.0: PN-\u00dcbergang als Diode ; Versuch 1.1: Einpuls-Mittelpunkt-Schaltung M1 ohne und mit Gl\u00e4ttungskondensator; Versuch 1.2: Die Kennlinien einer Z-Diode; Versuch 1.3: Gleichspannungsbegrenzungen mit der Z-Diode; Versuch 1.4: Leuchtdioden"
+    },
+    {
+        "id": "/mls-api/tasks/195",
+        "contents": "Kick-off Grundlagen der Elektrotechnik Teil 2: Grundlagen der Halbleitertechnik; Cover; Sicherheitshinweise; Sicheres Experimentieren mit Strom und Spannung (Allgemeines); Funktion der Strombegrenzung; Feste Gleichspannung einstellen; Strom in Halbleiterwerkstoffen; Versuche"
+    },
+    {
+        "id": "/mls-api/tasks/194",
+        "contents": "Digitale Sensorik Versuch 5: Sensoranordnung zur Aussortierung wei\u00dfer und sehr heller Kunststoffe; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Aufbau der Messanordnung; Nachweis der Funktion ; Einfluss der Objektfarbe auf den Tastbereich"
+    },
+    {
+        "id": "/mls-api/tasks/193",
+        "contents": "Digitale Sensorik Versuch 4: Sensoranordnung zur Gr\u00f6\u00dfensortierung von Metallteilen; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Aufbau der Messanordnung; Nachweis der Funktion; Einfluss der Ausrichtung des Retrospiegels; Einfluss spiegelnder oder transparenter Objekte auf das Sensorverhalten"
+    },
+    {
+        "id": "/mls-api/tasks/192",
+        "contents": "Digitale Sensorik Versuch 3: Sensoranordnung zur Unterscheidung von Kunststoff und Metallteilen; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Nachweis der Funktion"
+    },
+    {
+        "id": "/mls-api/tasks/191",
+        "contents": "Digitale Sensorik Versuch 2: Sensoranordnung f\u00fcr vorbeifahrende Kunststoffe; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Nachweis der Funktion; Nachweis des Reduktionsfaktors"
+    },
+    {
+        "id": "/mls-api/tasks/190",
+        "contents": "Digitale Sensorik Versuch 1: Sensoranordnung f\u00fcr vorbeifahrende Metalle; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Nachweis der Funktion; Nachweis des Schaltabstands ; Nachweis des Reduktionsfaktors; Nachweis der Hyterese"
+    },
+    {
+        "id": "/mls-api/tasks/189",
+        "contents": "Arbeitsplanung Digitale Sensorik; Verf\u00fcgbare Sensoren; Schritte der Arbeitsplanung"
+    },
+    {
+        "id": "/mls-api/tasks/188",
+        "contents": "Kick-off Digitale Sensorik; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/187",
+        "contents": "Netzanalyse Versuch 6: Untersuchung von Gleichrichterschaltungen; Aufgabe; B6U-Br\u00fccken-Gleichrichtschaltung; M3U-Br\u00fccken-Gleichrichtschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/186",
+        "contents": "Netzanalyse Versuch 5: Entstehung von Oberschwingungen - Messtechnische Untersuchung ; Aufgabe; Sternschaltung bei Belastung mit nichtlinearem Verbraucher; Sternschaltung bei Belastung mit mehreren nichtlinearen Verbrauchern; Ergebnisanalyse"
+    },
+    {
+        "id": "/mls-api/tasks/185",
+        "contents": "Neutralleiterbelastung Versuch 4: Ohm\u2019scher, induktiver bzw. kapazitiver (linearer) Verbraucher ; Aufgabe; Messungen"
+    },
+    {
+        "id": "/mls-api/tasks/184",
+        "contents": "Neutralleiterbelastung Versuch 3: St\u00f6rungen an der Sternschaltung ; Aufgabe; Au\u00dfenleiterausfall; Au\u00dfenleiter- und Neutralleiterausfall; Unsymmetrische Last und Au\u00dfenleiterausfall; Unsymmetrische Last, Au\u00dfen- und Neutralleiterausfall"
+    },
+    {
+        "id": "/mls-api/tasks/183",
+        "contents": "Neutralleiterbelastung Versuch 2: Sternschaltung bei unsymmetrischer Belastung; Aufgabe; Hinweise; Messungen mit Neutralleiter; Messungen ohne Neutralleiter"
+    },
+    {
+        "id": "/mls-api/tasks/182",
+        "contents": "Neutralleiterbelastung Versuch 1: Sternschaltung bei symmetrischer Belastung; Aufgabe; Hinweise; Messungen mit Neutralleiter; Messungen ohne Neutralleiter"
+    },
+    {
+        "id": "/mls-api/tasks/181",
+        "contents": "Kick-off Neutralleiterbelastung - Netzanalyse; Cover; Sicherheitshinweise; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/180",
+        "contents": "Elektrotechnik 1 Versuch 13: Elektromotor; Untersuchung eines permanenterregten Gleichstrommotors; Untersuchung eines Synchronmotors"
+    },
+    {
+        "id": "/mls-api/tasks/179",
+        "contents": "Elektrotechnik 1 Versuch 12: Transformatoren; Praktischer Nachweis der Transformatorwirkung"
+    },
+    {
+        "id": "/mls-api/tasks/178",
+        "contents": "Elektrotechnik 1 Versuch 11: Elektromagnetismus und Spulen; Elektromagnetismus; Phasenverschiebung zwischen Spannung und Strom; Der induktive Blindwiderstand XL"
+    },
+    {
+        "id": "/mls-api/tasks/177",
+        "contents": "Elektrotechnik 1 Versuch 10: Der Kondensator; Grunds\u00e4tzliches zu Lade- und Entladevorg\u00e4ngen; Phasenverschiebung zwischen Strom und Spannung"
+    },
+    {
+        "id": "/mls-api/tasks/176",
+        "contents": "Elektrotechnik 1 Versuch 9: Dreiphasenwechselstrom (Drehstrom); Messungen an Drehstromsystemen; Messungen an symmetrischer und unsymmetrischer Sternschaltung; Messungen an symmetrischer und unsymmetrischer Dreieckschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/175",
+        "contents": "Elektrotechnik 1 Versuch 8: Wirkleistung von Wechselspannungen; Wirkleistung der Sinuswechselspannung in der praktischen \u00dcbung"
+    },
+    {
+        "id": "/mls-api/tasks/174",
+        "contents": "Elektrotechnik 1 Versuch 7: Stromarten und ihre Kenngr\u00f6\u00dfen; Kenngr\u00f6\u00dfen der Sinusspannung in der praktischen \u00dcbung"
+    },
+    {
+        "id": "/mls-api/tasks/173",
+        "contents": "Elektrotechnik 1 Versuch 6: Wirkungsgrad; Praktische Uebung zum Wirkungsgrad"
+    },
+    {
+        "id": "/mls-api/tasks/172",
+        "contents": "Elektrotechnik 1 Versuch 5: Elektrische Leistung und Arbeit; Praktische \u00dcbungen zu Leistung und Arbeit im Stromkreis"
+    },
+    {
+        "id": "/mls-api/tasks/171",
+        "contents": "Elektrotechnik 1 Versuch 4: Zusammenschaltung von Spannungsquellen; Reihenschaltung von Spannungsquellen im Versuch"
+    },
+    {
+        "id": "/mls-api/tasks/170",
+        "contents": "Elektrotechnik 1 Versuch 3: Elektrische Widerst\u00e4nde; Aufnahme der Kennlinie I=f(U); Aufnahme der NTC-Kennlinien I = f (U) und R = f (U); Untersuchung der Abh\u00e4ngigkeit des LDR von der Beleuchtungsst\u00e4rke; Nachweis der Eigenschaften einer Reihenschaltung von Widerst\u00e4nden; Nachweis der Eigenschaften parallel geschalteter Widerst\u00e4nde; Der unbelastete Spannungsteiler; Eigenschaften belasteter Spannungsteiler"
+    },
+    {
+        "id": "/mls-api/tasks/169",
+        "contents": "Elektrotechnik 1 Versuch 2: Ohmsches Gesetz; Das ohmsche Gesetz im Praxisversuch; Untersuchung der Abh\u00e4ngigkeit des Stroms von der Spannung; Aufgaben / Fragen"
+    },
+    {
+        "id": "/mls-api/tasks/168",
+        "contents": "Elektrotechnik 1 Versuch 1: Der elektrische Stromkreis; Der Stromkreis im praktischen Versuch; Aufgaben / Fragen"
+    },
+    {
+        "id": "/mls-api/tasks/167",
+        "contents": "Elektromotoren 2 - Versuch 6: Drehstrom-Synchronreluktanzmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung der Anlauf-Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/166",
+        "contents": "Elektromotoren 2 - Versuch 5: Lastsimulation mit Drehstrom-Asynchronmotoren; Einf\u00fchrung; Lastsimulation mit konstantem Drehmoment (1); Lastsimulation mit konstantem Drehmoment (2); Lastsimulation mit linearem Lastmoment (1); Lastsimulation mit linearem Lastmoment (2); Lastsimulation mit quadratischem Lastmoment; Lastsimulation mit quadratischem Lastmoment (2)"
+    },
+    {
+        "id": "/mls-api/tasks/165",
+        "contents": "Elektromotoren 2 - Versuch 4: Drehstrom-Schleifringl\u00e4ufer; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien; Messung von Kennlinien in Sternschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/164",
+        "contents": "Elektromotoren 2 - Versuch 3: IE4 Asynchronmaschine; Einf\u00fchrung 1; Einf\u00fchrung 2; Aufbau; Elektrischer Anschluss; Manueller Betrieb; Automatische Aufzeichnung einer Kennlinie; Sternschaltung (1); Sternschaltung (2)"
+    },
+    {
+        "id": "/mls-api/tasks/163",
+        "contents": "Elektromotoren 2 - Versuch 2: Drehstrom-Asynchronmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien; Messung von Kennlinien in Sternschaltung"
+    },
+    {
+        "id": "/mls-api/tasks/162",
+        "contents": "Elektromotoren 2 - Versuch 1: Einphasen-Wechselstrommotor; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/161",
+        "contents": "Kick-off  Elektromotoren Teil 2: Wechsel- und Drehstrommotoren; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/160",
+        "contents": "Kopiervorlage Versuche 56226 Elektromotoren; step; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt"
+    },
+    {
+        "id": "/mls-api/tasks/159",
+        "contents": "Elektromotoren 1 - Versuch 5: Schrittmotor; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/158",
+        "contents": "Elektromotoren 1 - Versuch 4: B\u00fcrstenloser Gleichstrommotor (BLDC); Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/157",
+        "contents": "Elektromotoren 1 - Versuch 3: Gleichstrom-Doppelschlussmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/156",
+        "contents": "Elektromotoren 1 - Versuch 2: Gleichstrom-Reihenschlussmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/155",
+        "contents": "Elektromotoren 1 - Versuch 1: Fremderregte Gleichstrom-Nebenschlussmaschine; Einf\u00fchrung; Versuchsprinzip; Aufbau; Elektrischer Anschluss; Messungen im station\u00e4ren Betrieb; Auswertung der Ergebnisse; Messung von Kennlinien"
+    },
+    {
+        "id": "/mls-api/tasks/154",
+        "contents": "Einf\u00fchrung und Grundlagen; Magnetisches Feld; Durchflutungsgesetz; Induktionsgesetz; Lorentzkraft; Aufbau einer rotierenden elektrischen Maschine; Verst\u00e4ndnisfragen"
+    },
+    {
+        "id": "/mls-api/tasks/153",
+        "contents": "Kick-off  Elektromotoren Teil 1: Gleichstrommotoren; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf"
+    },
+    {
+        "id": "/mls-api/tasks/152",
+        "contents": "Analoge Sensorik Versuch 3:  Pr\u00fcfung des Beh\u00e4lterdeckels; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Messger\u00e4t einstellen; Nachweis der Funktion; Nachweis des Schaltabstandes; Nachweis des Reduktionsfaktors"
+    },
+    {
+        "id": "/mls-api/tasks/151",
+        "contents": "Analoge Sensorik Versuch 2:  F\u00fcllstandserfassung eines Lagers f\u00fcr Beh\u00e4lter; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor einstellen (Teach); Nachweis der Funktion; Nachweis der Hysterese; Ermittlung der Schallkeule; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/150",
+        "contents": "Analoge Sensorik Versuch 1:  F\u00fcllstandserfassung eines Palettenlagers; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor einstellen (Teach); Nachweis der Funktion; Nachweis der Hysterese; Nachweis der Reflektivit\u00e4t; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/149",
+        "contents": "Arbeitsplanung Analoge Sensorik; Verf\u00fcgbare Sensoren; Schritte der Arbeitsplanung"
+    },
+    {
+        "id": "/mls-api/tasks/148",
+        "contents": "Kick-off Analoge Sensorik; Cover; Sicherheitshinweise; Einf\u00fchrung und Ablauf; Projektvorstellung"
+    },
+    {
+        "id": "/mls-api/tasks/147",
+        "contents": "Grundlagen: Laser-Abstandssensor; Funktionsprinzip; Einsatzarten von optischen Sensoren"
+    },
+    {
+        "id": "/mls-api/tasks/146",
+        "contents": "Analoge Sensorik Versuch 1:  F\u00fcllstandserfassung eines Palettenlagers; Auftrag; Simulation der Aufgabenstellung; Informationsbeschaffung und Sensorauswahl; Stromlaufplan; Messaufbau und Funktionstest; Sensor einstellen (Teach); Nachweis der Funktion; Nachweis der Hysterese; Nachweis der Reflektivit\u00e4t; Detektionsverhalten bei Verkippung"
+    },
+    {
+        "id": "/mls-api/tasks/145",
+        "contents": "Kick-off; Analyse"
+    },
+    {
+        "id": "/mls-api/tasks/144",
+        "contents": "Transfersystem mit Gleichstrom 4.0 Teil 7; 7. Aufgabe 4: Werkst\u00fccktransport  7.1 Aufgabenstellung; 7.2 Voraussetzung; 7.3 Technologieschema und Aufbauplan; 7.4 Aufbauplan; 7.5 Stromlaufplan; 7.6 Aufgabe 4.1: Einf\u00fchrunsprogramm; 7.7 Aufgabe 4.2: Programm Ablauf Werkst\u00fccktransport"
+    },
+    {
+        "id": "/mls-api/tasks/143",
+        "contents": "Transfersystem mit Gleichstrom 4.0 Teil 6; 6. Aufgabe 3: Geschwindigkeitssteuerung 6.1 Aufgabenstellung; 6.2 Voraussetzungen; 6.3 Technologieschema; 6.4 Aufbauplan; 6.5 Stromlaufplan; 6.6 Variablentabelle; 6.7 Ablaufgraph; 6.8 SPS-Programm"
+    },
+    {
+        "id": "/mls-api/tasks/142",
+        "contents": "Transfersystem mit Gleichstrom 4.0 Teil 5; 5. Aufgabe 2: Erweiterung Tippbetrieb; 5.1 Aufgabenstellung; 5.2 Variablentabelle; 5.3 Ablaufgraph; 5.4 SPS-Programm"
+    },
+    {
+        "id": "/mls-api/tasks/141",
+        "contents": "Transfersystem mit Gleichstrom 4.0 Teil 4; 4. Aufgabe 1: Tippbetrieb 4.1 Aufgabenstellung; 4.2 Voraussetzung ; 4.3 Technologieschema; 4.4 Aufbauplan; 4.5 Stromlaufplan; 4.6 Variablentabelle; 4.7 SPS-Programm "
+    },
+    {
+        "id": "/mls-api/tasks/140",
+        "contents": "Transfersystem mit Gleichstrom 4.0 Teil 3; 3. Hinweise zur Programmierung; 3.1 E/A- und Programmvariablen; 3.2 Benennung der Programmvariablen; 3.3 Beibehaltung positiver Logik"
+    },
+    {
+        "id": "/mls-api/tasks/139",
+        "contents": "Transfersystem mit Gleichsstromantrieb 4.0 Teil 1; Cover und Sicherheitshinweise; 1. Elektrische Inbetriebnahme 1.1 Fertigungslinie mit F\u00f6rderband; 1.2 Inbetriebnahme; 1.3 Kontrolle"
+    },
+    {
+        "id": "/mls-api/tasks/138",
+        "contents": "Stirnradgetriebe ETS6 4.0 Teil 7; 6. Wartung und Instandhaltung 6.1 Allgemein; 6.2 Ziele der Instandhaltung; 6.3 Instandhaltung"
+    },
+    {
+        "id": "/mls-api/tasks/137",
+        "contents": "Stirnradgetriebe ETS6 4.0 Teil 6; 5. Montage und Demontage 5.1 Montagetechnik; 5.2 Montagestruktur; 5.3 Montageplanung; 5.4 3-stufiges Getriebe Montageplanung"
+    },
+    {
+        "id": "/mls-api/tasks/136",
+        "contents": "Stirnradgetriebe ETS6 4.0 Teil 5; 4. Antriebstechnik 4.1 Elektrische Drehstromantriebe mit festen Drehzahlen; 4.2 Energiefluss; 4.3 Kupplungen; 4.4 Physik der Antriebstechnik"
+    },
+    {
+        "id": "/mls-api/tasks/135",
+        "contents": "Stirnradgetriebe ETS6 4. Teil 4; 3. Zahnradgetriebekonstruktion; 3.1 Lagerung"
+    },
+    {
+        "id": "/mls-api/tasks/134",
+        "contents": "Stirnradgetriebe ETS6 4.0 Teil 3; 2. Zahnradgeometrie 2.1 Grundlagen- der Modul; 2.2 Schr\u00e4gverzahnung; 2.3 Profil\u00fcberdeckung; 2.4 Stirnradgetriebemotor; 2.5 Zahnradbauformen; 2.6 Verzahnung"
+    },
+    {
+        "id": "/mls-api/tasks/133",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS6 4.0 Teil 2; 1. Zahnr\u00e4der und Zahnradgetriebe 1.1 Getriebe; 1.2 Getriebemotor; 1.3 Getriebearten; 1.4 Physikalische Grundlagen von Stirnradgetrieben; 1.5 Drehmoment und Leistung; 1.6 \u00dcbersetzung des Drehmomentes; 1.7 Wirkungsgrad"
+    },
+    {
+        "id": "/mls-api/tasks/132",
+        "contents": "Stirnradgetriebe 2/3-stufig ETS 6 4.0 Teil 1; Cover und Sicherheitshinweise; Vorwort und Unterrichtlicher Einsatz; Grundlegendes; Schnittdarstellungen"
+    },
+    {
+        "id": "/mls-api/tasks/131",
+        "contents": "Grundlagen der Sensorik Analog 4.1 Teil 11; 6. Dritter betrieblicher Auftrag: Sensoranordnung f\u00fcr die Pr\u00fcfung des Beh\u00e4lterdeckels planen und ausf\u00fchren; 6.1 Aufgabenstellung; 6.2 Vereinfachungen/ Simulationen; 6.3 Arbeitsplanung; 6.4 Stromlaufplan; 6.5 Aufbau der Messanordnung; 6.5.1 Messger\u00e4t einstellen; 6.6 Nachweis der Funktion; 6.6.1 Auswertung des Versuchs; 6.7 Aufgabenstellung"
+    },
+    {
+        "id": "/mls-api/tasks/130",
+        "contents": "Grundlagen der Sensorik Analog 4.1 Teil 10; 5. Zweiter betrieblicher Auftrag: Sensoranordnung f\u00fcr die F\u00fcllstandserfassung eines Lagers f\u00fcr Beh\u00e4lter planen und ausf\u00fchren; 5.1 Aufgabenstellung; 5.2 Vereinfachungen/ Simulationen; 5.3 Arbeitsplanung; 5.4 Stromlaufplan; 5.5  Aufbau der Messanordnung; 5.5.1 Sensor einstellen (Teach); 5.5.2 Messger\u00e4t einstellen; 5.6 Nachweis der Funktion; 5.6.1 Auswertung des Versuchs"
+    },
+    {
+        "id": "/mls-api/tasks/129",
+        "contents": "Grundlagen der Sensorik Analog 4.1 Teil 8; 3.3 Laser-Abstandssensor; 3.3.1 Funktionsprinzip; 3.3.2 Einsatzarten von optischen Sensoren; 3.3.3 Kontrollfragen und Umgang mit dem Datenblatt"
+    },
+    {
+        "id": "/mls-api/tasks/128",
+        "contents": "Grundlagen der Sensorik Analog 4.1 Teil 7; 3.2 Ultraschallsensor; 3.2.1 Funktionsprinzip ; 3.2.2 Die Schallkeule eines Ultraschallsensors; 3.2.3 Auswertung der Messergebnisse ; 3.2.4 Einflussgr\u00f6\u00dfen auf die Messgenauigkeit des Ultraschallsensors; 3.2.5 Kontrollfragen und Umgang mit dem Datenblatt"
+    },
+    {
+        "id": "/mls-api/tasks/127",
+        "contents": "Grundlagen der Sensorik 4.1 Teil 6; 3. Sensoren der betrieblichen Auftr\u00e4ge; 3.1 Induktiver N\u00e4herungssensor; 3.1.1 Funktionsprinzip; 3.1.2 Kontrollfragen und Umgang mit dem Datenblatt"
+    },
+    {
+        "id": "/mls-api/tasks/126",
+        "contents": "Grundlagen: Charakterisierung von Messeigenschaften; Messbereich und Genauigkeit der Messung; Linearit\u00e4tsfehler; Empfindlichkeit und Aufl\u00f6sung; Schaltabst\u00e4nde und Reduktionsfaktor; Mess-/ Schaltfrequenz; Schalthysterese; Ansprechkurve"
+    },
+    {
+        "id": "/mls-api/tasks/125",
+        "contents": "Grundlagen der Sensorik 4.1 Teil 1; Sicherheitshinweise; 1. Einf\u00fchrung"
+    },
+    {
+        "id": "/mls-api/tasks/124",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te 4.4 Teil 6; 4.3 Wiederholungspr\u00fcfung einer Bohrmaschine; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/123",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 13; 4.10 Pr\u00fcfung einer Waschmaschine; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/122",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 14; 5. Fehlertabellen; 5.1 B\u00fcgeleisen; 5.2 Tauchsiedler; 5.3 Bohrmaschine; 5.4 PC; 5.5 Kabeltrommel; 5.6 Kaffeeautomat; 5.7 Herd; 5.8 Radio; 5.9 Netzger\u00e4t"
+    },
+    {
+        "id": "/mls-api/tasks/121",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 12; 4.9 Wiederholungspr\u00fcfung eines Netzger\u00e4tes; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/120",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 11; 4.8 Wiederholungspr\u00fcfung eines Radios ; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/119",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 10; 4.7 Pr\u00fcfung eines Elektroherdes nach einer Reparatur; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/118",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te 4.0 Teil 9; 4.6 Wiederholungspr\u00fcfung eines Kaffeeautomaten; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/117",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 8; 4.5 Wiederholungspr\u00fcfung einer Kabeltrommel; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/116",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Teil 7; 4.4 Wiederholungspr\u00fcfung eines PCs; Part 2; Neuer Arbeitsschritt; Neuer Arbeitsschritt; Neuer Arbeitsschritt"
+    },
+    {
+        "id": "/mls-api/tasks/115",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te 4.4 Teil 5; 4.2 Pr\u00fcfung eines Tauchsieders; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/114",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te 4.4 Teil 4 (kopiert); 4. Aufgaben; 4.1 Wiederholungspr\u00fcfung eines B\u00fcgeleisens; Part 2"
+    },
+    {
+        "id": "/mls-api/tasks/113",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Version 4.4 Teil 3; 3. Definitionen / 3.1 Ortsfeste Betriebsmittel; 3.2 Ortsver\u00e4nderliche Verbraucher; 3.3 Aktive und passive Messung; 3.4 Definitionen der Schutzklassen"
+    },
+    {
+        "id": "/mls-api/tasks/112",
+        "contents": "Pr\u00fcfung elektrischer Ger\u00e4te Version 4.4 Teil 1; Deckblatt/ Sicherheitshinweise; 1. Einleitung; 1.1 Anforderungen an den Pr\u00fcfer; 1.2 - 1.4 ; 1.5 Pr\u00fcffristen nach DGUV Vorschrift 3"
+    },
+    {
+        "id": "/mls-api/tasks/46",
+        "contents": "Vorstellung Projekt Presse futurelearning (Demo) [0]; Start; informieren Pressenfu\u00df / BG1; informieren Verbindungsteil_innen; Funktionsbeschreibung Verbindungsteil_innen; Funktionsbeschreibung L\u00f6sungsvorschlag; technische Darstellung Verbindungsteil_innen; informieren K\u00f6rnen; planen Verbindungsteil_innen; Arbeitsschrittkarten Verbindungsteil_innen; entscheiden Verbindungsteil_innen"
+    },
+    {
+        "id": "/mls-api/tasks/45",
+        "contents": "Verbindungsplatte [2_3]; Start; informieren technische Darstellungen; informieren Verfahrenshinweise; planen Verbindungsplatte; entscheiden Verbindungsplatte; Arbeitsplan Verbindungsplatte; durchf\u00fchren Verbindungsplatte; kontrollieren Verbindungsplatte; Erfolgskonrolle Verbindungsplatte; Lernprozess bewerten"
+    },
+    {
+        "id": "/mls-api/tasks/44",
+        "contents": "Pressens\u00e4ule / BG2 Montage [2_8]; Start; informieren technische Darstellungen; informieren Montage Pressens\u00e4ule (BG2); planen Montage Pressens\u00e4ule (BG2); entscheiden Montage Pressens\u00e4ule (BG2); Montageanleitung Pressens\u00e4ule (BG2); durchf\u00fchren Montage Pressens\u00e4ule (GB2); kontrollieren Montage Pressens\u00e4ule (BG2); Erfolgskongrolle Montage Pressens\u00e4ule (BG2); Lernprozess bewerten"
+    },
+    {
+        "id": "/mls-api/tasks/43",
+        "contents": "Gewindespindel [2_7]; Start; informieren Funktion Gewindespindel; informieren technische Darstellungen; informieren Verfahrenshinweise; planen Gewindespindel; entscheiden Gewindespindel; Arbeitsplan Gewindespindel; durchf\u00fchren Gewindespindel; kontrollieren Gewindespindel; Erfolgskontrolle Gewindespindel"
+    },
+    {
+        "id": "/mls-api/tasks/42",
+        "contents": "S\u00e4ule [2_6]; Start; informieren Funktion S\u00e4ule; informieren technische Darstellungen; informieren Verfahrenshinweise; informieren Messen III; planen S\u00e4ule; entscheiden S\u00e4ule; Arbeitsplan S\u00e4ule; durchf\u00fchren S\u00e4ule; kontrollieren S\u00e4ule"
+    },
+    {
+        "id": "/mls-api/tasks/41",
+        "contents": "Halterung [2_5]; Start; Funktionsbeschreibung (L\u00f6sungsvorschlag); informieren technische Darstellungen; informieren Verfahrenshinweise; informieren Drehen I; informieren Drehen II; informieren Arbeitssicherheit Drehen; informieren Au\u00dfengewinde schneiden; planen Halterung; Arbeitsschrittkarten Halterung"
+    },
+    {
+        "id": "/mls-api/tasks/40",
+        "contents": "Deckplatte [2_4]; Start; informieren technische Darstellungen; informieren Verfahrenshinweise; planen Deckplatte; entscheiden Deckplatte; Arbeitsplan Deckplatte; durchf\u00fchren Deckplatte; kontrollieren Deckplatte; Erfolgskontrolle Deckplatte; Lernprozess bewerten"
+    },
+    {
+        "id": "/mls-api/tasks/39",
+        "contents": "Seitenplatten [2_2]; Start; Funktionsbeschreibung (L\u00f6sungsvorschlag); informieren technische Darstellungen; informieren Verfahrenshinweise; informieren Fr\u00e4sen I; informieren Fr\u00e4sen II; informieren Kantentaster; informieren Arbeitssicherheit Fr\u00e4sen I; planen Seitenplatten; Arbeitsschrittkarten Seitenplatten"
+    },
+    {
+        "id": "/mls-api/tasks/38",
+        "contents": "Pressens\u00e4ule / BG2 [2_1] - informieren; informieren"
+    },
+    {
+        "id": "/mls-api/tasks/37",
+        "contents": "Gesamtmontage Presse [6_1]; Arbeitsschritt Montage Gessamtprojekt Presse; planen Montage Gessamtprojekt Presse; Montageplan Gessamtprojekt Presse; durchf\u00fchren Montage Gessamtprojekt Presse; Erfolgskontrolle Gessamtprojekt Presse; \"Ich kann ...\"-Liste \u00fcberfachliche Kompetenzen; \"Ich kann ...\"-Liste fachliche Kompetenzen"
+    },
+    {
+        "id": "/mls-api/tasks/36",
+        "contents": "Tischplatte / BG5 [5_1]; informieren Tischplatte; planen Tischplatte; Arbeitsplan Tischplatte; durchf\u00fchren Tischplatte; Erfolgskontrolle Tischplatte; \"Ich kann ...\"-Liste \u00fcberfachliche Kompetenzen; \"Ich kann ...\"-Liste fachliche Kompetenzen"
+    },
+    {
+        "id": "/mls-api/tasks/35",
+        "contents": "elektrotechnische Erweiterung [4_2]; informieren elektrotechnische Erweiterung"
+    },
+    {
+        "id": "/mls-api/tasks/34",
+        "contents": "Pressenkopf / BG4 [4_1] ; informieren Pressenkopf (BG4); planen Bauteile Pressenkopf (BG4); Arbeitsplan leer; durchf\u00fchren Bauteile Pressenkopf (BG4); Erfolgskontrolle leer; planen Montage Pressenkopf (BG4); Montageplan Pressenkopf  (BG4); durchf\u00fchren Montage Pressenkopf (BG4); Erfolgskontrolle Montage Pressenkopf  (BG4); \"Ich kann ...\"-Liste \u00fcberfachliche Kompetenzen"
+    },
+    {
+        "id": "/mls-api/tasks/33",
+        "contents": "Verbindungsteil_au\u00dfen [1_9] - bewerten; Lernprozess bewerten; \"Ich kann ...\"-Liste \u00fcberfachliche Kompetenzen; \"Ich kann ...\"-Liste fachliche Kompetenzen"
+    },
+    {
+        "id": "/mls-api/tasks/32",
+        "contents": "Verbindungsteil_au\u00dfen [1_8] - durchf\u00fchren und kontrollieren; durchf\u00fchren Verbindungsteil_au\u00dfen ; kontrollieren Verbindungsteil_au\u00dfen; Ergebniskontrolle Verbindungsteil_au\u00dfen; Bohrplatte Verbindungsteil_au\u00dfen"
+    },
+    {
+        "id": "/mls-api/tasks/31",
+        "contents": "Verbindungsteil_au\u00dfen [1_7] - planen und entscheiden; planen Verbindungsteil_au\u00dfen; entscheiden Verbindungsteil_au\u00dfen; Arbeitsplan Verbindungsteil_au\u00dfen"
+    },
+    {
+        "id": "/mls-api/tasks/30",
+        "contents": "Verbindungsteil_au\u00dfen [1_6] - informieren; Start; informieren Funktion Verbindungsteil_au\u00dfen; informieren technische Darstellung; informieren Verfahrenshinweise; informieren S\u00e4gen"
+    },
+    {
+        "id": "/mls-api/tasks/29",
+        "contents": "Pressenfu\u00df / BG1 Montage  [1_15]; Start; informieren Funktion Pressenfu\u00df; informieren Montage Pressenfu\u00df; L\u00f6sung Montageanforderungen; informieren technische Darstellungen; informieren Reiben; informieren Lehren; informieren F\u00fcgen; planen Montage Pressenfu\u00df (BG1); entscheiden Montage Pressenfu\u00df (BG1)"
+    },
+    {
+        "id": "/mls-api/tasks/28",
+        "contents": "Tr\u00e4gerplatte [1_14]; Start; informieren Funktion Tr\u00e4gerplatte; informieren technische Darstellungen; informieren Verfahrenshinweise; planen Tr\u00e4gerplatte; entscheiden Tr\u00e4gerplatte; Arbeitsplan Tr\u00e4gerplatte; durchf\u00fchren Tr\u00e4gerplatte; kontrollieren Tr\u00e4gerplatte; Erfolgskontrolle Tr\u00e4gerplatte"
+    }
+]

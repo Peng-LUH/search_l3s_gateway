@@ -30,21 +30,24 @@ model_search_srv_connection_response = Model('DtoSearchSrvConnectionResponse', {
 
 
 model_get_dataset_response = Model('DtoGetDatasetResponse', {
+    "message": fields.String(),
     "results": fields.List(fields.String())
 })
-
 
 dto_unit_search_response = Model('DtoUnitSearchResponse', {
     'unit_ids': fields.List(fields.String(), description = 'List of unit ids')
 })
 
 
-dto_search_events_request = Model('DtoSearchEventsRequest', {
-    "entity_type": fields.String(default='task', required=True),
-    "id": fields.String(required=True, description='task id'),
-    "method": fields.String(required=True, description='http methods')
+dto_search_response = Model("DtoSearchResponse", {
+    "user_id": fields.String(description="user ID", default=None),
+    "owner": fields.String(description="company ID", default=None),
+    "entity_id": fields.String(),
+    "entity_type": fields.String(),
+    "similarity": fields.Float()
 })
 
-dto_search_events_response = Model('DtoSearchEventsResponse', {
-    
+dto_search_response_list = Model("DtoSearchResponseList",{
+    "message": fields.String(),
+    "results": fields.List(fields.Nested(dto_search_response)),
 })

@@ -1,0 +1,3483 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/skill-repositories/getAllSkills": {
+      "get": {
+        "operationId": "SkillMgmtController_getAllSkills",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories": {
+      "post": {
+        "operationId": "SkillMgmtController_searchForRepositories",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillRepositorySearchDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillRepositoryListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/byOwner/{ownerId}": {
+      "get": {
+        "operationId": "SkillMgmtController_listRepositories",
+        "summary": "",
+        "description": "Lists all repositories of the specified user, without showing its content.",
+        "parameters": [
+          {
+            "name": "ownerId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillRepositoryListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/byId/{repositoryId}": {
+      "get": {
+        "operationId": "SkillMgmtController_loadRepository",
+        "summary": "",
+        "description": "Returns one repository and its unresolved elements.\nSkills and their relations are handled as IDs and need to be resolved on the client-side.",
+        "parameters": [
+          {
+            "name": "repositoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnresolvedSkillRepositoryDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/findSkills": {
+      "post": {
+        "operationId": "SkillMgmtController_findSkills",
+        "summary": "",
+        "description": "Lists all skills matching given attributes.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillSearchDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/resolve/{repositoryId}": {
+      "get": {
+        "operationId": "SkillMgmtController_loadResolvedRepository",
+        "summary": "",
+        "description": "Returns one resolved repository and its elements.\nSkills and their relations are resolved at the server.",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "repositoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResolvedSkillRepositoryDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/resolve/findSkills": {
+      "post": {
+        "operationId": "SkillMgmtController_findSkillsResolved",
+        "summary": "",
+        "description": "Lists all skills.",
+        "deprecated": true,
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillSearchDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResolvedSkillListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/create": {
+      "post": {
+        "operationId": "SkillMgmtController_createRepository",
+        "summary": "",
+        "description": "Creates a new skill repository for the specified user.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillRepositoryCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillRepositoryDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/{repositoryId}/skill/add_skill": {
+      "post": {
+        "operationId": "SkillMgmtController_addSkill",
+        "summary": "",
+        "description": "Creates a new skill at the specified repository and returns the created skill.",
+        "parameters": [
+          {
+            "name": "repositoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/repository/adapt": {
+      "post": {
+        "operationId": "SkillMgmtController_adaptRepo",
+        "summary": "",
+        "description": "Adapts a repository and returns the adapted it.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillRepositoryDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UnresolvedSkillRepositoryDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/{repositoryId}": {
+      "delete": {
+        "operationId": "SkillMgmtController_deleteRepo",
+        "parameters": [
+          {
+            "name": "repositoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/skill/{skillId}": {
+      "get": {
+        "operationId": "SkillMgmtController_getSkill",
+        "summary": "",
+        "description": "Returns the specified skill.",
+        "parameters": [
+          {
+            "name": "skillId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/resolve/skill/{skillId}": {
+      "get": {
+        "operationId": "SkillMgmtController_getResolvedSkill",
+        "summary": "",
+        "description": "Returns the specified skill.",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "skillId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResolvedSkillDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/skill/adapt_skill": {
+      "put": {
+        "operationId": "SkillMgmtController_adaptSkill",
+        "summary": "",
+        "description": "Adapts a skill at the specified repository and returns the adapted skill.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/skill/deleteWithoutCheck/{skillId}": {
+      "delete": {
+        "operationId": "SkillMgmtController_deleteSkillWithoutCheck",
+        "summary": "",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "skillId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/skill-repositories/skill/deleteWithCheck/{skillId}": {
+      "delete": {
+        "operationId": "SkillMgmtController_deleteSkillWithCheck",
+        "parameters": [
+          {
+            "name": "skillId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Skill"
+        ]
+      }
+    },
+    "/nuggets/showAllNuggets": {
+      "get": {
+        "operationId": "NuggetMgmtController_listNuggets",
+        "summary": "",
+        "description": "Lists all nuggets.",
+        "deprecated": true,
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Nugget"
+        ]
+      }
+    },
+    "/nuggets/add_nugget": {
+      "post": {
+        "operationId": "NuggetMgmtController_addNugget",
+        "summary": "",
+        "description": "Creates a new nugget at the specified repository and returns the created nugget.",
+        "deprecated": true,
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NuggetCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NuggetDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Nugget"
+        ]
+      }
+    },
+    "/nuggets/{nuggetId}": {
+      "get": {
+        "operationId": "NuggetMgmtController_getNugget",
+        "summary": "",
+        "description": "Returns the specified nugget.",
+        "deprecated": true,
+        "parameters": [
+          {
+            "name": "nuggetId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/NuggetDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Nugget"
+        ]
+      }
+    },
+    "/learning-paths": {
+      "post": {
+        "operationId": "LearningPathMgmtController_createEmptyLearningPath",
+        "summary": "",
+        "description": "Creates a new empty learning path for the specified owner (orga-id).",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateEmptyPathRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningPathDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "LearningPath"
+        ]
+      },
+      "get": {
+        "operationId": "LearningPathMgmtController_getLearningPathsOfOwner",
+        "summary": "",
+        "description": "Returns all LearningPaths of the specified owner (orga-id).",
+        "parameters": [
+          {
+            "name": "owner",
+            "required": false,
+            "in": "query",
+            "description": "Filter by owner if value is given, otherwise return all",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "Page number - set up value if pagination is needed",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pageSize",
+            "required": false,
+            "in": "query",
+            "description": "Number of items per page - set up value if pagination is needed",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningPathListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "LearningPath"
+        ]
+      }
+    },
+    "/learning-paths/{pathId}": {
+      "patch": {
+        "operationId": "LearningPathMgmtController_updateLearningPath",
+        "summary": "",
+        "description": "Partially updates a LearningPath. This function considers a tristate logic:\n- null: The field shall be deleted (reset to default), this is supported only by optional fields\n- undefined: The field shall not be changed\n- value: The field shall be updated to the given value\n\nTo specify a suggested ordering you need to pass the affected learning unit IDs in the array \"recommendedUnitSequence\" in the desired order.\nThe old order will always be completely overwritten if a \"recommendedUnitSequence\" is defined, i.e., the recommendation of unspecified units will be deleted for this LearningPath.\nThe old order will be kept if \"recommendedUnitSequence\" is undefined/not passed as parameter.\n\nDefault ordering of first 5 units of the first DigiMedia chapter:\n```json\n{\n  \"recommendedUnitSequence\": [\"2001\", \"2002\", \"2005\", \"2003\", \"2004\"]\n}\n```",
+        "parameters": [
+          {
+            "name": "pathId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePathRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningPathDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "LearningPath"
+        ]
+      },
+      "delete": {
+        "operationId": "LearningPathMgmtController_deleteLearningPath",
+        "summary": "",
+        "description": "Deletes a drafted Learning-Path or returns a 403 error.",
+        "parameters": [
+          {
+            "name": "pathId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "LearningPath"
+        ]
+      },
+      "get": {
+        "operationId": "LearningPathMgmtController_getLearningPath",
+        "summary": "",
+        "description": "Returns the specified learningpath.",
+        "parameters": [
+          {
+            "name": "pathId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningPathDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "LearningPath"
+        ]
+      }
+    },
+    "/learning-units/showAllLearningUnits": {
+      "get": {
+        "operationId": "SearchLearningUnitController_listLearningUnits",
+        "summary": "",
+        "description": "Lists all learningUnits.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchLearningUnitListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      }
+    },
+    "/learning-units": {
+      "post": {
+        "operationId": "SearchLearningUnitController_addLearningUnitSearch",
+        "summary": "",
+        "description": "Creates a new learningUnit at the specified repository and returns the created learningUnit.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchLearningUnitCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchLearningUnitDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      },
+      "get": {
+        "operationId": "SearchLearningUnitController_getLearningUnitSearchWithFilter",
+        "parameters": [
+          {
+            "name": "requiredSkills",
+            "required": false,
+            "in": "query",
+            "description": "Filter by required skills",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "teachingGoals",
+            "required": false,
+            "in": "query",
+            "description": "Filter by required teachingGoals",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "owners",
+            "required": false,
+            "in": "query",
+            "description": "Filter by owners",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchLearningUnitListDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      }
+    },
+    "/learning-units/{learningUnitId}": {
+      "get": {
+        "operationId": "SearchLearningUnitController_getLearningUnit",
+        "summary": "",
+        "description": "Returns the specified learningUnit.",
+        "parameters": [
+          {
+            "name": "learningUnitId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SearchLearningUnitDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      },
+      "delete": {
+        "operationId": "SearchLearningUnitController_deleteLearningUnit",
+        "parameters": [
+          {
+            "name": "learningUnitId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      },
+      "patch": {
+        "operationId": "SearchLearningUnitController_patchLearningUnit",
+        "parameters": [
+          {
+            "name": "learningUnitId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchLearningUnitCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      }
+    },
+    "/learning-units/{learningUnitId}/checks": {
+      "put": {
+        "operationId": "SearchLearningUnitController_checkLearningUnit",
+        "parameters": [
+          {
+            "name": "learningUnitId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Learning-units"
+        ]
+      }
+    },
+    "/PathFinder/computePath": {
+      "post": {
+        "operationId": "PathFinderController_computePath",
+        "summary": "",
+        "description": "Computes the optimal learning path to learn the specified skill(s).\n\nParameters:\n- goal (mandatory): The list of skills to be learned.\n- userId (optional): If specified, path will be computed and optimized for the specified user, e.g., considering learned skills and learning behavior.\n- optimalSolution (optional): If unspecified, algorithm will use a fast, greedy approach to find a path. If true, the algorithm will try to find an optimal path, at cost of performance.\n\n\n\n\nDefault path for learning Java (skill 1009)\n```json\n{\n  \"goal\": [\"1009\"]\n}\n```\n\nPath for learning DigiMedia (skills 2501 - 2512) for user 2001, ensure performant computation\n```json\n{\n  \"goal\": [\"2501\", \"2502\", \"2503\", \"2504\", \"2505\", \"2506\", \"2507\", \"2508\", \"2509\", \"2510\", \"2511\", \"2512\"],\n  \"userId\": \"2001\",\n  \"optimalSolution\": false\n}\n```",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PathRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PathDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "PathFinder"
+        ]
+      }
+    },
+    "/PathFinder/{userId}": {
+      "post": {
+        "operationId": "PathFinderController_storePersonalizedPath",
+        "summary": "Experimental (WIP)",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PathStorageRequestDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PathStorageResponseDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "PathFinder"
+        ]
+      }
+    },
+    "/showAllUser": {
+      "get": {
+        "operationId": "UserMgmtController_listUsers",
+        "summary": "",
+        "description": "Lists all users.",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/users": {
+      "post": {
+        "operationId": "UserMgmtController_addUser",
+        "summary": "",
+        "description": "Creates a new user returns the created user.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/add_company": {
+      "post": {
+        "operationId": "UserMgmtController_addCompany",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompanyCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CompanyCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/add_learningProfile": {
+      "post": {
+        "operationId": "UserMgmtController_addLearningProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningProfileCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningProfileCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/add_Qualification": {
+      "post": {
+        "operationId": "UserMgmtController_addQualification",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualificationCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualificationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/add_LearningHistory": {
+      "post": {
+        "operationId": "UserMgmtController_addLearningHistory",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningHistoryCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningHistoryCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/add_CareerProfile": {
+      "post": {
+        "operationId": "UserMgmtController_addCareerProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CareerProfileCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerProfileDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/user-profiles/{user_profile_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getuserProfiles",
+        "summary": "",
+        "description": "Returns the specified user-profile.",
+        "parameters": [
+          {
+            "name": "user_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_deleteuserProfiles",
+        "summary": "",
+        "description": "Deletes the specified user-profile.",
+        "parameters": [
+          {
+            "name": "user_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/{id}/learning-progress": {
+      "get": {
+        "operationId": "UserMgmtController_getUserLearningProgress",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "post": {
+        "operationId": "UserMgmtController_createLearningProgress",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateLearningProgressDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_deleteLearningProgress",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/career-profiles": {
+      "get": {
+        "operationId": "UserMgmtController_getCareerProfileByFilter",
+        "parameters": [
+          {
+            "name": "userId",
+            "required": false,
+            "in": "query",
+            "description": "Filter by userId",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/career-profiles/{career_profile_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getCareerProfileByID",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_delCareerProfileByID",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "patch": {
+        "operationId": "UserMgmtController_patchCareerProfileByID",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CareerProfileCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerProfileDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/career-profiles/{career_profile_id}/job_history": {
+      "post": {
+        "operationId": "UserMgmtController_addJob",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/JobCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/career-profiles/{career_profile_id}/{job_history_id}": {
+      "patch": {
+        "operationId": "UserMgmtController_patchJobHistoryAtCareerProfileByID",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/JobUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_deleteJobHistoryAtCareerProfileByID",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "job_history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/learning-profiles/{learning_profile_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getLearningProfileByID",
+        "parameters": [
+          {
+            "name": "learning_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_delLearningProfileByID",
+        "parameters": [
+          {
+            "name": "learning_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "patch": {
+        "operationId": "UserMgmtController_patchLearningProfileByID",
+        "parameters": [
+          {
+            "name": "learning_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningProfileCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/learning-history/{history_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getLearningHistoryById",
+        "summary": "Experimental (WIP)",
+        "parameters": [
+          {
+            "name": "history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "post": {
+        "operationId": "UserMgmtController_createLearningHistory",
+        "parameters": [
+          {
+            "name": "history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningHistoryCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningHistoryCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/learning-history/{history_id}/{comp_path_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getCompPathByID",
+        "summary": "Experimental (WIP)",
+        "parameters": [
+          {
+            "name": "history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "comp_path_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_delCompPathByID",
+        "summary": "Experimental (WIP)",
+        "parameters": [
+          {
+            "name": "history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "comp_path_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "patch": {
+        "operationId": "UserMgmtController_patchCompPathByID",
+        "summary": "Experimental (WIP)",
+        "parameters": [
+          {
+            "name": "history_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "comp_path_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningProfileDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/learning-units/{learningUnitId}/feedbacks": {
+      "get": {
+        "operationId": "FeedbackController_listFeedback",
+        "summary": "",
+        "description": "Lists all available feedback for the respective learning unit.",
+        "parameters": [
+          {
+            "name": "learningUnitId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      },
+      "post": {
+        "operationId": "FeedbackController_addFeedback",
+        "summary": "",
+        "description": "Creates a new feedback and returns it for the respective learning unit.",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FeedbackCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FeedbackDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      }
+    },
+    "/learning-units/{learningUnitId}/feedbacks/{feedbackId}": {
+      "get": {
+        "operationId": "FeedbackController_getFeedback",
+        "summary": "",
+        "description": "Returns the specified feedback.",
+        "parameters": [
+          {
+            "name": "feedbackId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      },
+      "delete": {
+        "operationId": "FeedbackController_deleteFeedback",
+        "summary": "",
+        "description": "Deletes the specified feedback from the database",
+        "parameters": [
+          {
+            "name": "feedbackId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Feedback"
+        ]
+      }
+    },
+    "/events": {
+      "post": {
+        "operationId": "EventsController_getEvents",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MLSEvent"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "Events"
+        ]
+      }
+    },
+    "/jobsNet/getJobBySearchString": {
+      "get": {
+        "operationId": "JobsNetController_getJobsBySearchString",
+        "summary": "",
+        "description": "Getting Job Description by search string .",
+        "parameters": [
+          {
+            "name": "searchString",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "JobsNet"
+        ]
+      }
+    },
+    "/jobsNet/getJobByID": {
+      "get": {
+        "operationId": "JobsNetController_getJobsByI",
+        "parameters": [
+          {
+            "name": "JobBerufID",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "JobsNet"
+        ]
+      }
+    },
+    "/jobsNet/saveJobsToLocalDB": {
+      "get": {
+        "operationId": "JobsNetController_getAllJobs",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "JobsNet"
+        ]
+      }
+    },
+    "/jobsNet/getJobsByPage": {
+      "get": {
+        "operationId": "JobsNetController_getAllJobsStartWith",
+        "parameters": [
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "JobsNet"
+        ]
+      }
+    },
+    "/jobsNet/getCompetenciesByJobId": {
+      "get": {
+        "operationId": "JobsNetController_getCompetenciesByJobId",
+        "parameters": [
+          {
+            "name": "jobId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "JobsNet"
+        ]
+      }
+    },
+    "/jobsNet/getDigitalCompetenciesByJobId": {
+      "get": {
+        "operationId": "JobsNetController_getDigitalCompetenciesByJobId",
+        "parameters": [
+          {
+            "name": "jobId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "JobsNet"
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Skill Repository",
+    "description": "The API description of the Skill Repository.",
+    "version": "1.0.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "bearer": {
+        "scheme": "bearer",
+        "bearerFormat": "JWT",
+        "type": "http"
+      }
+    },
+    "schemas": {
+      "SkillDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nestedSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "parentSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "repositoryId": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "nestedSkills",
+          "parentSkills",
+          "repositoryId",
+          "createdAt",
+          "updatedAt",
+          "name",
+          "level"
+        ]
+      },
+      "SkillListDto": {
+        "type": "object",
+        "properties": {
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillDto"
+            }
+          }
+        },
+        "required": [
+          "skills"
+        ]
+      },
+      "SkillRepositorySearchDto": {
+        "type": "object",
+        "properties": {
+          "pageSize": {
+            "type": "number"
+          },
+          "page": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          }
+        }
+      },
+      "SkillRepositoryDto": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "access_rights": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "owner",
+          "id",
+          "name"
+        ]
+      },
+      "SkillRepositoryListDto": {
+        "type": "object",
+        "properties": {
+          "repositories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SkillRepositoryDto"
+            }
+          }
+        },
+        "required": [
+          "repositories"
+        ]
+      },
+      "UnresolvedSkillRepositoryDto": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "access_rights": {
+            "type": "object"
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "owner",
+          "id",
+          "name",
+          "skills"
+        ]
+      },
+      "SkillSearchDto": {
+        "type": "object",
+        "properties": {
+          "pageSize": {
+            "type": "number"
+          },
+          "page": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "skillMap": {
+            "type": "string"
+          }
+        }
+      },
+      "ResolvedSkillDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nestedSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResolvedSkillDto"
+            }
+          },
+          "parentSkills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResolvedSkillDto"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "nestedSkills",
+          "parentSkills",
+          "name",
+          "level"
+        ]
+      },
+      "ResolvedSkillRepositoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "taxonomy": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResolvedSkillDto"
+            }
+          },
+          "name": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "skills",
+          "name"
+        ]
+      },
+      "ResolvedSkillListDto": {
+        "type": "object",
+        "properties": {
+          "skills": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ResolvedSkillDto"
+            }
+          }
+        },
+        "required": [
+          "skills"
+        ]
+      },
+      "SkillRepositoryCreationDto": {
+        "type": "object",
+        "properties": {
+          "ownerId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "version": {
+            "type": "string"
+          },
+          "access_rights": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "ownerId",
+          "name"
+        ]
+      },
+      "SkillCreationDto": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          },
+          "nestedSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "owner",
+          "name",
+          "level",
+          "nestedSkills"
+        ]
+      },
+      "NuggetCreationDto": {
+        "type": "object",
+        "properties": {
+          "isTypeOf": {
+            "type": "array",
+            "example": [
+              "ANALYZE",
+              "CONTENT",
+              "EXAMPLE",
+              "EXERCISE",
+              "INTRODUCTION",
+              "TEST"
+            ],
+            "items": {
+              "type": "string",
+              "enum": [
+                "ANALYZE",
+                "INTRODUCTION",
+                "CONTENT",
+                "EXAMPLE",
+                "EXERCISE",
+                "TEST"
+              ]
+            }
+          },
+          "language": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "processingTime": {
+            "type": "string"
+          },
+          "presenter": {
+            "type": "string"
+          },
+          "mediatype": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "isTypeOf",
+          "language",
+          "resource",
+          "processingTime"
+        ]
+      },
+      "NuggetDto": {
+        "type": "object",
+        "properties": {
+          "isTypeOf": {
+            "type": "array",
+            "example": [
+              "ANALYZE",
+              "CONTENT",
+              "EXAMPLE",
+              "EXERCISE",
+              "INTRODUCTION",
+              "TEST"
+            ],
+            "items": {
+              "type": "string",
+              "enum": [
+                "ANALYZE",
+                "INTRODUCTION",
+                "CONTENT",
+                "EXAMPLE",
+                "EXERCISE",
+                "TEST"
+              ]
+            }
+          },
+          "language": {
+            "type": "string"
+          },
+          "resource": {
+            "type": "string"
+          },
+          "processingTime": {
+            "type": "string"
+          },
+          "presenter": {
+            "type": "string"
+          },
+          "mediatype": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "isTypeOf",
+          "language",
+          "resource",
+          "processingTime",
+          "id"
+        ]
+      },
+      "CreateEmptyPathRequestDto": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "owner"
+        ]
+      },
+      "LearningPathDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "owner": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "type": "object"
+          },
+          "pathGoals": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requirements": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedUnitSequence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "targetAudience": {
+            "type": "string"
+          },
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "title",
+          "owner",
+          "lifecycle",
+          "pathGoals",
+          "requirements",
+          "recommendedUnitSequence",
+          "createdAt",
+          "updatedAt"
+        ]
+      },
+      "LearningPathListDto": {
+        "type": "object",
+        "properties": {
+          "learningPaths": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LearningPathDto"
+            }
+          }
+        },
+        "required": [
+          "learningPaths"
+        ]
+      },
+      "UpdatePathRequestDto": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "targetAudience": {
+            "type": "string",
+            "nullable": true
+          },
+          "owner": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "type": "object"
+          },
+          "requirements": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "pathGoals": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "recommendedUnitSequence": {
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "SearchLearningUnitDto": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string"
+          },
+          "updatedAt": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string",
+            "description": "Must be a referenced ID of a TASK in MLS."
+          },
+          "title": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "teachingGoals": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredSkills": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "processingTime": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "string"
+          },
+          "contentCreator": {
+            "type": "string"
+          },
+          "contentProvider": {
+            "type": "string"
+          },
+          "targetAudience": {
+            "type": "string"
+          },
+          "semanticDensity": {
+            "type": "string"
+          },
+          "semanticGravity": {
+            "type": "string"
+          },
+          "contentTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contextTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "linkToHelpMaterial": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "type": "object"
+          },
+          "orga_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "createdAt",
+          "updatedAt",
+          "id",
+          "teachingGoals",
+          "requiredSkills"
+        ]
+      },
+      "SearchLearningUnitListDto": {
+        "type": "object",
+        "properties": {
+          "learningUnits": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SearchLearningUnitDto"
+            }
+          }
+        },
+        "required": [
+          "learningUnits"
+        ]
+      },
+      "SearchLearningUnitCreationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Must be a referenced ID of a TASK in MLS."
+          },
+          "title": {
+            "type": "string"
+          },
+          "language": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "teachingGoals": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "requiredSkills": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "processingTime": {
+            "type": "string"
+          },
+          "rating": {
+            "type": "string"
+          },
+          "contentCreator": {
+            "type": "string"
+          },
+          "contentProvider": {
+            "type": "string"
+          },
+          "targetAudience": {
+            "type": "string"
+          },
+          "semanticDensity": {
+            "type": "string"
+          },
+          "semanticGravity": {
+            "type": "string"
+          },
+          "contentTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contextTags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "linkToHelpMaterial": {
+            "type": "string"
+          },
+          "lifecycle": {
+            "type": "object"
+          },
+          "orga_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "teachingGoals",
+          "requiredSkills"
+        ]
+      },
+      "PathRequestDto": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "description": "The list of skills to be learned.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "userId": {
+            "type": "string",
+            "description": "If specified, path will be computed and optimized for the specified user.\nThis includes:\n- taking into account the user's current skills\n- taking into account the user's learning behavior"
+          },
+          "optimalSolution": {
+            "type": "boolean",
+            "description": "If unspecified, algorithm will use a fast, greedy approach to find a path.\nIf true, the algorithm will try to find an optimal path, at cost of performance.",
+            "default": false
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "PathDto": {
+        "type": "object",
+        "properties": {
+          "learningUnits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cost": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "learningUnits",
+          "cost"
+        ]
+      },
+      "PathStorageRequestDto": {
+        "type": "object",
+        "properties": {
+          "units": {
+            "description": "The personalized path of the learner to be stored.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "originPathId": {
+            "type": "string",
+            "description": "The pre-defined learning path which was personalized for the learner.\nMust be defined, unless `goal` is defined."
+          },
+          "goal": {
+            "description": "A personal learning goal of the learner.\nMust be defined, unless `originPathId` is defined.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "units"
+        ]
+      },
+      "PathStorageResponseDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          },
+          "learningHistoryId": {
+            "type": "string"
+          },
+          "pathId": {
+            "type": "string"
+          },
+          "units": {
+            "description": "The personalized path of the learner to be stored.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "originPathId": {
+            "type": "string",
+            "description": "The pre-defined learning path which was personalized for the learner.\nOptional, if the path was selected based on a pre-defined learning paths."
+          },
+          "goal": {
+            "description": "The learning goals of the path.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "lifecycle": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "userId",
+          "learningHistoryId",
+          "pathId",
+          "units",
+          "goal",
+          "lifecycle"
+        ]
+      },
+      "UserCreationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "learningProfile": {
+            "type": "string"
+          },
+          "careerProfile": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "object"
+          },
+          "qualification": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "job": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "UserDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "learningProfile": {
+            "type": "string"
+          },
+          "careerProfile": {
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "status": {
+            "type": "object"
+          },
+          "qualification": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "job": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id"
+        ]
+      },
+      "CompanyCreationDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "LearningProfileCreationDto": {
+        "type": "object",
+        "properties": {
+          "mediaType": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "language": {
+            "type": "string"
+          },
+          "semanticDensity": {
+            "type": "number"
+          },
+          "semanticGravity": {
+            "type": "number"
+          },
+          "processingTimePerUnit": {
+            "type": "string"
+          },
+          "learningHistoryId": {
+            "type": "string"
+          },
+          "preferredDidacticMethod": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId"
+        ]
+      },
+      "QualificationCreationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "name": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "year",
+          "userId"
+        ]
+      },
+      "QualificationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "name": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "year",
+          "userId"
+        ]
+      },
+      "LearningHistoryCreationDto": {
+        "type": "object",
+        "properties": {
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId"
+        ]
+      },
+      "CareerProfileCreationDto": {
+        "type": "object",
+        "properties": {
+          "currentCompanyId": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "currentJobIdAtBerufeNet": {
+            "type": "string"
+          },
+          "professionalInterests": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "professionalInterests",
+          "userId"
+        ]
+      },
+      "CareerProfileDto": {
+        "type": "object",
+        "properties": {
+          "currentCompanyId": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "currentJobIdAtBerufeNet": {
+            "type": "string"
+          },
+          "professionalInterests": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "professionalInterests",
+          "userId",
+          "id"
+        ]
+      },
+      "CreateLearningProgressDto": {
+        "type": "object",
+        "properties": {
+          "skillId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "skillId"
+        ]
+      },
+      "JobCreationDto": {
+        "type": "object",
+        "properties": {
+          "jobtitle": {
+            "type": "string"
+          },
+          "starttime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endtime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "jobIdAtBerufeNet": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "jobtitle",
+          "starttime",
+          "endtime",
+          "companyId",
+          "userId"
+        ]
+      },
+      "JobUpdateDto": {
+        "type": "object",
+        "properties": {
+          "jobtitle": {
+            "type": "string"
+          },
+          "starttime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "endtime": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "companyId": {
+            "type": "string"
+          },
+          "jobIdAtBerufeNet": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "jobtitle",
+          "starttime",
+          "endtime",
+          "companyId"
+        ]
+      },
+      "LearningProfileDto": {
+        "type": "object",
+        "properties": {
+          "mediaType": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "language": {
+            "type": "string"
+          },
+          "semanticDensity": {
+            "type": "number"
+          },
+          "semanticGravity": {
+            "type": "number"
+          },
+          "processingTimePerUnit": {
+            "type": "string"
+          },
+          "learningHistoryId": {
+            "type": "string"
+          },
+          "preferredDidacticMethod": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId",
+          "id"
+        ]
+      },
+      "FeedbackCreationDto": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "learningUnitID": {
+            "type": "string"
+          },
+          "learningValue": {
+            "type": "number"
+          },
+          "presentation": {
+            "type": "number"
+          },
+          "comprehensiveness": {
+            "type": "number"
+          },
+          "structure": {
+            "type": "number"
+          },
+          "overallRating": {
+            "type": "number"
+          },
+          "optionalTextComment": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "learningUnitID",
+          "learningValue",
+          "presentation",
+          "comprehensiveness",
+          "structure",
+          "overallRating"
+        ]
+      },
+      "FeedbackDto": {
+        "type": "object",
+        "properties": {
+          "userID": {
+            "type": "string"
+          },
+          "learningUnitID": {
+            "type": "string"
+          },
+          "learningValue": {
+            "type": "number"
+          },
+          "presentation": {
+            "type": "number"
+          },
+          "comprehensiveness": {
+            "type": "number"
+          },
+          "structure": {
+            "type": "number"
+          },
+          "overallRating": {
+            "type": "number"
+          },
+          "optionalTextComment": {
+            "type": "string"
+          },
+          "feedbackID": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userID",
+          "learningUnitID",
+          "learningValue",
+          "presentation",
+          "comprehensiveness",
+          "structure",
+          "overallRating",
+          "feedbackID"
+        ]
+      },
+      "MLSEvent": {
+        "type": "object",
+        "properties": {
+          "entityType": {
+            "type": "string",
+            "enum": [
+              "User",
+              "TaskTodo",
+              "TaskTodoInfo",
+              "Task",
+              "TaskStep"
+            ]
+          },
+          "method": {
+            "type": "string",
+            "enum": [
+              "PUT",
+              "POST",
+              "DELETE"
+            ]
+          },
+          "id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "entityType",
+          "method",
+          "id"
+        ]
+      }
+    }
+  }
+}

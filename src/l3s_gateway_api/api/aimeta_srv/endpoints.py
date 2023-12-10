@@ -7,7 +7,7 @@ import os, socket
 
 
 # config: l3s_aimeta_cleint
-from swagger_client_L3S import l3s_aimeta_client
+from swagger_client import l3s_aimeta_client
 l3s_aimeta_config = l3s_aimeta_client.Configuration()
 # l3s_aimeta_config.host = "http://localhost:9043/l3s-search"
 l3s_aimeta_config.host = os.getenv('L3S_AIMETA_HOST')

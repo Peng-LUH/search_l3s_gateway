@@ -4,16 +4,16 @@ load_dotenv()
 
 from flask import jsonify, request
 
-from swagger_client_L3S import l3s_search_client
+from swagger_client import l3s_search_client
 # from swagger_client_L3S import l3s_recsys_client as l3SSearchClient
 import dataclasses, json
 from pprint import pprint
-from swagger_client_L3S.l3s_search_client.rest import ApiException
+from swagger_client.l3s_search_client.rest import ApiException
 import os
 
-from swagger_client_L3S.l3s_search_client.models.dense_search_response import DenseSearchResponse
-from swagger_client_L3S.l3s_search_client.models.dense_search_request import DenseSearchRequest
-from swagger_client_L3S.l3s_search_client.models.dense_search_response_list import DenseSearchResponseList
+from swagger_client.l3s_search_client.models.dense_search_response import DenseSearchResponse
+from swagger_client.l3s_search_client.models.dense_search_request import DenseSearchRequest
+from swagger_client.l3s_search_client.models.dense_search_response_list import DenseSearchResponseList
 # from swagger_client_L3S.l3s_search_client.models.random_response import RandomResponse
 # from swagger_client_L3S.l3s_search_client.models.random_request import RandomRequest
 

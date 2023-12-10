@@ -21,5 +21,7 @@ dist
 **/.pytest_cache
 **/.hypothesis
 **/test_ipynb
+**/tests
 **/*.egg-info/*
 .dockercmd
+.bash

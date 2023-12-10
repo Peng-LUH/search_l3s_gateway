@@ -1,0 +1,458 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "L3S Search Service for SEARCH",
+    "description": "Welcome to the Swagger UI documentation site test!",
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "/l3s-search"
+    }
+  ],
+  "tags": [
+    {
+      "name": "test"
+    },
+    {
+      "name": "Metadata",
+      "description": "Get functions for Meta-information for using search services"
+    },
+    {
+      "name": "Encoder"
+    },
+    {
+      "name": "Indexer"
+    },
+    {
+      "name": "searcher"
+    }
+  ],
+  "paths": {
+    "/encoder/encodings": {
+      "get": {
+        "tags": [
+          "Encoder"
+        ],
+        "summary": "get existing encodings",
+        "operationId": "get_encoder_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/indexer/indexes": {
+      "get": {
+        "tags": [
+          "Indexer"
+        ],
+        "summary": "get existing indexes",
+        "operationId": "get_indexer_test",
+        "responses": {
+          "500": {
+            "description": "Directory not found",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/metadata/datasets": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Get the datasets",
+        "operationId": "get_get_datasets",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoDatasetList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/encoding-types": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Get the list of available encoding types",
+        "operationId": "get_get_encoding_type",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoEncodeTypeList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/index-methods": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Get the list of available index methods",
+        "operationId": "get_get_index_method",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoIndexMethodList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/metadata/language-models": {
+      "get": {
+        "tags": [
+          "Metadata"
+        ],
+        "summary": "Get the list of available language models",
+        "operationId": "get_get_language_models",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoLanguageModelList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/search-test/search-test": {
+      "get": {
+        "tags": [
+          "test"
+        ],
+        "operationId": "get_search_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/searcher/dense-retrieval": {
+      "post": {
+        "tags": [
+          "searcher"
+        ],
+        "summary": "Semantic Search using dense retrieval",
+        "operationId": "post_dense_retrieval",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoDenseSearchRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoDenseSearchResponseList"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "New user was successfully created.",
+            "content": {}
+          },
+          "400": {
+            "description": "Validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "Email address is already registered.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    },
+    "/searcher/searcher-update": {
+      "post": {
+        "tags": [
+          "searcher"
+        ],
+        "summary": "update the serch service",
+        "operationId": "post_searcher_update",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoDocumentList"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoSearcherUpdateResponse"
+                }
+              }
+            }
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DtoDatasetList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoDataset"
+            }
+          }
+        }
+      },
+      "DtoDataset": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "name of dataset"
+          }
+        }
+      },
+      "DtoEncodeTypeList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoLanguageModelList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoIndexMethodList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoDocumentList": {
+        "type": "object",
+        "properties": {
+          "secret": {
+            "type": "string"
+          },
+          "documents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoDocument"
+            }
+          }
+        }
+      },
+      "DtoDocument": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "owner": {
+            "type": "array",
+            "description": "List of orga-id",
+            "items": {
+              "type": "string"
+            }
+          },
+          "entity_id": {
+            "type": "string"
+          },
+          "entity_id_full": {
+            "type": "string"
+          },
+          "entity_type": {
+            "type": "string",
+            "example": "skill",
+            "enum": [
+              "skill",
+              "path",
+              "task"
+            ]
+          },
+          "contents": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoSearcherUpdateResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoDenseSearchRequest": {
+        "required": [
+          "query"
+        ],
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "user ID"
+          },
+          "owner": {
+            "type": "array",
+            "description": "company ID",
+            "items": {
+              "type": "string"
+            }
+          },
+          "query": {
+            "type": "string",
+            "default": "Elektrotechnik 1 Versuch 8: Wirkleistung von Wechselspannungen; Wirkleistung der Sinuswechselspannung in der praktischen Übung"
+          },
+          "use_skill_profile": {
+            "type": "boolean",
+            "default": false
+          },
+          "user_learning_profile": {
+            "type": "boolean",
+            "default": false
+          },
+          "language_model": {
+            "type": "string",
+            "default": "bert-base-german-cased"
+          },
+          "index_method": {
+            "type": "string",
+            "example": "flat-l2",
+            "default": "flat-l2",
+            "enum": [
+              "flat-l2",
+              "flat-ip"
+            ]
+          },
+          "entity_type": {
+            "type": "string",
+            "example": "all",
+            "enum": [
+              "all",
+              "skill",
+              "path",
+              "task"
+            ]
+          },
+          "nr_result": {
+            "minimum": 0,
+            "type": "integer"
+          }
+        }
+      },
+      "DtoDenseSearchResponseList": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoDenseSearchResponse"
+            }
+          }
+        }
+      },
+      "DtoDenseSearchResponse": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "user ID"
+          },
+          "owner": {
+            "type": "string",
+            "description": "company ID"
+          },
+          "entity_id": {
+            "type": "string"
+          },
+          "entity_type": {
+            "type": "string"
+          },
+          "similarity": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "responses": {
+      "ParseError": {
+        "description": "When a mask can't be parsed",
+        "content": {}
+      },
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
+      }
+    }
+  },
+  "x-original-swagger-version": "2.0"
+}

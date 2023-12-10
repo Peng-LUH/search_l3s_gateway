@@ -1,3 +1,4 @@
+.env
 **/.env/*
 .venv
 .dockercmd
@@ -9,3 +10,4 @@
 **/archiv
 .tox
 *.sh
+**/test_ipynb

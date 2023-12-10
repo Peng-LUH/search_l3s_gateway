@@ -21,7 +21,11 @@ INSTALL_REQUIRES = [
     "Flask-Cors",
     "Flask-Migrate",
     "flask-restx",
-    "Flask-SQLAlchemy",
+    "marshmallow-sqlalchemy==0.28.1",
+    "flask-marshmallow==0.14.0",
+    "SQLAlchemy==1.4.0",
+    "flask-sqlalchemy==2.5.1",
+    "psycopg2-binary",
     "PyJWT",
     "python-dateutil",
     "python-dotenv",
@@ -29,10 +33,13 @@ INSTALL_REQUIRES = [
     "urllib3",
     "werkzeug==2.2.2",
     "markupsafe",
-    "SQLAlchemy==1.4.0",
     "pytest-flake8==1.1.0",
     "flake8==3.9.2",
     "black",
+    "openai",
+    "schedule",
+    "apscheduler",
+    "bs4"
 ]
 
 EXTRAS_REQUIRE = {
@@ -56,7 +63,7 @@ setup(
     description=DESCRIPTION,
     long_description=README,
     long_description_content_type="text/markdown",
-    version="0.0.1",
+    version="1.0.1",
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     maintainer=AUTHOR,
