@@ -39,8 +39,6 @@ services:
       MLS_USERNAME: "SEARCH"
       MLS_USER_PASSWORD: "'V269: z,zW5D"
       MLS_GRANT_TYPE: "password"
-
-      OPENAI_API_KEY: "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"
     depends_on:
       - l3s-search-db
     networks:

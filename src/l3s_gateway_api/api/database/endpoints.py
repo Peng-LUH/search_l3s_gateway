@@ -94,8 +94,8 @@ class L3SDatabseSync(Resource):
         sync_results = []
         
         ## Sync: Skills
-        request_url_skill = get_request_url(endpoint_url=url_for('api.l3s_db_sync_skills'))
-        response_skill = requests.get(request_url_skill)
+        request_url_sync_skill = get_request_url(endpoint_url=url_for('api.l3s_db_sync_skills'))
+        response_skill = requests.get(request_url_sync_skill)
         response_skill_json = response_skill.json()
         print('print response skill json\n')
         pprint(response_skill_json)

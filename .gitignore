@@ -11,3 +11,4 @@
 .tox
 *.sh
 **/test_ipynb
+docker-compose.yml
