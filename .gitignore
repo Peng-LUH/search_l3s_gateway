@@ -7,7 +7,7 @@
 **/test_gitignore
 **/test_gitignore/*
 **/*.egg-info
-**/archiv
+**/.archiv/*
 **/.archiv
 .tox
 *.sh
