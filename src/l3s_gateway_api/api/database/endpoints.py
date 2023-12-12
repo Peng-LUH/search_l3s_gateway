@@ -7,7 +7,7 @@ from pprint import pprint
 import traceback, logging
 # import flask-restx
 from flask_restx import Namespace, Resource, fields
-from flask_restx.reqparse import RequestParser
+from flask_restx import reqparse
 # Exceptions
 from werkzeug.routing.exceptions import BuildError
 # utils
@@ -55,6 +55,21 @@ search_searcher_api = l3s_search_client.SearcherApi(api_client=client_l3s_search
 search_metadata_api = l3s_search_client.MetadataApi(api_client=client_l3s_search)
 
 from swagger_client.l3s_search_client.models.dto_searcher_update_response import DtoSearcherUpdateResponse
+
+
+## -------------------------------- Check Secret ------------------------ ##
+parser_secret = reqparse.RequestParser()
+parser_secret.add_argument('secret_key', type=str, location='args')
+@ns_database.route('/check_secret')
+class CheckSecretKey(Resource):
+    @ns_database.expect(parser_secret)
+    def get(self):
+        request_data = parser_secret.parse_args()
+        if request_data["secret_key"] == os.getenv('MLS_CLIENT_SECRET'):
+            return {"message": "valid secret key"}, HTTPStatus.OK
+        else:
+            return {"message": "invalid secret key"}, HTTPStatus.BAD_REQUEST
+
 ## -------------------------------- Sync -------------------------------- ##
 from .logic import (get_list_of_skills, 
                     list_of_skills_transformer,
@@ -203,22 +218,45 @@ class InitLearningUnits(Resource):
         
         
 ## ------------------------------------- Documents ----------------------------------- ##
-from .dto import dto_document_delete_response
+from .dto import dto_document_delete_response, dto_document_post_request
 ns_database.models[dto_document_delete_response.name] = dto_document_delete_response
+ns_database.models[dto_document_post_request.name] = dto_document_post_request
 
-@ns_database.route('/document/<string:entity_type>/<string:id>', endpoint="db_doc_by_id")
+@ns_database.route('/document/<string:entity_type>/<string:entity_id>', endpoint="db_doc_by_id")
 class DocumentById(Resource):
-    def get(self, entity_type, id):
-        doc = Document.query.filter_by(entity_type=entity_type, entity_id=id).first()
+    def get(self, entity_type, entity_id):
+        doc = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
         temp = schema_document.dump(doc)
         print(type(temp["owner"]))
         return temp
-    def put(self, entity_type, id):
-        doc = Document.query.filter_by(entity_type=entity_type, entity_id=id).first()
+    def put(self, entity_type, entity_id):
+        doc = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
         doc.owner = ['1', '2', '3']
         temp = schema_document.dump(doc)
         print(type(temp["owner"]))
         return temp
+    @ns_database.expect(dto_document_post_request)
+    def post(self, entity_type, entity_id):
+        request_data = request.json
+        if entity_type not in ["task", "skill", "path"]:
+            return {"message": "invalid entity type"}, HTTPStatus.BAD_REQUEST
+        
+        entity_id_full = f"{entity_type}/{entity_id}"
+        
+        doc = Document(
+                       owner=[],
+                       entity_id = entity_id,
+                       entity_type = entity_type,
+                       entity_id_full = entity_id_full,
+                       contents = request_data["contents"],
+                       created_at = request_data["created_at"],
+                       updated_at = request_data["updated_at"]
+                       )
+        db.session.add(doc)
+        db.session.commit()
+        
+        print(doc)
+        return {"message": "success"}
     
     @ns_database.marshal_with(dto_document_delete_response)
     def delete(self, entity_type, id):

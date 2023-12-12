@@ -167,3 +167,11 @@ dto_l3s_events_request = Model('DtoSearchEventsRequest', {
     "task_id": fields.String(required=True, description='task-id'),
     "method": fields.String(required=True, enum=["delete", "put", "post"], description='http methods')
 })
+
+
+dto_document_post_request = Model('DtoDocumentPostRequest', {
+    'owner': fields.List(fields.String()),
+    'contents': fields.String(),
+    'created_at': fields.String(),
+    'updated_at': fields.String()
+})
