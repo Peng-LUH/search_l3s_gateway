@@ -119,7 +119,7 @@ class L3SDatabseSync(Resource):
         ## send data to l3s-search-service/searcher/sercher-update
         ## get data
         docs = Document.query.all()
-        request_data = {"secret": os.getenv('CLIENT_SECRET'), 
+        request_data = {"secret": os.getenv('MLS_CLIENT_SECRET'), 
                         "documents": schema_documents.dump(docs)}
         print(request_data)
         response = search_searcher_api.post_searcher_update(body=request_data)
