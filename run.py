@@ -18,6 +18,7 @@ from l3s_gateway_api.models.test import Test
 from l3s_gateway_api.models.task import Task
 from l3s_gateway_api.models.document import Document
 
+#"test"
 # Create db tables
 with app.app_context():
     db.create_all()
