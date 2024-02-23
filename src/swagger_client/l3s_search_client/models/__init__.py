@@ -14,7 +14,6 @@
 from __future__ import absolute_import
 
 # import models into model package
-from l3s_search_client.models.dto_dataset import DtoDataset
 from l3s_search_client.models.dto_dataset_list import DtoDatasetList
 from l3s_search_client.models.dto_dense_search_request import DtoDenseSearchRequest
 from l3s_search_client.models.dto_dense_search_response import DtoDenseSearchResponse

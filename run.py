@@ -9,6 +9,7 @@ import schedule, time, threading
 import socket
 from pprint import pprint
 
+
 app = create_app(os.getenv("FLASK_ENV", "development"))
 
 os.environ["HOST_NAME"] = socket.gethostname()
@@ -36,38 +37,37 @@ def scheduled_task():
     print(app.config['SERVER_NAME'])
     
     with app.app_context():
-        print("*********** App Context *************")
+        app.logger.info("App Context: ...")
         app.logger.info("Running scheduled task")
         # request_url = url_for('api.l3s_db_sync')
         request_url = url_for('api.search_srv_connection')
-        print(f"request_url: {request_url}\n")
+        app.logger.info(f"request_url: {request_url}\n")
         response = requests.get(request_url)
         print(response.json())
     #     # app.cli.invoke(run_database_updater)
     
-    print("********** Out of App Context *********")
-    print(f"Send HTTP request to {request_url}:")
+    app.logger.info("Out of App Context")
+    app.logger.info(f"Send HTTP request to {request_url}:")
     # response = requests.get(request_url)
     # pprint(response.json())
-    print("*********** Schedule is done. ********\n\n")
+    app.logger.info("Schedule Done: Search Service Synchronization")
     # response = requests.get(request_url)
     # print(response.json())
     return
     
-
-# Schedule the task to run every 10 minutes
+## Schedule the task to run every 10 minutes
 schedule.every(30).seconds.do(scheduled_task)
-
 
 def run_scheduler():
     while True:
         schedule.run_pending()
         time.sleep(1)
 
+#----------------------------------------------------------
 ## Start the scheduler in a separate thread
 # scheduler_thread = threading.Thread(target=run_scheduler)
 # scheduler_thread.start()
-
+#----------------------------------------------------------
 
 ####
 # @app.before_first_request
@@ -94,18 +94,17 @@ def run_scheduler():
 
 
 if __name__ == "__main__":
-    app.test_client().get('/')
-    
-    # # Create a scheduler
+    ## Create a scheduler
     # scheduler = BackgroundScheduler()
 
-    # # Schedule the task to run every 10 minutes
+    ## Schedule the task to run every 10 minutes
     # scheduler.add_job(scheduled_task, 'interval', minutes=0.5)
 
-    # # Start the scheduler
+    ## Start the scheduler
     # scheduler.start()
-    
+
     app.run(debug=True, host="0.0.0.0", port="9040")
+    # app.test_client().get('/')
     # call(["python", "test.py"])
     # response = request_url = get_request_url('api.recsys_service_connection')
     # print("Response from the endpoint:", response.json())
@@ -115,13 +114,9 @@ if __name__ == "__main__":
     #     time.sleep(1)
     
 
-
 @app.shell_context_processor
 def shell():
     return {"db": db,
             "test": Test,
             "task": Task,
             "document": Document}
-    
-
-

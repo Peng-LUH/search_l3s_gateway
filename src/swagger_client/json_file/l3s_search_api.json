@@ -76,6 +76,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Path not found",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal value error",
+            "content": {}
           }
         }
       }
@@ -97,6 +105,18 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Value error",
+            "content": {}
+          },
+          "404": {
+            "description": "Path not found",
+            "content": {}
+          },
+          "500": {
+            "description": "Unknown internal error",
+            "content": {}
           }
         }
       }
@@ -118,6 +138,14 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Value error",
+            "content": {}
+          },
+          "500": {
+            "description": "Unknown internal error",
+            "content": {}
           }
         }
       }
@@ -139,6 +167,14 @@
                 }
               }
             }
+          },
+          "400": {
+            "description": "Value error",
+            "content": {}
+          },
+          "500": {
+            "description": "Unknown internal error",
+            "content": {}
           }
         }
       }
@@ -149,6 +185,29 @@
           "test"
         ],
         "operationId": "get_search_test",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/searcher/check_secret": {
+      "get": {
+        "tags": [
+          "searcher"
+        ],
+        "operationId": "get_check_secret_key",
+        "parameters": [
+          {
+            "name": "secret_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
@@ -246,17 +305,8 @@
           "results": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/DtoDataset"
+              "type": "string"
             }
-          }
-        }
-      },
-      "DtoDataset": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "name of dataset"
           }
         }
       },

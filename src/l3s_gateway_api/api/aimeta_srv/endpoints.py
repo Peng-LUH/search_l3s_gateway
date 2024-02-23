@@ -17,20 +17,15 @@ print("*"*80)
 client_l3s_aimeta = l3s_aimeta_client.ApiClient(configuration=l3s_aimeta_config)
 # l3s recsys api registration
 aims_course_summary_api = l3s_aimeta_client.CourseSummaryApi(api_client=client_l3s_aimeta)
-# recsys_random_api = l3s_search_client.RandomApi(api_client=client_l3s_search)
-# search_metadata_api = l3s_aimeta_client.MetadataApi(api_client=client_l3s_aimeta)
+
+
 
 
 ## -------------------- create namespace -------------------- ##
 ns_aimeta_srv = Namespace("AI-Meta Service", validate=True, description="downstream endpoints for aimeta services")
 
 
-@ns_aimeta_srv.route('/aimeta-service/course-summary/<string:id>', endpoint="aims_course_summary")
-class AiMetaCourseSummary(Resource):
-    def get(self, id):
-        api_response = aims_course_summary_api.get_get_summary(id=id)
-        print(api_response)
-        return {"msg": "ok"}, HTTPStatus.OK
+
 
 ## ------------------- check connection -------------------- ##
 from .dto import dto_aimeta_connection_response
@@ -71,10 +66,37 @@ ns_aimeta_srv.models[dto_completion_task_response.name] = dto_completion_task_re
 class CompletionTask(Resource):
     @ns_aimeta_srv.marshal_with(dto_completion_task_response)
     def get(self, task_id):
-        """in progress"""
-        print(task_id)
-        return
+        '''in progress'''
+        #"""generate meta attributes for a task based on task-id"""
+        
+        return {}, HTTPStatus.OK
 
+
+# --------------- course summary --------------------- #
+from l3s_aimeta_client.models.dto_summary_response import DtoSummaryResponse
+from .dto import dto_aimeta_course_summary, dto_aimeta_course_summary_response
+ns_aimeta_srv.models[dto_aimeta_course_summary.name] = dto_aimeta_course_summary
+ns_aimeta_srv.models[dto_aimeta_course_summary_response.name] = dto_aimeta_course_summary_response
+
+@ns_aimeta_srv.route('/aimeta-service/course-summary/<string:task_id>', endpoint="aims_course_summary")
+class AiMetaCourseSummary(Resource):
+    # @ns_aimeta_srv.marshal_with(dto_aimeta_course_summary_response)
+    @ns_aimeta_srv.response(int(HTTPStatus.OK), description="Success")
+    @ns_aimeta_srv.response(int(HTTPStatus.BAD_REQUEST), description="Error occured")
+    def get(self, task_id):
+        try:
+            api_response = aims_course_summary_api.get_get_summary(task_id=task_id)
+            print('\n')
+            print(api_response)
+            print(api_response.message)
+            print('\n')
+            # print(api_response)
+            response_data = DtoSummaryResponse(summary=api_response.summary, task_id=api_response.task_id).to_dict()
+            
+            return {"message": "success", "results": response_data}, HTTPStatus.OK
+        
+        except Exception as e:
+            return {"message": "some error happend", "results": {}}, HTTPStatus.BAD_REQUEST
 
 
 ## ------------------ completion unit ---------------- ##

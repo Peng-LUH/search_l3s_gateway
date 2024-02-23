@@ -51,6 +51,10 @@ from sse_search_client.models.skill_repository_dto import SkillRepositoryDto
 from sse_search_client.models.skill_repository_list_dto import SkillRepositoryListDto
 from sse_search_client.models.skill_repository_search_dto import SkillRepositorySearchDto
 from sse_search_client.models.skill_search_dto import SkillSearchDto
+from sse_search_client.models.skill_update_dto import SkillUpdateDto
+from sse_search_client.models.skills_to_analyze import SkillsToAnalyze
+from sse_search_client.models.sub_path_dto import SubPathDto
+from sse_search_client.models.sub_path_list_dto import SubPathListDto
 from sse_search_client.models.unresolved_skill_repository_dto import UnresolvedSkillRepositoryDto
 from sse_search_client.models.update_path_request_dto import UpdatePathRequestDto
 from sse_search_client.models.user_creation_dto import UserCreationDto

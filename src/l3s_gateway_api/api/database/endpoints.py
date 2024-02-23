@@ -10,6 +10,7 @@ from flask_restx import Namespace, Resource, fields
 from flask_restx import reqparse
 # Exceptions
 from werkzeug.routing.exceptions import BuildError
+from urllib3.exceptions import MaxRetryError
 # utils
 from l3s_gateway_api.util.util import get_request_url
 # import database and models
@@ -43,41 +44,31 @@ schema_documents = DocumentSchema(many=True)
 ## ------------ config: l3s_search_client --------------- ##
 from swagger_client import l3s_search_client
 l3s_search_config = l3s_search_client.Configuration()
-# l3s_search_config.host = "http://127.0.0.1:9043/l3s-search/"
 l3s_search_config.host = os.getenv('L3S_SEARCH_HOST')
 print("*"*80)
 print("l3s-search-service-host: ", l3s_search_config.host)
 print("*"*80)
 
 client_l3s_search = l3s_search_client.ApiClient(configuration=l3s_search_config)
-# l3s recsys api registration
 search_searcher_api = l3s_search_client.SearcherApi(api_client=client_l3s_search)
 search_metadata_api = l3s_search_client.MetadataApi(api_client=client_l3s_search)
 
 from swagger_client.l3s_search_client.models.dto_searcher_update_response import DtoSearcherUpdateResponse
 
 
-## -------------------------------- Check Secret ------------------------ ##
-parser_secret = reqparse.RequestParser()
-parser_secret.add_argument('secret_key', type=str, location='args')
-@ns_database.route('/check_secret')
-class CheckSecretKey(Resource):
-    @ns_database.expect(parser_secret)
-    def get(self):
-        request_data = parser_secret.parse_args()
-        if request_data["secret_key"] == os.getenv('MLS_CLIENT_SECRET'):
-            return {"message": "valid secret key"}, HTTPStatus.OK
-        else:
-            return {"message": "invalid secret key"}, HTTPStatus.BAD_REQUEST
 
 ## -------------------------------- Sync -------------------------------- ##
 from .logic import (get_list_of_skills, 
-                    list_of_skills_transformer,
-                    get_list_of_learning_units,
-                    transformer_list_of_learning_units,
+                    transformer_list_of_skills,
+                    get_list_of_tasks,
+                    transformer_list_of_tasks,
                     db_skill_updater,
                     db_task_updater,
-                    get_task_content
+                    db_updater_paths,
+                    get_task_content,
+                    get_list_of_learning_paths,
+                    transformer_path,
+                    transformer_list_of_paths
                     )
 
 from .dto import dto_skill_list, dto_skill, dto_sync, dto_sync_list
@@ -91,38 +82,82 @@ class L3SDatabseSync(Resource):
     # @ns_database.marshal_with(dto_sync_list)
     def get(self):
         ''' l3s database synchronization '''
-        sync_results = []
+        ns_database.logger.info("*"*60)
+        ns_database.logger.info("Starting: l3s database synchronization...")
+        sync_results = {}
         
-        ## Sync: Skills
+        ## ----------------------- Sync: Skills ---------------------------------
+        
         request_url_sync_skill = get_request_url(endpoint_url=url_for('api.l3s_db_sync_skills'))
+        ns_database.logger.info("Synchronization starts: skills...")
         response_skill = requests.get(request_url_sync_skill)
+        # print(response_skill.status_code)
         response_skill_json = response_skill.json()
-        print('print response skill json\n')
-        pprint(response_skill_json)
-        response_skill_json["entity_type"] = "skill"
-        response_skill_json["status_code"] = response_skill.status_code
-        sync_results.append(response_skill_json)
+        if response_skill.status_code == 200:
+            ns_database.logger.info("Success: Synchronization skills...")
+            ns_database.logger.info("*"*60)
+        else:
+            ns_database.logger.info("Failed: Synchronization skills...")
+            ns_database.logger.info(f"Status Code: {response_skill.status_code}")
+            ns_database.logger.info(f"Message: {response_skill_json['message']}")
+            ns_database.logger.info("*"*60)
+        # pprint(response_skill_json)
+        sync_results["skill"] = response_skill_json
+        # print('print response skill json\n')
+        # pprint(response_skill_json)
+        # response_skill_json["entity_type"] = "skill"
+        # response_skill_json["status_code"] = response_skill.status_code
+        # sync_results.append(response_skill_json)
         
         
         ## ------------------- Sync: Learning Paths -------------------
+        ns_database.logger.info("*"*60)
+        ns_database.logger.info("Synchronization starts: Learning paths...")
+        request_url_path = get_request_url(endpoint_url=url_for('api.l3s_db_sync_learning_paths'))
+        response_path = requests.get(request_url_path)
+        # print(response_path.status_code)
+        response_path_json = response_path.json()
         
-        # request_url_path = get_request_url(endpoint_url=url_for('api.l3s_db_sync_learning_paths'))
-        # response_path = requests.get(request_url_path)
+        if response_path.status_code == 200:
+            ns_database.logger.info("Success: Synchronization learning paths...")
+            ns_database.logger.info("*"*60)
+        else:
+            ns_database.logger.info("Failed: Synchronization learning paths...")
+            ns_database.logger.info(f"Status Code: {response_path.status_code}")
+            ns_database.logger.info(f"Message: {response_path_json['message']}")
+            ns_database.logger.info("*"*60)
         
+        # pprint(response_path_json)
+        sync_results["path"] = response_path_json
         
         ## ------------------- Sync: Tasks/ Learning-Units ---------------------
+        ns_database.logger.info("*"*60)
+        ns_database.logger.info("Synchronization starts: tasks/learning units...")
+        request_url_task = get_request_url(endpoint_url=url_for('api.l3s_db_sync_tasks'))
+        response_task = requests.get(request_url_task)
+        response_task_json = response_task.json()
         
-        # request_url_task = get_request_url(endpoint_url=url_for('api.l3s_db_sync_tasks'))
-        # response_task = requests.get(request_url_task)
-
+        if response_task.status_code == 200:
+            ns_database.logger.info("Success: Synchronization tasks/learning-units...")
+            ns_database.logger.info("*"*60)
+        else:
+            ns_database.logger.info("Failed: Synchronization tasks/learning-units...")
+            ns_database.logger.info(f"Status Code: {response_task.status_code}")
+            ns_database.logger.info(f"Message: {response_task_json['message']}")
+            ns_database.logger.info("*"*60)
         
-        ## send data to l3s-search-service/searcher/sercher-update
-        ## get data
+        ns_database.logger.info("*"*60)
+        
+        sync_results["task"] = response_path_json
+        
+        return sync_results
         docs = Document.query.all()
         request_data = {"secret": os.getenv('MLS_CLIENT_SECRET'), 
                         "documents": schema_documents.dump(docs)}
-        print(request_data)
+        pprint(request_data)
+    
         response = search_searcher_api.post_searcher_update(body=request_data)
+        print(response)
         d = DtoSearcherUpdateResponse(message=response.message).to_dict()
         return d
         
@@ -140,22 +175,30 @@ class L3SDBSyncSkills(Resource):
     # @ns_database.marshal_with(dto_sync_response)
     def get(self):
         ''' sync the data for skills '''
+        ns_database.logger.info("Starting: sync skills...")
         ## -------- Step 1: Get skills from SSE ----------
         try: 
+            ns_database.logger.info("Retrieving the data from SSE-Service...")
             list_of_skills = get_list_of_skills()
+            # print(list_of_skills[0])
             
             ## check if list is empty
             if list_of_skills == []:
-                raise ValueError("No skills retrieved!")
+                raise FileExistsError("No skills retrieved!")
+            
+            ns_database.logger.info(f"Success: {len(list_of_skills)} skills are retrieved.")
             
             # list_of_skills = list_of_skills[:2]
             # pprint(list_of_skills)
             
             ## transform the list
-            list_of_skills = list_of_skills_transformer(list_of_skills)
-            pprint(list_of_skills[:2])
+            ns_database.logger.info("Starting: list of skills transformation")
+            list_of_skills = transformer_list_of_skills(list_of_skills)
+            # print(list_of_skills[0])
+            ns_database.logger.info("Success: list of skills transformation")
             
             ## update
+            ns_database.logger.info("Starting: update skills to database...")
             num_adds, num_updates = db_skill_updater(list_of_skills[:2])
             
             results = {
@@ -168,38 +211,106 @@ class L3SDBSyncSkills(Resource):
             
             # return request_data.get("skills")[0], HTTPStatus.OK
             return {"message": "success", "results": results}, HTTPStatus.CREATED
-        except ValueError as e:
+        except FileExistsError as e:
             results = {
                 "num_adds": "N.A.",
                 "num_updates": "N.A."
             }
+            return {"message": e.args[0], "results": results}, HTTPStatus.NOT_FOUND
+        except KeyError as e:
             return {"message": e.args[0], "results": {}}, HTTPStatus.BAD_REQUEST
+        except MaxRetryError as e:
+            return {"message": logging.error(traceback.format_exc()), "results": {}}, HTTPStatus.INTERNAL_SERVER_ERROR
         except Exception as e:
             return {"message": logging.error(traceback.format_exc()), "results": {}}, HTTPStatus.INTERNAL_SERVER_ERROR
+        
 
 
 ## --------------------------- Sync: Learning Path --------------------------- ##
-@ns_database.route('/sync/learning-paths', endpoint='l3s_db_sync_learning_paths')
+@ns_database.route('/sync/paths', endpoint='l3s_db_sync_learning_paths')
 class L3SDBSyncLearningPaths(Resource):
     def get(self):
         '''sync the data for learning paths'''
+        ns_database.logger.info("Starting: sync paths...")
+        ## -------- Step 1: Get skills from SSE ----------
+        try: 
+            ns_database.logger.info("Retrieving the path data from SSE-Service...")
+            list_of_paths = get_list_of_learning_paths()
+            # print(f"Num of Learning Paths: {len(list_of_paths)}")
+            # pprint(list_of_paths[0])
+            
+            ## check if list is empty
+            if list_of_paths == []:
+                raise FileExistsError("No path retrieved!")
+            
+            ns_database.logger.info(f"Success: {len(list_of_paths)} paths are retrieved.")
+            
+            ## transform the list
+            ns_database.logger.info("Starting: list of paths transformation")
+            list_of_paths = transformer_list_of_paths(list_of_paths)
+            ns_database.logger.info("Success: list of skills transformation")
+            # pprint(list_of_paths)
+            
+            ## update
+            ns_database.logger.info("Starting: update skills to database...")
+            num_adds, num_updates = db_updater_paths(list_of_paths[:2])
+            
+            results = {
+                "num_adds": num_adds,
+                "num_updates": num_updates
+            }
+            
+            if num_adds==0 and num_updates==0:
+                return {"message": "success", "results": results}, HTTPStatus.OK
+            
+            # return request_data.get("skills")[0], HTTPStatus.OK
+            return {"message": "success", "results": results}, HTTPStatus.CREATED
+        except FileExistsError as e:
+            results = {
+                "num_adds": "N.A.",
+                "num_updates": "N.A."
+            }
+            return {"message": e.args[0], "results": results}, HTTPStatus.NOT_FOUND
+        except KeyError as e:
+            return {"message": e.args[0], "results": {}}, HTTPStatus.BAD_REQUEST
+        except MaxRetryError as e:
+            return {"message": logging.error(traceback.format_exc()), "results": {}}, HTTPStatus.INTERNAL_SERVER_ERROR
+        except Exception as e:
+            return {"message": logging.error(traceback.format_exc()), "results": {}}, HTTPStatus.INTERNAL_SERVER_ERROR
         
-        return {"message": "method not implemented.", "results": []}
-    
+            
 
+## --------------------------- Sync: Tasks/Learning-Units --------------------- ##
 @ns_database.route('/sync/tasks', endpoint='l3s_db_sync_tasks')
-class InitLearningUnits(Resource):
+class L3SDBSyncLearningUnits(Resource):
     @ns_database.response(int(HTTPStatus.OK), description="Success: Tasks are up-to-date")
     @ns_database.response(int(HTTPStatus.CREATED), description="Success: Tasks are sychronized")
     @ns_database.marshal_with(dto_sync_response)
     def get(self):
         '''sync the data for learning units/tasks'''
+        ns_database.logger.info("Starting: sync tasks/learning-units...")
+        list_of_tasks = get_list_of_tasks()
+        # print(f"Num of Learning Units: {len(list_of_tasks)}")
         
-        return {"message": "method not implemented.", "results": []} 
+        ## check if list is empty
+        if list_of_tasks == []:
+            raise FileExistsError("No tasks/learning-units retrieved!")
+        
+        pprint(list_of_tasks[0])
+        ns_database.logger.info(f"Success: {len(list_of_tasks)} tasks/learning-units are retrieved.")
+        
+        ## transform the list
+        # ns_database.logger.info("Starting: list of tasks/learning-units transformation")
+        # list_of_tasks = transformer_list_of_tasks(list_of_tasks)
+        # ns_database.logger.info("Success: list of tasks/learning-units transformation")
+        # pprint(list_of_paths)
+        
+        
+        return
         ## get the list of learning units from sse
-        list_of_learning_units = get_list_of_learning_units()
+        list_of_learning_units = get_list_of_tasks()
         
-        list_of_learning_units = transformer_list_of_learning_units(list_of_learning_units)
+        list_of_learning_units = transformer_list_of_tasks(list_of_learning_units)
         pprint(list_of_learning_units[0])
         
         
@@ -216,7 +327,23 @@ class InitLearningUnits(Resource):
         # response = requests.post(request_url, json=request_data)
         # print(response.status_code)
         
-        
+## -------------------------------- Check Secret ------------------------ ##
+parser_secret = reqparse.RequestParser()
+parser_secret.add_argument('secret_key', type=str, location='args', required=True)
+
+@ns_database.route('/check_secret')
+class CheckSecretKey(Resource):
+    @ns_database.expect(parser_secret)
+    def get(self):
+        try:
+            request_data = parser_secret.parse_args()
+            if request_data["secret_key"] == os.getenv('MLS_CLIENT_SECRET'):
+                return {"message": "valid secret key"}, HTTPStatus.OK
+            else:
+                return {"message": "invalid secret key"}, HTTPStatus.BAD_REQUEST
+        except KeyError as e:
+            return {"message": f"value missing: {e.args[0]}"}, HTTPStatus.BAD_REQUEST
+       
 ## ------------------------------------- Documents ----------------------------------- ##
 from .dto import dto_document_delete_response, dto_document_post_request
 ns_database.models[dto_document_delete_response.name] = dto_document_delete_response
@@ -224,52 +351,92 @@ ns_database.models[dto_document_post_request.name] = dto_document_post_request
 
 @ns_database.route('/document/<string:entity_type>/<string:entity_id>', endpoint="db_doc_by_id")
 class DocumentById(Resource):
+    @ns_database.response(int(HTTPStatus.OK), description="Sccess")
+    @ns_database.response(int(HTTPStatus.NOT_FOUND), description="Document not found")
+    @ns_database.response(int(HTTPStatus.BAD_REQUEST), description="Invalid entity type")
     def get(self, entity_type, entity_id):
-        doc = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
-        temp = schema_document.dump(doc)
-        print(type(temp["owner"]))
-        return temp
-    def put(self, entity_type, entity_id):
-        doc = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
-        doc.owner = ['1', '2', '3']
-        temp = schema_document.dump(doc)
-        print(type(temp["owner"]))
-        return temp
-    @ns_database.expect(dto_document_post_request)
-    def post(self, entity_type, entity_id):
-        request_data = request.json
-        if entity_type not in ["task", "skill", "path"]:
-            return {"message": "invalid entity type"}, HTTPStatus.BAD_REQUEST
-        
-        entity_id_full = f"{entity_type}/{entity_id}"
-        
-        doc = Document(
-                       owner=[],
-                       entity_id = entity_id,
-                       entity_type = entity_type,
-                       entity_id_full = entity_id_full,
-                       contents = request_data["contents"],
-                       created_at = request_data["created_at"],
-                       updated_at = request_data["updated_at"]
-                       )
-        db.session.add(doc)
-        db.session.commit()
-        
-        print(doc)
-        return {"message": "success"}
-    
-    @ns_database.marshal_with(dto_document_delete_response)
-    def delete(self, entity_type, id):
         try:
-            it = Document.query.filter_by(entity_type=entity_type, entity_id=id).first()
+            if entity_type not in ("task", "skill", "path"):
+                raise ValueError("Invalid entity type!")
+            
+            doc = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
+            if doc == None:
+                raise FileExistsError("Document not found")
+            
+            temp = schema_document.dump(doc)
+            
+            return {"message": "success", "result": temp}, HTTPStatus.OK
+        
+        except FileExistsError as e:
+            return {"message": e.args[0], "result": {}}, HTTPStatus.NOT_FOUND
+        except ValueError as e:
+            return {"message": e.args[0], "result": {}}, HTTPStatus.BAD_REQUEST
+        
+    
+    @ns_database.expect(dto_document_post_request)
+    @ns_database.doc(params={'secret_key': 'mls client secret'})
+    def post(self, entity_type, entity_id):
+        try:
+            query_param = request.args.get('secret_key')
+            if query_param != os.getenv("MLS_CLIENT_SECRET"):
+                raise ValueError("Secret key does not match!")
+            
+            request_data = request.json
+            
+            if entity_type not in ["task", "skill", "path"]:
+                raise ValueError("invalid entity type")
+                
+            ## check whether instance already exists:
+            temp = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
+            print(temp)
+            if temp != None:
+                raise FileExistsError("Docuemt already exits!")
+                    
+            doc = Document(
+                        owner=request_data.get("owner"),
+                        entity_id = entity_id,
+                        entity_type = entity_type,
+                        entity_id_full = f"{entity_type}/{entity_id}",
+                        contents = request_data["contents"],
+                        created_at = request_data["created_at"],
+                        updated_at = request_data["updated_at"]
+                        )
+            db.session.add(doc)
+            db.session.commit()
+            
+            return {"message": "success", "result": schema_document.dump(doc)}, HTTPStatus.CREATED
+        except ValueError as e:
+            return {"message": e.args[0], "result": {}}, HTTPStatus.BAD_REQUEST
+        except FileExistsError as e:
+            return {"message": e.args[0], "result": schema_document.dump(temp)}, HTTPStatus.IM_USED
+        except KeyError as e:
+            return {"message": f"value missing: {e.args[0]}", "result": {}}, HTTPStatus.BAD_REQUEST
+    
+    @ns_database.response(int(HTTPStatus.OK), description="Success")
+    @ns_database.response(int(HTTPStatus.NO_CONTENT), description="Document not found")
+    @ns_database.response(int(HTTPStatus.BAD_REQUEST), description="Value Errors: Values missing or invalid")
+    @ns_database.expect(parser_secret)
+    @ns_database.marshal_with(dto_document_delete_response)
+    def delete(self, entity_type, entity_id):
+        request_data = parser_secret.parse_args()
+        # print(request_data)
+        try:
+            if request_data["secret_key"] != os.getenv("MLS_CLIENT_SECRET"):
+                raise ValueError("invalid secret key")
+        
+            it = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
             if it:
                 db.session.delete(it)
                 db.session.commit()
-                return {"status": "success", "message": "document deleted"}
+                return {"message": "document deleted"}, HTTPStatus.OK
             else:
-                raise FileNotFoundError(f'the requesting file with entity type: "{entity_type}" and id: "{id}" does not found.')
+                raise FileNotFoundError(f"the requesting file with entity type: '{entity_type}' and id: '{entity_id}' does not found.")
+        except ValueError as e:
+            return {"message": e.args[0]}, HTTPStatus.BAD_REQUEST
         except FileNotFoundError as e:
-            return {"status": "failed", "message": e.args[0]}
+            return {"message": e.args[0]}, HTTPStatus.NO_CONTENT
+        except KeyError as e:
+            return {"message": f"value missing: {e.args[0]}"}, HTTPStatus.BAD_REQUEST
         
          
 from sqlalchemy import cast, Integer
@@ -279,12 +446,17 @@ class DocumentAll(Resource):
         docs = Document.query.order_by(cast(Document.entity_id, Integer)).all()
         return schema_documents.dump(docs)
     
-    @ns_database.doc(delete=False)
+    @ns_database.expect(parser_secret)
     def delete(self):
-        db.session.query(Document).delete()
-        db.session.commit()
-        docs = Document.query.all()
-        return schema_documents.dump(docs)
+        request_data = parser_secret.parse_args()
+        if request_data["secret_key"] == os.getenv('MLS_CLIENT_SECRET'):
+            db.session.query(Document).delete()
+            db.session.commit()
+            docs = Document.query.all()
+            return {"message": "valid secret key", "docs": schema_documents.dump(docs)}, HTTPStatus.OK
+        else:
+            return {"message": "invalid secret key"}, HTTPStatus.BAD_REQUEST
+        
 
 
 

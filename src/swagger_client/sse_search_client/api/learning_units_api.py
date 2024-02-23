@@ -602,7 +602,7 @@ class LearningUnitsApi(object):
         :param async_req bool
         :param SearchLearningUnitCreationDto body: (required)
         :param str learning_unit_id: (required)
-        :return: object
+        :return: SearchLearningUnitDto
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -624,7 +624,7 @@ class LearningUnitsApi(object):
         :param async_req bool
         :param SearchLearningUnitCreationDto body: (required)
         :param str learning_unit_id: (required)
-        :return: object
+        :return: SearchLearningUnitDto
                  If the method is called asynchronously,
                  returns the request thread.
         """
@@ -688,7 +688,7 @@ class LearningUnitsApi(object):
             body=body_params,
             post_params=form_params,
             files=local_var_files,
-            response_type='object',  # noqa: E501
+            response_type='SearchLearningUnitDto',  # noqa: E501
             auth_settings=auth_settings,
             async_req=params.get('async_req'),
             _return_http_data_only=params.get('_return_http_data_only'),

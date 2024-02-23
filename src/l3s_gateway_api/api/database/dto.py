@@ -80,7 +80,6 @@ class RequestMethod(fields.String):
 
 ## ------------------------ Document --------------------- ##
 dto_document_delete_response = Model("DtoDocumentDeleteResponse", {
-    "status": fields.String(),
     "message": fields.String()
 })
 

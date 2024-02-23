@@ -28,7 +28,7 @@ def create_app(config_name):
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     os.environ["API_BASE_PATH"] = os.getcwd()
     
-    print(app.config['SQLALCHEMY_DATABASE_URI'])
+    # print(app.config['SQLALCHEMY_DATABASE_URI'])
     
     @app.route("/")
     def index():

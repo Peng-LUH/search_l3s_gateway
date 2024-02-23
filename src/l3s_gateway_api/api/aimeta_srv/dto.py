@@ -51,3 +51,14 @@ dto_completion_task_taught_skills_response = Model("DtoCompletionTaskTaughtSkill
     "new_skills": fields.List(fields.String()),
     "existing_skills": fields.List(fields.String())
 })
+
+
+dto_aimeta_course_summary = Model("DtoAimetaCourseSummary", {
+    "task_id": fields.String(),
+    "summary": fields.String()
+})
+
+dto_aimeta_course_summary_response = Model("DtoAimetaCourseSummaryResponse", {
+    "message": fields.String(),
+    "results": fields.Nested(dto_aimeta_course_summary)
+})

@@ -424,14 +424,21 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/SkillDto"
+                "$ref": "#/components/schemas/SkillUpdateDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillDto"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -940,7 +947,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/SearchLearningUnitDto"
                 }
               }
             }
@@ -997,6 +1004,39 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/PathDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "PathFinder"
+        ]
+      }
+    },
+    "/PathFinder/skillAnalysis": {
+      "post": {
+        "operationId": "PathFinderController_skillAnalysis",
+        "summary": "",
+        "description": "Analysis a skill (goal) to find the missing skills in the learning path.\n\nParameters:\n- goal (mandatory): The list of skills to be learned.\n\nReturns:\n- If the return path is empty, then there are no learning units for the skill.\n\n\n\n\n\nDefault path for learning Java (skill 1009)\n```json\n{\n\"goal\": [\"1009\"]\n}\n```",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SkillsToAnalyze"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SubPathListDto"
                 }
               }
             }
@@ -1149,37 +1189,6 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/LearningProfileCreationDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      }
-    },
-    "/add_Qualification": {
-      "post": {
-        "operationId": "UserMgmtController_addQualification",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/QualificationCreationDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/QualificationDto"
                 }
               }
             }
@@ -1435,7 +1444,14 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerProfileDto"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -1456,7 +1472,14 @@
         ],
         "responses": {
           "200": {
-            "description": ""
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerProfileDto"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -1605,6 +1628,158 @@
         "responses": {
           "200": {
             "description": ""
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/career-profiles/{career_profile_id}/qualifications": {
+      "post": {
+        "operationId": "UserMgmtController_addQualificationToCareerProfile",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualificationCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualificationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/career-profiles/{career_profile_id}/qualifications/{qualificaion_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getQualificationForCareerProfile",
+        "parameters": [
+          {
+            "name": "qualificaion_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualificationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "patch": {
+        "operationId": "UserMgmtController_patchQualificationToCareerProfile",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "qualificaion_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/QualificationCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualificationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_deleteQualificationToCareerProfile",
+        "parameters": [
+          {
+            "name": "career_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "qualificaion_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QualificationDto"
+                }
+              }
+            }
           }
         },
         "tags": [
@@ -2517,6 +2692,46 @@
           "nestedSkills"
         ]
       },
+      "SkillUpdateDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "nestedSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "parentSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "repositoryId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "level": {
+            "type": "number"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "nestedSkills",
+          "parentSkills",
+          "repositoryId",
+          "name",
+          "level"
+        ]
+      },
       "NuggetCreationDto": {
         "type": "object",
         "properties": {
@@ -2966,6 +3181,54 @@
           "cost"
         ]
       },
+      "SkillsToAnalyze": {
+        "type": "object",
+        "properties": {
+          "goal": {
+            "description": "The list of skills to be learned.",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "goal"
+        ]
+      },
+      "SubPathDto": {
+        "type": "object",
+        "properties": {
+          "skill": {
+            "type": "string"
+          },
+          "learningUnits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "skill",
+          "learningUnits"
+        ]
+      },
+      "SubPathListDto": {
+        "type": "object",
+        "properties": {
+          "subPaths": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SubPathDto"
+            }
+          }
+        },
+        "required": [
+          "subPaths"
+        ]
+      },
       "PathStorageRequestDto": {
         "type": "object",
         "properties": {
@@ -3149,54 +3412,6 @@
           "userId"
         ]
       },
-      "QualificationCreationDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Used to validate that the user is the owner of the target repository."
-          },
-          "name": {
-            "type": "string"
-          },
-          "year": {
-            "type": "number"
-          },
-          "userId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "year",
-          "userId"
-        ]
-      },
-      "QualificationDto": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "description": "Used to validate that the user is the owner of the target repository."
-          },
-          "name": {
-            "type": "string"
-          },
-          "year": {
-            "type": "number"
-          },
-          "userId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "id",
-          "name",
-          "year",
-          "userId"
-        ]
-      },
       "LearningHistoryCreationDto": {
         "type": "object",
         "properties": {
@@ -3223,11 +3438,43 @@
           },
           "userId": {
             "type": "string"
+          },
+          "selfReportedSkills": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verifiedSkills": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "jobHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "qualifications": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           }
         },
         "required": [
           "professionalInterests",
-          "userId"
+          "userId",
+          "selfReportedSkills",
+          "verifiedSkills",
+          "jobHistory",
+          "qualifications"
         ]
       },
       "CareerProfileDto": {
@@ -3246,6 +3493,34 @@
           "userId": {
             "type": "string"
           },
+          "selfReportedSkills": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "verifiedSkills": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "jobHistory": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "qualifications": {
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
           "id": {
             "type": "string"
           },
@@ -3256,6 +3531,10 @@
         "required": [
           "professionalInterests",
           "userId",
+          "selfReportedSkills",
+          "verifiedSkills",
+          "jobHistory",
+          "qualifications",
           "id"
         ]
       },
@@ -3328,6 +3607,54 @@
           "starttime",
           "endtime",
           "companyId"
+        ]
+      },
+      "QualificationCreationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "name": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number"
+          },
+          "userCareerProfilId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "year",
+          "userCareerProfilId"
+        ]
+      },
+      "QualificationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "name": {
+            "type": "string"
+          },
+          "year": {
+            "type": "number"
+          },
+          "userCareerProfilId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "year",
+          "userCareerProfilId"
         ]
       },
       "LearningProfileDto": {

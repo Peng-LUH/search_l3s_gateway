@@ -28,7 +28,7 @@ class DtoDatasetList(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'results': 'list[DtoDataset]'
+        'results': 'list[str]'
     }
 
     attribute_map = {
@@ -48,7 +48,7 @@ class DtoDatasetList(object):
 
 
         :return: The results of this DtoDatasetList.  # noqa: E501
-        :rtype: list[DtoDataset]
+        :rtype: list[str]
         """
         return self._results
 
@@ -58,7 +58,7 @@ class DtoDatasetList(object):
 
 
         :param results: The results of this DtoDatasetList.  # noqa: E501
-        :type: list[DtoDataset]
+        :type: list[str]
         """
 
         self._results = results

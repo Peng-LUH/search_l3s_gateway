@@ -3,7 +3,7 @@
   "info": {
     "title": "L3S AI-Meta Service(AIMS) for SEARCH",
     "description": "Welcome to the Swagger UI documentation site!",
-    "version": "0.0.1"
+    "version": "0.0.2"
   },
   "servers": [
     {
@@ -39,6 +39,9 @@
       "name": "Course Title"
     },
     {
+      "name": "Existing and New Skills"
+    },
+    {
       "name": "Trends"
     }
   ],
@@ -57,16 +60,16 @@
         }
       }
     },
-    "/aims/content-keywords/{id}": {
+    "/aims/completions/{task_id}/content_tags": {
       "get": {
         "tags": [
           "Content Keywords"
         ],
-        "summary": "Retrieve Content Keywords of the Task",
+        "summary": "Retrieve Content tags of the Task",
         "operationId": "get_get_content_keywords",
         "parameters": [
           {
-            "name": "id",
+            "name": "task_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -77,87 +80,27 @@
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Content Keywords"
-        ],
-        "operationId": "put_get_content_keywords",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoContentTagsResponse"
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Content Keywords"
-        ],
-        "operationId": "post_get_content_keywords",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Content Keywords"
-        ],
-        "operationId": "delete_get_content_keywords",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
           }
         }
       }
     },
-    "/aims/context-keywords/{id}": {
+    "/aims/completions/{task_id}/context_tags": {
       "get": {
         "tags": [
           "Context Keywords"
         ],
-        "summary": "Retrieve Context Keywords of the Task",
+        "summary": "Retrieve Context Tags of the Task",
         "operationId": "get_get_context_keywords",
         "parameters": [
           {
-            "name": "id",
+            "name": "task_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -168,219 +111,18 @@
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Context Keywords"
-        ],
-        "operationId": "put_get_context_keywords",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoContextTagsResponse"
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Context Keywords"
-        ],
-        "operationId": "post_get_context_keywords",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Context Keywords"
-        ],
-        "operationId": "delete_get_context_keywords",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
           }
         }
       }
     },
-    "/aims/course-title/{id}": {
-      "get": {
-        "tags": [
-          "Course Title"
-        ],
-        "summary": "Generate Titles for the Task",
-        "operationId": "get_get_title",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Course Title"
-        ],
-        "operationId": "put_get_title",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Course Title"
-        ],
-        "operationId": "post_get_title",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Course Title"
-        ],
-        "operationId": "delete_get_title",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/aims/get-tasks/{id}": {
-      "get": {
-        "tags": [
-          "MLS Tasks"
-        ],
-        "summary": "Retrieve a Task resource",
-        "operationId": "get_get_task_steps",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/aims/get-tasksteps/{id}": {
-      "get": {
-        "tags": [
-          "MLS Tasks"
-        ],
-        "summary": "Retrieve a TaskStep Resource",
-        "operationId": "get_get_task_steps",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/aims/learning-goal/{id}": {
+    "/aims/completions/{task_id}/learning_goal": {
       "get": {
         "tags": [
           "Learning Goal"
@@ -389,7 +131,7 @@
         "operationId": "get_get_learning_goal",
         "parameters": [
           {
-            "name": "id",
+            "name": "task_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -400,178 +142,18 @@
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Learning Goal"
-        ],
-        "operationId": "put_get_learning_goal",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Learning Goal"
-        ],
-        "operationId": "post_get_learning_goal",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Learning Goal"
-        ],
-        "operationId": "delete_get_learning_goal",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/aims/mls-response-dataset": {
-      "post": {
-        "tags": [
-          "MLS Tasks"
-        ],
-        "operationId": "post_mls_response",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Mls_Dataset"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoLearningGoalResponse"
+                }
               }
             }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "payload"
-      }
-    },
-    "/aims/mls-response-object": {
-      "post": {
-        "tags": [
-          "MLS Tasks"
-        ],
-        "operationId": "post_mls_response",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Mls_Object"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        },
-        "x-codegen-request-body-name": "payload"
-      }
-    },
-    "/aims/preprocess-tasks/{id}": {
-      "get": {
-        "tags": [
-          "Dataset Pre-process"
-        ],
-        "summary": "Retrieve a Preprocessed TaskStep Resource",
-        "operationId": "get_get_task_steps",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
           }
         }
       }
     },
-    "/aims/preprocess-tasksteps/{id}": {
-      "get": {
-        "tags": [
-          "Dataset Pre-process"
-        ],
-        "summary": "Retrieve a Preprocessed TaskStep Resource",
-        "operationId": "get_get_task_steps",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/aims/quiz/{id}": {
+    "/aims/completions/{task_id}/quiz_questions": {
       "get": {
         "tags": [
           "Quiz"
@@ -580,7 +162,131 @@
         "operationId": "get_get_quiz",
         "parameters": [
           {
-            "name": "id",
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoQuizQuestionsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aims/completions/{task_id}/summary": {
+      "get": {
+        "tags": [
+          "Course Summary"
+        ],
+        "summary": "Retrieve a summary of the Task",
+        "operationId": "get_get_summary",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aims/completions/{task_id}/taught_skills": {
+      "get": {
+        "tags": [
+          "Existing and New Skills"
+        ],
+        "summary": "Extract new skills and existing skills from the given learning unit",
+        "operationId": "get_get_title",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoNewExistingSkillsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aims/completions/{task_id}/title": {
+      "get": {
+        "tags": [
+          "Course Title"
+        ],
+        "summary": "Generate Titles for the Task",
+        "operationId": "get_get_title",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoTitleResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/aims/get-tasks/{task_id}": {
+      "get": {
+        "tags": [
+          "MLS Tasks"
+        ],
+        "summary": "Retrieve a Task resource",
+        "operationId": "get_get_task_steps",
+        "parameters": [
+          {
+            "name": "task_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -594,15 +300,18 @@
             "content": {}
           }
         }
-      },
-      "put": {
+      }
+    },
+    "/aims/get-tasksteps/{taskstep_id}": {
+      "get": {
         "tags": [
-          "Quiz"
+          "MLS Tasks"
         ],
-        "operationId": "put_get_quiz",
+        "summary": "Retrieve a TaskStep Resource",
+        "operationId": "get_get_task_steps",
         "parameters": [
           {
-            "name": "id",
+            "name": "taskstep_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -616,15 +325,18 @@
             "content": {}
           }
         }
-      },
-      "post": {
+      }
+    },
+    "/aims/preprocess-tasks/{task_id}": {
+      "get": {
         "tags": [
-          "Quiz"
+          "Dataset Pre-process"
         ],
-        "operationId": "post_get_quiz",
+        "summary": "Retrieve a Preprocessed TaskStep Resource",
+        "operationId": "get_get_task_steps",
         "parameters": [
           {
-            "name": "id",
+            "name": "task_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -635,18 +347,27 @@
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoTaskPreprocessResponse"
+                }
+              }
+            }
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/aims/preprocess-tasksteps/{taskstep_id}": {
+      "get": {
         "tags": [
-          "Quiz"
+          "Dataset Pre-process"
         ],
-        "operationId": "delete_get_quiz",
+        "summary": "Retrieve a Preprocessed TaskStep Resource",
+        "operationId": "get_get_task_steps",
         "parameters": [
           {
-            "name": "id",
+            "name": "taskstep_id",
             "in": "path",
             "required": true,
             "schema": {
@@ -657,7 +378,13 @@
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoTaskStepPreprocessResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -673,32 +400,46 @@
           {
             "name": "loc",
             "in": "query",
-            "description": "location",
+            "description": "location for searching job",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "berlin"
             }
           },
           {
             "name": "job_name",
             "in": "query",
-            "description": "name of the job",
+            "description": "job name",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "machine learning"
             }
           },
           {
             "name": "radius",
             "in": "query",
-            "description": "radius to search for jobs",
+            "description": "radius for searching jobs",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "default": 5
             }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DtoJobsSearchResponse"
+                  }
+                }
+              }
+            }
           }
         }
       }
@@ -714,123 +455,43 @@
           {
             "name": "loc",
             "in": "query",
-            "description": "location",
+            "description": "location for searching job",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "berlin"
             }
           },
           {
             "name": "job_name",
             "in": "query",
-            "description": "name of the job",
+            "description": "job name",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "machine learning"
             }
           },
           {
             "name": "radius",
             "in": "query",
-            "description": "radius to search for jobs",
+            "description": "radius for searching jobs",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "default": 5
             }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
-          }
-        }
-      }
-    },
-    "/aims/task-summary/{id}": {
-      "get": {
-        "tags": [
-          "Course Summary"
-        ],
-        "summary": "Retrieve a summary of the Task",
-        "operationId": "get_get_summary",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoSkillsResponse"
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Course Summary"
-        ],
-        "operationId": "put_get_summary",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Course Summary"
-        ],
-        "operationId": "post_get_summary",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Course Summary"
-        ],
-        "operationId": "delete_get_summary",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {}
           }
         }
       }
@@ -840,38 +501,59 @@
         "tags": [
           "Trends"
         ],
-        "summary": "trending skills",
+        "summary": "get trending skills",
         "operationId": "get_get_trends",
         "parameters": [
           {
             "name": "loc",
             "in": "query",
-            "description": "location",
+            "description": "location for searching job",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "berlin"
             }
           },
           {
             "name": "job_name",
             "in": "query",
-            "description": "name of the job",
+            "description": "job name",
+            "required": true,
             "schema": {
-              "type": "string"
+              "type": "string",
+              "default": "machine learning"
             }
           },
           {
             "name": "radius",
             "in": "query",
-            "description": "radius to search for jobs",
+            "description": "radius for searching jobs",
             "schema": {
-              "type": "string"
+              "type": "integer",
+              "default": 5
+            }
+          },
+          {
+            "name": "topk",
+            "in": "query",
+            "description": "top k trending skills",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 5
             }
           }
         ],
         "responses": {
           "200": {
             "description": "Success",
-            "content": {}
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoTrendingSkillsResponse"
+                }
+              }
+            }
           }
         }
       }
@@ -879,49 +561,344 @@
   },
   "components": {
     "schemas": {
-      "Mls_Dataset": {
+      "DtoTaskStepPreprocessResponse": {
         "type": "object",
         "properties": {
-          "name": {
+          "taskstep_id": {
             "type": "string",
-            "description": "description: dataset name, e.g., tasks, documents"
+            "description": "The task step ID",
+            "example": "23"
           },
-          "parameters": {
+          "taskstep_text": {
+            "type": "string",
+            "description": "Processed text of the task step",
+            "example": "Arbeitsauftrag Sind deine Ziele festgelegt?...Deine persönliche Reflexion bitte in Notizen ablegen"
+          }
+        }
+      },
+      "DtoTaskPreprocessResponse": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "task_title": {
+            "type": "string",
+            "description": "Title of the task",
+            "example": "Schlitten [3_3]"
+          },
+          "text": {
+            "type": "string",
+            "description": "Processed text of the task",
+            "example": "1. informieren Schlitten Arbeitsauftrag Sind deine Ziele...Lernfortschritt besser erkennen kannst."
+          },
+          "tasksteps_ids": {
             "type": "array",
-            "description": "List of mls-api parameters",
+            "description": "taskstep ids in the task",
+            "example": [
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ],
             "items": {
-              "$ref": "#/components/schemas/Parameter"
+              "type": "integer"
+            }
+          },
+          "task_set_id": {
+            "type": "string",
+            "description": "id of task set, corresponding to different owner/category",
+            "example": "2"
+          }
+        }
+      },
+      "DtoSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "summary": {
+            "type": "string",
+            "description": "Summary of the given task",
+            "example": "In dieser Lerneinheit steht der Schlitten im Fokus. \n                             Du wirst lernen, deine Ziele zu definieren, \n                             die Funktion des Bauteils zu verstehen und einen genauen Arbeitsplan zu erstellen. \n                             Dabei ist es wichtig, Form- und Lagetoleranzen einzuhalten und Sicherheitsvorschriften zu beachten. \n                             Nachdem du den Schlitten hergestellt hast, \n                             kannst du deine Arbeit reflektieren und deine Ergebnisse mit deinem Lernbegleiter besprechen. \n                             Um deine Fortschritte festzuhalten, füllst du die \"Ich kann ...\"-Listen für überfachliche und fachliche Kompetenzen aus. \n                             Lade deine Ergebnisse in deine Notizen hoch. \n                             Ganz wichtig: \n                             Du kannst die bereits heruntergeladenen Listen und Bewertungsbögen weiterbearbeiten und musst keine neuen anlegen, \n                             um deinen Lernfortschritt besser nachverfolgen zu können. \n                             Diese Lerneinheit ist eine spannende Herausforderung für dich, \n                             also plane und arbeite sorgfältig und effektiv, um den Schlitten in optimaler Qualität herzustellen. Viel Erfolg!"
+          }
+        }
+      },
+      "DtoContentTagsResponse": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "content_tags": {
+            "type": "array",
+            "description": "List of Content Tags",
+            "example": [
+              "Arbeitsauftrag",
+              "Ziele",
+              "Funktion",
+              "Bauteil",
+              "Einzelteilzeichnung",
+              "anspruchsvolles Werkstück",
+              "Arbeitsfolge",
+              "Form- und Lagetoleranzen",
+              "Arbeitsplan",
+              "Arbeitszeit",
+              "Optimale Qualität",
+              "Sicherheitsvorschriften",
+              "Toleranzen",
+              "Lagetoleranz",
+              "Reflexion",
+              "Lernbegleiter",
+              "persönliche Reflexion",
+              "Planung",
+              "Effektivität",
+              "Arbeitsplanformular",
+              "Arbeitsplan",
+              "Prozesse",
+              "Vorgehen",
+              "Sicherheitsbestimmungen",
+              "Erfolgskontrolle",
+              "Erfolgskontrolle Formular",
+              "überfachliche Kompetenzen",
+              "fachliche Kompetenzen",
+              "Bewertungsbögen",
+              "Lernfortschritt"
+            ],
+            "items": {
+              "type": "string"
             }
           }
         }
       },
-      "Parameter": {
+      "DtoContextTagsResponse": {
         "type": "object",
         "properties": {
-          "parameter_name": {
+          "task_id": {
             "type": "string",
-            "description": "mls-api parameter"
+            "description": "The task ID",
+            "example": "10"
+          },
+          "context_tags": {
+            "type": "array",
+            "description": "List of Context Tags",
+            "example": [
+              "Arbeitsplanung",
+              "Herstellung",
+              "Reflexion",
+              "Erfolgskontrolle"
+            ],
+            "items": {
+              "type": "string"
+            }
           }
         }
       },
-      "Mls_Object": {
+      "DtoLearningGoalResponse": {
         "type": "object",
         "properties": {
-          "object_id": {
-            "type": "string"
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "learning_goals": {
+            "type": "array",
+            "description": "List of learning goals",
+            "example": [
+              "Die Funktion des Bauteils 'Schlitten' verstehen",
+              "Einen effektiven Arbeitsplan für die Herstellung des Schlittens erstellen",
+              "Den Schlitten sicher und effektiv herstellen und dabei Form- und Lagetoleranzen einhalten"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoQuizQuestionsResponse": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "quiz_questions": {
+            "type": "object",
+            "description": "Quiz questions categorized by taxonomy level",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/QuizItem"
+              }
+            ]
+          }
+        }
+      },
+      "QuizItem": {
+        "type": "object",
+        "properties": {
+          "Wissen": {
+            "type": "array",
+            "description": "List of Wissen quiz questions",
+            "example": [
+              "Welche Fragen sollen in der Reflexion besprochen werden?",
+              "Welche Sicherheitsvorschriften sollten bei der Herstellung beachtet werden?"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "Verstehen": {
+            "type": "array",
+            "description": "List of Verstehen quiz questions",
+            "example": [
+              "Was sind die Ziele bei der Herstellung des Schlittens?",
+              "Was ist die Funktion des Bauteils?"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "Anwenden": {
+            "type": "array",
+            "description": "List of Anwenden quiz questions",
+            "example": [
+              "Wie kannst du eine Arbeitsfolge planen, um die geforderten Toleranzen einzuhalten?",
+              "Wie kannst du den Arbeitsplan ausformulieren, um den Schlitten in optimaler Qualität herzustellen?"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoTitleResponse": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "title": {
+            "type": "array",
+            "description": "List of Titles for given task",
+            "example": [
+              "Informiere dich über den Schlitten!",
+              "Plane den Bau des Schlittens!",
+              "Erstelle einen Arbeitsplan für den Schlittenbau!"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoNewExistingSkillsResponse": {
+        "type": "object",
+        "properties": {
+          "task_id": {
+            "type": "string",
+            "description": "The task ID",
+            "example": "10"
+          },
+          "new_skills": {
+            "type": "array",
+            "description": "List of new skills in the learning task",
+            "example": [
+              "Zielsetzung und Selbstreflexion",
+              "Effektive Planung",
+              "Praktische Umsetzung",
+              "Beobachtung und Reflexion",
+              "Erfolgskontrolle"
+            ],
+            "items": {
+              "type": "string"
+            }
+          },
+          "existing_skills": {
+            "type": "array",
+            "description": "List of existing skills ids for the learning task",
+            "example": [
+              "1",
+              "2",
+              "3"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoJobsSearchResponse": {
+        "type": "object",
+        "properties": {
+          "job_offers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "description": "List of Dictionaries"
+            }
+          }
+        }
+      },
+      "DtoSkillsResponse": {
+        "type": "object",
+        "properties": {
+          "skills": {
+            "type": "object",
+            "properties": {},
+            "description": "required skills with auspraegungen (skill level and skill name) and hierarchieName(context) for the given job."
+          }
+        }
+      },
+      "DtoTrendingSkillsResponse": {
+        "type": "object",
+        "properties": {
+          "topk": {
+            "type": "string",
+            "description": "number of top Trending Skills",
+            "example": "5"
+          },
+          "trending_skills": {
+            "type": "array",
+            "description": "List of Trending Skills",
+            "example": [
+              "Kundenberatung, -betreuung",
+              "Abrechnung",
+              "Kosten- und Leistungsrechnung",
+              "Akquisition",
+              "Korrespondenz"
+            ],
+            "items": {
+              "type": "string"
+            }
           }
         }
       }
     },
     "responses": {
-      "MaskError": {
-        "description": "When any error occurs on mask",
-        "content": {}
-      },
       "ParseError": {
         "description": "When a mask can't be parsed",
         "content": {}
+      },
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
       }
     }
-  }
+  },
+  "x-original-swagger-version": "2.0"
 }

@@ -1,0 +1,1353 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "L3S Gateway for SEARCH",
+    "description": "Welcome to the Swagger UI documentation site!",
+    "version": "1.0.1"
+  },
+  "servers": [
+    {
+      "url": "/l3s-gateway"
+    }
+  ],
+  "tags": [
+    {
+      "name": "L3S Database",
+      "description": "endpoints to communicate with the mls"
+    },
+    {
+      "name": "Search Service",
+      "description": "downstream endpoints for search services"
+    },
+    {
+      "name": "Recsys Service",
+      "description": "downstream endpoints for recsys services"
+    },
+    {
+      "name": "AI-Meta Service",
+      "description": "downstream endpoints for aimeta services"
+    }
+  ],
+  "paths": {
+    "/l3s-aimeta/aimeta-service/course-summary/{id}": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "operationId": "get_ai_meta_course_summary",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}/content-tags": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task_content_tags",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskContentTagsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}/context-tags": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task_context_tags",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskContentTagsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}/quiz-questions": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task_quiz_questions",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskQuizQuestionsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}/summary": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task_summary",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskSummaryResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}/taught-skills": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task_taught_skills",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskTaughtSkillsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/completions/{task_id}/title": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_completion_task_title",
+        "parameters": [
+          {
+            "name": "task_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoCompletionTaskTitleResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-aimeta/connection": {
+      "get": {
+        "tags": [
+          "AI-Meta Service"
+        ],
+        "operationId": "get_ai_meta_ok",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoAimetaConnectionResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "successfully changed.",
+            "content": {}
+          },
+          "400": {
+            "description": "validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "exits conflict.",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-database/check_secret": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "get_check_secret_key",
+        "parameters": [
+          {
+            "name": "secret_key",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-database/document/all": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "get_document_all",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "delete_document_all",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-database/document/{entity_type}/{entity_id}": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "get_document_by_id",
+        "parameters": [
+          {
+            "name": "entity_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "entity_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "put_document_by_id",
+        "parameters": [
+          {
+            "name": "entity_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "entity_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "post_document_by_id",
+        "parameters": [
+          {
+            "name": "entity_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "entity_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DtoDocumentPostRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        },
+        "x-codegen-request-body-name": "payload"
+      },
+      "delete": {
+        "tags": [
+          "L3S Database"
+        ],
+        "operationId": "delete_document_by_id",
+        "parameters": [
+          {
+            "name": "entity_type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "entity_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoDocumentDeleteResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-database/sync": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "summary": "l3s database synchronization",
+        "operationId": "get_l3_s_databse_sync",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-database/sync/learning-paths": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "summary": "sync the data for learning paths",
+        "operationId": "get_l3_sdb_sync_learning_paths",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-database/sync/skills": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "summary": "sync the data for skills",
+        "operationId": "get_l3_sdb_sync_skills",
+        "responses": {
+          "200": {
+            "description": "Success: Skills are up to date",
+            "content": {}
+          },
+          "201": {
+            "description": "Success: Skills are sychronized",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-database/sync/tasks": {
+      "get": {
+        "tags": [
+          "L3S Database"
+        ],
+        "summary": "sync the data for learning units/tasks",
+        "operationId": "get_init_learning_units",
+        "responses": {
+          "200": {
+            "description": "Success: Tasks are up-to-date",
+            "content": {}
+          },
+          "201": {
+            "description": "Success: Tasks are sychronized",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-recsys/connection": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "operationId": "get_recommendation_service",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoRecsysConnectionResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "successfully changed.",
+            "content": {}
+          },
+          "400": {
+            "description": "validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "exits conflict.",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-recsys/random/get-n-random-recommendation": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "operationId": "get_get_n_random_recommendation",
+        "parameters": [
+          {
+            "name": "num_of_rec",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-recsys/{user_id}/company": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_rec_user_comany",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "owners",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoGetRecommendationReponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-recsys/{user_id}/interests": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_rec_user_interests",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "owners",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoGetRecommendationReponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-recsys/{user_id}/learning-goal": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_rec_user_learning_goal",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "owners",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoGetRecommendationReponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-recsys/{user_id}/sibblings": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_rec_user_sibblings",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "owners",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoGetRecommendationReponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-recsys/{user_id}/trends": {
+      "get": {
+        "tags": [
+          "Recsys Service"
+        ],
+        "summary": "in progress",
+        "operationId": "get_rec_user_trends",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "owners",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoGetRecommendationReponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "invalid user id",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-search/connection": {
+      "get": {
+        "tags": [
+          "Search Service"
+        ],
+        "operationId": "get_search_service_ok",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoSearchSrvConnectionResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "successfully changed.",
+            "content": {}
+          },
+          "400": {
+            "description": "validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "exits conflict.",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-search/datasets": {
+      "get": {
+        "tags": [
+          "Search Service"
+        ],
+        "summary": "get the name of datasets",
+        "operationId": "get_search_service_datasets",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoGetDatasetResponse"
+                }
+              }
+            }
+          },
+          "201": {
+            "description": "successfully changed.",
+            "content": {}
+          },
+          "400": {
+            "description": "validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "exits conflict.",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-search/encode-type": {
+      "get": {
+        "tags": [
+          "Search Service"
+        ],
+        "summary": "get the name of encoding types as list",
+        "operationId": "get_search_service_encode_types",
+        "responses": {
+          "201": {
+            "description": "successfully changed.",
+            "content": {}
+          },
+          "400": {
+            "description": "validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "exits conflict.",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/l3s-search/search/{user_id}": {
+      "get": {
+        "tags": [
+          "Search Service"
+        ],
+        "operationId": "get_search_service",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "owner",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "query",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "Wirkleistung von Wechselspannungen"
+            }
+          },
+          {
+            "name": "use_skill_profile",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "use_learning_profile",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          },
+          {
+            "name": "entity_type",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "default": "all"
+            }
+          },
+          {
+            "name": "num_results",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "default": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoSearchResponseList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/l3s-search/unit-search": {
+      "get": {
+        "tags": [
+          "Search Service"
+        ],
+        "operationId": "get_unit_search",
+        "parameters": [
+          {
+            "name": "requirements",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "target",
+            "in": "query",
+            "style": "form",
+            "explode": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoUnitSearchResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DtoDocumentPostRequest": {
+        "type": "object",
+        "properties": {
+          "owner": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "contents": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoDocumentDeleteResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoSearchSrvConnectionResponse": {
+        "type": "object",
+        "properties": {
+          "host_url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoGetDatasetResponse": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoSearchResponseList": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoSearchResponse"
+            }
+          }
+        }
+      },
+      "DtoSearchResponse": {
+        "type": "object",
+        "properties": {
+          "user_id": {
+            "type": "string",
+            "description": "user ID"
+          },
+          "owner": {
+            "type": "string",
+            "description": "company ID"
+          },
+          "entity_id": {
+            "type": "string"
+          },
+          "entity_type": {
+            "type": "string"
+          },
+          "similarity": {
+            "type": "number"
+          }
+        }
+      },
+      "DtoUnitSearchResponse": {
+        "type": "object",
+        "properties": {
+          "unit_ids": {
+            "type": "array",
+            "description": "List of unit ids",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoRecsysConnectionResponse": {
+        "type": "object",
+        "properties": {
+          "host_url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoGetRecommendationReponse": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoRecommendationObj"
+            }
+          }
+        }
+      },
+      "DtoRecommendationObj": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "the object is either a skill, path or unit"
+          },
+          "id": {
+            "type": "string",
+            "description": "ID of a task, path or skill"
+          }
+        }
+      },
+      "DtoAimetaConnectionResponse": {
+        "type": "object",
+        "properties": {
+          "host_url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoCompletionTaskResponse": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "existing_skills": {
+            "type": "array",
+            "description": "list of skill ids",
+            "items": {
+              "type": "string"
+            }
+          },
+          "new_skills": {
+            "type": "array",
+            "description": "list of skill ids",
+            "items": {
+              "type": "string"
+            }
+          },
+          "title": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          },
+          "content_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "context_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoCompletionTaskTitleResponse": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoCompletionTaskSummaryResponse": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "summary": {
+            "type": "string"
+          }
+        }
+      },
+      "DtoCompletionTaskContentTagsResponse": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "content_tags": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoCompletionTaskQuizQuestionsResponse": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "quiz_questions": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoCompletionTaskTaughtSkillsResponse": {
+        "type": "object",
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "new_skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "existing_skills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "responses": {
+      "ParseError": {
+        "description": "When a mask can't be parsed",
+        "content": {}
+      },
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
+      }
+    }
+  },
+  "x-original-swagger-version": "2.0"
+}

@@ -32,6 +32,10 @@ class CareerProfileDto(object):
         'current_job_id_at_berufe_net': 'str',
         'professional_interests': 'str',
         'user_id': 'str',
+        'self_reported_skills': 'list[str]',
+        'verified_skills': 'list[str]',
+        'job_history': 'list[str]',
+        'qualifications': 'list[str]',
         'id': 'str',
         'description': 'str'
     }
@@ -41,16 +45,24 @@ class CareerProfileDto(object):
         'current_job_id_at_berufe_net': 'currentJobIdAtBerufeNet',
         'professional_interests': 'professionalInterests',
         'user_id': 'userId',
+        'self_reported_skills': 'selfReportedSkills',
+        'verified_skills': 'verifiedSkills',
+        'job_history': 'jobHistory',
+        'qualifications': 'qualifications',
         'id': 'id',
         'description': 'description'
     }
 
-    def __init__(self, current_company_id=None, current_job_id_at_berufe_net=None, professional_interests=None, user_id=None, id=None, description=None):  # noqa: E501
+    def __init__(self, current_company_id=None, current_job_id_at_berufe_net=None, professional_interests=None, user_id=None, self_reported_skills=None, verified_skills=None, job_history=None, qualifications=None, id=None, description=None):  # noqa: E501
         """CareerProfileDto - a model defined in Swagger"""  # noqa: E501
         self._current_company_id = None
         self._current_job_id_at_berufe_net = None
         self._professional_interests = None
         self._user_id = None
+        self._self_reported_skills = None
+        self._verified_skills = None
+        self._job_history = None
+        self._qualifications = None
         self._id = None
         self._description = None
         self.discriminator = None
@@ -60,6 +72,10 @@ class CareerProfileDto(object):
             self.current_job_id_at_berufe_net = current_job_id_at_berufe_net
         self.professional_interests = professional_interests
         self.user_id = user_id
+        self.self_reported_skills = self_reported_skills
+        self.verified_skills = verified_skills
+        self.job_history = job_history
+        self.qualifications = qualifications
         self.id = id
         if description is not None:
             self.description = description
@@ -153,6 +169,98 @@ class CareerProfileDto(object):
             raise ValueError("Invalid value for `user_id`, must not be `None`")  # noqa: E501
 
         self._user_id = user_id
+
+    @property
+    def self_reported_skills(self):
+        """Gets the self_reported_skills of this CareerProfileDto.  # noqa: E501
+
+
+        :return: The self_reported_skills of this CareerProfileDto.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._self_reported_skills
+
+    @self_reported_skills.setter
+    def self_reported_skills(self, self_reported_skills):
+        """Sets the self_reported_skills of this CareerProfileDto.
+
+
+        :param self_reported_skills: The self_reported_skills of this CareerProfileDto.  # noqa: E501
+        :type: list[str]
+        """
+        if self_reported_skills is None:
+            raise ValueError("Invalid value for `self_reported_skills`, must not be `None`")  # noqa: E501
+
+        self._self_reported_skills = self_reported_skills
+
+    @property
+    def verified_skills(self):
+        """Gets the verified_skills of this CareerProfileDto.  # noqa: E501
+
+
+        :return: The verified_skills of this CareerProfileDto.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._verified_skills
+
+    @verified_skills.setter
+    def verified_skills(self, verified_skills):
+        """Sets the verified_skills of this CareerProfileDto.
+
+
+        :param verified_skills: The verified_skills of this CareerProfileDto.  # noqa: E501
+        :type: list[str]
+        """
+        if verified_skills is None:
+            raise ValueError("Invalid value for `verified_skills`, must not be `None`")  # noqa: E501
+
+        self._verified_skills = verified_skills
+
+    @property
+    def job_history(self):
+        """Gets the job_history of this CareerProfileDto.  # noqa: E501
+
+
+        :return: The job_history of this CareerProfileDto.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._job_history
+
+    @job_history.setter
+    def job_history(self, job_history):
+        """Sets the job_history of this CareerProfileDto.
+
+
+        :param job_history: The job_history of this CareerProfileDto.  # noqa: E501
+        :type: list[str]
+        """
+        if job_history is None:
+            raise ValueError("Invalid value for `job_history`, must not be `None`")  # noqa: E501
+
+        self._job_history = job_history
+
+    @property
+    def qualifications(self):
+        """Gets the qualifications of this CareerProfileDto.  # noqa: E501
+
+
+        :return: The qualifications of this CareerProfileDto.  # noqa: E501
+        :rtype: list[str]
+        """
+        return self._qualifications
+
+    @qualifications.setter
+    def qualifications(self, qualifications):
+        """Sets the qualifications of this CareerProfileDto.
+
+
+        :param qualifications: The qualifications of this CareerProfileDto.  # noqa: E501
+        :type: list[str]
+        """
+        if qualifications is None:
+            raise ValueError("Invalid value for `qualifications`, must not be `None`")  # noqa: E501
+
+        self._qualifications = qualifications
 
     @property
     def id(self):

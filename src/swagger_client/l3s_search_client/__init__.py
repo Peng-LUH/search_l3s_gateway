@@ -24,7 +24,6 @@ from l3s_search_client.api.test_api import TestApi
 from l3s_search_client.api_client import ApiClient
 from l3s_search_client.configuration import Configuration
 # import models into sdk package
-from l3s_search_client.models.dto_dataset import DtoDataset
 from l3s_search_client.models.dto_dataset_list import DtoDatasetList
 from l3s_search_client.models.dto_dense_search_request import DtoDenseSearchRequest
 from l3s_search_client.models.dto_dense_search_response import DtoDenseSearchResponse
