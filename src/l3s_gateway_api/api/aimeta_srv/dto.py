@@ -152,17 +152,6 @@ dto_completion_quiz_questions_response_item = Model("DtoCompletionQuizQuestionsR
 })
 
 
-<<<<<<< HEAD
-dto_aimeta_course_summary = Model("DtoAimetaCourseSummary", {
-    "task_id": fields.String(),
-    "summary": fields.String()
-})
-
-dto_aimeta_course_summary_response = Model("DtoAimetaCourseSummaryResponse", {
-    "message": fields.String(),
-    "results": fields.Nested(dto_aimeta_course_summary)
-})
-=======
 dto_completion_quiz_questions_response = Model('DtoCompletionQuizQuestionsResponse',  {
                             'message': fields.String(required=True, example="success", description='Success message'),
                             'results': fields.Nested(dto_completion_quiz_questions_response_item, description='Results')
@@ -183,4 +172,3 @@ dto_completion_learning_goal_response = Model('DtoCompletionLearningGoalResponse
                             'message': fields.String(required=True, example="success", description='Success message'),
                             'results': fields.Nested(dto_completion_learning_goal_response_item, description='Results')
                                         })
->>>>>>> ebc085ac2e497beb2b7e5986f671123b931ecedf

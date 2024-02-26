@@ -21,10 +21,6 @@ print("*"*80)
 client_l3s_aimeta = l3s_aimeta_client.ApiClient(configuration=l3s_aimeta_config)
 # l3s recsys api registration
 aims_course_summary_api = l3s_aimeta_client.CourseSummaryApi(api_client=client_l3s_aimeta)
-<<<<<<< HEAD
-
-
-=======
 aims_course_title_api = l3s_aimeta_client.CourseTitleApi(api_client=client_l3s_aimeta)
 aims_course_content_tags_api  = l3s_aimeta_client.ContentTagsApi(api_client=client_l3s_aimeta)
 aims_course_context_tags_api  =l3s_aimeta_client.ContextTagsApi(api_client=client_l3s_aimeta)
@@ -34,7 +30,6 @@ aims_course_quiz_api = l3s_aimeta_client.QuizApi(api_client=client_l3s_aimeta)
 
 # recsys_random_api = l3s_search_client.RandomApi(api_client=client_l3s_search)
 # search_metadata_api = l3s_aimeta_client.MetadataApi(api_client=client_l3s_aimeta)
->>>>>>> ebc085ac2e497beb2b7e5986f671123b931ecedf
 
 from swagger_client.l3s_aimeta_client.models.dto_summary_response import DtoSummaryResponse
 from swagger_client.l3s_aimeta_client.models.dto_quiz_questions_response import DtoQuizQuestionsResponse
@@ -45,12 +40,6 @@ from swagger_client.l3s_aimeta_client.models.all_of_dto_quiz_questions_response_
 ## -------------------- create namespace -------------------- ##
 ns_aimeta_srv = Namespace("AI-Meta Service", validate=True, description="downstream endpoints for aimeta services")
 
-<<<<<<< HEAD
-
-
-
-=======
->>>>>>> ebc085ac2e497beb2b7e5986f671123b931ecedf
 ## ------------------- check connection -------------------- ##
 from .dto import dto_aimeta_connection_response
 ns_aimeta_srv.models[dto_aimeta_connection_response.name] = dto_aimeta_connection_response
@@ -94,13 +83,6 @@ class AiMetaCourseSummary(Resource):
     @ns_aimeta_srv.response(int(HTTPStatus.NOT_FOUND), "Not Found error.")
     @ns_aimeta_srv.marshal_with(dto_completion_task_summary_response)
     def get(self, task_id):
-<<<<<<< HEAD
-        '''in progress'''
-        #"""generate meta attributes for a task based on task-id"""
-        
-        return {}, HTTPStatus.OK
-
-=======
         "Get summary of the Task"
 
         results = {
@@ -131,17 +113,16 @@ class AiMetaCourseSummary(Resource):
                 
         except Exception as e:
             return {"message": e, "results": results}, HTTPStatus.INTERNAL_SERVER_ERROR
->>>>>>> ebc085ac2e497beb2b7e5986f671123b931ecedf
 
 # --------------- course summary --------------------- #
 from l3s_aimeta_client.models.dto_summary_response import DtoSummaryResponse
-from .dto import dto_aimeta_course_summary, dto_aimeta_course_summary_response
-ns_aimeta_srv.models[dto_aimeta_course_summary.name] = dto_aimeta_course_summary
-ns_aimeta_srv.models[dto_aimeta_course_summary_response.name] = dto_aimeta_course_summary_response
+from .dto import dto_completion_task_summary_response_item, dto_completion_task_summary_response
+ns_aimeta_srv.models[dto_completion_task_summary_response_item.name] = dto_completion_task_summary_response_item
+ns_aimeta_srv.models[dto_completion_task_summary_response.name] = dto_completion_task_summary_response
 
 @ns_aimeta_srv.route('/aimeta-service/course-summary/<string:task_id>', endpoint="aims_course_summary")
 class AiMetaCourseSummary(Resource):
-    # @ns_aimeta_srv.marshal_with(dto_aimeta_course_summary_response)
+    @ns_aimeta_srv.marshal_with(dto_completion_task_summary_response)
     @ns_aimeta_srv.response(int(HTTPStatus.OK), description="Success")
     @ns_aimeta_srv.response(int(HTTPStatus.BAD_REQUEST), description="Error occured")
     def get(self, task_id):

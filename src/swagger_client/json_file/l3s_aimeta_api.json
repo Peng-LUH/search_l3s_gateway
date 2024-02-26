@@ -3,7 +3,7 @@
   "info": {
     "title": "L3S AI-Meta Service(AIMS) for SEARCH",
     "description": "Welcome to the Swagger UI documentation site!",
-    "version": "0.0.2"
+    "version": "0.0.3"
   },
   "servers": [
     {
@@ -24,10 +24,10 @@
       "name": "Course Summary"
     },
     {
-      "name": "Content Keywords"
+      "name": "Content Tags"
     },
     {
-      "name": "Context Keywords"
+      "name": "Context Tags"
     },
     {
       "name": "Learning Goal"
@@ -40,9 +40,6 @@
     },
     {
       "name": "Existing and New Skills"
-    },
-    {
-      "name": "Trends"
     }
   ],
   "paths": {
@@ -63,7 +60,7 @@
     "/aims/completions/{task_id}/content_tags": {
       "get": {
         "tags": [
-          "Content Keywords"
+          "Content Tags"
         ],
         "summary": "Retrieve Content tags of the Task",
         "operationId": "get_get_content_keywords",
@@ -87,6 +84,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -94,7 +99,7 @@
     "/aims/completions/{task_id}/context_tags": {
       "get": {
         "tags": [
-          "Context Keywords"
+          "Context Tags"
         ],
         "summary": "Retrieve Context Tags of the Task",
         "operationId": "get_get_context_keywords",
@@ -118,6 +123,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -149,6 +162,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -180,6 +201,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -211,6 +240,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -221,7 +258,7 @@
           "Existing and New Skills"
         ],
         "summary": "Extract new skills and existing skills from the given learning unit",
-        "operationId": "get_get_title",
+        "operationId": "get_get_taught_skills",
         "parameters": [
           {
             "name": "task_id",
@@ -242,6 +279,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -273,6 +318,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -283,7 +336,7 @@
           "MLS Tasks"
         ],
         "summary": "Retrieve a Task resource",
-        "operationId": "get_get_task_steps",
+        "operationId": "get_get_raw_task",
         "parameters": [
           {
             "name": "task_id",
@@ -308,7 +361,7 @@
           "MLS Tasks"
         ],
         "summary": "Retrieve a TaskStep Resource",
-        "operationId": "get_get_task_steps",
+        "operationId": "get_get_raw_task_steps",
         "parameters": [
           {
             "name": "taskstep_id",
@@ -333,7 +386,7 @@
           "Dataset Pre-process"
         ],
         "summary": "Retrieve a Preprocessed TaskStep Resource",
-        "operationId": "get_get_task_steps",
+        "operationId": "get_get_task",
         "parameters": [
           {
             "name": "task_id",
@@ -354,6 +407,14 @@
                 }
               }
             }
+          },
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
+          },
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -385,175 +446,14 @@
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/aims/search-jobs/": {
-      "get": {
-        "tags": [
-          "Trends"
-        ],
-        "summary": "Search for job offers",
-        "operationId": "get_search_jobs",
-        "parameters": [
-          {
-            "name": "loc",
-            "in": "query",
-            "description": "location for searching job",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "berlin"
-            }
           },
-          {
-            "name": "job_name",
-            "in": "query",
-            "description": "job name",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "machine learning"
-            }
+          "404": {
+            "description": "Not Found error.",
+            "content": {}
           },
-          {
-            "name": "radius",
-            "in": "query",
-            "description": "radius for searching jobs",
-            "schema": {
-              "type": "integer",
-              "default": 5
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/DtoJobsSearchResponse"
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/aims/skills/": {
-      "get": {
-        "tags": [
-          "Trends"
-        ],
-        "summary": "get skills",
-        "operationId": "get_get_skills",
-        "parameters": [
-          {
-            "name": "loc",
-            "in": "query",
-            "description": "location for searching job",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "berlin"
-            }
-          },
-          {
-            "name": "job_name",
-            "in": "query",
-            "description": "job name",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "machine learning"
-            }
-          },
-          {
-            "name": "radius",
-            "in": "query",
-            "description": "radius for searching jobs",
-            "schema": {
-              "type": "integer",
-              "default": 5
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DtoSkillsResponse"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/aims/trending-skills/": {
-      "get": {
-        "tags": [
-          "Trends"
-        ],
-        "summary": "get trending skills",
-        "operationId": "get_get_trends",
-        "parameters": [
-          {
-            "name": "loc",
-            "in": "query",
-            "description": "location for searching job",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "berlin"
-            }
-          },
-          {
-            "name": "job_name",
-            "in": "query",
-            "description": "job name",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": "machine learning"
-            }
-          },
-          {
-            "name": "radius",
-            "in": "query",
-            "description": "radius for searching jobs",
-            "schema": {
-              "type": "integer",
-              "default": 5
-            }
-          },
-          {
-            "name": "topk",
-            "in": "query",
-            "description": "top k trending skills",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "default": 5
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "Success",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/DtoTrendingSkillsResponse"
-                }
-              }
-            }
+          "500": {
+            "description": "Internal server error.",
+            "content": {}
           }
         }
       }
@@ -562,6 +462,28 @@
   "components": {
     "schemas": {
       "DtoTaskStepPreprocessResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoTaskStepPreprocessResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoTaskStepPreprocessResponseItem": {
         "type": "object",
         "properties": {
           "taskstep_id": {
@@ -572,11 +494,33 @@
           "taskstep_text": {
             "type": "string",
             "description": "Processed text of the task step",
-            "example": "Arbeitsauftrag Sind deine Ziele festgelegt?...Deine persönliche Reflexion bitte in Notizen ablegen"
+            "example": "Arbeitsauftrag Sind deine Ziele festgelegt? ...  Deine persönliche Reflexion bitte in Notizen ablegen:"
           }
         }
       },
       "DtoTaskPreprocessResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoTaskPreprocessResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoTaskPreprocessResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -592,7 +536,7 @@
           "text": {
             "type": "string",
             "description": "Processed text of the task",
-            "example": "1. informieren Schlitten Arbeitsauftrag Sind deine Ziele...Lernfortschritt besser erkennen kannst."
+            "example": "1. informieren Schlitten:  Arbeitsauftrag Sind deine Ziele ...  Lernfortschritt besser erkennen kannst."
           },
           "tasksteps_ids": {
             "type": "array",
@@ -618,6 +562,28 @@
         }
       },
       "DtoSummaryResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoSummaryResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoSummaryResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -633,6 +599,28 @@
         }
       },
       "DtoContentTagsResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoContentTagsResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoContentTagsResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -652,28 +640,7 @@
               "anspruchsvolles Werkstück",
               "Arbeitsfolge",
               "Form- und Lagetoleranzen",
-              "Arbeitsplan",
-              "Arbeitszeit",
-              "Optimale Qualität",
-              "Sicherheitsvorschriften",
-              "Toleranzen",
-              "Lagetoleranz",
-              "Reflexion",
-              "Lernbegleiter",
-              "persönliche Reflexion",
-              "Planung",
-              "Effektivität",
-              "Arbeitsplanformular",
-              "Arbeitsplan",
-              "Prozesse",
-              "Vorgehen",
-              "Sicherheitsbestimmungen",
-              "Erfolgskontrolle",
-              "Erfolgskontrolle Formular",
-              "überfachliche Kompetenzen",
-              "fachliche Kompetenzen",
-              "Bewertungsbögen",
-              "Lernfortschritt"
+              "Arbeitsplan"
             ],
             "items": {
               "type": "string"
@@ -682,6 +649,28 @@
         }
       },
       "DtoContextTagsResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoContextTagsResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoContextTagsResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -705,6 +694,28 @@
         }
       },
       "DtoLearningGoalResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoLearningGoalResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoLearningGoalResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -727,6 +738,28 @@
         }
       },
       "DtoQuizQuestionsResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoQuizQuestionsResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoQuizQuestionsResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -739,13 +772,13 @@
             "description": "Quiz questions categorized by taxonomy level",
             "allOf": [
               {
-                "$ref": "#/components/schemas/QuizItem"
+                "$ref": "#/components/schemas/DtoQuizItem"
               }
             ]
           }
         }
       },
-      "QuizItem": {
+      "DtoQuizItem": {
         "type": "object",
         "properties": {
           "Wissen": {
@@ -784,6 +817,28 @@
         }
       },
       "DtoTitleResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoTitleResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoTitleResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -795,9 +850,9 @@
             "type": "array",
             "description": "List of Titles for given task",
             "example": [
-              "Informiere dich über den Schlitten!",
-              "Plane den Bau des Schlittens!",
-              "Erstelle einen Arbeitsplan für den Schlittenbau!"
+              "Informiere dich über den Schlitten",
+              "Plane den Bau des Schlittens",
+              "Erstelle einen Arbeitsplan für den Schlittenbau"
             ],
             "items": {
               "type": "string"
@@ -806,6 +861,28 @@
         }
       },
       "DtoNewExistingSkillsResponse": {
+        "required": [
+          "message"
+        ],
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "Success message",
+            "example": "success"
+          },
+          "results": {
+            "type": "object",
+            "description": "Results",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DtoNewExistingSkillsResponseItem"
+              }
+            ]
+          }
+        }
+      },
+      "DtoNewExistingSkillsResponseItem": {
         "type": "object",
         "properties": {
           "task_id": {
@@ -834,53 +911,6 @@
               "1",
               "2",
               "3"
-            ],
-            "items": {
-              "type": "string"
-            }
-          }
-        }
-      },
-      "DtoJobsSearchResponse": {
-        "type": "object",
-        "properties": {
-          "job_offers": {
-            "type": "array",
-            "items": {
-              "type": "object",
-              "properties": {},
-              "description": "List of Dictionaries"
-            }
-          }
-        }
-      },
-      "DtoSkillsResponse": {
-        "type": "object",
-        "properties": {
-          "skills": {
-            "type": "object",
-            "properties": {},
-            "description": "required skills with auspraegungen (skill level and skill name) and hierarchieName(context) for the given job."
-          }
-        }
-      },
-      "DtoTrendingSkillsResponse": {
-        "type": "object",
-        "properties": {
-          "topk": {
-            "type": "string",
-            "description": "number of top Trending Skills",
-            "example": "5"
-          },
-          "trending_skills": {
-            "type": "array",
-            "description": "List of Trending Skills",
-            "example": [
-              "Kundenberatung, -betreuung",
-              "Abrechnung",
-              "Kosten- und Leistungsrechnung",
-              "Akquisition",
-              "Korrespondenz"
             ],
             "items": {
               "type": "string"
