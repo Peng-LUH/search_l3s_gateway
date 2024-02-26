@@ -8,7 +8,6 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-
 from l3s_aimeta_client.rest import ApiException
 # config: l3s_aimeta_cleint
 from swagger_client import l3s_aimeta_client
@@ -58,6 +57,7 @@ class AiMetaOk(Resource):
         
         try:
             response = requests.head(url)
+            print(response)
             if response.status_code == 200:
                 result.update({"host_url": url, "status": 'success'})
                 return result, HTTPStatus.OK
