@@ -10,6 +10,11 @@ import socket
 from pprint import pprint
 
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
+
 app = create_app(os.getenv("FLASK_ENV", "development"))
 
 os.environ["HOST_NAME"] = socket.gethostname()
@@ -19,7 +24,7 @@ from l3s_gateway_api.models.test import Test
 from l3s_gateway_api.models.task import Task
 from l3s_gateway_api.models.document import Document
 
-# Create db tables
+##Create db tables
 with app.app_context():
     db.create_all()
 
