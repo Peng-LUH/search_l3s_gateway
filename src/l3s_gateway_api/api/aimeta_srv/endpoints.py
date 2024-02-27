@@ -12,7 +12,6 @@ from l3s_aimeta_client.rest import ApiException
 # config: l3s_aimeta_cleint
 from swagger_client import l3s_aimeta_client
 l3s_aimeta_config = l3s_aimeta_client.Configuration()
-# l3s_aimeta_config.host = "http://localhost:9043/l3s-search"
 l3s_aimeta_config.host = os.getenv('L3S_AIMETA_HOST')
 print("*"*80)
 print("l3s-aimeta-service-host: ", l3s_aimeta_config.host)
@@ -52,12 +51,13 @@ class AiMetaOk(Resource):
     @ns_aimeta_srv.marshal_with(dto_aimeta_connection_response)
     def get(self):
         url = l3s_aimeta_config.host
-        print(url)
+        # print(url)
         result = {}
         
         try:
             response = requests.head(url)
             print(response)
+            print(response.status_code)
             if response.status_code == 200:
                 result.update({"host_url": url, "status": 'success'})
                 return result, HTTPStatus.OK
@@ -76,7 +76,6 @@ from .dto import dto_completion_task_summary_response_item, dto_completion_task_
 ns_aimeta_srv.models[dto_completion_task_summary_response_item.name] = dto_completion_task_summary_response_item
 ns_aimeta_srv.models[dto_completion_task_summary_response.name] = dto_completion_task_summary_response
 
-
 @ns_aimeta_srv.route("/completions/<string:task_id>/summary", endpoint="aims_summary")
 class AiMetaCourseSummary(Resource):
     @ns_aimeta_srv.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "Internal server error.")
@@ -88,9 +87,12 @@ class AiMetaCourseSummary(Resource):
         results = {
                 "task_id": task_id,
                 "summary": ' '
-                }  
+                }
+          
         try:      
             api_response = aims_course_summary_api.get_get_summary(task_id=task_id)
+            # print(api_response.result)
+            
             return {"message": "success", "results":api_response.results}, HTTPStatus.OK
         
         except ValueError as e:
@@ -114,31 +116,31 @@ class AiMetaCourseSummary(Resource):
         except Exception as e:
             return {"message": e, "results": results}, HTTPStatus.INTERNAL_SERVER_ERROR
 
-# --------------- course summary --------------------- #
-from l3s_aimeta_client.models.dto_summary_response import DtoSummaryResponse
-from .dto import dto_completion_task_summary_response_item, dto_completion_task_summary_response
-ns_aimeta_srv.models[dto_completion_task_summary_response_item.name] = dto_completion_task_summary_response_item
-ns_aimeta_srv.models[dto_completion_task_summary_response.name] = dto_completion_task_summary_response
+# # --------------- course summary --------------------- #
+# from l3s_aimeta_client.models.dto_summary_response import DtoSummaryResponse
+# from .dto import dto_completion_task_summary_response_item, dto_completion_task_summary_response
+# ns_aimeta_srv.models[dto_completion_task_summary_response_item.name] = dto_completion_task_summary_response_item
+# ns_aimeta_srv.models[dto_completion_task_summary_response.name] = dto_completion_task_summary_response
 
-@ns_aimeta_srv.route('/aimeta-service/course-summary/<string:task_id>', endpoint="aims_course_summary")
-class AiMetaCourseSummary(Resource):
-    @ns_aimeta_srv.marshal_with(dto_completion_task_summary_response)
-    @ns_aimeta_srv.response(int(HTTPStatus.OK), description="Success")
-    @ns_aimeta_srv.response(int(HTTPStatus.BAD_REQUEST), description="Error occured")
-    def get(self, task_id):
-        try:
-            api_response = aims_course_summary_api.get_get_summary(task_id=task_id)
-            print('\n')
-            print(api_response)
-            print(api_response.message)
-            print('\n')
-            # print(api_response)
-            response_data = DtoSummaryResponse(summary=api_response.summary, task_id=api_response.task_id).to_dict()
+# @ns_aimeta_srv.route('/aimeta-service/course-summary/<string:task_id>', endpoint="aims_course_summary")
+# class AiMetaCourseSummary(Resource):
+#     @ns_aimeta_srv.marshal_with(dto_completion_task_summary_response)
+#     @ns_aimeta_srv.response(int(HTTPStatus.OK), description="Success")
+#     @ns_aimeta_srv.response(int(HTTPStatus.BAD_REQUEST), description="Error occured")
+#     def get(self, task_id):
+#         try:
+#             api_response = aims_course_summary_api.get_get_summary(task_id=task_id)
+#             print('\n')
+#             print(api_response)
+#             print(api_response.message)
+#             print('\n')
+#             # print(api_response)
+#             response_data = DtoSummaryResponse(summary=api_response.summary, task_id=api_response.task_id).to_dict()
             
-            return {"message": "success", "results": response_data}, HTTPStatus.OK
+#             return {"message": "success", "results": response_data}, HTTPStatus.OK
         
-        except Exception as e:
-            return {"message": "some error happend", "results": {}}, HTTPStatus.BAD_REQUEST
+#         except Exception as e:
+#             return {"message": "some error happend", "results": {}}, HTTPStatus.BAD_REQUEST
 
 
 ## ----------------- titles --------------- ##
