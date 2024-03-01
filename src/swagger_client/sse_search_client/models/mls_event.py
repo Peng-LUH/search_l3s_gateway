@@ -30,29 +30,34 @@ class MLSEvent(object):
     swagger_types = {
         'entity_type': 'str',
         'method': 'str',
-        'id': 'str'
+        'id': 'str',
+        'payload': 'object'
     }
 
     attribute_map = {
         'entity_type': 'entityType',
         'method': 'method',
-        'id': 'id'
+        'id': 'id',
+        'payload': 'payload'
     }
 
-    def __init__(self, entity_type=None, method=None, id=None):  # noqa: E501
+    def __init__(self, entity_type=None, method=None, id=None, payload=None):  # noqa: E501
         """MLSEvent - a model defined in Swagger"""  # noqa: E501
         self._entity_type = None
         self._method = None
         self._id = None
+        self._payload = None
         self.discriminator = None
         self.entity_type = entity_type
         self.method = method
         self.id = id
+        self.payload = payload
 
     @property
     def entity_type(self):
         """Gets the entity_type of this MLSEvent.  # noqa: E501
 
+        Which entity is concerned by the event? User/Task/TaskTodo/TaskTodoInfo  # noqa: E501
 
         :return: The entity_type of this MLSEvent.  # noqa: E501
         :rtype: str
@@ -63,13 +68,14 @@ class MLSEvent(object):
     def entity_type(self, entity_type):
         """Sets the entity_type of this MLSEvent.
 
+        Which entity is concerned by the event? User/Task/TaskTodo/TaskTodoInfo  # noqa: E501
 
         :param entity_type: The entity_type of this MLSEvent.  # noqa: E501
         :type: str
         """
         if entity_type is None:
             raise ValueError("Invalid value for `entity_type`, must not be `None`")  # noqa: E501
-        allowed_values = ["User", "TaskTodo", "TaskTodoInfo", "Task", "TaskStep"]  # noqa: E501
+        allowed_values = ["User", "TaskTodo", "TaskTodoInfo", "Task", "Other"]  # noqa: E501
         if entity_type not in allowed_values:
             raise ValueError(
                 "Invalid value for `entity_type` ({0}), must be one of {1}"  # noqa: E501
@@ -82,6 +88,7 @@ class MLSEvent(object):
     def method(self):
         """Gets the method of this MLSEvent.  # noqa: E501
 
+        What kind is the event of? PUT/POST/DELETE  # noqa: E501
 
         :return: The method of this MLSEvent.  # noqa: E501
         :rtype: str
@@ -92,13 +99,14 @@ class MLSEvent(object):
     def method(self, method):
         """Sets the method of this MLSEvent.
 
+        What kind is the event of? PUT/POST/DELETE  # noqa: E501
 
         :param method: The method of this MLSEvent.  # noqa: E501
         :type: str
         """
         if method is None:
             raise ValueError("Invalid value for `method`, must not be `None`")  # noqa: E501
-        allowed_values = ["PUT", "POST", "DELETE"]  # noqa: E501
+        allowed_values = ["PUT", "POST", "DELETE", "Other"]  # noqa: E501
         if method not in allowed_values:
             raise ValueError(
                 "Invalid value for `method` ({0}), must be one of {1}"  # noqa: E501
@@ -111,6 +119,7 @@ class MLSEvent(object):
     def id(self):
         """Gets the id of this MLSEvent.  # noqa: E501
 
+        The unique id used in the MLS system for the entity.  # noqa: E501
 
         :return: The id of this MLSEvent.  # noqa: E501
         :rtype: str
@@ -121,6 +130,7 @@ class MLSEvent(object):
     def id(self, id):
         """Sets the id of this MLSEvent.
 
+        The unique id used in the MLS system for the entity.  # noqa: E501
 
         :param id: The id of this MLSEvent.  # noqa: E501
         :type: str
@@ -129,6 +139,31 @@ class MLSEvent(object):
             raise ValueError("Invalid value for `id`, must not be `None`")  # noqa: E501
 
         self._id = id
+
+    @property
+    def payload(self):
+        """Gets the payload of this MLSEvent.  # noqa: E501
+
+        The complete entity (including its id and all other attributes existing in the MLS system)  # noqa: E501
+
+        :return: The payload of this MLSEvent.  # noqa: E501
+        :rtype: object
+        """
+        return self._payload
+
+    @payload.setter
+    def payload(self, payload):
+        """Sets the payload of this MLSEvent.
+
+        The complete entity (including its id and all other attributes existing in the MLS system)  # noqa: E501
+
+        :param payload: The payload of this MLSEvent.  # noqa: E501
+        :type: object
+        """
+        if payload is None:
+            raise ValueError("Invalid value for `payload`, must not be `None`")  # noqa: E501
+
+        self._payload = payload
 
     def to_dict(self):
         """Returns the model properties as a dict"""

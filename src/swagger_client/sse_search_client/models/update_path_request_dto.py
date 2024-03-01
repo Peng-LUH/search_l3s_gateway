@@ -30,7 +30,7 @@ class UpdatePathRequestDto(object):
     swagger_types = {
         'title': 'str',
         'description': 'str',
-        'target_audience': 'str',
+        'target_audience': 'list[str]',
         'owner': 'str',
         'lifecycle': 'object',
         'requirements': 'list[str]',
@@ -125,7 +125,7 @@ class UpdatePathRequestDto(object):
 
 
         :return: The target_audience of this UpdatePathRequestDto.  # noqa: E501
-        :rtype: str
+        :rtype: list[str]
         """
         return self._target_audience
 
@@ -135,7 +135,7 @@ class UpdatePathRequestDto(object):
 
 
         :param target_audience: The target_audience of this UpdatePathRequestDto.  # noqa: E501
-        :type: str
+        :type: list[str]
         """
 
         self._target_audience = target_audience

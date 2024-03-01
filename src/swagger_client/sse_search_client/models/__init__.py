@@ -24,6 +24,7 @@ from sse_search_client.models.feedback_dto import FeedbackDto
 from sse_search_client.models.job_creation_dto import JobCreationDto
 from sse_search_client.models.job_update_dto import JobUpdateDto
 from sse_search_client.models.learning_history_creation_dto import LearningHistoryCreationDto
+from sse_search_client.models.learning_history_dto import LearningHistoryDto
 from sse_search_client.models.learning_path_dto import LearningPathDto
 from sse_search_client.models.learning_path_list_dto import LearningPathListDto
 from sse_search_client.models.learning_profile_creation_dto import LearningProfileCreationDto

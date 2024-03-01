@@ -449,8 +449,6 @@
     "/skill-repositories/skill/deleteWithoutCheck/{skillId}": {
       "delete": {
         "operationId": "SkillMgmtController_deleteSkillWithoutCheck",
-        "summary": "",
-        "deprecated": true,
         "parameters": [
           {
             "name": "skillId",
@@ -748,6 +746,31 @@
                 }
               }
             }
+          }
+        },
+        "tags": [
+          "LearningPath"
+        ]
+      }
+    },
+    "/learning-paths/{pathId}/validate": {
+      "get": {
+        "operationId": "LearningPathMgmtController_validateLearningPath",
+        "summary": "",
+        "description": "Re-validates an existing learning path. Checks:\n- The path contains cycles\n- The goal can be reached (if actually a path exists)",
+        "parameters": [
+          {
+            "name": "pathId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
           }
         },
         "tags": [
@@ -1088,11 +1111,11 @@
         ]
       }
     },
-    "/showAllUser": {
+    "/user-profiles": {
       "get": {
         "operationId": "UserMgmtController_listUsers",
         "summary": "",
-        "description": "Lists all users.",
+        "description": "Lists all users-profiles.",
         "parameters": [],
         "responses": {
           "200": {
@@ -1102,13 +1125,11 @@
         "tags": [
           "User"
         ]
-      }
-    },
-    "/users": {
+      },
       "post": {
         "operationId": "UserMgmtController_addUser",
         "summary": "",
-        "description": "Creates a new user returns the created user.",
+        "description": "Creates an empty user profile for learners.",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -1137,7 +1158,69 @@
         ]
       }
     },
-    "/add_company": {
+    "/user-profiles/{user_profile_id}": {
+      "get": {
+        "operationId": "UserMgmtController_getUserProfiles",
+        "summary": "",
+        "description": "Returns the specified user-profile.",
+        "parameters": [
+          {
+            "name": "user_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      },
+      "delete": {
+        "operationId": "UserMgmtController_deleteUserProfiles",
+        "summary": "",
+        "description": "Deletes the specified user-profile (setting it to inactive).",
+        "parameters": [
+          {
+            "name": "user_profile_id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/user-profiles/add_company": {
       "post": {
         "operationId": "UserMgmtController_addCompany",
         "parameters": [],
@@ -1168,162 +1251,7 @@
         ]
       }
     },
-    "/add_learningProfile": {
-      "post": {
-        "operationId": "UserMgmtController_addLearningProfile",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LearningProfileCreationDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LearningProfileCreationDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      }
-    },
-    "/add_LearningHistory": {
-      "post": {
-        "operationId": "UserMgmtController_addLearningHistory",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LearningHistoryCreationDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/LearningHistoryCreationDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      }
-    },
-    "/add_CareerProfile": {
-      "post": {
-        "operationId": "UserMgmtController_addCareerProfile",
-        "parameters": [],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CareerProfileCreationDto"
-              }
-            }
-          }
-        },
-        "responses": {
-          "201": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/CareerProfileDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      }
-    },
-    "/user-profiles/{user_profile_id}": {
-      "get": {
-        "operationId": "UserMgmtController_getuserProfiles",
-        "summary": "",
-        "description": "Returns the specified user-profile.",
-        "parameters": [
-          {
-            "name": "user_profile_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      },
-      "delete": {
-        "operationId": "UserMgmtController_deleteuserProfiles",
-        "summary": "",
-        "description": "Deletes the specified user-profile.",
-        "parameters": [
-          {
-            "name": "user_profile_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/UserDto"
-                }
-              }
-            }
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      }
-    },
-    "/{id}/learning-progress": {
+    "/user-profiles/{id}/learning-progress": {
       "get": {
         "operationId": "UserMgmtController_getUserLearningProgress",
         "parameters": [
@@ -1400,7 +1328,9 @@
     },
     "/career-profiles": {
       "get": {
-        "operationId": "UserMgmtController_getCareerProfileByFilter",
+        "operationId": "CareerProfileController_getCareerProfileByFilter",
+        "summary": "",
+        "description": "If we specify a user ID, we get their career profile(s). Otherwise, get all profiles.",
         "parameters": [
           {
             "name": "userId",
@@ -1425,13 +1355,42 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
+        ]
+      },
+      "post": {
+        "operationId": "CareerProfileController_addCareerProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CareerProfileCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CareerProfileDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "CareerProfile"
         ]
       }
     },
     "/career-profiles/{career_profile_id}": {
       "get": {
-        "operationId": "UserMgmtController_getCareerProfileByID",
+        "operationId": "CareerProfileController_getCareerProfileByID",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1455,11 +1414,11 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       },
       "delete": {
-        "operationId": "UserMgmtController_delCareerProfileByID",
+        "operationId": "CareerProfileController_delCareerProfileByID",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1483,11 +1442,11 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       },
       "patch": {
-        "operationId": "UserMgmtController_patchCareerProfileByID",
+        "operationId": "CareerProfileController_patchCareerProfileByID",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1521,13 +1480,13 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       }
     },
     "/career-profiles/{career_profile_id}/job_history": {
       "post": {
-        "operationId": "UserMgmtController_addJob",
+        "operationId": "CareerProfileController_addJob",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1561,13 +1520,13 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       }
     },
     "/career-profiles/{career_profile_id}/{job_history_id}": {
       "patch": {
-        "operationId": "UserMgmtController_patchJobHistoryAtCareerProfileByID",
+        "operationId": "CareerProfileController_patchJobHistoryAtCareerProfileByID",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1602,11 +1561,11 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       },
       "delete": {
-        "operationId": "UserMgmtController_deleteJobHistoryAtCareerProfileByID",
+        "operationId": "CareerProfileController_deleteJobHistoryAtCareerProfileByID",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1631,13 +1590,13 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       }
     },
     "/career-profiles/{career_profile_id}/qualifications": {
       "post": {
-        "operationId": "UserMgmtController_addQualificationToCareerProfile",
+        "operationId": "CareerProfileController_addQualificationToCareerProfile",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1671,16 +1630,16 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       }
     },
-    "/career-profiles/{career_profile_id}/qualifications/{qualificaion_id}": {
+    "/career-profiles/{career_profile_id}/qualifications/{qualification_id}": {
       "get": {
-        "operationId": "UserMgmtController_getQualificationForCareerProfile",
+        "operationId": "CareerProfileController_getQualificationForCareerProfile",
         "parameters": [
           {
-            "name": "qualificaion_id",
+            "name": "qualification_id",
             "required": true,
             "in": "path",
             "schema": {
@@ -1701,11 +1660,11 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       },
       "patch": {
-        "operationId": "UserMgmtController_patchQualificationToCareerProfile",
+        "operationId": "CareerProfileController_patchQualificationToCareerProfile",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1716,7 +1675,7 @@
             }
           },
           {
-            "name": "qualificaion_id",
+            "name": "qualification_id",
             "required": true,
             "in": "path",
             "schema": {
@@ -1747,11 +1706,11 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
         ]
       },
       "delete": {
-        "operationId": "UserMgmtController_deleteQualificationToCareerProfile",
+        "operationId": "CareerProfileController_deleteQualificationToCareerProfile",
         "parameters": [
           {
             "name": "career_profile_id",
@@ -1762,7 +1721,7 @@
             }
           },
           {
-            "name": "qualificaion_id",
+            "name": "qualification_id",
             "required": true,
             "in": "path",
             "schema": {
@@ -1783,13 +1742,44 @@
           }
         },
         "tags": [
-          "User"
+          "CareerProfile"
+        ]
+      }
+    },
+    "/learning-profiles": {
+      "post": {
+        "operationId": "LearningProfileController_addLearningProfile",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LearningProfileCreationDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningProfileCreationDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "LearningProfiles"
         ]
       }
     },
     "/learning-profiles/{learning_profile_id}": {
       "get": {
-        "operationId": "UserMgmtController_getLearningProfileByID",
+        "operationId": "LearningProfileController_getLearningProfileByID",
         "parameters": [
           {
             "name": "learning_profile_id",
@@ -1806,11 +1796,11 @@
           }
         },
         "tags": [
-          "User"
+          "LearningProfiles"
         ]
       },
       "delete": {
-        "operationId": "UserMgmtController_delLearningProfileByID",
+        "operationId": "LearningProfileController_delLearningProfileByID",
         "parameters": [
           {
             "name": "learning_profile_id",
@@ -1827,11 +1817,11 @@
           }
         },
         "tags": [
-          "User"
+          "LearningProfiles"
         ]
       },
       "patch": {
-        "operationId": "UserMgmtController_patchLearningProfileByID",
+        "operationId": "LearningProfileController_patchLearningProfileByID",
         "parameters": [
           {
             "name": "learning_profile_id",
@@ -1865,45 +1855,16 @@
           }
         },
         "tags": [
-          "User"
+          "LearningProfiles"
         ]
       }
     },
-    "/learning-history/{history_id}": {
-      "get": {
-        "operationId": "UserMgmtController_getLearningHistoryById",
-        "summary": "Experimental (WIP)",
-        "parameters": [
-          {
-            "name": "history_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": ""
-          }
-        },
-        "tags": [
-          "User"
-        ]
-      },
+    "/learning-history": {
       "post": {
-        "operationId": "UserMgmtController_createLearningHistory",
-        "parameters": [
-          {
-            "name": "history_id",
-            "required": true,
-            "in": "path",
-            "schema": {
-              "type": "string"
-            }
-          }
-        ],
+        "operationId": "LearningHistoryController_addLearningHistory",
+        "summary": "",
+        "description": "learningHistoryId\nCreates a new learningHistory and returns it",
+        "parameters": [],
         "requestBody": {
           "required": true,
           "content": {
@@ -1920,20 +1881,100 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/LearningHistoryCreationDto"
+                  "$ref": "#/components/schemas/LearningHistoryDto"
                 }
               }
             }
           }
         },
         "tags": [
-          "User"
+          "LearningHistory"
+        ]
+      }
+    },
+    "/learning-history/{learningHistoryId}": {
+      "get": {
+        "operationId": "LearningHistoryController_getLearningHistory",
+        "summary": "",
+        "description": "Returns the specified learningHistory.",
+        "parameters": [
+          {
+            "name": "learningHistoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "LearningHistory"
+        ]
+      },
+      "delete": {
+        "operationId": "LearningHistoryController_deleteLearningHistory",
+        "summary": "",
+        "description": "Deletes the specified learningHistory from the database",
+        "parameters": [
+          {
+            "name": "learningHistoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LearningHistoryDto"
+                }
+              }
+            }
+          }
+        },
+        "tags": [
+          "LearningHistory"
+        ]
+      }
+    },
+    "/learning-history/{learningHistoryId}/getComputedPaths": {
+      "get": {
+        "operationId": "LearningHistoryController_getCompPathsIdsByHistoryById",
+        "summary": "Experimental (WIP)",
+        "description": "Fetch all Computed Paths for a given LearningHistoryId",
+        "parameters": [
+          {
+            "name": "learningHistoryId",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "tags": [
+          "LearningHistory"
         ]
       }
     },
     "/learning-history/{history_id}/{comp_path_id}": {
       "get": {
-        "operationId": "UserMgmtController_getCompPathByID",
+        "operationId": "LearningHistoryController_getCompPathByID",
         "summary": "Experimental (WIP)",
         "parameters": [
           {
@@ -1959,11 +2000,11 @@
           }
         },
         "tags": [
-          "User"
+          "LearningHistory"
         ]
       },
       "delete": {
-        "operationId": "UserMgmtController_delCompPathByID",
+        "operationId": "LearningHistoryController_delCompPathByID",
         "summary": "Experimental (WIP)",
         "parameters": [
           {
@@ -1989,11 +2030,11 @@
           }
         },
         "tags": [
-          "User"
+          "LearningHistory"
         ]
       },
       "patch": {
-        "operationId": "UserMgmtController_patchCompPathByID",
+        "operationId": "LearningHistoryController_patchCompPathByID",
         "summary": "Experimental (WIP)",
         "parameters": [
           {
@@ -2013,23 +2054,13 @@
             }
           }
         ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/LearningProfileDto"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": ""
           }
         },
         "tags": [
-          "User"
+          "LearningHistory"
         ]
       }
     },
@@ -2147,6 +2178,7 @@
     "/events": {
       "post": {
         "operationId": "EventsController_getEvents",
+        "summary": "Experimental (WIP)",
         "parameters": [],
         "requestBody": {
           "required": true,
@@ -2175,11 +2207,11 @@
         ]
       }
     },
-    "/jobsNet/getJobBySearchString": {
+    "/berufeNet/getJobBySearchString": {
       "get": {
-        "operationId": "JobsNetController_getJobsBySearchString",
+        "operationId": "BerufeNetController_getJobsBySearchString",
         "summary": "",
-        "description": "Getting Job Description by search string .",
+        "description": "Getting Job Description by search string.",
         "parameters": [
           {
             "name": "searchString",
@@ -2206,13 +2238,13 @@
           }
         },
         "tags": [
-          "JobsNet"
+          "BerufeNet"
         ]
       }
     },
-    "/jobsNet/getJobByID": {
+    "/berufeNet/getJobByID": {
       "get": {
-        "operationId": "JobsNetController_getJobsByI",
+        "operationId": "BerufeNetController_getJobsByI",
         "parameters": [
           {
             "name": "JobBerufID",
@@ -2236,13 +2268,13 @@
           }
         },
         "tags": [
-          "JobsNet"
+          "BerufeNet"
         ]
       }
     },
-    "/jobsNet/saveJobsToLocalDB": {
+    "/berufeNet/saveJobsToLocalDB": {
       "get": {
-        "operationId": "JobsNetController_getAllJobs",
+        "operationId": "BerufeNetController_getAllJobs",
         "parameters": [],
         "responses": {
           "200": {
@@ -2260,13 +2292,13 @@
           }
         },
         "tags": [
-          "JobsNet"
+          "BerufeNet"
         ]
       }
     },
-    "/jobsNet/getJobsByPage": {
+    "/berufeNet/getJobsByPage": {
       "get": {
-        "operationId": "JobsNetController_getAllJobsStartWith",
+        "operationId": "BerufeNetController_getAllJobsStartWith",
         "parameters": [
           {
             "name": "page",
@@ -2290,13 +2322,13 @@
           }
         },
         "tags": [
-          "JobsNet"
+          "BerufeNet"
         ]
       }
     },
-    "/jobsNet/getCompetenciesByJobId": {
+    "/berufeNet/getCompetenciesByJobId": {
       "get": {
-        "operationId": "JobsNetController_getCompetenciesByJobId",
+        "operationId": "BerufeNetController_getCompetenciesByJobId",
         "parameters": [
           {
             "name": "jobId",
@@ -2320,13 +2352,13 @@
           }
         },
         "tags": [
-          "JobsNet"
+          "BerufeNet"
         ]
       }
     },
-    "/jobsNet/getDigitalCompetenciesByJobId": {
+    "/berufeNet/getDigitalCompetenciesByJobId": {
       "get": {
-        "operationId": "JobsNetController_getDigitalCompetenciesByJobId",
+        "operationId": "BerufeNetController_getDigitalCompetenciesByJobId",
         "parameters": [
           {
             "name": "jobId",
@@ -2350,7 +2382,7 @@
           }
         },
         "tags": [
-          "JobsNet"
+          "BerufeNet"
         ]
       }
     }
@@ -2880,7 +2912,10 @@
             }
           },
           "targetAudience": {
-            "type": "string"
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "createdAt": {
             "type": "string"
@@ -2897,6 +2932,7 @@
           "pathGoals",
           "requirements",
           "recommendedUnitSequence",
+          "targetAudience",
           "createdAt",
           "updatedAt"
         ]
@@ -2926,8 +2962,11 @@
             "nullable": true
           },
           "targetAudience": {
-            "type": "string",
-            "nullable": true
+            "nullable": true,
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "owner": {
             "type": "string"
@@ -3007,7 +3046,11 @@
             "type": "string"
           },
           "targetAudience": {
-            "type": "string"
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "semanticDensity": {
             "type": "string"
@@ -3042,7 +3085,8 @@
           "updatedAt",
           "id",
           "teachingGoals",
-          "requiredSkills"
+          "requiredSkills",
+          "targetAudience"
         ]
       },
       "SearchLearningUnitListDto": {
@@ -3103,7 +3147,11 @@
             "type": "string"
           },
           "targetAudience": {
-            "type": "string"
+            "default": [],
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
           },
           "semanticDensity": {
             "type": "string"
@@ -3136,7 +3184,8 @@
         "required": [
           "id",
           "teachingGoals",
-          "requiredSkills"
+          "requiredSkills",
+          "targetAudience"
         ]
       },
       "PathRequestDto": {
@@ -3379,48 +3428,15 @@
           "name"
         ]
       },
-      "LearningProfileCreationDto": {
+      "CreateLearningProgressDto": {
         "type": "object",
         "properties": {
-          "mediaType": {
-            "type": "string",
-            "description": "Used to validate that the user is the owner of the target repository."
-          },
-          "language": {
-            "type": "string"
-          },
-          "semanticDensity": {
-            "type": "number"
-          },
-          "semanticGravity": {
-            "type": "number"
-          },
-          "processingTimePerUnit": {
-            "type": "string"
-          },
-          "learningHistoryId": {
-            "type": "string"
-          },
-          "preferredDidacticMethod": {
-            "type": "string"
-          },
-          "userId": {
+          "skillId": {
             "type": "string"
           }
         },
         "required": [
-          "userId"
-        ]
-      },
-      "LearningHistoryCreationDto": {
-        "type": "object",
-        "properties": {
-          "userId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "userId"
+          "skillId"
         ]
       },
       "CareerProfileCreationDto": {
@@ -3538,28 +3554,17 @@
           "id"
         ]
       },
-      "CreateLearningProgressDto": {
-        "type": "object",
-        "properties": {
-          "skillId": {
-            "type": "string"
-          }
-        },
-        "required": [
-          "skillId"
-        ]
-      },
       "JobCreationDto": {
         "type": "object",
         "properties": {
-          "jobtitle": {
+          "jobTitle": {
             "type": "string"
           },
-          "starttime": {
+          "startTime": {
             "format": "date-time",
             "type": "string"
           },
-          "endtime": {
+          "endTime": {
             "format": "date-time",
             "type": "string"
           },
@@ -3574,9 +3579,9 @@
           }
         },
         "required": [
-          "jobtitle",
-          "starttime",
-          "endtime",
+          "jobTitle",
+          "startTime",
+          "endTime",
           "companyId",
           "userId"
         ]
@@ -3584,14 +3589,14 @@
       "JobUpdateDto": {
         "type": "object",
         "properties": {
-          "jobtitle": {
+          "jobTitle": {
             "type": "string"
           },
-          "starttime": {
+          "startTime": {
             "format": "date-time",
             "type": "string"
           },
-          "endtime": {
+          "endTime": {
             "format": "date-time",
             "type": "string"
           },
@@ -3603,9 +3608,9 @@
           }
         },
         "required": [
-          "jobtitle",
-          "starttime",
-          "endtime",
+          "jobTitle",
+          "startTime",
+          "endTime",
           "companyId"
         ]
       },
@@ -3622,7 +3627,7 @@
           "year": {
             "type": "number"
           },
-          "userCareerProfilId": {
+          "userCareerProfileId": {
             "type": "string"
           }
         },
@@ -3630,7 +3635,7 @@
           "id",
           "name",
           "year",
-          "userCareerProfilId"
+          "userCareerProfileId"
         ]
       },
       "QualificationDto": {
@@ -3646,7 +3651,7 @@
           "year": {
             "type": "number"
           },
-          "userCareerProfilId": {
+          "userCareerProfileId": {
             "type": "string"
           }
         },
@@ -3654,7 +3659,40 @@
           "id",
           "name",
           "year",
-          "userCareerProfilId"
+          "userCareerProfileId"
+        ]
+      },
+      "LearningProfileCreationDto": {
+        "type": "object",
+        "properties": {
+          "mediaType": {
+            "type": "string",
+            "description": "Used to validate that the user is the owner of the target repository."
+          },
+          "language": {
+            "type": "string"
+          },
+          "semanticDensity": {
+            "type": "number"
+          },
+          "semanticGravity": {
+            "type": "number"
+          },
+          "processingTimePerUnit": {
+            "type": "string"
+          },
+          "learningHistoryId": {
+            "type": "string"
+          },
+          "preferredDidacticMethod": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "userId"
         ]
       },
       "LearningProfileDto": {
@@ -3691,6 +3729,94 @@
         },
         "required": [
           "userId",
+          "id"
+        ]
+      },
+      "LearningHistoryCreationDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "user": {
+            "type": "object"
+          },
+          "startedLearningUnits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "learnedSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "learningProfile": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "personalPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "userId",
+          "user",
+          "startedLearningUnits",
+          "learnedSkills",
+          "learningProfile",
+          "personalPaths"
+        ]
+      },
+      "LearningHistoryDto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "userId": {
+            "type": "string"
+          },
+          "user": {
+            "type": "object"
+          },
+          "startedLearningUnits": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "learnedSkills": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "learningProfile": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "personalPaths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
           "id"
         ]
       },
@@ -3779,30 +3905,39 @@
         "properties": {
           "entityType": {
             "type": "string",
+            "description": "Which entity is concerned by the event? User/Task/TaskTodo/TaskTodoInfo",
             "enum": [
               "User",
               "TaskTodo",
               "TaskTodoInfo",
               "Task",
-              "TaskStep"
+              "Other"
             ]
           },
           "method": {
             "type": "string",
+            "description": "What kind is the event of? PUT/POST/DELETE",
             "enum": [
               "PUT",
               "POST",
-              "DELETE"
+              "DELETE",
+              "Other"
             ]
           },
           "id": {
-            "type": "string"
+            "type": "string",
+            "description": "The unique id used in the MLS system for the entity."
+          },
+          "payload": {
+            "type": "object",
+            "description": "The complete entity (including its id and all other attributes existing in the MLS system)"
           }
         },
         "required": [
           "entityType",
           "method",
-          "id"
+          "id",
+          "payload"
         ]
       }
     }

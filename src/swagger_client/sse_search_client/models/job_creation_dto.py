@@ -28,108 +28,108 @@ class JobCreationDto(object):
                             and the value is json key in definition.
     """
     swagger_types = {
-        'jobtitle': 'str',
-        'starttime': 'datetime',
-        'endtime': 'datetime',
+        'job_title': 'str',
+        'start_time': 'datetime',
+        'end_time': 'datetime',
         'company_id': 'str',
         'user_id': 'str',
         'job_id_at_berufe_net': 'str'
     }
 
     attribute_map = {
-        'jobtitle': 'jobtitle',
-        'starttime': 'starttime',
-        'endtime': 'endtime',
+        'job_title': 'jobTitle',
+        'start_time': 'startTime',
+        'end_time': 'endTime',
         'company_id': 'companyId',
         'user_id': 'userId',
         'job_id_at_berufe_net': 'jobIdAtBerufeNet'
     }
 
-    def __init__(self, jobtitle=None, starttime=None, endtime=None, company_id=None, user_id=None, job_id_at_berufe_net=None):  # noqa: E501
+    def __init__(self, job_title=None, start_time=None, end_time=None, company_id=None, user_id=None, job_id_at_berufe_net=None):  # noqa: E501
         """JobCreationDto - a model defined in Swagger"""  # noqa: E501
-        self._jobtitle = None
-        self._starttime = None
-        self._endtime = None
+        self._job_title = None
+        self._start_time = None
+        self._end_time = None
         self._company_id = None
         self._user_id = None
         self._job_id_at_berufe_net = None
         self.discriminator = None
-        self.jobtitle = jobtitle
-        self.starttime = starttime
-        self.endtime = endtime
+        self.job_title = job_title
+        self.start_time = start_time
+        self.end_time = end_time
         self.company_id = company_id
         self.user_id = user_id
         if job_id_at_berufe_net is not None:
             self.job_id_at_berufe_net = job_id_at_berufe_net
 
     @property
-    def jobtitle(self):
-        """Gets the jobtitle of this JobCreationDto.  # noqa: E501
+    def job_title(self):
+        """Gets the job_title of this JobCreationDto.  # noqa: E501
 
 
-        :return: The jobtitle of this JobCreationDto.  # noqa: E501
+        :return: The job_title of this JobCreationDto.  # noqa: E501
         :rtype: str
         """
-        return self._jobtitle
+        return self._job_title
 
-    @jobtitle.setter
-    def jobtitle(self, jobtitle):
-        """Sets the jobtitle of this JobCreationDto.
+    @job_title.setter
+    def job_title(self, job_title):
+        """Sets the job_title of this JobCreationDto.
 
 
-        :param jobtitle: The jobtitle of this JobCreationDto.  # noqa: E501
+        :param job_title: The job_title of this JobCreationDto.  # noqa: E501
         :type: str
         """
-        if jobtitle is None:
-            raise ValueError("Invalid value for `jobtitle`, must not be `None`")  # noqa: E501
+        if job_title is None:
+            raise ValueError("Invalid value for `job_title`, must not be `None`")  # noqa: E501
 
-        self._jobtitle = jobtitle
-
-    @property
-    def starttime(self):
-        """Gets the starttime of this JobCreationDto.  # noqa: E501
-
-
-        :return: The starttime of this JobCreationDto.  # noqa: E501
-        :rtype: datetime
-        """
-        return self._starttime
-
-    @starttime.setter
-    def starttime(self, starttime):
-        """Sets the starttime of this JobCreationDto.
-
-
-        :param starttime: The starttime of this JobCreationDto.  # noqa: E501
-        :type: datetime
-        """
-        if starttime is None:
-            raise ValueError("Invalid value for `starttime`, must not be `None`")  # noqa: E501
-
-        self._starttime = starttime
+        self._job_title = job_title
 
     @property
-    def endtime(self):
-        """Gets the endtime of this JobCreationDto.  # noqa: E501
+    def start_time(self):
+        """Gets the start_time of this JobCreationDto.  # noqa: E501
 
 
-        :return: The endtime of this JobCreationDto.  # noqa: E501
+        :return: The start_time of this JobCreationDto.  # noqa: E501
         :rtype: datetime
         """
-        return self._endtime
+        return self._start_time
 
-    @endtime.setter
-    def endtime(self, endtime):
-        """Sets the endtime of this JobCreationDto.
+    @start_time.setter
+    def start_time(self, start_time):
+        """Sets the start_time of this JobCreationDto.
 
 
-        :param endtime: The endtime of this JobCreationDto.  # noqa: E501
+        :param start_time: The start_time of this JobCreationDto.  # noqa: E501
         :type: datetime
         """
-        if endtime is None:
-            raise ValueError("Invalid value for `endtime`, must not be `None`")  # noqa: E501
+        if start_time is None:
+            raise ValueError("Invalid value for `start_time`, must not be `None`")  # noqa: E501
 
-        self._endtime = endtime
+        self._start_time = start_time
+
+    @property
+    def end_time(self):
+        """Gets the end_time of this JobCreationDto.  # noqa: E501
+
+
+        :return: The end_time of this JobCreationDto.  # noqa: E501
+        :rtype: datetime
+        """
+        return self._end_time
+
+    @end_time.setter
+    def end_time(self, end_time):
+        """Sets the end_time of this JobCreationDto.
+
+
+        :param end_time: The end_time of this JobCreationDto.  # noqa: E501
+        :type: datetime
+        """
+        if end_time is None:
+            raise ValueError("Invalid value for `end_time`, must not be `None`")  # noqa: E501
+
+        self._end_time = end_time
 
     @property
     def company_id(self):

@@ -31,27 +31,27 @@ class QualificationCreationDto(object):
         'id': 'str',
         'name': 'str',
         'year': 'float',
-        'user_career_profil_id': 'str'
+        'user_career_profile_id': 'str'
     }
 
     attribute_map = {
         'id': 'id',
         'name': 'name',
         'year': 'year',
-        'user_career_profil_id': 'userCareerProfilId'
+        'user_career_profile_id': 'userCareerProfileId'
     }
 
-    def __init__(self, id=None, name=None, year=None, user_career_profil_id=None):  # noqa: E501
+    def __init__(self, id=None, name=None, year=None, user_career_profile_id=None):  # noqa: E501
         """QualificationCreationDto - a model defined in Swagger"""  # noqa: E501
         self._id = None
         self._name = None
         self._year = None
-        self._user_career_profil_id = None
+        self._user_career_profile_id = None
         self.discriminator = None
         self.id = id
         self.name = name
         self.year = year
-        self.user_career_profil_id = user_career_profil_id
+        self.user_career_profile_id = user_career_profile_id
 
     @property
     def id(self):
@@ -125,27 +125,27 @@ class QualificationCreationDto(object):
         self._year = year
 
     @property
-    def user_career_profil_id(self):
-        """Gets the user_career_profil_id of this QualificationCreationDto.  # noqa: E501
+    def user_career_profile_id(self):
+        """Gets the user_career_profile_id of this QualificationCreationDto.  # noqa: E501
 
 
-        :return: The user_career_profil_id of this QualificationCreationDto.  # noqa: E501
+        :return: The user_career_profile_id of this QualificationCreationDto.  # noqa: E501
         :rtype: str
         """
-        return self._user_career_profil_id
+        return self._user_career_profile_id
 
-    @user_career_profil_id.setter
-    def user_career_profil_id(self, user_career_profil_id):
-        """Sets the user_career_profil_id of this QualificationCreationDto.
+    @user_career_profile_id.setter
+    def user_career_profile_id(self, user_career_profile_id):
+        """Sets the user_career_profile_id of this QualificationCreationDto.
 
 
-        :param user_career_profil_id: The user_career_profil_id of this QualificationCreationDto.  # noqa: E501
+        :param user_career_profile_id: The user_career_profile_id of this QualificationCreationDto.  # noqa: E501
         :type: str
         """
-        if user_career_profil_id is None:
-            raise ValueError("Invalid value for `user_career_profil_id`, must not be `None`")  # noqa: E501
+        if user_career_profile_id is None:
+            raise ValueError("Invalid value for `user_career_profile_id`, must not be `None`")  # noqa: E501
 
-        self._user_career_profil_id = user_career_profil_id
+        self._user_career_profile_id = user_career_profile_id
 
     def to_dict(self):
         """Returns the model properties as a dict"""

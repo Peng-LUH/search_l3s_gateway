@@ -15,10 +15,13 @@
 from __future__ import absolute_import
 
 # import apis into sdk package
+from sse_search_client.api.berufe_net_api import BerufeNetApi
+from sse_search_client.api.career_profile_api import CareerProfileApi
 from sse_search_client.api.events_api import EventsApi
 from sse_search_client.api.feedback_api import FeedbackApi
-from sse_search_client.api.jobs_net_api import JobsNetApi
+from sse_search_client.api.learning_history_api import LearningHistoryApi
 from sse_search_client.api.learning_path_api import LearningPathApi
+from sse_search_client.api.learning_profiles_api import LearningProfilesApi
 from sse_search_client.api.learning_units_api import LearningUnitsApi
 from sse_search_client.api.nugget_api import NuggetApi
 from sse_search_client.api.path_finder_api import PathFinderApi
@@ -38,6 +41,7 @@ from sse_search_client.models.feedback_dto import FeedbackDto
 from sse_search_client.models.job_creation_dto import JobCreationDto
 from sse_search_client.models.job_update_dto import JobUpdateDto
 from sse_search_client.models.learning_history_creation_dto import LearningHistoryCreationDto
+from sse_search_client.models.learning_history_dto import LearningHistoryDto
 from sse_search_client.models.learning_path_dto import LearningPathDto
 from sse_search_client.models.learning_path_list_dto import LearningPathListDto
 from sse_search_client.models.learning_profile_creation_dto import LearningProfileCreationDto

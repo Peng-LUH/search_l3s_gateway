@@ -33,7 +33,7 @@ class EventsApi(object):
         self.api_client = api_client
 
     def events_controller_get_events(self, body, **kwargs):  # noqa: E501
-        """events_controller_get_events  # noqa: E501
+        """Experimental (WIP)  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -54,7 +54,7 @@ class EventsApi(object):
             return data
 
     def events_controller_get_events_with_http_info(self, body, **kwargs):  # noqa: E501
-        """events_controller_get_events  # noqa: E501
+        """Experimental (WIP)  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

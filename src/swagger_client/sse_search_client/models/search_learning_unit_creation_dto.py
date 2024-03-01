@@ -38,7 +38,7 @@ class SearchLearningUnitCreationDto(object):
         'rating': 'str',
         'content_creator': 'str',
         'content_provider': 'str',
-        'target_audience': 'str',
+        'target_audience': 'list[str]',
         'semantic_density': 'str',
         'semantic_gravity': 'str',
         'content_tags': 'list[str]',
@@ -107,8 +107,7 @@ class SearchLearningUnitCreationDto(object):
             self.content_creator = content_creator
         if content_provider is not None:
             self.content_provider = content_provider
-        if target_audience is not None:
-            self.target_audience = target_audience
+        self.target_audience = target_audience
         if semantic_density is not None:
             self.semantic_density = semantic_density
         if semantic_gravity is not None:
@@ -348,7 +347,7 @@ class SearchLearningUnitCreationDto(object):
 
 
         :return: The target_audience of this SearchLearningUnitCreationDto.  # noqa: E501
-        :rtype: str
+        :rtype: list[str]
         """
         return self._target_audience
 
@@ -358,8 +357,10 @@ class SearchLearningUnitCreationDto(object):
 
 
         :param target_audience: The target_audience of this SearchLearningUnitCreationDto.  # noqa: E501
-        :type: str
+        :type: list[str]
         """
+        if target_audience is None:
+            raise ValueError("Invalid value for `target_audience`, must not be `None`")  # noqa: E501
 
         self._target_audience = target_audience
 

@@ -36,7 +36,7 @@ class LearningPathDto(object):
         'path_goals': 'list[str]',
         'requirements': 'list[str]',
         'recommended_unit_sequence': 'list[str]',
-        'target_audience': 'str',
+        'target_audience': 'list[str]',
         'created_at': 'str',
         'updated_at': 'str'
     }
@@ -78,8 +78,7 @@ class LearningPathDto(object):
         self.path_goals = path_goals
         self.requirements = requirements
         self.recommended_unit_sequence = recommended_unit_sequence
-        if target_audience is not None:
-            self.target_audience = target_audience
+        self.target_audience = target_audience
         self.created_at = created_at
         self.updated_at = updated_at
 
@@ -271,7 +270,7 @@ class LearningPathDto(object):
 
 
         :return: The target_audience of this LearningPathDto.  # noqa: E501
-        :rtype: str
+        :rtype: list[str]
         """
         return self._target_audience
 
@@ -281,8 +280,10 @@ class LearningPathDto(object):
 
 
         :param target_audience: The target_audience of this LearningPathDto.  # noqa: E501
-        :type: str
+        :type: list[str]
         """
+        if target_audience is None:
+            raise ValueError("Invalid value for `target_audience`, must not be `None`")  # noqa: E501
 
         self._target_audience = target_audience
 
