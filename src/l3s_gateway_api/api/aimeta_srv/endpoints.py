@@ -7,6 +7,9 @@ import os, socket
 from dotenv import load_dotenv
 load_dotenv()
 
+### import exceptions
+from werkzeug.exceptions import BadRequest
+from requests.exceptions import InvalidURL
 
 from l3s_aimeta_client.rest import ApiException
 # config: l3s_aimeta_cleint
@@ -66,8 +69,12 @@ class AiMetaOk(Resource):
                 return result, HTTPStatus.INTERNAL_SERVER_ERROR
         except requests.ConnectionError as e:
             result = {"host_url": url}
-            result.update({"connection": e.strerror})
+            result.update({"status": e.args[0]})
             return result, HTTPStatus.NOT_FOUND
+        except InvalidURL as e:
+            result = {"host_url": url}
+            result.update({"status": e.args[0]})
+            return result, HTTPStatus.BAD_REQUEST
         
 
 ## -------------------- Course summary -------------------- ##

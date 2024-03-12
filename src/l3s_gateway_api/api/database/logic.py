@@ -17,7 +17,7 @@ from l3s_gateway_api.util.mls_api import (
 from l3s_gateway_api import db
 from l3s_gateway_api.models.task import Task
 from l3s_gateway_api.models.document import Document
-
+from .endpoints import ns_database
 
 MLS_BASE_URL = os.getenv("MLS_BASE_URL")
 MLS_LOGIN_SERVER_URL = os.getenv("MLS_LOGIN_SERVER_URL")
@@ -223,11 +223,12 @@ def get_list_of_skills():
     list_of_skills = request_data["skills"]
     sorted_list = sorted(list_of_skills, key=lambda x: x["id"])
     return sorted_list
+    
 
 ## given a list of skill-ids, get the list of skll-names
-def get_list_of_skill_names(list_of_skill_ids):
+def get_list_of_skill_names(list_of_skill_ids, list_of_skills):
     '''Given a list of skill-ids return the skill-names'''
-    list_of_skills = get_list_of_skills()
+    # list_of_skills = get_list_of_skills()
     list_of_skill_names = []
     for sid in list_of_skill_ids:
         ns_item = next(item for item in list_of_skills if item["id"] == sid)
@@ -235,18 +236,25 @@ def get_list_of_skill_names(list_of_skill_ids):
     return list_of_skill_names
 
 
+from alive_progress import alive_bar
+# from tqdm import tqdm
+# from time import sleep
 def transformer_list_of_skills(list_of_skills):
     '''convert the lsit of skills'''
-    new_list = []
-    for skill in list_of_skills:
-        skill = transformer_skill(skill, list_of_skills)
-        new_list.append(skill)
+    with alive_bar(len(list_of_skills)) as bar:
+        new_list = []
+        for skill in list_of_skills:
+            skill = transformer_skill(skill, list_of_skills)
+            new_list.append(skill)
+            # ns_database.logger.info()
+            bar()
+            
     return new_list
 
 
-def transformer_skill(skill):
+def transformer_skill(skill, list_of_skills):
     if not skill["nested_skills"] == []:
-        ns_names = get_list_of_skill_names(skill["nested_skills"])
+        ns_names = get_list_of_skill_names(skill["nested_skills"], list_of_skills)
         
         # for ns in skill["nested_skills"]:
         #     ns_item = next(item for item in lst_skills if item["id"] == ns)
@@ -256,7 +264,7 @@ def transformer_skill(skill):
         skill["nested_skills"] = ns_names
             
     if not skill["parent_skills"] == []:
-        ps_names = get_list_of_skill_names(skill["parent_skills"])
+        ps_names = get_list_of_skill_names(skill["parent_skills"], list_of_skills)
         
         # for ps in skill["parent_skills"]:
         #     ps_item = next(item for item in lst_skills if item["id"] == ps)
@@ -294,26 +302,29 @@ def db_skill_updater(lst_skills):
         doc = Document.query.filter_by(entity_id=skill["id"], entity_type="skill").first()
         
         flag_doc_exists = (doc!=None)
-        print(f"Already exists: {flag_doc_exists}")
+        print(f"Skill {skill['id']} already exists: {flag_doc_exists}")
         
+        ## Case: skill already exists
         if flag_doc_exists:
             flag_doc_is_modified = not(doc.updated_at == skill["updated_at"])
             print(f"Is modified: {flag_doc_is_modified}")
             # check whether the skill is updated
             if not flag_doc_is_modified:
-                print(f"*** skill {skill['id']} already exists and has no update")
+                print(f"*** skill {skill['id']} has no update")
                 continue
             else: # write the info form skill to doc
                 print(f"******* updating skill {skill['id']} *********")
                 temp = skill_lite(skill)
                 skill_content = skill_content_generator(temp)
                 # print(f"Content: {skill_content}")
+                
                 doc.contents = skill_content
                 doc.updated_at = skill["updated_at"]
-                num_updats += 1
+                db.session.commit()
                 print(f"******* skill {skill['id']} is updated *********")
+                num_updats += 1
         
-        ## if skill does not exist, then add to db
+        ## Case: skill does not exist
         if not flag_doc_exists: 
             print(f"******* adding skill {skill['id']} *********")
             
@@ -338,12 +349,9 @@ def db_skill_updater(lst_skills):
             # pprint(schema_document.dump(new_doc))
             # result.append(schema_document.dump(new_doc))
             db.session.add(new_doc)
-            num_adds += 1
+            db.session.commit()
             print(f"******* skill {skill['id']} added to databs *********")
-    
-    
-    ## commit the changes to database
-    db.session.commit()
+            num_adds += 1    
         
     return num_adds, num_updats
 
@@ -362,7 +370,7 @@ def path_content_generator(path_obj):
     # Use the OpenAI API to generate a description
     messages = [
         {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
-        {"role": "user", "content": f"Please give me a summary about the learning path with the provided information: '{dict_str}'.  The summary must contain the following information: the learning goals of this learning path, the recommended units from this learning path, and the requirements of this learning path. The output should be in one paragraph. I want this summary of this learning path to be in German. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences."},
+        {"role": "user", "content": f"Please give me a summary about the learning path with the provided information: '{dict_str}'.  The summary must contain the following information: the learning goals of this learning path, the recommended units from this learning path, and the requirements of this learning path. The output should be in one paragraph. I want this summary of this learning path to be in German. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences with less than 450 words."},
     ]
     
     # print(messages)
@@ -371,7 +379,7 @@ def path_content_generator(path_obj):
         model="gpt-4-1106-preview",
         messages=messages,
         response_format={ "type": "json_object" },
-        max_tokens=300,  # Adjust the number of tokens as needed
+        max_tokens=500,  # Adjust the number of tokens as needed
     )
     
     # pprint(response)
@@ -417,7 +425,7 @@ def transformer_path(path):
         if path["recommended_unit_sequence"] != []:
             for r in path["recommended_unit_sequence"]:
                 learning_unit = sse_learningunit_api.search_learning_unit_controller_get_learning_unit(learning_unit_id=r)
-                recommended_unit_sequence.append(learning_unit.name)
+                recommended_unit_sequence.append(learning_unit.title)
         
         path["recommended_unit_sequence"] = recommended_unit_sequence
         return path
@@ -472,8 +480,10 @@ def db_updater_paths(lst_of_paths):
                 # print(f"Content: {skill_content}")
                 doc.contents = path_content
                 doc.updated_at = path["updated_at"]
-                num_updats += 1
                 print(f"******* path {path['id']} is updated *********")
+                db.session.commit()
+                num_updats += 1
+                
         
         ## if path does not exist, then add to db
         if not flag_doc_exists: 
@@ -499,12 +509,14 @@ def db_updater_paths(lst_of_paths):
             # pprint(schema_document.dump(new_doc))
             # result.append(schema_document.dump(new_doc))
             db.session.add(new_doc)
+            db.session.commit()
+            print(f"******* Path {path['id']} added to database *********")
             num_adds += 1
-            print(f"******* Path {path['id']} added to databs *********")
+            
     
     
     ## commit the changes to database
-    db.session.commit()
+    
         
     return num_adds, num_updats
 
@@ -521,6 +533,7 @@ def get_list_of_tasks():
 
 def transformer_list_of_tasks(list_of_tasks):
     new_list = []
+    list_of_skills = get_list_of_skills()
     
     for learning_unit in list_of_tasks:
         ## make a copy of the learning unit
@@ -528,26 +541,31 @@ def transformer_list_of_tasks(list_of_tasks):
         
         if learning_unit["teaching_goals"] != []:
             ## convert to skill names
-            temp["teaching_goals"] = get_list_of_skill_names(learning_unit["teaching_goals"])
+            temp["teaching_goals"] = get_list_of_skill_names(list_of_skill_ids=learning_unit["teaching_goals"], list_of_skills=list_of_skills)
         
         if learning_unit["required_skills"] != []:
             ## convert to skill names
-            temp["required_skills"] = get_list_of_skill_names(learning_unit["required_skills"])
+            temp["required_skills"] = get_list_of_skill_names(list_of_skill_ids=learning_unit["required_skills"], list_of_skills=list_of_skills)
         
         new_list.append(temp)
                 
     return new_list
 
-def task_lite(task):
-    temp = {}
-    temp["content_tags"] = task["content_tags"]
-    temp['context_tags'] = task['context_tags']
-    temp['description'] = task['description']
-    temp['required_skills'] = task['required_skills']
-    temp['target_audience'] = task['target_audience']
-    temp['teaching_goals'] = task['teaching_goals']
-    temp['title'] = task['title']
-    return temp
+
+def list_of_task_lite(list_of_tasks):
+    new_list = {}
+    for task in list_of_tasks:
+        temp = {}
+        temp["content_tags"] = task["content_tags"]
+        temp['context_tags'] = task['context_tags']
+        temp['description'] = task['description']
+        temp['required_skills'] = task['required_skills']
+        temp['target_audience'] = task['target_audience']
+        temp['teaching_goals'] = task['teaching_goals']
+        temp['title'] = task['title']
+        new_list.append(temp)
+    return new_list
+
 
 def task_content_generator(path_obj):
     for key in path_obj.keys():
@@ -583,6 +601,26 @@ def task_content_generator(path_obj):
     summary = json.loads(description)
     content = list(summary.values())[0]
     return content
+
+def enrich_list_with_mls_content(list_of_tasks):
+    new_list = {}
+    for task in list_of_tasks:
+        task_id = task['id']
+        task['mls_content'] = get_task_content_from_mls(task_id)
+        
+    return new_list
+
+from l3s_gateway_api.util import mls_api
+def get_task_content_from_mls(task_id):
+    login_server_url = os.getenv('MLS_LOGIN_SERVER_URL')
+    realm = os.getenv('MLS_REALM')
+    login_payload = mls_api.MLS_LOGIN_PAYLOAD
+    mls_login_response = mls_api.MLSConnection().get_login_response(login_server_url, realm, login_payload)
+    pprint(mls_login_response)
+    mls_access_token = mls_api.MLSConnection().get_access_token(login_response=mls_login_response)
+    mls_auth_header=mls_api.MLSConnection().get_auth_header(access_token=mls_access_token)
+    mls_response = mls_api.MLSConnection().get_response(base_url=os.getenv('MLS_BASE_URL'), content_type='tasks', auth_header=mls_auth_header)
+    return mls_response
 
 
 def db_task_updater(list_of_learning_units):

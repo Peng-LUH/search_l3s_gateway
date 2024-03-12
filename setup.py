@@ -39,7 +39,8 @@ INSTALL_REQUIRES = [
     "openai",
     "schedule",
     "apscheduler",
-    "bs4"
+    "bs4",
+    "alive_progress"
 ]
 
 EXTRAS_REQUIRE = {

@@ -21,6 +21,10 @@ service_model = Model(
     }
 )
 
+dto_sse_connection_response = Model("DtoSSEConnectionResponse", {
+    "host_url": fields.String(),
+    "status": fields.String()
+})
 # service_reqparser = RequestParser(bundle_errors=True)
 # service_reqparser.add_argument(
 #     name="user_id", type=str, location="form",

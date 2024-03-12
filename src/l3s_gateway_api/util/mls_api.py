@@ -67,6 +67,6 @@ class MLSConnection(object):
     def get_response(self, base_url, content_type, auth_header):
         url = base_url+"/mls-api/"+content_type
         print(url)
-        tasks_response = requests.get(url, headers=auth_header)
+        response = requests.get(url, headers=auth_header)
         
-        return tasks_response
+        return response

@@ -9,6 +9,9 @@ from pprint import pprint
 from dotenv import load_dotenv
 load_dotenv()
 
+### import exceptions
+from werkzeug.exceptions import BadRequest
+from requests.exceptions import InvalidURL
 
 from swagger_client import l3s_recsys_client
 from swagger_client.l3s_recsys_client.rest import ApiException
@@ -62,8 +65,12 @@ class RecommendationService(Resource):
                 return result, HTTPStatus.INTERNAL_SERVER_ERROR
         except requests.ConnectionError as e:
             result = {"host_url": url}
-            result.update({"connection": e.strerror})
+            result.update({"status": e.args[0]})
             return result, HTTPStatus.NOT_FOUND
+        except InvalidURL as e:
+            result = {"host_url": url}
+            result.update({"status": e.args[0]})
+            return result, HTTPStatus.BAD_REQUEST
 
 
 get_n_random_rec_parser = reqparse.RequestParser()

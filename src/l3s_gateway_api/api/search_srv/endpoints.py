@@ -88,7 +88,6 @@ class SearchServiceOK(Resource):
         # url = os.getenv('L3S_SEARCH_HOST')+'/'
         url = l3s_search_config.host
         print(url)
-        # print(url_for(search_service_ok))
         result = {}
         try:
             response = requests.head(url)
