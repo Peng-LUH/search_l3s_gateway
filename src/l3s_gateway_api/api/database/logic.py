@@ -11,7 +11,7 @@ import json
 import copy
 
 from l3s_gateway_api.util.mls_api import (
-    MLS_LOGIN_PAYLOAD,
+    MLS_CONFIG,
     MLSConnection
 )
 from l3s_gateway_api import db
@@ -521,6 +521,8 @@ def db_updater_paths(lst_of_paths):
     return num_adds, num_updats
 
 
+
+
 ## ------------------------ Tasks/Learning Units --------------------- ##
 def get_list_of_tasks():
     response = sse_learningunit_api.search_learning_unit_controller_list_learning_units()
@@ -535,17 +537,25 @@ def transformer_list_of_tasks(list_of_tasks):
     new_list = []
     list_of_skills = get_list_of_skills()
     
-    for learning_unit in list_of_tasks:
+    for task in list_of_tasks:
         ## make a copy of the learning unit
-        temp = learning_unit
+        temp = task
         
-        if learning_unit["teaching_goals"] != []:
-            ## convert to skill names
-            temp["teaching_goals"] = get_list_of_skill_names(list_of_skill_ids=learning_unit["teaching_goals"], list_of_skills=list_of_skills)
+        if task['content_creator'] != []:
+            ## TODO: get User-info
+            temp['content_creator'] = task['content_creator']
         
-        if learning_unit["required_skills"] != []:
+        if task['content_provider'] != []:
+            ## TODO: get content provider info
+            temp['content_provider'] = task['content_provider']
+        
+        if task["teaching_goals"] != []:
             ## convert to skill names
-            temp["required_skills"] = get_list_of_skill_names(list_of_skill_ids=learning_unit["required_skills"], list_of_skills=list_of_skills)
+            temp["teaching_goals"] = get_list_of_skill_names(list_of_skill_ids=task["teaching_goals"], list_of_skills=list_of_skills)
+        
+        if task["required_skills"] != []:
+            ## convert to skill names
+            temp["required_skills"] = get_list_of_skill_names(list_of_skill_ids=task["required_skills"], list_of_skills=list_of_skills)
         
         new_list.append(temp)
                 
@@ -553,7 +563,7 @@ def transformer_list_of_tasks(list_of_tasks):
 
 
 def list_of_task_lite(list_of_tasks):
-    new_list = {}
+    new_list = []
     for task in list_of_tasks:
         temp = {}
         temp["content_tags"] = task["content_tags"]
@@ -563,114 +573,202 @@ def list_of_task_lite(list_of_tasks):
         temp['target_audience'] = task['target_audience']
         temp['teaching_goals'] = task['teaching_goals']
         temp['title'] = task['title']
+        temp['id'] = task['id']
+        temp['content_creator'] = task['content_creator']
+        temp['content_provider'] = task['content_provider']
+        temp['semantic_density'] = task['semantic_density']
+        temp['semantic_gravity'] = task['semantic_gravity']
+        temp['created_at'] = task['created_at']
+        temp['updated_at'] = task['updated_at']
         new_list.append(temp)
     return new_list
 
 
-def task_content_generator(path_obj):
-    for key in path_obj.keys():
-        if path_obj[key] == [] or path_obj[key] == None:
-            path_obj[key] = 'None'
-    # pprint(path_obj)
+# def task_content_generator(path_obj):
+#     for key in path_obj.keys():
+#         if path_obj[key] == [] or path_obj[key] == None:
+#             path_obj[key] = 'None'
+#     # pprint(path_obj)
     
-    # Convert the dictionary to a string representation
-    dict_str = ', '.join([f"{key}: {value}" for key, value in path_obj.items()])
-    # print(dict_str)
+#     # Convert the dictionary to a string representation
+#     dict_str = ', '.join([f"{key}: {value}" for key, value in path_obj.items()])
+#     # print(dict_str)
     
-    # Use the OpenAI API to generate a description
-    messages = [
-        {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
-        {"role": "user", "content": f"Please give me a summary about the learning path with the provided information: '{dict_str}'.  The summary must contain the following information: the learning goals of this learning path, the recommended units from this learning path, and the requirements of this learning path. The output should be in one paragraph. I want this summary of this learning path to be in German. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences."},
-    ]
+#     # Use the OpenAI API to generate a description
+#     messages = [
+#         {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
+#         {"role": "user", "content": f"Please give me a summary about the learning path with the provided information: '{dict_str}'.  The summary must contain the following information: the learning goals of this learning path, the recommended units from this learning path, and the requirements of this learning path. The output should be in one paragraph. I want this summary of this learning path to be in German. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences."},
+#     ]
     
-    # print(messages)
-    # print(prompt)
-    response = openai_client.chat.completions.create(
-        model="gpt-4-1106-preview",
-        messages=messages,
-        response_format={ "type": "json_object" },
-        max_tokens=300,  # Adjust the number of tokens as needed
-    )
+#     # print(messages)
+#     # print(prompt)
+#     response = openai_client.chat.completions.create(
+#         model="gpt-4-1106-preview",
+#         messages=messages,
+#         response_format={ "type": "json_object" },
+#         max_tokens=300,  # Adjust the number of tokens as needed
+#     )
     
-    # pprint(response)
-    description = response.choices[0].message.content
-    description = description.replace('\n', '').replace('\r', '')
-    if not description.endswith('"}'):
-        description += '"}'
+#     # pprint(response)
+#     description = response.choices[0].message.content
+#     description = description.replace('\n', '').replace('\r', '')
+#     if not description.endswith('"}'):
+#         description += '"}'
         
-    summary = json.loads(description)
-    content = list(summary.values())[0]
-    return content
+#     summary = json.loads(description)
+#     content = list(summary.values())[0]
+#     return content
 
-def enrich_list_with_mls_content(list_of_tasks):
-    new_list = {}
-    for task in list_of_tasks:
-        task_id = task['id']
-        task['mls_content'] = get_task_content_from_mls(task_id)
-        
-    return new_list
+
+# def get_mls_task_content(task_id):
+#     # new_list = []
+#     # for task in list_of_tasks:
+#     #     task_id = task['id']
+#     #     mls_task_content = get_task_content_from_mls(task_id)
+#     #     task['mls_content'] = mls_task_content
+#     #     new_list.append(task)
+#     mls_task_content = get_task_content_from_mls(task_id)
+#     return mls_task_content
+
 
 from l3s_gateway_api.util import mls_api
+import re
+from bs4 import BeautifulSoup
+
 def get_task_content_from_mls(task_id):
-    login_server_url = os.getenv('MLS_LOGIN_SERVER_URL')
-    realm = os.getenv('MLS_REALM')
-    login_payload = mls_api.MLS_LOGIN_PAYLOAD
-    mls_login_response = mls_api.MLSConnection().get_login_response(login_server_url, realm, login_payload)
-    pprint(mls_login_response)
-    mls_access_token = mls_api.MLSConnection().get_access_token(login_response=mls_login_response)
-    mls_auth_header=mls_api.MLSConnection().get_auth_header(access_token=mls_access_token)
-    mls_response = mls_api.MLSConnection().get_response(base_url=os.getenv('MLS_BASE_URL'), content_type='tasks', auth_header=mls_auth_header)
-    return mls_response
+    mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id)
+    # pprint(mls_response_json)
+    mls_task_content = ""
+    if mls_response_json['title'] != '':
+        mls_task_content = mls_task_content + f"Title: {mls_response_json['title']}. "
+    
+    if mls_response_json['description'] != '':
+        description_str = re.sub(r'</?p>', '', mls_response_json['description'])
+        mls_task_content = mls_task_content + f'Description: {description_str}'
+    
+    if mls_response_json['taskSteps'] != []:
+        for task_step in mls_response_json['taskSteps']:
+            task_step_response = mls_api.MLSConnection().get_task_step_by_id(task_step_id=task_step)
+            
+            task_step_title = task_step_response['title']
+            mls_task_content = mls_task_content + f'{task_step_title}. '
+            
+            task_step_content = BeautifulSoup(task_step_response['content'][0]['value'], 'html.parser').get_text()
+            task_step_content = task_step_content.replace(u'\xa0', u'')
+            task_step_content = task_step_content.replace(u'\n', u' ')
+            mls_task_content = mls_task_content + f'{task_step_content}. '
+    return mls_task_content
 
 
-def db_task_updater(list_of_learning_units):
+def db_learning_unit_updater(list_of_tasks):
     num_adds = 0
     num_updates = 0
     
-    for learning_unit in list_of_learning_units:
+    pprint(list_of_tasks)
+    
+    for task in list_of_tasks:
         ## get the contents from mls
-        task_id = learning_unit["id"]
+        task_id = task["id"]
         
         ## check if task already exists 
         doc = Document.query.filter_by(entity_id=task_id, entity_type="task").first()
         
         flag_doc_exists = (doc!=None)
-        flag_doc_is_modified = (doc.updated_at != learning_unit["updated_at"])
+        print(f'flag_doc_exists : {flag_doc_exists}')
         
-        if not flag_doc_exists:
-            ## if the task does not exist, add to database
+        if flag_doc_exists: ## if document already exists in db
+            flag_doc_is_modified = (doc.updated_at != task["updated_at"])
+            print(f'flag_doc_is_modified: {flag_doc_is_modified}')
+        
+            if not flag_doc_is_modified:
+                print(f"*** task {task['id']} already exists and has no update")
+                continue
+            else: # write the info form skill to doc
+                print(f"******* updating task {task['id']} *********")
+                task_content = get_task_content(task=task)
+                print(task_content)
+                # doc.contents = task_content
+                # doc.updated_at = task["updated_at"]
+                # print(f"******* path {task['id']} is updated *********")
+                # db.session.commit()
+                num_updats += 1
+                
+        else: ## if the task does not exist, add to database
             ## get task content from MLS
-            task_content = get_task_content(task_id)
+            task_content = get_task_content(task)
             print(task_content)
-            
+             ## write into document obj
+            new_doc = Document(
+                    entity_id = task["id"],
+                    entity_id_full = f"sse/learning_unit/{task['id']}",
+                    entity_type = "task",
+                    contents = task_content,
+                    created_at = task["created_at"],
+                    updated_at = task["updated_at"]
+                )
+            pprint(new_doc)
+#            ## add to db
+            db.session.add(new_doc)
+            db.session.commit()
             num_adds += 1
             
     return num_adds, num_updates
 
 
+def get_task_content(task):
+    task_content = ''
+    print('**************')
+    pprint(task)
+    if task['content_creator'] != '':
+        task_content = task_content + f'Content Creator: {task["content_creator"]}. '
+    if task['content_provider'] != '':
+        task_content = task_content + f'Content Provider: {task["content_provider"]}. '
+    if task['title'] != '':
+        task_content = task_content + f'Title: {task["title"]}. '
+    if task['description'] != '':
+        task_content = task_content + f'Description: {task["description"]}. '
+    if task['required_skills'] != []:
+        task_content = task_content + f'Required Skills: {", ".join(task["required_skills"])}. '
+    if task['teaching_goals'] != []:
+        task_content = task_content + f'Teaching Goals: {", ".join(task["teaching_goals"])}. '
+    if task['target_audience'] != []:
+        task_content = task_content + f'Target Audience: {", ".join(task["target_audience"])}. '
+    if task['content_tags'] != []:
+        task_content = task_content + f'Content Tags: {", ".join(task["content_tags"])}. '
+    if task['context_tags'] != []:
+        task_content = task_content + f'Context Tags: {", ".join(task["context_tags"])}. '
+    
+    
+    mls_task_content = get_task_content_from_mls(task['id'])
+    task_content = task_content + f'{mls_task_content}'
+    task_content = task_content.replace(u'..', u'.')
+    return task_content
 
-def db_learning_unit_processor(list_learning_units):
-    for learning_unit in list_learning_units:
+
+# def db_learning_unit_processor(list_of_tasks):
+#     for learning_unit in list_of_tasks:
         
-        ## get content for learning unit
-        content = ""
-        content = content + 'Title: ' + learning_unit.get('title') + "."
-        content = content + learning_unit.get('description') + "."
-        content = content + "Content creator is " + learning_unit.get('contentCreator') + "."
-        content = content + "Content provider is " + learning_unit.get('contentProvider') + "."
-        content = content + "Target audience is " + learning_unit.get('targetAudience') + "."
-        content = content + "Content tags are " + ' '.join(learning_unit.get('contentTags')) + "."
-        content = content + "Context tags are " + ' '.join(learning_unit.get('contextTags')) + "."
-        ## write into document obj
-        new_doc = Document(
-            owner="", # owner == orga-id
-            entity_id="", # entity_id == id
-            entity_type="", # entity_type == {task, skill, path}
-            contents="",
-            language="", 
-        )
+#         ## get content for learning unit
+#         content = ""
+#         content = content + 'Title: ' + learning_unit.get('title') + "."
+#         content = content + learning_unit.get('description') + "."
+#         content = content + "Content creator is " + learning_unit.get('contentCreator') + "."
+#         content = content + "Content provider is " + learning_unit.get('contentProvider') + "."
+#         content = content + "Target audience is " + learning_unit.get('targetAudience') + "."
+#         content = content + "Content tags are " + ' '.join(learning_unit.get('contentTags')) + "."
+#         content = content + "Context tags are " + ' '.join(learning_unit.get('contextTags')) + "."
+#         ## write into document obj
+#         new_doc = Document(
+#                 entity_id = learning_unit["id"],
+#                 entity_id_full = f"sse/learning_unit/{learning_unit['id']}",
+#                 entity_type = "path",
+#                 contents = content,
+#                 created_at = learning_unit["created_at"],
+#                 updated_at = learning_unit["updated_at"]
+#             )
         
-        ## add to db
-        db.session.add()
-    db.session.commit()
-    return
+#         ## add to db
+#         db.session.add()
+#     db.session.commit()
+#     return
+

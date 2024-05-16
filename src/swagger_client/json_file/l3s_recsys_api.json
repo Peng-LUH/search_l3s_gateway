@@ -3,7 +3,7 @@
   "info": {
     "title": "L3S Recommendation Service for SEARCH",
     "description": "Welcome to the Swagger UI documentation site!",
-    "version": "0.0.2"
+    "version": "0.0.3"
   },
   "servers": [
     {
@@ -12,56 +12,186 @@
   ],
   "tags": [
     {
-      "name": "test"
+      "name": "Tests",
+      "description": "Tests for L3S Recsys Service"
     },
     {
-      "name": "random"
+      "name": "Random Recommendation"
+    },
+    {
+      "name": "Trends"
     }
   ],
   "paths": {
-    "/random/get-random-recommendation": {
-      "post": {
+    "/random/get-random-paths": {
+      "get": {
         "tags": [
-          "random"
+          "Random Recommendation"
         ],
-        "operationId": "post_random_recommendation",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/RandomRequest"
-              }
+        "operationId": "get_get_random_paths",
+        "parameters": [
+          {
+            "name": "num_of_recs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 10
             }
           },
-          "required": true
-        },
+          {
+            "name": "orga_ids",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "Success",
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/RandomResponse"
+                  "$ref": "#/components/schemas/DtoRandomResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/random/get-random-skill": {
+      "get": {
+        "tags": [
+          "Random Recommendation"
+        ],
+        "operationId": "get_get_random_skill",
+        "parameters": [
+          {
+            "name": "num_of_recs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "orga_ids",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoRandomResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/random/get-random-tasks": {
+      "get": {
+        "tags": [
+          "Random Recommendation"
+        ],
+        "operationId": "get_get_random_tasks",
+        "parameters": [
+          {
+            "name": "num_of_recs",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 10
+            }
+          },
+          {
+            "name": "orga_ids",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoRandomResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/test/connection-sse": {
+      "get": {
+        "tags": [
+          "Tests"
+        ],
+        "operationId": "get_recsys_test_connection_sse",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoConnectionResponse"
                 }
               }
             }
           },
           "201": {
-            "description": "Success",
+            "description": "successfully changed.",
             "content": {}
           },
           "400": {
-            "description": "Number of recommendation is either negative or exceed the number of existing contents",
+            "description": "validation error.",
+            "content": {}
+          },
+          "409": {
+            "description": "exits conflict.",
+            "content": {}
+          },
+          "500": {
+            "description": "internal server error.",
             "content": {}
           }
-        },
-        "x-codegen-request-body-name": "payload"
+        }
       }
     },
-    "/recsys-test/recsys-test-get": {
+    "/test/test": {
       "get": {
         "tags": [
-          "test"
+          "Tests"
         ],
         "operationId": "get_recsys_test",
         "responses": {
@@ -76,12 +206,10 @@
             }
           }
         }
-      }
-    },
-    "/recsys-test/recsys-test-post": {
+      },
       "post": {
         "tags": [
-          "test"
+          "Tests"
         ],
         "operationId": "post_recsys_test",
         "requestBody": {
@@ -108,6 +236,235 @@
         },
         "x-codegen-request-body-name": "payload"
       }
+    },
+    "/trends/search-jobs/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "Search for job offers",
+        "operationId": "get_search_jobs",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "description": "location for searching job",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "berlin"
+            }
+          },
+          {
+            "name": "job_name",
+            "in": "query",
+            "description": "job name",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "machine learning"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "radius for searching jobs",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DtoJobsSearchResponse"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trends/trending-paths/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "get trending learning paths",
+        "operationId": "get_trending_paths",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
+    },
+    "/trends/trending-recommend/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "recommend trending skills, tasks, and learning paths",
+        "operationId": "get_get_trends",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "description": "location for searching job",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "berlin"
+            }
+          },
+          {
+            "name": "job_name",
+            "in": "query",
+            "description": "job name",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "machine learning"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "radius for searching jobs",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          {
+            "name": "topk",
+            "in": "query",
+            "description": "top k trending skills",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "query",
+            "description": "id of the user",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "1"
+            }
+          },
+          {
+            "name": "owner",
+            "in": "query",
+            "description": "owner",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "1"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoTrendsRecommendResponseList"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trends/trending-skills/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "get trending skills",
+        "operationId": "get_trending_skills",
+        "parameters": [
+          {
+            "name": "loc",
+            "in": "query",
+            "description": "location for searching job",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "berlin"
+            }
+          },
+          {
+            "name": "job_name",
+            "in": "query",
+            "description": "job name",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": "machine learning"
+            }
+          },
+          {
+            "name": "radius",
+            "in": "query",
+            "description": "radius for searching jobs",
+            "schema": {
+              "type": "integer",
+              "default": 5
+            }
+          },
+          {
+            "name": "topk",
+            "in": "query",
+            "description": "top k trending skills",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "default": 5
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DtoTrendingSkillsResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/trends/trending-tasks/": {
+      "get": {
+        "tags": [
+          "Trends"
+        ],
+        "summary": "get trending tasks/learning units",
+        "operationId": "get_trending_tasks",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {}
+          }
+        }
+      }
     }
   },
   "components": {
@@ -124,23 +481,31 @@
           }
         }
       },
-      "RandomRequest": {
-        "required": [
-          "num_of_rec"
-        ],
+      "DtoConnectionResponse": {
         "type": "object",
         "properties": {
-          "num_of_rec": {
-            "type": "integer"
+          "host_url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
           }
         }
       },
-      "RandomResponse": {
+      "DtoRandomResponse": {
         "required": [
-          "results"
+          "message",
+          "results",
+          "type"
         ],
         "type": "object",
         "properties": {
+          "message": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
           "results": {
             "type": "array",
             "items": {
@@ -148,17 +513,101 @@
             }
           }
         }
+      },
+      "DtoJobsSearchResponse": {
+        "type": "object",
+        "properties": {
+          "job_offers": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {},
+              "description": "List of Dictionaries"
+            }
+          }
+        }
+      },
+      "DtoTrendingSkillsResponse": {
+        "type": "object",
+        "properties": {
+          "topk": {
+            "type": "string",
+            "description": "number of top Trending Skills",
+            "example": "5"
+          },
+          "trending_skills": {
+            "type": "array",
+            "description": "List of Trending Skills",
+            "example": [
+              "Kundenberatung, -betreuung",
+              "Abrechnung",
+              "Kosten- und Leistungsrechnung",
+              "Akquisition",
+              "Korrespondenz"
+            ],
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "DtoTrendsRecommendResponseList": {
+        "type": "object",
+        "properties": {
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DtoTrendsRecommendResponse"
+            }
+          }
+        }
+      },
+      "DtoTrendsRecommendResponse": {
+        "required": [
+          "entity_id",
+          "entity_type"
+        ],
+        "type": "object",
+        "properties": {
+          "entity_id": {
+            "type": "string",
+            "description": "The entity ID",
+            "example": "1"
+          },
+          "entity_type": {
+            "type": "string",
+            "description": "The entity type",
+            "example": "skill"
+          },
+          "owner": {
+            "type": "string",
+            "description": "The owner list",
+            "example": ""
+          },
+          "similarity": {
+            "type": "number",
+            "description": "The similarity value",
+            "example": 0.92
+          },
+          "user_id": {
+            "type": "string",
+            "description": "The user ID",
+            "example": "1",
+            "default": "1"
+          }
+        }
       }
     },
     "responses": {
-      "MaskError": {
-        "description": "When any error occurs on mask",
-        "content": {}
-      },
       "ParseError": {
         "description": "When a mask can't be parsed",
         "content": {}
+      },
+      "MaskError": {
+        "description": "When any error occurs on mask",
+        "content": {}
       }
     }
-  }
+  },
+  "x-original-swagger-version": "2.0"
 }

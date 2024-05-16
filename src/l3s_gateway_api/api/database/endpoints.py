@@ -104,7 +104,6 @@ from .logic import (get_list_of_skills,
                     get_list_of_tasks,
                     transformer_list_of_tasks,
                     db_skill_updater,
-                    db_task_updater,
                     db_updater_paths,
                     get_task_content,
                     get_list_of_learning_paths,
@@ -167,24 +166,24 @@ class L3SDatabseSync(Resource):
         
         
         ## ------------------- Sync: Tasks/ Learning-Units ---------------------
-        # ns_database.logger.info("*"*60)
-        # ns_database.logger.info("Synchronization starts: tasks/learning units...")
-        # request_url_task = get_request_url(endpoint_url=url_for('api.l3s_db_sync_tasks'))
-        # response_task = requests.get(request_url_task)
-        # response_task_json = response_task.json()
+        ns_database.logger.info("*"*60)
+        ns_database.logger.info("Synchronization starts: tasks/learning units...")
+        request_url_task = get_request_url(endpoint_url=url_for('api.l3s_db_sync_tasks'))
+        response_task = requests.get(request_url_task)
+        response_task_json = response_task.json()
         
-        # if response_task.status_code == 200:
-        #     ns_database.logger.info("Success: Synchronization tasks/learning-units...")
-        #     ns_database.logger.info("*"*60)
-        # else:
-        #     ns_database.logger.info("Failed: Synchronization tasks/learning-units...")
-        #     ns_database.logger.info(f"Status Code: {response_task.status_code}")
-        #     ns_database.logger.info(f"Message: {response_task_json['message']}")
-        #     ns_database.logger.info("*"*60)
+        if response_task.status_code == 200:
+            ns_database.logger.info("Success: Synchronization tasks/learning-units...")
+            ns_database.logger.info("*"*60)
+        else:
+            ns_database.logger.info("Failed: Synchronization tasks/learning-units...")
+            ns_database.logger.info(f"Status Code: {response_task.status_code}")
+            ns_database.logger.info(f"Message: {response_task_json['message']}")
+            ns_database.logger.info("*"*60)
         
-        # ns_database.logger.info("*"*60)
+        ns_database.logger.info("*"*60)
         
-        # sync_results["task"] = response_path_json
+        sync_results["task"] = response_path_json
         
         
         ### update the search service
@@ -326,10 +325,11 @@ class L3SDBSyncLearningPaths(Resource):
             
 
 #ANCHOR - Sync Tasks
-from .logic import (get_task_content_from_mls, 
-                    list_of_task_lite,)
+from .logic import (list_of_task_lite,
+                    db_learning_unit_updater
+                    )
 
-@ns_database.route('/sync/tasks', endpoint='l3s_db_sync_tasks', doc=False)
+@ns_database.route('/sync/tasks', endpoint='l3s_db_sync_tasks')
 class L3SDBSyncLearningUnits(Resource):
     @ns_database.response(int(HTTPStatus.OK), description="Success: Tasks are up-to-date")
     @ns_database.response(int(HTTPStatus.CREATED), description="Success: Tasks are sychronized")
@@ -343,9 +343,7 @@ class L3SDBSyncLearningUnits(Resource):
         ## check if list is empty
         if list_of_tasks == []:
             raise FileExistsError("No tasks/learning-units retrieved!")
-        
-        pprint(list_of_tasks[0])
-        
+        # pprint(list_of_tasks[0])
         ns_database.logger.info(f"\nSuccess: {len(list_of_tasks)} tasks/learning-units are retrieved.")
         
         ## transform the list
@@ -353,30 +351,25 @@ class L3SDBSyncLearningUnits(Resource):
         list_of_tasks = transformer_list_of_tasks(list_of_tasks)
         ns_database.logger.info("Success: list of tasks/learning-units transformation")
         
+        # pprint(list_of_tasks[0])
+
         ## lite
         ns_database.logger.info("Starting: making a lite version for the list of tasks")
         list_of_tasks = list_of_task_lite(list_of_tasks)
         ns_database.logger.info("Success: lite version of the list of tasks")
         
-        ## add content from mls to the list
-        ns_database.logger.info("Starting: making a lite version for the list of tasks")
-        list_of_tasks = enrich_list_with_mls_content(list_of_tasks)
-        
-        return 
-        ## get the list of learning units from sse
-        list_of_learning_units = get_list_of_tasks()
-        
-        list_of_learning_units = transformer_list_of_tasks(list_of_learning_units)
-        pprint(list_of_learning_units[0])
-        
-        
-        num_adds, num_updates = db_task_updater(list_of_learning_units[:2])
+        # pprint(list_of_tasks[0])
+
+        num_adds, num_updates = db_learning_unit_updater(list_of_tasks[:1])
         results = {"num_adds": num_adds, "num_updates": num_updates}
         
         if num_adds==0 and num_updates==0:
             return {"message": "Success: Tasks are up-to-date.", "results": results}, HTTPStatus.OK
         
-        return {"message": "Success: Tasks are synchronized", "results": results}, HTTPStatus.CREATED    
+        return {"message": "Success: Tasks are synchronized", "results": results}, HTTPStatus.CREATED  
+    
+    
+      
         ## send request data to l3s-database/init-learning-units
         # request_url = util.get_request_url(endpoint='api.db_init_learning_units')
         # print(request_url)
