@@ -663,9 +663,7 @@ def get_task_content_from_mls(task_id):
 def db_learning_unit_updater(list_of_tasks):
     num_adds = 0
     num_updates = 0
-    
-    pprint(list_of_tasks)
-    
+        
     for task in list_of_tasks:
         ## get the contents from mls
         task_id = task["id"]
@@ -687,10 +685,10 @@ def db_learning_unit_updater(list_of_tasks):
                 print(f"******* updating task {task['id']} *********")
                 task_content = get_task_content(task=task)
                 print(task_content)
-                # doc.contents = task_content
-                # doc.updated_at = task["updated_at"]
-                # print(f"******* path {task['id']} is updated *********")
-                # db.session.commit()
+                doc.contents = task_content
+                doc.updated_at = task["updated_at"]
+                print(f"******* path {task['id']} is updated *********")
+                db.session.commit()
                 num_updats += 1
                 
         else: ## if the task does not exist, add to database
@@ -742,6 +740,7 @@ def get_task_content(task):
     mls_task_content = get_task_content_from_mls(task['id'])
     task_content = task_content + f'{mls_task_content}'
     task_content = task_content.replace(u'..', u'.')
+    task_content = task_content.replace(u'. .', u'.')
     return task_content
 
 

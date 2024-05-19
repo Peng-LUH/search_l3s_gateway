@@ -183,23 +183,24 @@ class L3SDatabseSync(Resource):
         
         ns_database.logger.info("*"*60)
         
-        sync_results["task"] = response_path_json
+        sync_results["task"] = response_task_json
         
         
         ### update the search service
-        
         if requests.head(os.getenv('L3S_SEARCH_HOST')).status_code == 200:
             docs = Document.query.all()
-            request_data = {"secret": os.getenv('MLS_CLIENT_SECRET'), 
+            request_data = {"secret": os.getenv('L3S_SEARCH_SRV_KEY'), 
                             "documents": schema_documents.dump(docs)}
-        
+            
             response = search_searcher_api.post_searcher_update(body=request_data)
-            print(response)
+            # pprint(response)
+            return 
             d = DtoSearcherUpdateResponse(message=response.message).to_dict()
-            pprint(d)
+            # pprint(d)
+            return sync_results, HTTPStatus.CREATED
         else:
             print('Search service is not activ.')
-        return sync_results
+            return 
         
         
 #ANCHOR - Sync Skills
@@ -239,7 +240,7 @@ class L3SDBSyncSkills(Resource):
             
             ## update
             ns_database.logger.info("Starting: update skills to database...")
-            num_adds, num_updates = db_skill_updater(list_of_skills)
+            num_adds, num_updates = db_skill_updater(list_of_skills[:10])
             
             results = {
                 "num_adds": num_adds,
@@ -295,7 +296,7 @@ class L3SDBSyncLearningPaths(Resource):
             
             ## update
             ns_database.logger.info("Starting: update skills to database...")
-            num_adds, num_updates = db_updater_paths(list_of_paths)
+            num_adds, num_updates = db_updater_paths(list_of_paths[:10])
             
             results = {
                 "num_adds": num_adds,
@@ -329,7 +330,7 @@ from .logic import (list_of_task_lite,
                     db_learning_unit_updater
                     )
 
-@ns_database.route('/sync/tasks', endpoint='l3s_db_sync_tasks')
+@ns_database.route('/sync/tasks', endpoint='l3s_db_sync_tasks', doc=False)
 class L3SDBSyncLearningUnits(Resource):
     @ns_database.response(int(HTTPStatus.OK), description="Success: Tasks are up-to-date")
     @ns_database.response(int(HTTPStatus.CREATED), description="Success: Tasks are sychronized")
@@ -360,7 +361,7 @@ class L3SDBSyncLearningUnits(Resource):
         
         # pprint(list_of_tasks[0])
 
-        num_adds, num_updates = db_learning_unit_updater(list_of_tasks[:1])
+        num_adds, num_updates = db_learning_unit_updater(list_of_tasks[:10])
         results = {"num_adds": num_adds, "num_updates": num_updates}
         
         if num_adds==0 and num_updates==0:
