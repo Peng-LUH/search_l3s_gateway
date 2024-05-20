@@ -189,7 +189,7 @@ class L3SDatabseSync(Resource):
         ### update the search service
         if requests.head(os.getenv('L3S_SEARCH_HOST')).status_code == 200:
             docs = Document.query.all()
-            request_data = {"secret": os.getenv('L3S_SEARCH_SRV_KEY'), 
+            request_data = {"secret": os.getenv('L3S_API_KEY'), 
                             "documents": schema_documents.dump(docs)}
             
             response = search_searcher_api.post_searcher_update(body=request_data)
@@ -208,7 +208,7 @@ from .dto import dto_sync_results, dto_sync_response
 ns_database.models[dto_sync_results.name] = dto_sync_results
 ns_database.models[dto_sync_response.name] = dto_sync_response
 
-@ns_database.route('/sync/skills', endpoint='l3s_db_sync_skills')
+@ns_database.route('/sync/skills', endpoint='l3s_db_sync_skills', doc=False)
 class L3SDBSyncSkills(Resource):
     # @ns_search_srv.expect(dto_update_skill_request)
     @ns_database.response(int(HTTPStatus.OK), description="Success: Skills are up to date")
@@ -271,7 +271,7 @@ class L3SDBSyncSkills(Resource):
 
 
 #ANCHOR - Sync Paths
-@ns_database.route('/sync/paths', endpoint='l3s_db_sync_learning_paths')
+@ns_database.route('/sync/paths', endpoint='l3s_db_sync_learning_paths', doc=False)
 class L3SDBSyncLearningPaths(Resource):
     def get(self):
         '''private: sync the data for learning paths'''
@@ -389,7 +389,7 @@ class CheckSecretKey(Resource):
     def get(self):
         try:
             request_data = parser_secret.parse_args()
-            if request_data["secret_key"] == os.getenv('MLS_CLIENT_SECRET'):
+            if request_data["secret_key"] == os.getenv('L3S_API_KEY'):
                 return {"message": "valid secret key"}, HTTPStatus.OK
             else:
                 return {"message": "invalid secret key"}, HTTPStatus.BAD_REQUEST
@@ -426,44 +426,45 @@ class DocumentById(Resource):
             return {"message": e.args[0], "result": {}}, HTTPStatus.BAD_REQUEST
         
     
-    @ns_database.expect(dto_document_post_request)
-    @ns_database.doc(params={'secret_key': 'mls client secret'})
-    def post(self, entity_type, entity_id):
-        try:
-            query_param = request.args.get('secret_key')
-            if query_param != os.getenv("MLS_CLIENT_SECRET"):
-                raise ValueError("Secret key does not match!")
+    # @ns_database.expect(dto_document_post_request)
+    # @ns_database.doc(params={'secret_key': 'mls client secret'})
+    # def post(self, entity_type, entity_id):
+    #     try:
+    #         query_param = request.args.get('secret_key')
+    #         if query_param != os.getenv("L3S_SEARCH_SRV_KEY"):
+    #             raise ValueError("Secret key does not match!")
             
-            request_data = request.json
+    #         request_data = request.json
             
-            if entity_type not in ["task", "skill", "path"]:
-                raise ValueError("invalid entity type")
+    #         if entity_type not in ["task", "skill", "path"]:
+    #             raise ValueError("invalid entity type")
                 
-            ## check whether instance already exists:
-            temp = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
-            print(temp)
-            if temp != None:
-                raise FileExistsError("Docuemt already exits!")
+    #         ## check whether instance already exists:
+    #         temp = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
+    #         print(temp)
+    #         if temp != None:
+    #             raise FileExistsError("Docuemt already exits!")
                     
-            doc = Document(
-                        owner=request_data.get("owner"),
-                        entity_id = entity_id,
-                        entity_type = entity_type,
-                        entity_id_full = f"{entity_type}/{entity_id}",
-                        contents = request_data["contents"],
-                        created_at = request_data["created_at"],
-                        updated_at = request_data["updated_at"]
-                        )
-            db.session.add(doc)
-            db.session.commit()
+    #         doc = Document(
+    #                     owner=request_data.get("owner"),
+    #                     entity_id = entity_id,
+    #                     entity_type = entity_type,
+    #                     entity_id_full = f"{entity_type}/{entity_id}",
+    #                     contents = request_data["contents"],
+    #                     created_at = request_data["created_at"],
+    #                     updated_at = request_data["updated_at"]
+    #                     )
+    #         db.session.add(doc)
+    #         db.session.commit()
             
-            return {"message": "success", "result": schema_document.dump(doc)}, HTTPStatus.CREATED
-        except ValueError as e:
-            return {"message": e.args[0], "result": {}}, HTTPStatus.BAD_REQUEST
-        except FileExistsError as e:
-            return {"message": e.args[0], "result": schema_document.dump(temp)}, HTTPStatus.IM_USED
-        except KeyError as e:
-            return {"message": f"value missing: {e.args[0]}", "result": {}}, HTTPStatus.BAD_REQUEST
+    #         return {"message": "success", "result": schema_document.dump(doc)}, HTTPStatus.CREATED
+    #     except ValueError as e:
+    #         return {"message": e.args[0], "result": {}}, HTTPStatus.BAD_REQUEST
+    #     except FileExistsError as e:
+    #         return {"message": e.args[0], "result": schema_document.dump(temp)}, HTTPStatus.IM_USED
+    #     except KeyError as e:
+    #         return {"message": f"value missing: {e.args[0]}", "result": {}}, HTTPStatus.BAD_REQUEST
+    
     
     @ns_database.response(int(HTTPStatus.OK), description="Success")
     @ns_database.response(int(HTTPStatus.NO_CONTENT), description="Document not found")
@@ -474,7 +475,7 @@ class DocumentById(Resource):
         request_data = parser_secret.parse_args()
         # print(request_data)
         try:
-            if request_data["secret_key"] != os.getenv("MLS_CLIENT_SECRET"):
+            if request_data["secret_key"] != os.getenv("L3S_API_KEY"):
                 raise ValueError("invalid secret key")
         
             it = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
