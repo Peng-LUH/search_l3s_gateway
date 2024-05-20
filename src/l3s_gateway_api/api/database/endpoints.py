@@ -475,7 +475,7 @@ class DocumentById(Resource):
         request_data = parser_secret.parse_args()
         # print(request_data)
         try:
-            if request_data["secret_key"] != os.getenv("L3S_API_KEY"):
+            if request_data["secret_key"] != os.getenv('L3S_API_KEY'):
                 raise ValueError("invalid secret key")
         
             it = Document.query.filter_by(entity_type=entity_type, entity_id=entity_id).first()
@@ -503,7 +503,7 @@ class DocumentAll(Resource):
     @ns_database.expect(parser_secret)
     def delete(self):
         request_data = parser_secret.parse_args()
-        if request_data["secret_key"] == os.getenv('MLS_CLIENT_SECRET'):
+        if request_data["secret_key"] == os.getenv('L3S_API_KEY'):
             db.session.query(Document).delete()
             db.session.commit()
             docs = Document.query.all()
