@@ -684,7 +684,7 @@ def db_learning_unit_updater(list_of_tasks):
             else: # write the info form skill to doc
                 print(f"******* updating task {task['id']} *********")
                 task_content = get_task_content(task=task)
-                print(task_content)
+                # print(task_content)
                 doc.contents = task_content
                 doc.updated_at = task["updated_at"]
                 print(f"******* path {task['id']} is updated *********")
@@ -694,7 +694,7 @@ def db_learning_unit_updater(list_of_tasks):
         else: ## if the task does not exist, add to database
             ## get task content from MLS
             task_content = get_task_content(task)
-            print(task_content)
+            # print(task_content)
              ## write into document obj
             new_doc = Document(
                     entity_id = task["id"],
@@ -704,7 +704,7 @@ def db_learning_unit_updater(list_of_tasks):
                     created_at = task["created_at"],
                     updated_at = task["updated_at"]
                 )
-            pprint(new_doc)
+            # pprint(new_doc)
 #            ## add to db
             db.session.add(new_doc)
             db.session.commit()
@@ -716,7 +716,7 @@ def db_learning_unit_updater(list_of_tasks):
 def get_task_content(task):
     task_content = ''
     print('**************')
-    pprint(task)
+    # pprint(task)
     if task['content_creator'] != '':
         task_content = task_content + f'Content Creator: {task["content_creator"]}. '
     if task['content_provider'] != '':

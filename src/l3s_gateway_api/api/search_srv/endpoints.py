@@ -164,12 +164,12 @@ class SearchServiceDatasets(Resource):
         try:
             api_response = search_metadata_api.get_get_datasets()
             response_data = DtoDatasetList(results=api_response.results).to_dict()
-            if response_data == []:
-                response = {"message": "No datasets found", "results": []}
+            print(response_data)
+            if response_data == {}:
+                response = {"message": "No datasets found", "results": ['']}
                 return response, HTTPStatus.OK
-            datasets = []
-            for r in response_data["results"]:
-                datasets.append(r["name"])   
+            
+            datasets = response_data['results']
             
             response = {"message": "success", "results": datasets}
             return response, HTTPStatus.OK

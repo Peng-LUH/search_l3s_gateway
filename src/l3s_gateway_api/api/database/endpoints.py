@@ -28,7 +28,7 @@ from requests.exceptions import InvalidURL
 ns_database = Namespace("L3S Database", validate=True, description="endpoints to communicate with the mls")
 
 SHOW_PRIVATE_ENDPOINT = True
-print(SHOW_PRIVATE_ENDPOINT)
+# print(SHOW_PRIVATE_ENDPOINT)
 
 ## import flask-restx-model
 from l3s_gateway_api.api.database.dto import (
@@ -79,8 +79,8 @@ class SSESearchOK(Resource):
         
         try:
             response = requests.head(url+'/api')
-            print(response)
-            print(response.status_code)
+            # print(response)
+            # print(response.status_code)
             if response.status_code == 200:
                 result.update({"host_url": url, "status": 'success'})
                 return result, HTTPStatus.OK
@@ -221,7 +221,7 @@ class L3SDBSyncSkills(Resource):
         try:              
             ns_database.logger.info("Retrieving the data from SSE-Service...")
             list_of_skills = get_list_of_skills()
-            print(list_of_skills[0])
+            # print(list_of_skills[0])
             
             ## check if list is empty
             if list_of_skills == []:
@@ -235,12 +235,12 @@ class L3SDBSyncSkills(Resource):
             ## transform the list
             ns_database.logger.info("Starting: list of skills transformation")
             list_of_skills = transformer_list_of_skills(list_of_skills)
-            print(list_of_skills[0])
+            # print(list_of_skills[0])
             ns_database.logger.info("Success: list of skills transformation")
             
             ## update
             ns_database.logger.info("Starting: update skills to database...")
-            num_adds, num_updates = db_skill_updater(list_of_skills[:10])
+            num_adds, num_updates = db_skill_updater(list_of_skills)
             
             results = {
                 "num_adds": num_adds,
@@ -280,7 +280,7 @@ class L3SDBSyncLearningPaths(Resource):
         try: 
             ns_database.logger.info("Retrieving the path data from SSE-Service...")
             list_of_paths = get_list_of_learning_paths()
-            pprint(list_of_paths)
+            # pprint(list_of_paths)
             
             ## check if list is empty
             if list_of_paths == []:
