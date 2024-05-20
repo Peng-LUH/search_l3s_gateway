@@ -741,8 +741,33 @@ def get_task_content(task):
     task_content = task_content + f'{mls_task_content}'
     task_content = task_content.replace(u'..', u'.')
     task_content = task_content.replace(u'. .', u'.')
+    
+    task_content = task_content_compressor(task_content=task_content)
     return task_content
 
+
+def task_content_compressor(task_content):
+    
+    messages = [
+        {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
+        {"role": "user", "content": f"Please give me a summary about the task with the provided information: {task_content}. The summary is in German language. The length of this summary should not exceed 500 tokens."},
+    ]
+    # print(prompt)
+    response = openai_client.chat.completions.create(
+        model="gpt-4o",
+        messages=messages,
+        response_format={ "type": "json_object" },
+        max_tokens=512,  # Adjust the number of tokens as needed
+    )
+    # print(response)
+    description = response.choices[0].message.content
+    description = description.replace('\n', '').replace('\r', '')
+    if not description.endswith('"}'):
+        description += '"}'
+        
+    summary = json.loads(description)
+    content = list(summary.values())[0]
+    return content
 
 # def db_learning_unit_processor(list_of_tasks):
 #     for learning_unit in list_of_tasks:
