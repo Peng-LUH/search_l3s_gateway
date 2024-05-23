@@ -195,14 +195,14 @@ def skill_content_generator(skill_obj):
     # Use the OpenAI API to generate a description
     messages = [
         {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
-        {"role": "user", "content": f"Please give me a summary about the skill with the provided information: {dict_str}. I want this explaination of this skill to be in German. The summary must contain the following information: the name of the skill, the description of the skill, the nested skills and parent skills. The output should be in one paragraph. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm."},
+        {"role": "user", "content": f"Please give me a summary about the skill with the provided information: {dict_str}. I want this explaination of this skill to be in German. The summary must contain the following information: the name of the skill, the description of the skill, the nested skills and parent skills. The output should be in one paragraph. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences with less than 350 tokens."},
     ]
     # print(prompt)
     response = openai_client.chat.completions.create(
         model="gpt-4o",
         messages=messages,
         response_format={ "type": "json_object" },
-        max_tokens=300,  # Adjust the number of tokens as needed
+        max_tokens=500,  # Adjust the number of tokens as needed
     )
     # print(response)
     description = response.choices[0].message.content
@@ -370,7 +370,7 @@ def path_content_generator(path_obj):
     # Use the OpenAI API to generate a description
     messages = [
         {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
-        {"role": "user", "content": f"Please give me a summary about the learning path with the provided information: '{dict_str}'.  The summary must contain the following information: the learning goals of this learning path, the recommended units from this learning path, and the requirements of this learning path. The output should be in one paragraph. I want this summary of this learning path to be in German. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences with less than 450 words."},
+        {"role": "user", "content": f"Please give me a summary about the learning path with the provided information: '{dict_str}'.  The summary must contain the following information: the learning goals of this learning path, the recommended units from this learning path, and the requirements of this learning path. The output should be in one paragraph. I want this summary of this learning path to be in German. The key must be 'Zusammenfassung'. This summary will be used as input of word embedding for semantic search algorithm. The summary must be in complete sentences with less than 350 tokens."},
     ]
     
     # print(messages)
@@ -750,14 +750,14 @@ def task_content_compressor(task_content):
     
     messages = [
         {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
-        {"role": "user", "content": f"Please give me a summary about the task with the provided information: {task_content}. The summary is in German language. The length of this summary should not exceed 500 tokens."},
+        {"role": "user", "content": f"Please give me a summary about the task with the provided information: {task_content}. The summary is in German language. The summary must be in complete sentences with less than 350 tokens."},
     ]
     # print(prompt)
     response = openai_client.chat.completions.create(
         model="gpt-4o",
         messages=messages,
         response_format={ "type": "json_object" },
-        max_tokens=512,  # Adjust the number of tokens as needed
+        max_tokens=500,  # Adjust the number of tokens as needed
     )
     # print(response)
     description = response.choices[0].message.content
