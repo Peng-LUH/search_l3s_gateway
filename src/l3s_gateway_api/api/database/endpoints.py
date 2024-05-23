@@ -296,7 +296,7 @@ class L3SDBSyncLearningPaths(Resource):
             
             ## update
             ns_database.logger.info("Starting: update skills to database...")
-            num_adds, num_updates = db_updater_paths(list_of_paths[:10])
+            num_adds, num_updates = db_updater_paths(list_of_paths)
             
             results = {
                 "num_adds": num_adds,
@@ -361,7 +361,7 @@ class L3SDBSyncLearningUnits(Resource):
         
         # pprint(list_of_tasks[0])
 
-        num_adds, num_updates = db_learning_unit_updater(list_of_tasks[:10])
+        num_adds, num_updates = db_learning_unit_updater(list_of_tasks)
         results = {"num_adds": num_adds, "num_updates": num_updates}
         
         if num_adds==0 and num_updates==0:
