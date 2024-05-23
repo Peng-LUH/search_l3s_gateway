@@ -86,7 +86,7 @@ class SearchServiceOK(Resource):
     @ns_search_srv.marshal_with(model_search_srv_connection_response)
     def get(self):
         # url = os.getenv('L3S_SEARCH_HOST')+'/'
-        url = l3s_search_config.host
+        url = l3s_search_config.host + '/'
         print(url)
         result = {}
         try:
@@ -240,6 +240,7 @@ parser_search_user.add_argument('use_skill_profile', type=boolean, location='arg
 parser_search_user.add_argument('use_learning_profile', type=boolean, location='args', default=False)
 parser_search_user.add_argument('entity_type', type=str, location='args', default='all')
 parser_search_user.add_argument('num_results', type=int, location='args', default=0)
+parser_search_user.add_argument('language_model', type=str, location='args', default='bert-base-german-cased')
 
 from .dto import dto_search_response, dto_search_response_list
 ns_search_srv.models[dto_search_response.name] = dto_search_response
@@ -264,7 +265,7 @@ class SearchService(Resource):
                         "query": args.get('query'),
                         "use_skill_profile": args.get("use_skill_profile"),
                         "use_learning_profile": args.get("use_learning_profile"),
-                        "language_model": "bert-base-german-cased",
+                        "language_model": args.get('language_model'),
                         "index_method": "flat-l2",
                         "entity_type": args.get("entity_type"),
                         "nr_result": args.get('num_results')

@@ -112,6 +112,10 @@ from .logic import (get_list_of_skills,
                     )
 
 ## ANCHOR - Synchronisations
+import time
+max_retries = 5     # maximal number of retry
+retry_delay = 5     # retry delay in sec.
+
 from .dto import dto_skill_list, dto_skill, dto_sync, dto_sync_list
 ns_database.models[dto_skill.name] = dto_skill
 ns_database.models[dto_skill_list.name] = dto_skill_list
@@ -122,68 +126,79 @@ ns_database.models[dto_sync_list.name] = dto_sync_list
 class L3SDatabseSync(Resource):
     # @ns_database.marshal_with(dto_sync_list)
     def get(self):
-        ''' l3s database synchronization '''
-        ns_database.logger.info("*"*60)
-        ns_database.logger.info("Starting: l3s database synchronization...")
-        sync_results = {}
-        
-        ## ----------------------- Sync: Skills ---------------------------------
-        request_url_sync_skill = get_request_url(endpoint_url=url_for('api.l3s_db_sync_skills'))
-        ns_database.logger.info("Synchronization starts: skills...")
-        response_skill = requests.get(request_url_sync_skill)
-        # print(response_skill.status_code)
-        response_skill_json = response_skill.json()
-        if response_skill.status_code == 200:
-            ns_database.logger.info("Success: Synchronization skills...")
-            ns_database.logger.info("*"*60)
-        else:
-            ns_database.logger.info("Failed: Synchronization skills...")
-            ns_database.logger.info(f"Status Code: {response_skill.status_code}")
-            ns_database.logger.info(f"Message: {response_skill_json['message']}")
-            ns_database.logger.info("*"*60)
-        
-        sync_results["skills"] = response_skill_json
+        for attempt in range(max_retries):
+            try:
+                ''' l3s database synchronization '''
+                ns_database.logger.info("*"*60)
+                ns_database.logger.info("Starting: l3s database synchronization...")
+                sync_results = {}
+                
+                ## ----------------------- Sync: Skills ---------------------------------
+                request_url_sync_skill = get_request_url(endpoint_url=url_for('api.l3s_db_sync_skills'))
+                ns_database.logger.info("Synchronization starts: skills...")
+                response_skill = requests.get(request_url_sync_skill)
+                # print(response_skill.status_code)
+                response_skill_json = response_skill.json()
+                if response_skill.status_code == 200:
+                    ns_database.logger.info("Success: Synchronization skills...")
+                    ns_database.logger.info("*"*60)
+                else:
+                    ns_database.logger.info("Failed: Synchronization skills...")
+                    ns_database.logger.info(f"Status Code: {response_skill.status_code}")
+                    ns_database.logger.info(f"Message: {response_skill_json['message']}")
+                    ns_database.logger.info("*"*60)
+                
+                sync_results["skills"] = response_skill_json
 
-        # ------------------- Sync: Learning Paths -------------------
-        ns_database.logger.info("*"*60)
-        ns_database.logger.info("Synchronization starts: Learning paths...")
-        request_url_path = get_request_url(endpoint_url=url_for('api.l3s_db_sync_learning_paths'))
-        response_path = requests.get(request_url_path)
-        # print(response_path.status_code)
-        response_path_json = response_path.json()
-        
-        if response_path.status_code == 200:
-            ns_database.logger.info("Success: Synchronization learning paths...")
-            ns_database.logger.info("*"*60)
-        else:
-            ns_database.logger.info("Failed: Synchronization learning paths...")
-            ns_database.logger.info(f"Status Code: {response_path.status_code}")
-            ns_database.logger.info(f"Message: {response_path_json['message']}")
-            ns_database.logger.info("*"*60)
-        
-        # pprint(response_path_json)
-        sync_results["path"] = response_path_json
-        
-        
-        ## ------------------- Sync: Tasks/ Learning-Units ---------------------
-        ns_database.logger.info("*"*60)
-        ns_database.logger.info("Synchronization starts: tasks/learning units...")
-        request_url_task = get_request_url(endpoint_url=url_for('api.l3s_db_sync_tasks'))
-        response_task = requests.get(request_url_task)
-        response_task_json = response_task.json()
-        
-        if response_task.status_code == 200:
-            ns_database.logger.info("Success: Synchronization tasks/learning-units...")
-            ns_database.logger.info("*"*60)
-        else:
-            ns_database.logger.info("Failed: Synchronization tasks/learning-units...")
-            ns_database.logger.info(f"Status Code: {response_task.status_code}")
-            ns_database.logger.info(f"Message: {response_task_json['message']}")
-            ns_database.logger.info("*"*60)
-        
-        ns_database.logger.info("*"*60)
-        
-        sync_results["task"] = response_task_json
+                # ------------------- Sync: Learning Paths -------------------
+                ns_database.logger.info("*"*60)
+                ns_database.logger.info("Synchronization starts: Learning paths...")
+                request_url_path = get_request_url(endpoint_url=url_for('api.l3s_db_sync_learning_paths'))
+                response_path = requests.get(request_url_path)
+                # print(response_path.status_code)
+                response_path_json = response_path.json()
+                
+                if response_path.status_code == 200:
+                    ns_database.logger.info("Success: Synchronization learning paths...")
+                    ns_database.logger.info("*"*60)
+                else:
+                    ns_database.logger.info("Failed: Synchronization learning paths...")
+                    ns_database.logger.info(f"Status Code: {response_path.status_code}")
+                    ns_database.logger.info(f"Message: {response_path_json['message']}")
+                    ns_database.logger.info("*"*60)
+                
+                # pprint(response_path_json)
+                sync_results["path"] = response_path_json
+                
+                
+                ## ------------------- Sync: Tasks/ Learning-Units ---------------------
+                ns_database.logger.info("*"*60)
+                ns_database.logger.info("Synchronization starts: tasks/learning units...")
+                request_url_task = get_request_url(endpoint_url=url_for('api.l3s_db_sync_tasks'))
+                response_task = requests.get(request_url_task)
+                response_task_json = response_task.json()
+                
+                if response_task.status_code == 200:
+                    ns_database.logger.info("Success: Synchronization tasks/learning-units...")
+                    ns_database.logger.info("*"*60)
+                else:
+                    ns_database.logger.info("Failed: Synchronization tasks/learning-units...")
+                    ns_database.logger.info(f"Status Code: {response_task.status_code}")
+                    ns_database.logger.info(f"Message: {response_task_json['message']}")
+                    ns_database.logger.info("*"*60)
+                
+                ns_database.logger.info("*"*60)
+                
+                sync_results["task"] = response_task_json
+
+                break
+            except Exception as e:
+                ns_database.logger.info(f"Attempt {attempt + 1} failed with error: {e}")
+                if attempt + 1 < max_retries:
+                    ns_database.logger.info(f"Retrying in {retry_delay} seconds...")
+                    time.sleep(retry_delay)
+                else:
+                    ns_database.logger.info("Max retries reached. Exiting.")
         
         
         ### update the search service

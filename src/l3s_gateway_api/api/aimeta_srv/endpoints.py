@@ -53,7 +53,7 @@ class AiMetaOk(Resource):
     @ns_aimeta_srv.response(int(HTTPStatus.INTERNAL_SERVER_ERROR), "internal server error.")
     @ns_aimeta_srv.marshal_with(dto_aimeta_connection_response)
     def get(self):
-        url = l3s_aimeta_config.host
+        url = l3s_aimeta_config.host + '/'
         # print(url)
         result = {}
         

@@ -51,7 +51,7 @@ class RecommendationService(Resource):
     @ns_recsys_srv.marshal_with(dto_recsys_connection_response)
     def get(self):
         # url = os.getenv('L3S_SEARCH_HOST')+'/'
-        url = l3s_recsys_config.host
+        url = l3s_recsys_config.host + '/'
         print(url)
         
         result = {}
