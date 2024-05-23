@@ -199,7 +199,7 @@ def skill_content_generator(skill_obj):
     ]
     # print(prompt)
     response = openai_client.chat.completions.create(
-        model="gpt-4-1106-preview",
+        model="gpt-4o",
         messages=messages,
         response_format={ "type": "json_object" },
         max_tokens=300,  # Adjust the number of tokens as needed
@@ -376,7 +376,7 @@ def path_content_generator(path_obj):
     # print(messages)
     # print(prompt)
     response = openai_client.chat.completions.create(
-        model="gpt-4-1106-preview",
+        model="gpt-4o",
         messages=messages,
         response_format={ "type": "json_object" },
         max_tokens=500,  # Adjust the number of tokens as needed
