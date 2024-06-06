@@ -202,13 +202,15 @@ class L3SDatabseSync(Resource):
         
         
         ### update the search service
-        if requests.head(os.getenv('L3S_SEARCH_HOST')).status_code == 200:
-            docs = Document.query.all()
-            request_data = {"secret": os.getenv('L3S_API_KEY'), 
-                            "documents": schema_documents.dump(docs)}
+        if requests.head(f"{os.getenv('L3S_SEARCH_HOST')}/").status_code == 200:
+            # docs = Document.query.all()
+            # request_data = {"secret": os.getenv('L3S_API_KEY'), 
+            #                 "documents": schema_documents.dump(docs)}
             
-            response = search_searcher_api.post_searcher_update(body=request_data)
+            # response = search_searcher_api.post_searcher_update(body=request_data)
             # pprint(response)
+            
+            print('Search service is activ.')
             return 
             d = DtoSearcherUpdateResponse(message=response.message).to_dict()
             # pprint(d)
@@ -376,7 +378,7 @@ class L3SDBSyncLearningUnits(Resource):
         
         # pprint(list_of_tasks[0])
 
-        num_adds, num_updates = db_learning_unit_updater(list_of_tasks)
+        num_adds, num_updates = db_learning_unit_updater(list_of_tasks[:1])
         results = {"num_adds": num_adds, "num_updates": num_updates}
         
         if num_adds==0 and num_updates==0:

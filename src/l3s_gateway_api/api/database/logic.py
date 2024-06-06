@@ -636,8 +636,10 @@ import re
 from bs4 import BeautifulSoup
 
 def get_task_content_from_mls(task_id):
+    print(f'Task id: {task_id}')
     mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id)
-    # pprint(mls_response_json)
+    pprint(mls_response_json)
+    
     mls_task_content = ""
     if mls_response_json['title'] != '':
         mls_task_content = mls_task_content + f"Title: {mls_response_json['title']}. "
@@ -667,6 +669,10 @@ def db_learning_unit_updater(list_of_tasks):
     for task in list_of_tasks:
         ## get the contents from mls
         task_id = task["id"]
+        
+        mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id)
+        pprint(mls_response_json)
+        
         
         ## check if task already exists 
         doc = Document.query.filter_by(entity_id=task_id, entity_type="task").first()
@@ -750,7 +756,7 @@ def task_content_compressor(task_content):
     
     messages = [
         {"role": "system", "content": "You are a teacher with 30 years of experience. You are designed to output JSON."},
-        {"role": "user", "content": f"Please give me a summary about the task with the provided information: {task_content}. The summary is in German language. The summary must be in complete sentences with less than 350 tokens."},
+        {"role": "user", "content": f"Please give me a summary about the task with the provided information: {task_content}. The summary is in German language. The summary must be in complete sentences with less than 350 tokens. The content should only contain 'summary'."},
     ]
     # print(prompt)
     response = openai_client.chat.completions.create(
@@ -761,12 +767,15 @@ def task_content_compressor(task_content):
     )
     # print(response)
     description = response.choices[0].message.content
+    pprint(description)
     description = description.replace('\n', '').replace('\r', '')
     if not description.endswith('"}'):
         description += '"}'
         
     summary = json.loads(description)
+    pprint(summary)
     content = list(summary.values())[0]
+    pprint(content)
     return content
 
 # def db_learning_unit_processor(list_of_tasks):

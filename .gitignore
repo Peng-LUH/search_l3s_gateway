@@ -10,6 +10,6 @@
 **/.archiv/*
 **/.archiv
 .tox
-*.sh
+**/.bash/*
 **/test_ipynb
 **/docker-compose.yml

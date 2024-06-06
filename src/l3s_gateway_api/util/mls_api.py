@@ -64,6 +64,8 @@ class MLSConnection(object):
         target_url = base_url + f"/mls-api/tasks/{task_id}"
         
         task_id_response = requests.get(target_url, headers = auth_header)
+        pprint(task_id_response)
+        pprint(task_id_response.status_code)
         return task_id_response.json()
     
     def get_task_step_by_id(self, task_step_id):
