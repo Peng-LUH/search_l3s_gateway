@@ -203,15 +203,15 @@ class L3SDatabseSync(Resource):
         
         ### update the search service
         if requests.head(f"{os.getenv('L3S_SEARCH_HOST')}/").status_code == 200:
-            # docs = Document.query.all()
-            # request_data = {"secret": os.getenv('L3S_API_KEY'), 
-            #                 "documents": schema_documents.dump(docs)}
+            docs = Document.query.all()
+            request_data = {"secret": os.getenv('L3S_API_KEY'), 
+                            "documents": schema_documents.dump(docs)}
             
-            # response = search_searcher_api.post_searcher_update(body=request_data)
+            response = search_searcher_api.post_searcher_update(body=request_data)
             # pprint(response)
             
             print('Search service is activ.')
-            return 
+            # return 
             d = DtoSearcherUpdateResponse(message=response.message).to_dict()
             # pprint(d)
             return sync_results, HTTPStatus.CREATED
@@ -346,6 +346,7 @@ class L3SDBSyncLearningPaths(Resource):
 from .logic import (list_of_task_lite,
                     db_learning_unit_updater
                     )
+
 
 @ns_database.route('/sync/tasks', endpoint='l3s_db_sync_tasks', doc=False)
 class L3SDBSyncLearningUnits(Resource):

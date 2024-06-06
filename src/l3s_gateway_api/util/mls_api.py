@@ -64,15 +64,32 @@ class MLSConnection(object):
         target_url = base_url + f"/mls-api/tasks/{task_id}"
         
         task_id_response = requests.get(target_url, headers = auth_header)
-        pprint(task_id_response)
-        pprint(task_id_response.status_code)
-        return task_id_response.json()
+        # pprint(task_id_response)
+        # pprint(task_id_response.status_code)
+        return task_id_response
     
     def get_task_step_by_id(self, task_step_id):
-        base_url = MLS_CONFIG.MLS_BASE_URL
-        auth_header = self.__get_auth_header()
+        """
+        Retrieves the details of a task step by its ID from the MLS system.
+
+        Parameters:
+        ----------
+        task_step_id : str
+            The ID of the task step to retrieve.
+
+        Returns:
+        -------
+        dict
+            A dictionary containing the details of the task step.
+        """
+        base_url = MLS_CONFIG.MLS_BASE_URL  # Base URL for the MLS system
+        auth_header = self.__get_auth_header()  # Authentication header for the request
         
+        # Construct the target URL by appending the task step ID to the base URL
         target_url = base_url + task_step_id
         
-        task_step_id_response = requests.get(target_url, headers = auth_header)
+        # Make a GET request to the target URL with the authentication header
+        task_step_id_response = requests.get(target_url, headers=auth_header)
+        
+        # Return the JSON response as a dictionary
         return task_step_id_response.json()

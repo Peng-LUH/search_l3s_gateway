@@ -425,7 +425,7 @@ def transformer_path(path):
         if path["recommended_unit_sequence"] != []:
             for r in path["recommended_unit_sequence"]:
                 learning_unit = sse_learningunit_api.search_learning_unit_controller_get_learning_unit(learning_unit_id=r)
-                recommended_unit_sequence.append(learning_unit.title)
+                recommended_unit_sequence.append(learning_unit.id)
         
         path["recommended_unit_sequence"] = recommended_unit_sequence
         return path
@@ -528,8 +528,18 @@ def get_list_of_tasks():
     response = sse_learningunit_api.search_learning_unit_controller_list_learning_units()
     data = SearchLearningUnitListDto(learning_units=response.learning_units)
     request_data = data.to_dict()
-    list_of_learning_units = request_data["learning_units"]
-    sorted_list = sorted(list_of_learning_units, key=lambda x: x["id"])
+    list_of_tasks = request_data["learning_units"]
+    sorted_list = sorted(list_of_tasks, key=lambda x: x["id"])
+    pprint(sorted_list[0])
+    
+    # prune the task objects from the list if not existing in MLS
+    print('***** Verifying taks existence in MLS *****')
+    for t in sorted_list:
+        task_id = t["id"]
+        r = mls_api.MLSConnection().get_task_by_id(task_id=task_id)
+        print(f'Task "{task_id}": {r.status_code}')
+        if not r.status_code == 200:
+            sorted_list.remove(t)
     return sorted_list
 
 
@@ -568,12 +578,11 @@ def list_of_task_lite(list_of_tasks):
         temp = {}
         temp["content_tags"] = task["content_tags"]
         temp['context_tags'] = task['context_tags']
-        temp['description'] = task['description']
         temp['required_skills'] = task['required_skills']
         temp['target_audience'] = task['target_audience']
         temp['teaching_goals'] = task['teaching_goals']
-        temp['title'] = task['title']
         temp['id'] = task['id']
+        temp['rating'] = task['rating']
         temp['content_creator'] = task['content_creator']
         temp['content_provider'] = task['content_provider']
         temp['semantic_density'] = task['semantic_density']
@@ -637,8 +646,8 @@ from bs4 import BeautifulSoup
 
 def get_task_content_from_mls(task_id):
     print(f'Task id: {task_id}')
-    mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id)
-    pprint(mls_response_json)
+    mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id).json()
+    # pprint(mls_response_json)
     
     mls_task_content = ""
     if mls_response_json['title'] != '':
@@ -670,8 +679,8 @@ def db_learning_unit_updater(list_of_tasks):
         ## get the contents from mls
         task_id = task["id"]
         
-        mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id)
-        pprint(mls_response_json)
+        mls_response_json = mls_api.MLSConnection().get_task_by_id(task_id=task_id).json()
+        # pprint(mls_response_json)
         
         
         ## check if task already exists 
