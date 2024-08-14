@@ -139,7 +139,7 @@ class L3SDatabseSync(Resource):
                 response_skill = requests.get(request_url_sync_skill)
                 # print(response_skill.status_code)
                 response_skill_json = response_skill.json()
-                if response_skill.status_code == 200:
+                if response_skill.ok:
                     ns_database.logger.info("Success: Synchronization skills...")
                     ns_database.logger.info("*"*60)
                 else:
@@ -158,7 +158,7 @@ class L3SDatabseSync(Resource):
                 # print(response_path.status_code)
                 response_path_json = response_path.json()
                 
-                if response_path.status_code == 200:
+                if response_path.ok:
                     ns_database.logger.info("Success: Synchronization learning paths...")
                     ns_database.logger.info("*"*60)
                 else:
@@ -178,7 +178,7 @@ class L3SDatabseSync(Resource):
                 response_task = requests.get(request_url_task)
                 response_task_json = response_task.json()
                 
-                if response_task.status_code == 200:
+                if response_task.ok:
                     ns_database.logger.info("Success: Synchronization tasks/learning-units...")
                     ns_database.logger.info("*"*60)
                 else:
@@ -379,7 +379,7 @@ class L3SDBSyncLearningUnits(Resource):
         
         # pprint(list_of_tasks[0])
 
-        num_adds, num_updates = db_learning_unit_updater(list_of_tasks[:1])
+        num_adds, num_updates = db_learning_unit_updater(list_of_tasks)
         results = {"num_adds": num_adds, "num_updates": num_updates}
         
         if num_adds==0 and num_updates==0:

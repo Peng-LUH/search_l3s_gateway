@@ -652,8 +652,7 @@ def get_task_content_from_mls(task_id):
     mls_task_content = ""
     if mls_response_json['title'] != '':
         mls_task_content = mls_task_content + f"Title: {mls_response_json['title']}. "
-    
-    if mls_response_json['description'] != '':
+    if mls_response_json['description'] != '' and mls_response_json['description'] is not None:
         description_str = re.sub(r'</?p>', '', mls_response_json['description'])
         mls_task_content = mls_task_content + f'Description: {description_str}'
     
@@ -663,11 +662,11 @@ def get_task_content_from_mls(task_id):
             
             task_step_title = task_step_response['title']
             mls_task_content = mls_task_content + f'{task_step_title}. '
-            
-            task_step_content = BeautifulSoup(task_step_response['content'][0]['value'], 'html.parser').get_text()
-            task_step_content = task_step_content.replace(u'\xa0', u'')
-            task_step_content = task_step_content.replace(u'\n', u' ')
-            mls_task_content = mls_task_content + f'{task_step_content}. '
+            if (not isinstance(task_step_response['content'][0]['value'], int)):
+                task_step_content = BeautifulSoup(task_step_response['content'][0]['value'], 'html.parser').get_text()
+                task_step_content = task_step_content.replace(u'\xa0', u'')
+                task_step_content = task_step_content.replace(u'\n', u' ')
+                mls_task_content = mls_task_content + f'{task_step_content}. '
     return mls_task_content
 
 
@@ -704,7 +703,7 @@ def db_learning_unit_updater(list_of_tasks):
                 doc.updated_at = task["updated_at"]
                 print(f"******* path {task['id']} is updated *********")
                 db.session.commit()
-                num_updats += 1
+                num_updates += 1
                 
         else: ## if the task does not exist, add to database
             ## get task content from MLS
@@ -736,10 +735,6 @@ def get_task_content(task):
         task_content = task_content + f'Content Creator: {task["content_creator"]}. '
     if task['content_provider'] != '':
         task_content = task_content + f'Content Provider: {task["content_provider"]}. '
-    if task['title'] != '':
-        task_content = task_content + f'Title: {task["title"]}. '
-    if task['description'] != '':
-        task_content = task_content + f'Description: {task["description"]}. '
     if task['required_skills'] != []:
         task_content = task_content + f'Required Skills: {", ".join(task["required_skills"])}. '
     if task['teaching_goals'] != []:
